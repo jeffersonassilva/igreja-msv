@@ -1,36 +1,29 @@
 @extends('layouts.default')
 
 @section('content')
-
-    <header>
-        <a href="#">
-            <img src="{{ asset('/img/logo.png') }}" alt="logo" class="logo">
-        </a>
-        <ul class="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Fotos</a></li>
-            <li><a href="#programacao">Programação</a></li>
-            <li><a href="#contato">Contato</a></li>
-{{--                <li><a href="{{ route('login') }}">Login</a></li>--}}
-        </ul>
-    </header>
-
-{{--    <div--}}
-{{--        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">--}}
-{{--        @if (Route::has('login'))--}}
-{{--            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">--}}
-{{--                @auth--}}
-{{--                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>--}}
-{{--                @else--}}
-{{--                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>--}}
-
-{{--                    @if (Route::has('register'))--}}
-{{--                        <a href="{{ route('register') }}"--}}
-{{--                           class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>--}}
-{{--                    @endif--}}
-{{--                @endauth--}}
-{{--            </div>--}}
-{{--        @endif--}}
-
-{{--    </div>--}}
+    <div class="text">
+        <h2>Uma igreja para<br><span>abençoar</span> a sua família.</h2>
+        <p>Somos uma igreja que tem o propósito de ser benção para sua família,
+            localizada no bairro Jardins Mangueiral - DF. Temos cultos semanais, escola bíblica dominical,
+            salas individuais para nossas crianças, e mais.. Venha nos visitar!!
+        </p>
+        {{-- <a href="#" class="btn">Quero fazer parte</a>--}}
+    </div>
+    <div class="grid">
+        <div class="slider">
+            <div class="slides active">
+                <img src="{{ asset('/img/instagram/1.jpg') }}" alt="">
+            </div>
+            <div class="slides">
+                <img src="{{ asset('/img/instagram/2.jpg') }}" alt="">
+            </div>
+            <div class="slides">
+                <img src="{{ asset('/img/instagram/3.jpg') }}" alt="">
+            </div>
+        </div>
+        <div class="prevNext">
+            <span class="prev"><ion-icon name="chevron-back-outline"></ion-icon></span>
+            <span class="next"><ion-icon name="chevron-forward-outline"></ion-icon></span>
+        </div>
+    </div>
 @endsection
