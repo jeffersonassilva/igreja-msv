@@ -22,12 +22,13 @@
             </div>
 
             <div class="indicator">
-                <a href="#contato">
+                <a href="#fotos">
                     <ion-icon name="arrow-down-outline"></ion-icon>
                 </a>
             </div>
         </section>
 
+        @include('includes.fotos')
         @include('includes.footer')
 
         <!-- Scripts -->
