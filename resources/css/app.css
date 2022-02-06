@@ -99,6 +99,11 @@ header {
     margin: 20px 0;
 }
 
+.blank {
+    max-width: 1240px;
+    margin-top: 80px;
+}
+
 .btn {
     position: relative;
     display: inline-block;
@@ -196,11 +201,12 @@ header {
     background: #fafafa;
 }
 
-.fotos h1, .programacao h1 {
+.fotos h1, .programacao h1, .album h1 {
     font-size: 1.6em;
     font-weight: 100;
     color: var(--link-light);
     border-bottom: 1px solid var(--soft-gray);
+    text-align: center;
 }
 
 .albuns, .cultos {
@@ -339,6 +345,7 @@ footer .info div.rs_icones a:hover {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 20px;
 }
 
 .fotografia {
@@ -529,6 +536,10 @@ footer .info div.rs_icones a:hover {
         font-size: 2.5em;
     }
 
+    .blank {
+        margin-top: 70px;
+    }
+
     .navigation {
         display: none;
     }
@@ -615,7 +626,7 @@ footer .info div.rs_icones a:hover {
         font-size: 1em;
     }
 
-    .fotos h1, .programacao h1 {
+    .fotos h1, .programacao h1, .album h1 {
         font-size: 1em;
     }
 
@@ -690,6 +701,10 @@ footer .info div.rs_icones a:hover {
 
     footer .info:last-child {
         order: 1;
+    }
+
+    .fotografia {
+        padding: 5px;
     }
 }
 
