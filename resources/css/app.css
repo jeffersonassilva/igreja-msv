@@ -169,12 +169,6 @@ header {
 }
 
 .indicator {
-    /*display: flex;*/
-    /*background: var(--white);*/
-    /*border-radius: 12px;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*padding: 3px 5px;*/
     position: absolute;
     bottom: 0;
     display: block;
@@ -189,23 +183,26 @@ header {
     font-size: 2em;
 }
 
-.fotos {
+.fotos, .programacao {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
-    min-height: 600px;
+    /*min-height: 400px;*/
+}
+
+.fotos {
     background: #fafafa;
 }
 
-.fotos h1 {
-    font-size: 1.2em;
+.fotos h1, .programacao h1 {
+    font-size: 1.6em;
     font-weight: 100;
     color: var(--link-light);
     border-bottom: 1px solid var(--soft-gray);
 }
 
-.albuns {
+.albuns, .cultos {
     display: flex;
     justify-content: space-around;
     padding: 40px calc((100% - 1240px) / 2);
@@ -237,6 +234,43 @@ header {
     font-size: .8em;
     font-weight: 100;
     line-height: 1.2em;
+}
+
+.cultos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.cultos > div {
+    flex: 33%;
+    display: flex;
+    padding-bottom: 40px;
+}
+
+.cultos ion-icon {
+    font-size: 2em;
+    color: var(--gray);
+}
+
+.cultos div.info {
+    padding: 0 10px 10px 10px;
+}
+
+.cultos div.info p {
+    font-size: 1.3em;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+.cultos div.info div {
+    font-weight: 400;
+    color: #777;
+}
+
+.cultos div.info div span {
+    font-weight: 600;
 }
 
 footer {
@@ -331,6 +365,10 @@ footer .info div.rs_icones a:hover {
         padding: 30px 60px;
     }
 
+    .cultos {
+        max-width: 991px;
+    }
+
     footer {
         padding: 30px 60px;
         min-height: 180px;
@@ -343,6 +381,16 @@ footer .info div.rs_icones a:hover {
         bottom: 0;
         width: 100%;
         padding: 30px 60px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .cultos {
+        max-width: 768px;
+    }
+
+    .cultos > div {
+        flex: 50%;
     }
 }
 
@@ -376,6 +424,14 @@ footer .info div.rs_icones a:hover {
         min-height: inherit;
     }
 
+    .cultos {
+        padding: 40px;
+    }
+
+    .cultos div.info p {
+        font-size: 1.1em;
+    }
+
     footer {
         padding: 30px;
     }
@@ -398,12 +454,36 @@ footer .info div.rs_icones a:hover {
         height: 70px;
     }
 
-    .fotos {
+    .fotos, .programacao {
         padding-top: 30px;
     }
 
     .albuns {
         padding: 20px;
+    }
+
+    .cultos {
+        padding: 30px;
+    }
+
+    .cultos > div {
+        flex: 100%;
+    }
+
+    .cultos > div:last-child {
+        display: none;
+    }
+
+    .cultos ion-icon {
+        flex: 1;
+    }
+
+    .cultos div.info {
+        flex: 10;
+    }
+
+    .cultos div.info div {
+        font-size: .9em;
     }
 
     footer {
@@ -515,7 +595,7 @@ footer .info div.rs_icones a:hover {
         font-size: 1em;
     }
 
-    .fotos h1 {
+    .fotos h1, .programacao h1 {
         font-size: 1em;
     }
 
@@ -526,6 +606,14 @@ footer .info div.rs_icones a:hover {
     .albuns > div {
         flex: calc(50% - 20px);
         margin: 10px 0;
+    }
+
+    .cultos {
+        padding: 20px;
+    }
+
+    .cultos div.info {
+        flex: 6;
     }
 
     footer {
