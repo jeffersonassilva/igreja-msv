@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -15,6 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/album/{pasta}', [AlbumController::class, 'show'])->name('album');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '@fancyapps/ui/dist/fancybox.css';
 
 :root {
     --gd-light: #fafafa;
@@ -209,7 +210,7 @@ header {
     flex-wrap: wrap;
 }
 
-.albuns > div {
+.albuns a {
     margin: 10px;
     background: #fff;
     border: 2px solid var(--soft-gray);
@@ -334,6 +335,21 @@ footer .info div.rs_icones a:hover {
     overflow: hidden;
 }
 
+.fotografias {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.fotografia {
+    width: 25%;
+    padding: 10px;
+}
+
+.fotografia img {
+    width: 100%;
+}
+
 
 /* Responsive Layout */
 @media (max-width: 1440px) {
@@ -416,7 +432,7 @@ footer .info div.rs_icones a:hover {
         flex-wrap: wrap;
     }
 
-    .albuns > div {
+    .albuns a {
         flex: calc(50% - 20px);
     }
 
@@ -438,6 +454,10 @@ footer .info div.rs_icones a:hover {
 
     footer div:nth-child(1) {
         display: none;
+    }
+
+    .fotografia {
+        width: 33%;
     }
 }
 
@@ -603,7 +623,7 @@ footer .info div.rs_icones a:hover {
         margin-bottom: inherit;
     }
 
-    .albuns > div {
+    .albuns a {
         flex: calc(50% - 20px);
         margin: 10px 0;
     }
@@ -627,6 +647,10 @@ footer .info div.rs_icones a:hover {
     footer .info .title {
         padding-bottom: 10px;
     }
+
+    .fotografia {
+        width: 50%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -643,7 +667,7 @@ footer .info div.rs_icones a:hover {
         padding: 10px;
     }
 
-    .albuns > div {
+    .albuns a {
         margin: 5px;
     }
 
