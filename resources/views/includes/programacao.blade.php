@@ -6,7 +6,7 @@
             <div class="info">
                 <p>Terça-feira</p>
                 <div>
-                    <span>20:00h</span> - Culto de Oração
+                    <span>20:00h</span> - Reunião de Mulheres
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="info">
                 <p>Quinta-feira</p>
                 <div>
-                    <span>20:00h</span> - Culto de Oração
+                    <span>20:00h</span> - Culto de Imersão
                 </div>
             </div>
         </div>
