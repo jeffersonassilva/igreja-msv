@@ -25,7 +25,6 @@ $(document).ready(function(){
     document.addEventListener('scroll', function(e) {
         lastKnownScrollPosition = window.scrollY;
         pageSize = window.screen.width;
-        console.log(pageSize);
 
         if (!ticking) {
             window.requestAnimationFrame(function() {
