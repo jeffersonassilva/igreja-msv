@@ -33,7 +33,7 @@
 }
 
 .main, header {
-    padding: 30px;
+    padding: 30px 60px;
 }
 
 header {
@@ -386,10 +386,6 @@ footer .info div.rs_icones a:hover {
 @media (max-width: 1440px) {
     .indicator {
         display: block;
-    }
-
-    .main, header {
-        padding: 30px 60px;
     }
 
     header {
