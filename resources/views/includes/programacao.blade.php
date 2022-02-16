@@ -33,7 +33,7 @@
             <div class="info">
                 <p>Sábado</p>
                 <div>
-                    <span>20:00h</span> - Culto dos Jovens
+                    <span>20:00h</span> - Conexão Jovem
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                     <span>09:30h</span> - Escola Bíblica Dominical
                 </div>
                 <div>
-                    <span>19:00h</span> - Culto de Louvor e Adoração a Deus
+                    <span>19:00h</span> - Culto Público
                 </div>
             </div>
         </div>
