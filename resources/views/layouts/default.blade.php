@@ -8,20 +8,171 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <!-- Page Content -->
-            <main>
-                @yield('content')
-            </main>
-        </div>
+    <body>
+        <section class="main">
+            <header>
+                <a href="#">
+                    <img src="{{ asset('/img/logo-preta.png') }}" alt="logo" class="logo">
+                </a>
+                <div class="toggle"></div>
+                <ul class="navigation">
+                    <li class="link"><a href="#">Home</a></li>
+                    <li class="link"><a href="#">Fotos</a></li>
+                    <li class="link"><a href="#">Programação</a></li>
+                    <li class="link"><a href="#contato">Contato</a></li>
+                    {{-- <li><a href="{{ route('login') }}">Login</a></li>--}}
+                </ul>
+            </header>
+            <div class="content">
+                <div class="text">
+                    <h2>Uma igreja para<br><span>abençoar</span> a sua família.</h2>
+                    <p>Somos uma igreja que tem o propósito de ser benção para sua família,
+                        localizada no bairro Jardins Mangueiral - DF. Temos cultos semanais, escola bíblica dominical,
+                        salas individuais para nossas crianças, e mais.. Venha nos visitar!!
+                    </p>
+{{--                    <a href="#" class="btn">Quero fazer parte</a>--}}
+                </div>
+                <div class="grid">
+                    <div class="slider">
+                        <div class="slides active">
+                            <img src="{{ asset('/img/instagram/1.jpg') }}" alt="">
+                        </div>
+                        <div class="slides">
+                            <img src="{{ asset('/img/instagram/2.jpg') }}" alt="">
+                        </div>
+                        <div class="slides">
+                            <img src="{{ asset('/img/instagram/3.jpg') }}" alt="">
+                        </div>
+                    </div>
+                    <div class="prevNext">
+                        <span class="prev"><ion-icon name="chevron-back-outline"></ion-icon></span>
+                        <span class="next"><ion-icon name="chevron-forward-outline"></ion-icon></span>
+                    </div>
+                </div>
+            </div>
+            <div class="indicator">
+                <a href="#contato">
+                    <ion-icon name="arrow-down-outline"></ion-icon>
+                </a>
+            </div>
+
+        </section>
+
+
+{{--        @include('includes/header')--}}
+
+{{--        <section class="content">--}}
+{{--            @yield('content')--}}
+{{--        </section>--}}
+
+        @include('includes.footer')
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                let lastKnownScrollPosition = 0;
+                let ticking = false;
+
+                function doSomething(scrollPos) {
+                    if (scrollPos > 0) {
+                        $('.indicator').hide();
+                    } else {
+                        $('.indicator').show();
+                    }
+                }
+
+                document.addEventListener('scroll', function(e) {
+                    lastKnownScrollPosition = window.scrollY;
+
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            doSomething(lastKnownScrollPosition);
+                            ticking = false;
+                        });
+
+                        ticking = true;
+                    }
+                });
+
+                //TOGGLE MENU
+                const navigation = document.querySelector('.navigation');
+                const menuToggle = document.querySelector('.toggle');
+                const body = document.querySelector('body');
+                menuToggle.onclick = function () {
+                    body.classList.toggle('overflow-hidden');
+                    navigation.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                }
+
+                //SLIDER
+                const slides = document.querySelectorAll('.slides');
+                const prev = document.querySelector('.prev');
+                const next = document.querySelector('.next');
+                i = 0;
+
+                function ActiveSlide(n) {
+                    for (slide of slides) {
+                        slide.classList.remove('active');
+                        slides[n].classList.add('active');
+                    }
+                }
+
+                next.addEventListener('click', function () {
+                    if (i == slides.length - 1) {
+                        i = 0;
+                    } else {
+                        i++;
+                    }
+                    ActiveSlide(i);
+                });
+
+                prev.addEventListener('click', function () {
+                    if (i == 0) {
+                        i = slides.length - 1;
+                    } else {
+                        i--;
+                    }
+                    ActiveSlide(i);
+                });
+
+                // Add smooth scrolling to all links
+                $("a").on('click', function(event) {
+
+                    $('.link').on('click', function () {
+                        body.classList.remove('overflow-hidden');
+                        navigation.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                        // Prevent default anchor click behavior
+                        event.preventDefault();
+
+                        // Store hash
+                        var hash = this.hash;
+
+                        // Using jQuery's animate() method to add smooth page scroll
+                        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top
+                        }, 800, function(){
+
+                            // Add hash (#) to URL when done scrolling (default click behavior)
+                            window.location.hash = hash;
+                        });
+                    } // End if
+                });
+            });
+        </script>
     </body>
 </html>
