@@ -24,6 +24,29 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home');
+        $data = array(
+            [
+                'album' => 'consagracao',
+                'titulo' => 'Consagração',
+                'descricao' => 'Consagração de obreiros 2020',
+            ],
+            [
+                'album' => 'aniversario',
+                'titulo' => 'Aniversário',
+                'descricao' => '1º Aniversário da Igreja MSV e 7º de Ministério',
+            ],
+            [
+                'album' => 'confraternizacao_2020',
+                'titulo' => 'Confraternização',
+                'descricao' => 'Confraternização 2020',
+            ],
+            [
+                'album' => 'projeto_sharon',
+                'titulo' => 'Projeto Sharon',
+                'descricao' => 'Fotos do projeto Sharon',
+            ],
+        );
+
+        return view('home')->with('fotos', $data);
     }
 }

@@ -1132,7 +1132,8 @@ select {
     --dark: #111111;
     --white: #ffffff;
     --gray: #aaaaaa;
-    --link-light: #a0cbff;
+    --soft-gray: #eeeeee;
+    --link-light: #5788a5;
     --font-family-sans-serif: 'Ubuntu', sans-serif;
 }
 * {
@@ -1288,6 +1289,48 @@ header {
 .indicator a:hover {
     font-size: 2em;
 }
+.fotos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    min-height: 600px;
+    background: #fafafa;
+}
+.fotos h1 {
+    font-size: 1.2em;
+    font-weight: 100;
+    color: var(--link-light);
+    border-bottom: 1px solid var(--soft-gray);
+}
+.albuns {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px calc((100% - 1240px) / 2);
+    flex-wrap: wrap;
+}
+.albuns > div {
+    margin: 10px;
+    background: #fff;
+    border: 2px solid var(--soft-gray);
+    flex: calc(25% - 20px);
+}
+.albuns img {
+    width: 100%;
+}
+.albuns .info {
+    padding: 5px 10px 10px 10px;
+}
+.albuns .info h4 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+.albuns .info span {
+    display: block;
+    font-size: .8em;
+    font-weight: 100;
+    line-height: 1.2em;
+}
 footer {
     background: var(--dark);
     color: var(--white);
@@ -1365,6 +1408,10 @@ footer .info div.rs_icones a:hover {
         max-width: 600px;
     }
 
+    .albuns {
+        padding: 30px 60px;
+    }
+
     footer {
         padding: 30px 60px;
         min-height: 180px;
@@ -1397,6 +1444,18 @@ footer .info div.rs_icones a:hover {
         margin: 20px;
     }
 
+    .albuns {
+        flex-wrap: wrap;
+    }
+
+    .albuns > div {
+        flex: calc(50% - 20px);
+    }
+
+    .albuns img {
+        min-height: inherit;
+    }
+
     footer {
         padding: 30px;
     }
@@ -1416,6 +1475,14 @@ footer .info div.rs_icones a:hover {
 
     header {
         height: 70px;
+    }
+
+    .fotos {
+        padding-top: 30px;
+    }
+
+    .albuns {
+        padding: 20px;
     }
 
     footer {
@@ -1526,6 +1593,19 @@ footer .info div.rs_icones a:hover {
         font-size: 1em;
     }
 
+    .fotos h1 {
+        font-size: 1em;
+    }
+
+    .albuns .info h4 {
+        margin-bottom: inherit;
+    }
+
+    .albuns > div {
+        flex: calc(50% - 20px);
+        margin: 10px 0;
+    }
+
     footer {
         flex-direction: column;
     }
@@ -1546,6 +1626,22 @@ footer .info div.rs_icones a:hover {
     header {
         padding: 10px 20px;
         border-bottom: 1px solid #ddd;
+    }
+
+    .albuns {
+        padding: 10px;
+    }
+
+    .albuns > div {
+        margin: 5px;
+    }
+
+    .albuns .info h4 {
+        font-size: .9em;
+    }
+
+    .albuns .info span {
+        font-size: .7em;
     }
 
     footer {
