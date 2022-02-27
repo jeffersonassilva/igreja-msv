@@ -29,6 +29,9 @@
         </section>
 
         @include('includes.fotos')
+
+        @include('includes.programacao')
+
         @include('includes.footer')
 
         <!-- Scripts -->
