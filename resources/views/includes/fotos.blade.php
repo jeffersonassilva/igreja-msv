@@ -1,5 +1,5 @@
 <section id="fotos" class="fotos">
-    <h1>Fotos</h1>
+{{--    <h1>Fotos</h1>--}}
     <div class="albuns">
         @foreach($fotos as $foto)
         <a href="{{ route('album', ['pasta' => $foto['pasta']]) }}">
