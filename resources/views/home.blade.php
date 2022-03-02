@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.propositos')
+
     @include('includes.fotos')
 
     @include('includes.videos')

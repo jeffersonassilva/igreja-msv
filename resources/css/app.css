@@ -151,7 +151,7 @@ header {
     font-size: 2em;
 }
 
-.fotos, .videos, .programacao, .album {
+.fotos, .videos, .programacao, .album, .propositos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,12 +171,37 @@ header {
     margin-bottom: 20px;
 }
 
-.albuns, .cultos, .fotografias {
+.albuns, .cultos, .fotografias, .valores {
     display: flex;
     flex-wrap: wrap;
 }
 
-.albuns, .cultos {
+.valores > .item {
+    flex: 1;
+    margin: 0 10px;
+    padding: 30px;
+    border-radius: 12px;
+    background: #fafafa;
+    text-align: center;
+}
+
+.valores .item h1 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.valores .item ion-icon {
+    font-size: 2em;
+    color: #eee;
+}
+
+.valores .item div {
+    font-weight: 300;
+    font-size: .9em;
+    line-height: 1.6em
+}
+
+.albuns, .cultos, .propositos {
     padding: 40px calc((100% - 1240px) / 2);
     justify-content: space-around;
 }
@@ -428,6 +453,11 @@ footer .info div.rs_icones a:hover {
         margin: 20px;
     }
 
+    .valores > .item {
+        flex: 100%;
+        margin-bottom: 30px;
+    }
+
     .albuns {
         flex-wrap: wrap;
     }
@@ -652,6 +682,32 @@ footer .info div.rs_icones a:hover {
         align-items: center;
         justify-content: center;
         margin-right: inherit;
+    }
+
+    .propositos {
+        padding: 20px 0;
+    }
+
+    .valores .item {
+        /*border-top: 1px solid #eee;*/
+        padding: 15px;
+        border-radius: 6px;
+    }
+
+    .valores .item h1 {
+        font-size: 1em;
+    }
+
+    .valores .item ion-icon {
+        font-size: 1.5em;
+    }
+
+    .valores .item div {
+        font-size: .8em;
+    }
+
+    .pastores div.titulo, .pastores div.descricao {
+        font-size: .8em;
     }
 
     .fotos h1, .programacao h1, .album h1 {
