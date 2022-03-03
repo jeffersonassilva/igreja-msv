@@ -1,6 +1,6 @@
 <footer id="contato">
     <div>
-        <img src="{{ asset('/img/logo.png') }}" alt="logo" style="width: 180px">
+        <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" style="width: 180px">
     </div>
     <div class="info">
         <p class="title">Redes Sociais</p>
