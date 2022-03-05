@@ -151,18 +151,37 @@ header {
     font-size: 2em;
 }
 
-.fotos, .videos, .programacao, .album, .propositos {
+.titulo-separador {
+    @apply flex items-center m-auto md:mb-10 py-4 text-lg md:text-2xl font-thin;
+    width: 80%;
+    color: #5a7a8d;
+    /*color: #a1bbcb;*/
+}
+
+.titulo-separador::before,
+.titulo-separador::after {
+    content: '';
+    flex: 1;
+    border-bottom-style: double;
+    border-bottom-width: 8px;
+}
+
+.titulo-separador::before {
+    margin-right: 20px;
+}
+
+.titulo-separador::after {
+    margin-left: 20px;
+}
+
+.programacao, .album {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px;
 }
 
-.fotos, .pastores {
-    background: #f2f2f2;
-}
-
-.fotos h1, .programacao h1, .album h1 {
+.programacao h1, .album h1 {
     font-size: 1.6em;
     font-weight: 100;
     color: var(--link-light);
@@ -192,7 +211,7 @@ header {
 
 .valores .item ion-icon {
     font-size: 2em;
-    color: #ddd;
+    color: #ebd636;
 }
 
 .valores .item div {
@@ -201,7 +220,7 @@ header {
     line-height: 1.6em
 }
 
-.albuns, .cultos, .propositos {
+.albuns, .cultos {
     padding: 40px calc((100% - 1240px) / 2);
     justify-content: space-around;
 }
@@ -235,60 +254,6 @@ header {
     font-size: .8em;
     font-weight: 100;
     line-height: 1.2em;
-}
-
-.video-container {
-    display: flex;
-    width: 90%;
-    padding: 40px calc((100% - 1240px) / 2);
-}
-
-.video-container > div {
-    flex: 50%;
-    padding: 20px;
-    width: 500px;
-    height: 320px;
-}
-
-.pastores {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-}
-
-.pastores > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    max-width: 90%;
-    padding: 40px calc((100% - 1240px) / 2);
-}
-
-.pastores > div > div {
-    flex: 50%;
-    padding: 0 30px;
-}
-
-.pastores div.titulo {
-    margin-bottom: 5px;
-}
-
-.pastores div.nomes {
-    color: #404040;
-    font-size: 1.6em;
-    font-weight: 500;
-    margin-bottom: 25px;
-}
-
-.pastores div.titulo, .pastores div.descricao {
-    font-weight: 300;
-    line-height: 1.8em;
-}
-
-.pastores img {
-    width: 100%;
 }
 
 .cultos {
@@ -470,25 +435,6 @@ footer .info div.rs_icones a:hover {
         min-height: inherit;
     }
 
-    .video-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .video-container > div {
-        flex: unset;
-        width: 560px;
-        height: 315px;
-    }
-
-    .pastores > div {
-        flex-direction: column;
-    }
-
-    .pastores > div > div {
-        padding: 0 30px 30px 30px;
-    }
-
     .cultos {
         padding: 40px;
     }
@@ -531,7 +477,7 @@ footer .info div.rs_icones a:hover {
         height: 70px;
     }
 
-    .fotos, .videos, .programacao {
+    .programacao {
         padding: 20px 0;
     }
 
@@ -541,22 +487,6 @@ footer .info div.rs_icones a:hover {
 
     .albuns {
         padding: 20px;
-    }
-
-    .pastores {
-        padding: inherit;
-    }
-
-    .pastores > div > div {
-        padding: 10px;
-    }
-
-    .pastores div.nomes {
-        font-size: 1.2em;
-    }
-
-    .pastores div.titulo, .pastores div.descricao {
-        line-height: 1.6em;
     }
 
     .cultos {
@@ -689,10 +619,6 @@ footer .info div.rs_icones a:hover {
         margin-right: inherit;
     }
 
-    .propositos {
-        padding: 20px 0;
-    }
-
     .valores .item {
         padding: 15px;
         border-radius: 6px;
@@ -710,11 +636,7 @@ footer .info div.rs_icones a:hover {
         font-size: .8em;
     }
 
-    .pastores div.titulo, .pastores div.descricao {
-        font-size: .8em;
-    }
-
-    .fotos h1, .programacao h1, .album h1 {
+    .programacao h1, .album h1 {
         font-size: 1em;
         margin-bottom: 15px;
     }
@@ -726,16 +648,6 @@ footer .info div.rs_icones a:hover {
     .albuns a {
         flex: calc(50% - 20px);
         margin: 10px 0;
-    }
-
-    .video-container {
-        width: 100%;
-        padding: 0;
-    }
-
-    .video-container > div {
-        width: 100%;
-        height: 240px;
     }
 
     .cultos {
@@ -800,10 +712,6 @@ footer .info div.rs_icones a:hover {
         font-size: .7em;
     }
 
-    .pastores > div {
-        padding: 15px 0;
-    }
-
     footer {
         flex-direction: column;
         padding-bottom: 40px;
@@ -821,9 +729,3 @@ footer .info div.rs_icones a:hover {
         padding: 5px;
     }
 }
-
-/*@media (min-height: 1024px) {*/
-/*    .main {*/
-/*        min-height: calc(100vh - 200px);*/
-/*    }*/
-/*}*/
