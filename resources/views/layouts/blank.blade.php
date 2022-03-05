@@ -20,17 +20,7 @@
             <div class="content">
                 @yield('content')
             </div>
-
-            <div class="indicator">
-                <a href="#fotos">
-                    <ion-icon name="arrow-down-outline"></ion-icon>
-                </a>
-            </div>
         </section>
-
-        @include('includes.fotos')
-
-        @include('includes.programacao')
 
         @include('includes.footer')
 

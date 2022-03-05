@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 /**
- * Class HomeController
+ * Class AlbumController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller
+class AlbumController extends Controller
 {
     /**
-     * HomeController constructor.
+     * AlbumController constructor.
      */
     public function __construct()
     {
@@ -19,10 +17,10 @@ class HomeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param $pasta
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(Request $request)
+    public function show($pasta)
     {
         $data = array(
             [
@@ -47,6 +45,10 @@ class HomeController extends Controller
             ],
         );
 
-        return view('home')->with('fotos', $data);
+        $album = array_filter($data, function ($item) use ($pasta) {
+            return $item['pasta'] === $pasta;
+        });
+
+        return view('album')->with('album', current($album));
     }
 }
