@@ -49,7 +49,7 @@ $(document).ready(function(){
     let i = 0;
 
     function ActiveSlide(n) {
-        for (slide of slides) {
+        for (let slide of slides) {
             slide.classList.remove('active');
             slides[n].classList.add('active');
         }
