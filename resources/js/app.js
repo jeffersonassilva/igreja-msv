@@ -9,22 +9,27 @@ Alpine.start();
 
 $(document).ready(function(){
     let lastKnownScrollPosition = 0;
+    let pageSize = 0;
     let ticking = false;
 
-    function doSomething(scrollPos) {
+    function toogleIndicator(pageSize, scrollPos) {
         if (scrollPos > 0) {
             $('.indicator').hide();
         } else {
-            $('.indicator').show();
+            if (pageSize < 1440) {
+                $('.indicator').show();
+            }
         }
     }
 
     document.addEventListener('scroll', function(e) {
         lastKnownScrollPosition = window.scrollY;
+        pageSize = window.screen.width;
+        console.log(pageSize);
 
         if (!ticking) {
             window.requestAnimationFrame(function() {
-                doSomething(lastKnownScrollPosition);
+                toogleIndicator(pageSize, lastKnownScrollPosition);
                 ticking = false;
             });
 
