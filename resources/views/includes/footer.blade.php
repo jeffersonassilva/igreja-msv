@@ -24,7 +24,9 @@
         </div>
         <div class="icon_text">
             <ion-icon name="call"></ion-icon>
-            <span>(61) 99689-9317</span>
+            <a href="https://wa.me/5561996899317" target="_blank" style="text-decoration: none;">
+                (61) 99689-9317
+            </a>
         </div>
     </div>
     <div class="info">
