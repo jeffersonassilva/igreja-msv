@@ -15,9 +15,9 @@
                     </button>
                 </div>
             </div>
-            <div class="mx-auto lg:flex-[50%] lg:flex-1 flex md:justify-end lg:px-3 order-1 lg:order-2">
-                <a href="https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg" target="_blank">
-                    <img class="w-full lg:max-w-[600px]" src="{{ asset('img/canal-youtube.jpg') }}" alt="Samuel_Hacsa" title="Samuel_Hacsa">
+            <div class="mx-auto lg:flex-[50%] lg:flex-1 flex md:justify-end order-1 lg:order-2">
+                <a href="https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg" target="_blank" class="bg-gray-200">
+                    <img loading="lazy" width="540" height="306" src="{{ asset('img/canal-youtube.jpg') }}" alt="Canal_YouTube" title="Canal_YouTube">
                 </a>
             </div>
         </div>
