@@ -17,7 +17,7 @@
         <section class="main">
             @include('includes/header')
 
-            <div class="content">
+            <div class="blank">
                 @yield('content')
             </div>
         </section>
