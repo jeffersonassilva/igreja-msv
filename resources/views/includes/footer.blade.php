@@ -23,7 +23,7 @@
             <span>contato@igrejamsv.org</span>
         </div>
         <div class="icon_text">
-            <ion-icon name="call"></ion-icon>
+            <ion-icon name="logo-whatsapp"></ion-icon>
             <a href="https://wa.me/5561996899317" target="_blank" style="text-decoration: none;">
                 (61) 99689-9317
             </a>
