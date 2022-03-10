@@ -7,31 +7,25 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-$(document).ready(function(){
+$(document).ready(function () {
     let lastKnownScrollPosition = 0;
-    let pageSize = 0;
     let ticking = false;
 
-    function toogleIndicator(pageSize, scrollPos) {
-        if (scrollPos > 0) {
-            $('.indicator').hide();
+    function toogleBtnScrolling(scrollPos) {
+        if (scrollPos > 600) {
+            $('.btn-scrolling').removeClass('hidden');
         } else {
-            if (pageSize < 1440) {
-                $('.indicator').show();
-            }
+            $('.btn-scrolling').addClass('hidden');
         }
     }
 
     document.addEventListener('scroll', function(e) {
         lastKnownScrollPosition = window.scrollY;
-        pageSize = window.screen.width;
-
         if (!ticking) {
             window.requestAnimationFrame(function() {
-                toogleIndicator(pageSize, lastKnownScrollPosition);
+                toogleBtnScrolling(lastKnownScrollPosition);
                 ticking = false;
             });
-
             ticking = true;
         }
     });

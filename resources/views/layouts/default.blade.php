@@ -32,7 +32,7 @@
         <meta name="theme-color" content="#ffffff">
     </head>
     <body>
-        <section class="main" style="background-image: url({{ asset('img/banner.jpg') }})">
+        <section id="main" class="main" style="background-image: url({{ asset('img/banner.jpg') }})">
             @include('includes/header')
         </section>
 
@@ -41,6 +41,10 @@
         </div>
 
         @include('includes.footer')
+
+        <a class="btn-scrolling hidden fixed bottom-5 right-5 text-xl w-12 h-12 shadow-md border border-gray-400 bg-gray-300 rounded flex justify-center items-center" href="#main">
+            <ion-icon name="arrow-up-outline"></ion-icon>
+        </a>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
