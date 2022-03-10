@@ -21,11 +21,11 @@
             <p class="text-xl">Informações</p>
             <div class="py-2">
                 <div class="flex items-center text-zinc-400">
-                    <ion-icon name="mail"></ion-icon>
+                    <div class="text-lg pt-1"><ion-icon name="mail"></ion-icon></div>
                     <span class="px-2 font-thin">contato@igrejamsv.org</span>
                 </div>
                 <div class="flex items-center text-zinc-400">
-                    <ion-icon name="logo-whatsapp"></ion-icon>
+                    <div class="text-lg pt-1"><ion-icon name="logo-whatsapp"></ion-icon></div>
                     <a href="https://wa.me/5561996899317" target="_blank" class="p-2 font-thin text-blue-300">
                         (61) 99689-9317
                     </a>
@@ -39,7 +39,7 @@
                     <span class="font-thin">PA 03 Lote 02 - Jardins Mangueiral - DF</span>
                 </div>
                 <div class="flex items-center text-zinc-400">
-                    <ion-icon name="location-sharp"></ion-icon>
+                    <div class="text-lg pt-1"><ion-icon name="location-sharp"></ion-icon></div>
                     <a href="https://goo.gl/maps/VB9GWVqWG4FKiccV9" target="_blank" class="p-2 font-thin text-blue-300">
                         Google Maps
                     </a>
