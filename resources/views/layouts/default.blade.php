@@ -31,12 +31,12 @@
         <meta name="msapplication-TileImage" content="{{ asset('img/icons/ms-icon-144x144.png') }}">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body>
+    <body class="flex flex-col min-h-full">
         <section id="main" class="main" style="background-image: url({{ asset('img/banner.jpg') }})">
             @include('includes/header')
         </section>
 
-        <div class="content">
+        <div class="flex-1">
             @yield('content')
         </div>
 
