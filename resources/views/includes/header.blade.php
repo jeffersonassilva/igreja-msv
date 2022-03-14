@@ -6,6 +6,7 @@
     <ul class="navigation">
         <li class="link"><a href="{{ route('index') }}">Home</a></li>
         <li class="link"><a href="/#propositos">Propósitos</a></li>
+        <li class="link"><a href="{{ route('ofertas') }}">Ofertas</a></li>
         <li class="link"><a href="/#fotos">Fotos</a></li>
         <li class="link"><a href="/#pastores">Pastores</a></li>
         <li class="link"><a href="/#programacao">Programação</a></li>
