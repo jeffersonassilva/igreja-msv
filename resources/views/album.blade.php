@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.default')
 
 @section('content')
     <style type="text/css">
