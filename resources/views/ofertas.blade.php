@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="flex-1 mt-4 sm:px-6 sm:mt-0" id="qrcode">
-                    <img src="https://fakeimg.pl/350x350/f2f2f2/eae0d0?text=Pix MSV">
+                    <img src="https://fakeimg.pl/300x300/f2f2f2/f2f2f2/">
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
             $('input[type=radio][name=tipo]').change(function () {
                 $('#campoValor').removeClass('hidden');
                 $('#valor').val('');
-                $('#qrcode').html('<img src="https://fakeimg.pl/350x350/f2f2f2/eae0d0?text=Pix MSV">');
+                $('#qrcode').html('<img src="https://fakeimg.pl/300x300/f2f2f2/f2f2f2/">');
                 if (this.value === 'almoco') {
                     $('#campoValor').addClass('hidden');
                 }
@@ -101,6 +101,25 @@
                 success: function (response) {
                     $('#qrcode').html(response);
                 }
+            });
+        }
+
+        function copyQrCode() {
+            /* Get the text field */
+            let copyText = document.getElementById("qrCode");
+            let spanCopyText = document.getElementById("retornoCopyQrCode");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.innerText).then(function() {
+                spanCopyText.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> Código copiado!';
+                spanCopyText.classList.add('text-green-700');
+            }, function() {
+                spanCopyText.innerHTML = '<ion-icon name="close-outline"></ion-icon> Não foi possível copiar o código.';
+                spanCopyText.classList.add('text-red-700');
             });
         }
     </script>
