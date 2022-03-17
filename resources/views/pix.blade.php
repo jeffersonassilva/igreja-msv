@@ -3,7 +3,7 @@
     <span class="flex justify-center border border-l-0 border-r-1 border-y-0 border-gray-300 px-2 text-2xl">
         <ion-icon name="document-text-outline"></ion-icon>
     </span>
-    <input class="flex-1 border-none bg-white outline-0 focus:outline-0 ring-0 focus:ring-0 text-sm"
+    <input class="flex-1 min-w-0 border-none bg-white outline-0 focus:outline-0 ring-0 focus:ring-0 text-sm"
            type="text" value="{{$pix}}" id="qrCode">
     <button class="p-2 rounded-md bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white text-sm" onclick="copyQrCode()">Copiar</button>
 </div>
