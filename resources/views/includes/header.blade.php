@@ -8,7 +8,7 @@
         <li class="link"><a href="/#propositos">Propósitos</a></li>
         <li class="link"><a href="{{ route('ofertas') }}">Ofertas</a></li>
         <li class="link"><a href="https://horadeberear.com.br/" target="_blank">Blog</a></li>
-{{--        <li class="link"><a href="/#fotos">Fotos</a></li>--}}
+        <li class="link"><a href="https://www.flickr.com/photos/igrejamsv/albums" target="_blank">Fotos</a></li>
         <li class="link"><a href="/#pastores">Pastores</a></li>
         <li class="link"><a href="/#programacao">Programação</a></li>
         <li class="link"><a href="/#contato">Contato</a></li>
