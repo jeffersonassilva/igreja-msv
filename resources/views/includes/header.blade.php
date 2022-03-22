@@ -1,11 +1,12 @@
 <header>
     <a href="{{ route('index') }}">
-        <img src="{{ asset('/img/logo-preta.png') }}" alt="logo" class="logo">
+        <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="logo">
     </a>
     <div class="toggle"></div>
     <ul class="navigation">
         <li class="link"><a href="{{ route('index') }}">Home</a></li>
         <li class="link"><a href="/#fotos">Fotos</a></li>
+        <li class="link"><a href="/#pastores">Pastores</a></li>
         <li class="link"><a href="/#programacao">Programação</a></li>
         <li class="link"><a href="/#contato">Contato</a></li>
         {{-- <li><a href="{{ route('login') }}">Login</a></li>--}}
