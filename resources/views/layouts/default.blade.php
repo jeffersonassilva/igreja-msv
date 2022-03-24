@@ -14,23 +14,13 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <section class="main">
+        <section class="main" style="background-image: url({{ asset('img/banner.jpg') }})">
             @include('includes/header')
-
-            <div class="content">
-                @yield('content')
-            </div>
-
-            <div class="indicator">
-                <a href="#fotos">
-                    <ion-icon name="arrow-down-outline"></ion-icon>
-                </a>
-            </div>
         </section>
 
-        @include('includes.fotos')
-
-        @include('includes.programacao')
+        <div class="content">
+            @yield('content')
+        </div>
 
         @include('includes.footer')
 
