@@ -22,17 +22,18 @@
 }
 
 .main {
-    position: relative;
-    min-height: 800px;
-    background: radial-gradient(var(--gd-light), var(--gd-dark));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 400px;
+    opacity: 1;
+    visibility: inherit;
+    z-index: 20;
 }
 
 .main, header {
-    padding: 30px calc((100% - 1240px) / 2);
+    padding: 30px;
 }
 
 header {
@@ -40,7 +41,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 180px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,44 +64,7 @@ header {
     text-decoration: none;
     margin-left: 40px;
     font-size: 1.2em;
-}
-
-.content {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1240px;
-    margin-top: 100px;
-}
-
-.content .text {
-    width: 100%;
-    max-width: 800px;
-    flex: 1;
-}
-
-.content .text h2 {
-    font-size: 3.5em;
-    font-weight: 300;
-    line-height: 1.2em;
-}
-
-.content .text h2 span {
-    font-weight: 700;
-}
-
-.content .text p {
-    font-weight: 400;
-    font-size: 1.1em;
-    line-height: 1.5em;
-    margin: 20px 0;
-}
-
-.blank {
-    max-width: 1240px;
-    margin-top: 80px;
+    color: var(--white);
 }
 
 .btn {
@@ -153,7 +116,6 @@ header {
     margin-top: 10px;
     margin-right: 10px;
     display: flex;
-
 }
 
 .prevNext span {
@@ -189,16 +151,15 @@ header {
     font-size: 2em;
 }
 
-.fotos, .programacao {
+.fotos, .videos, .programacao, .album {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    /*min-height: 400px;*/
 }
 
-.fotos {
-    background: #fafafa;
+.fotos, .pastores {
+    background: #f2f2f2;
 }
 
 .fotos h1, .programacao h1, .album h1 {
@@ -210,11 +171,18 @@ header {
     margin-bottom: 20px;
 }
 
-.albuns, .cultos {
+.albuns, .cultos, .fotografias {
     display: flex;
-    justify-content: space-around;
-    padding: 40px calc((100% - 1240px) / 2);
     flex-wrap: wrap;
+}
+
+.albuns, .cultos {
+    padding: 40px calc((100% - 1240px) / 2);
+    justify-content: space-around;
+}
+
+.fotografias {
+    padding: 0 calc((100% - 1240px) / 2);
 }
 
 .albuns a {
@@ -242,6 +210,60 @@ header {
     font-size: .8em;
     font-weight: 100;
     line-height: 1.2em;
+}
+
+.video-container {
+    display: flex;
+    width: 90%;
+    padding: 40px calc((100% - 1240px) / 2);
+}
+
+.video-container > div {
+    flex: 50%;
+    padding: 20px;
+    width: 500px;
+    height: 320px;
+}
+
+.pastores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.pastores > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 90%;
+    padding: 40px calc((100% - 1240px) / 2);
+}
+
+.pastores > div > div {
+    flex: 50%;
+    padding: 0 30px;
+}
+
+.pastores div.titulo {
+    margin-bottom: 5px;
+}
+
+.pastores div.nomes {
+    color: #404040;
+    font-size: 1.6em;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.pastores div.titulo, .pastores div.descricao {
+    font-weight: 300;
+    line-height: 1.8em;
+}
+
+.pastores img {
+    width: 100%;
 }
 
 .cultos {
@@ -348,7 +370,6 @@ footer .info div.rs_icones a:hover {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: 20px;
 }
 
 .fotografia {
@@ -367,28 +388,20 @@ footer .info div.rs_icones a:hover {
         display: block;
     }
 
-    .main {
-        min-height: 100vh;
-    }
-
     .main, header {
         padding: 30px 60px;
     }
 
     header {
-        height: 100px;
+        height: 115px;
     }
 
     .logo {
-        max-width: 90px;
+        max-width: 115px;
     }
 
     .navigation li a {
         font-size: 1em;
-    }
-
-    .content .text {
-        max-width: 600px;
     }
 
     .albuns {
@@ -411,17 +424,8 @@ footer .info div.rs_icones a:hover {
 }
 
 @media (max-width: 991px) {
-    .content {
-        flex-direction: column;
-        margin-top: 100px;
-    }
-
-    .content .text {
-        max-width: 100%;
-    }
-
-    .content .text h2 {
-        font-size: 3em;
+    .main {
+        height: 300px;
     }
 
     .grid {
@@ -438,6 +442,25 @@ footer .info div.rs_icones a:hover {
 
     .albuns img {
         min-height: inherit;
+    }
+
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-container > div {
+        flex: unset;
+        width: 560px;
+        height: 315px;
+    }
+
+    .pastores > div {
+        flex-direction: column;
+    }
+
+    .pastores > div > div {
+        padding: 0 30px 30px 30px;
     }
 
     .cultos {
@@ -466,6 +489,10 @@ footer .info div.rs_icones a:hover {
 }
 
 @media (max-width: 768px) {
+    .main {
+        height: 250px;
+    }
+
     .main, .footer-sci {
         padding: 30px;
     }
@@ -478,12 +505,32 @@ footer .info div.rs_icones a:hover {
         height: 70px;
     }
 
-    .fotos, .programacao {
-        padding-top: 30px;
+    .fotos, .videos, .programacao {
+        padding: 20px 0;
+    }
+
+    .album {
+        padding: 20px 10px;
     }
 
     .albuns {
         padding: 20px;
+    }
+
+    .pastores {
+        padding: inherit;
+    }
+
+    .pastores > div > div {
+        padding: 10px;
+    }
+
+    .pastores div.nomes {
+        font-size: 1.2em;
+    }
+
+    .pastores div.titulo, .pastores div.descricao {
+        line-height: 1.6em;
     }
 
     .cultos {
@@ -525,10 +572,6 @@ footer .info div.rs_icones a:hover {
         display: none;
     }
 
-    .content .text h2 {
-        font-size: 2.5em;
-    }
-
     .blank {
         margin-top: 70px;
     }
@@ -543,7 +586,7 @@ footer .info div.rs_icones a:hover {
         left: 0;
         width: 100%;
         height: 100%;
-        background: #fafafa;
+        background: var(--dark);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -572,15 +615,15 @@ footer .info div.rs_icones a:hover {
         position: absolute;
         width: 100%;
         height: 2px;
-        background: var(--dark);
+        background: var(--white);
         transform: translateY(-10px);
-        box-shadow: 0 10px 0 var(--dark);
+        box-shadow: 0 10px 0 var(--white);
         transition: .25s;
     }
 
     .toggle.active::before {
         transform: translateY(0px) rotate(45deg);
-        box-shadow: 0 0 0 var(--dark);
+        box-shadow: 0 0 0 var(--white);
     }
 
     .toggle::after {
@@ -588,7 +631,7 @@ footer .info div.rs_icones a:hover {
         position: absolute;
         width: 100%;
         height: 2px;
-        background: var(--dark);
+        background: var(--white);
         transform: translateY(10px);
         transition: .25s;
     }
@@ -599,6 +642,10 @@ footer .info div.rs_icones a:hover {
 }
 
 @media (max-width: 568px) {
+    .main {
+        height: 200px;
+    }
+
     .grid {
         margin: 40px 0;
     }
@@ -611,16 +658,9 @@ footer .info div.rs_icones a:hover {
         margin-right: inherit;
     }
 
-    .content .text h2 {
-        font-size: 2em;
-    }
-
-    .content .text p {
-        font-size: 1em;
-    }
-
     .fotos h1, .programacao h1, .album h1 {
         font-size: 1em;
+        margin-bottom: 15px;
     }
 
     .albuns .info h4 {
@@ -632,12 +672,26 @@ footer .info div.rs_icones a:hover {
         margin: 10px 0;
     }
 
+    .video-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .video-container > div {
+        width: 100%;
+        height: 240px;
+    }
+
     .cultos {
         padding: 20px 10px;
     }
 
     .cultos div.info {
         flex: 6;
+    }
+
+    .cultos div.info p {
+        font-size: 1em;
     }
 
     footer {
@@ -658,13 +712,20 @@ footer .info div.rs_icones a:hover {
 }
 
 @media (max-width: 480px) {
+    .main {
+        height: 175px;
+    }
+
     .main, footer, .footer-sci {
         padding: 20px;
     }
 
+    .logo {
+        max-width: 90px;
+    }
+
     header {
         padding: 10px 20px;
-        border-bottom: 1px solid #ddd;
     }
 
     .albuns {
