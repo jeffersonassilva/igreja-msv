@@ -21,8 +21,14 @@ Route::get('/album/{pasta}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/home', function () {
+        dd('tela de administração da home');
+    })->name('home');
+});
 
 require __DIR__.'/auth.php';
