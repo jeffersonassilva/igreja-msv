@@ -44,7 +44,7 @@
 
         @include('includes.footer')
 
-        <a class="btn-scrolling hidden fixed bottom-5 right-5 text-xl w-12 h-12 shadow-md border border-gray-400 bg-gray-300 rounded flex justify-center items-center" href="#main">
+        <a class="btn-scrolling hidden fixed bottom-5 right-5 text-xl w-12 h-12 shadow-md border border-gray-400 bg-gray-300 rounded flex justify-center items-center" href="#menu">
             <ion-icon name="arrow-up-outline"></ion-icon>
         </a>
 
