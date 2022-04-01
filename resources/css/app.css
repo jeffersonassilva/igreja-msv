@@ -40,10 +40,9 @@ html {
     z-index: 20;
 }
 
-.navigation {
-    position: absolute;
-    z-index: 100;
-    top: calc(100% - 200%);
+.navigation.active {
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -53,29 +52,51 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    -webkit-transition: all .25s ease-in-out;
-    -moz-transition: all .25s ease-in-out;
-    transition: all .25s ease-in-out;
+    z-index: 100;
 }
 
-.navigation.active {
-    position: fixed;
-    top: 0;
-    -webkit-transition: all .25s ease-in-out;
-    -moz-transition: all .25s ease-in-out;
-    transition: all .25s ease-in-out;
-}
-
-.navigation.active li a {
-    color: var(--white);
+.navigation li a {
     font-size: 1.2em;
     margin: 8px 0;
     display: inline-block;
 }
 
-.navigation li a {
-    color: var(--dark);
-}
+/*.navigation {*/
+/*    position: absolute;*/
+/*    z-index: 100;*/
+/*    top: calc(100% - 200%);*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: var(--dark);*/
+/*    color: var(--white);*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    -webkit-transition: all .25s ease-in-out;*/
+/*    -moz-transition: all .25s ease-in-out;*/
+/*    transition: all .25s ease-in-out;*/
+/*}*/
+
+/*.navigation.active {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    -webkit-transition: all .25s ease-in-out;*/
+/*    -moz-transition: all .25s ease-in-out;*/
+/*    transition: all .25s ease-in-out;*/
+/*}*/
+
+/*.navigation.active li a {*/
+/*    color: var(--white);*/
+/*    font-size: 1.2em;*/
+/*    margin: 8px 0;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.navigation li a {*/
+/*    color: var(--dark);*/
+/*}*/
 
 .toggle {
     position: relative;
