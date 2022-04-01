@@ -192,7 +192,7 @@ header {
 
 .valores .item ion-icon {
     font-size: 2em;
-    color: #eee;
+    color: #ddd;
 }
 
 .valores .item div {
@@ -453,7 +453,7 @@ footer .info div.rs_icones a:hover {
         margin: 20px;
     }
 
-    .valores > .item {
+    .valores > .item:not(:last-child) {
         flex: 100%;
         margin-bottom: 30px;
     }
@@ -565,6 +565,11 @@ footer .info div.rs_icones a:hover {
 
     .cultos > div {
         flex: 100%;
+        padding: 20px 0;
+    }
+
+    .cultos > div:first-child {
+        padding: 0 0 20px 0;
     }
 
     .cultos > div:last-child {
@@ -689,7 +694,6 @@ footer .info div.rs_icones a:hover {
     }
 
     .valores .item {
-        /*border-top: 1px solid #eee;*/
         padding: 15px;
         border-radius: 6px;
     }
@@ -794,6 +798,10 @@ footer .info div.rs_icones a:hover {
 
     .albuns .info span {
         font-size: .7em;
+    }
+
+    .pastores > div {
+        padding: 15px 0;
     }
 
     footer {
