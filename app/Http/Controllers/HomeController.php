@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 /**
  * Class HomeController
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $video = $this->getLastVideoYouTube();
         $data = array(
             [
                 'pasta' => 'consagracao',
@@ -47,6 +49,22 @@ class HomeController extends Controller
             ],
         );
 
-        return view('home')->with('fotos', $data);
+        return view('home')->with(['fotos' => $data, 'video' => $video]);
+    }
+
+    /**
+     * @return array|mixed
+     */
+    private function getLastVideoYouTube()
+    {
+        $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
+            'key' => env('API_YOUTUBE_KEY'),
+            'channelId' => env('API_YOUTUBE_CHANNEL_ID'),
+            'part' => 'snippet,id',
+            'order' => 'date',
+            'maxResults' => '1',
+        ]);
+
+        return $response->json('items') ? $response->json('items')[0] : array();
     }
 }
