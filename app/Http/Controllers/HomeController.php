@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -57,14 +58,21 @@ class HomeController extends Controller
      */
     private function getLastVideoYouTube()
     {
-        $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
-            'key' => env('API_YOUTUBE_KEY'),
-            'channelId' => env('API_YOUTUBE_CHANNEL_ID'),
-            'part' => 'snippet,id',
-            'order' => 'date',
-            'maxResults' => '1',
-        ]);
+        if (Cache::has('msv::youtube-last-video')) {
+            $lastVideo = Cache::get('msv::youtube-last-video');
+        } else {
+            $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
+                'key' => env('API_YOUTUBE_KEY'),
+                'channelId' => env('API_YOUTUBE_CHANNEL_ID'),
+                'part' => 'snippet,id',
+                'order' => 'date',
+                'maxResults' => '1',
+            ]);
 
-        return $response->json('items') ? $response->json('items')[0] : array();
+            $lastVideo = $response->json('items') ? $response->json('items')[0] : array();
+            Cache::put('msv::youtube-last-video', $lastVideo, (60 * 60));
+        }
+
+        return $lastVideo;
     }
 }

@@ -2,8 +2,8 @@
     <div class="container mx-auto max-w-[1280px]">
         <h3 class="titulo-separador">Propósitos</h3>
         <div class="grid p-3 gap-6 lg:grid-cols-3 lg:px-6">
-            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6">
-                <div class="flex-none text-yellow-500 text-2xl sm:text-3xl">
+            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6 lg:p-8">
+                <div class="flex-none text-[#e6cc7b] text-2xl sm:text-3xl">
                     <ion-icon name="locate-outline"></ion-icon>
                 </div>
                 <h1 class="pb-3 md:pb-6 sm:text-lg">Missão</h1>
@@ -13,8 +13,8 @@
                     Jesus Cristo.
                 </div>
             </div>
-            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6">
-                <div class="flex-none text-yellow-500 text-2xl sm:text-3xl">
+            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6 lg:p-8">
+                <div class="flex-none text-[#e6cc7b] text-2xl sm:text-3xl">
                     <ion-icon name="earth"></ion-icon>
                 </div>
                 <h1 class="pb-3 md:pb-6 sm:text-lg">Nossa Visão</h1>
@@ -25,8 +25,8 @@
                     expandir o reino de Deus nos lares.
                 </div>
             </div>
-            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6">
-                <div class="flex-none text-yellow-500 text-2xl sm:text-3xl">
+            <div class="flex flex-col items-center w-full bg-neutral-100 rounded-lg p-6 lg:p-8">
+                <div class="flex-none text-[#e6cc7b] text-2xl sm:text-3xl">
                     <ion-icon name="heart"></ion-icon>
                 </div>
                 <h1 class="pb-3 md:pb-6 sm:text-lg">Propósitos</h1>
