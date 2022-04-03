@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\IndexController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/album/{pasta}', [AlbumController::class, 'show'])->name('album');
+Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 
