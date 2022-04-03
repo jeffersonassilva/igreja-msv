@@ -25,10 +25,9 @@
                              src="{{ $video['snippet']['thumbnails']['high']['url'] }}"
                              alt="Último Vídeo Postado no YouTube">
                     </a>
-                    <a href="{{ 'https://www.youtube.com/watch?v=' . $video['id']['videoId'] }}"
-                       target="_blank" class="absolute opacity-60 hover:opacity-70">
+                    <div class="pointer-events-none absolute opacity-60 hover:opacity-70">
                         <ion-icon class="text-[60px] md:text-[70px]" name="logo-youtube"></ion-icon>
-                    </a>
+                    </div>
                 @else
                     <a href="https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg"
                        target="_blank" class="bg-gray-200">
