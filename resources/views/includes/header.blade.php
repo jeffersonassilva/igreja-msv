@@ -4,14 +4,14 @@
     </a>
     <div class="toggle lg:hidden"></div>
     <ul class="navigation hidden lg:flex">
-        <li class="link text-white"><a href="{{ route('index') }}">Home</a></li>
-        <li class="link text-white"><a href="/#propositos">Propósitos</a></li>
-        <li class="link text-white"><a href="{{ route('ofertas') }}">Ofertas</a></li>
-        <li class="link text-white"><a href="https://horadeberear.com.br/" target="_blank">Blog</a></li>
-        <li class="link text-white"><a href="https://www.flickr.com/photos/igrejamsv/albums" target="_blank">Fotos</a></li>
-        <li class="link text-white"><a href="/#pastores">Pastores</a></li>
-        <li class="link text-white"><a href="/#programacao">Programação</a></li>
-        <li class="link text-white"><a href="/#contato">Contato</a></li>
+        <li class="link text-white"><a accesskey="h" href="{{ route('index') }}">Home</a></li>
+        <li class="link text-white"><a accesskey="p" href="/#propositos">Propósitos</a></li>
+        <li class="link text-white"><a accesskey="o" href="{{ route('ofertas') }}">Ofertas</a></li>
+        <li class="link text-white"><a accesskey="b" href="https://horadeberear.com.br/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        <li class="link text-white"><a accesskey="f" href="https://www.flickr.com/photos/igrejamsv/albums" target="_blank" rel="noopener noreferrer">Fotos</a></li>
+        <li class="link text-white"><a accesskey="t" href="/#pastores">Pastores</a></li>
+        <li class="link text-white"><a accesskey="g" href="/#programacao">Programação</a></li>
+        <li class="link text-white"><a accesskey="c" href="/#contato">Contato</a></li>
         {{-- <li><a href="{{ route('login') }}">Login</a></li>--}}
     </ul>
 </header>

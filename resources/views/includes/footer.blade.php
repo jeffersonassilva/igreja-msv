@@ -6,13 +6,13 @@
         <div class="p-3 px-2 my-3 sm:w-1/2 sm:order-2 md:order-1 md:w-auto">
             <p class="text-xl">Redes Sociais</p>
             <div class="text-3xl py-2 text-zinc-400">
-                <a href="https://www.instagram.com/igreja_msv/" target="_blank" class="pr-4">
+                <a href="https://www.instagram.com/igreja_msv/" target="_blank" rel="noopener noreferrer" class="pr-4">
                     <ion-icon name="logo-instagram"></ion-icon>
                 </a>
-                <a href="https://www.facebook.com/igrejamsvsede/" target="_blank" class="pr-4">
+                <a href="https://www.facebook.com/igrejamsvsede/" target="_blank" rel="noopener noreferrer" class="pr-4">
                     <ion-icon name="logo-facebook"></ion-icon>
                 </a>
-                <a href="https://www.youtube.com/channel/UC9kd9LcqRm1WnBMHygcpFgg" target="_blank" class="pr-4">
+                <a href="https://www.youtube.com/channel/UC9kd9LcqRm1WnBMHygcpFgg" target="_blank" rel="noopener noreferrer" class="pr-4">
                     <ion-icon name="logo-youtube"></ion-icon>
                 </a>
             </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="flex items-center text-zinc-400">
                     <div class="text-lg pt-1"><ion-icon name="logo-whatsapp"></ion-icon></div>
-                    <a href="https://wa.me/5561996899317" target="_blank" class="p-2 font-thin text-blue-300">
+                    <a href="https://wa.me/5561996899317" target="_blank" rel="noopener noreferrer" class="p-2 font-thin text-blue-300">
                         (61) 99689-9317
                     </a>
                 </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="flex items-center text-zinc-400">
                     <div class="text-lg pt-1"><ion-icon name="location-sharp"></ion-icon></div>
-                    <a href="https://goo.gl/maps/VB9GWVqWG4FKiccV9" target="_blank" class="p-2 font-thin text-blue-300">
+                    <a href="https://goo.gl/maps/VB9GWVqWG4FKiccV9" target="_blank" rel="noopener noreferrer" class="p-2 font-thin text-blue-300">
                         Google Maps
                     </a>
                 </div>
