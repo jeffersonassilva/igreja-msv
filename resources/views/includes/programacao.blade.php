@@ -1,5 +1,5 @@
 <section id="programacao" class="programacao">
-    <h1>Programação</h1>
+    <h3 class="titulo-separador">Programação</h3>
     <div class="cultos">
         <div>
             <ion-icon name="calendar-outline"></ion-icon>

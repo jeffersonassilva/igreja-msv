@@ -1,18 +1,25 @@
-<section id="videos" class="videos">
-    <div class="video-container">
-        <div>
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/j5sCGGczOqU"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-        </div>
-        <div>
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5equY4mGU44"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+<section id="videos" class="p-3 md:p-0 md:py-5">
+    <div class="container mx-auto max-w-[1280px]">
+        <div class="flex flex-col flex-wrap md:flex-row p-3 lg:py-10 lg:px-20">
+            <div class="mx-auto text-left sm:text-center lg:text-left lg:flex-[50%] lg:flex-1 order-2 lg:order-1">
+                <div class="text-lg lg:text-2xl font-medium my-6 lg:my-0 lg:mx-6 2xl:mx-10 text-neutral-700">
+                    Confira como foi o culto desse domingo.
+                </div>
+                <div class="font-light text-sm lg:text-base 2xl:text-xl leading-6 lg:leading-7 2xl:leading-9 mb-6 lg:m-6 2xl:m-10">
+                    Cultos todos os domingos às 19:00h presencial e com transmissão simultânea em nosso canal do YouTube.
+                </div>
+                <div>
+                    <button onclick="window.open('https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg')"
+                            class="bg-blue-900 text-white px-4 py-2 mb-10 md:px-10 md:py-3 md:mb-6 lg:ml-6 2xl:ml-10 rounded-md">
+                        Assista mais vídeos
+                    </button>
+                </div>
+            </div>
+            <div class="mx-auto lg:flex-[50%] lg:flex-1 flex md:justify-end lg:px-3 order-1 lg:order-2">
+                <a href="https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg" target="_blank">
+                    <img class="w-full lg:max-w-[600px]" src="{{ asset('img/canal-youtube.jpg') }}" alt="Samuel_Hacsa" title="Samuel_Hacsa">
+                </a>
+            </div>
         </div>
     </div>
 </section>
