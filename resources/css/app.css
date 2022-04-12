@@ -14,10 +14,17 @@
     --font-family-sans-serif: 'Ubuntu', sans-serif;
 }
 
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
 
