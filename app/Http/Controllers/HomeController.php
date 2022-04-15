@@ -33,7 +33,7 @@ class HomeController extends Controller
             [
                 'pasta' => 'aniversario',
                 'titulo' => 'Aniversário',
-                'descricao' => '1º Aniversário da Igreja MSV e 7º de Ministério',
+                'descricao' => '1º Aniversário da Igreja MSV',
             ],
             [
                 'pasta' => 'confraternizacao_2020',
