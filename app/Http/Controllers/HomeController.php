@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $data = array(
+        $fotos = array(
             [
                 'url' => 'consagracao',
                 'pasta' => 'consagracao',
@@ -48,7 +48,15 @@ class HomeController extends Controller
             ],
         );
 
-        return view('home')->with(['fotos' => $data, 'video' => $video]);
+        $banners = array(
+            [
+                'url-mobile' => 'img/banner/mobile/20220416192833.png',
+                'url-web' => 'img/banner/web/20220416192833.png',
+                'active' => true,
+            ],
+        );
+
+        return view('home')->with(['banners' => $banners, 'fotos' => $fotos, 'video' => $video]);
     }
 
     /**

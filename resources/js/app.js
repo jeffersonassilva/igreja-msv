@@ -1,5 +1,17 @@
 require('./bootstrap');
 
+// SLIDER BANNER FLICKITY
+// const Flickity = require('flickity');
+// require('flickity-fade');
+//
+// new Flickity('.main-carousel', {
+//     prevNextButtons: false,
+//     wrapAround: true,
+//     autoPlay: 5000,
+//     lazyLoad: true,
+//     fade: true,
+// });
+
 import { Fancybox } from "@fancyapps/ui";
 import Alpine from 'alpinejs';
 
@@ -44,12 +56,20 @@ $(document).ready(function () {
     const slides = document.querySelectorAll('.slides');
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
+    const balls = document.querySelectorAll('.balls');
     let i = 0;
 
     function ActiveSlide(n) {
         for (let slide of slides) {
             slide.classList.remove('active');
             slides[n].classList.add('active');
+        }
+    }
+
+    function ActiveBolinha(n) {
+        for (let ball of balls) {
+            ball.classList.remove('active');
+            balls[n].classList.add('active');
         }
     }
 
@@ -74,6 +94,37 @@ $(document).ready(function () {
             ActiveSlide(i);
         });
     }
+
+    if (balls) {
+        for (let ball of balls) {
+            ball.addEventListener('click', function () {
+                i = ball.getAttribute('data-id');
+                ActiveBolinha(i);
+                ActiveSlide(i);
+            });
+        }
+    }
+
+    // let timeoutID = setInterval(function(){
+    //     console.log('teste');
+    // }, 8000);
+
+    let timeoutID = setInterval(function () {
+        let list = document.querySelectorAll('.slides');
+        let getIndex = 0;
+        for (const [index, slide] of list.entries()) {
+            if (slide.classList.contains('active')) {
+                getIndex = index;
+            }
+        }
+        if (getIndex === list.length - 1) {
+            getIndex = 0;
+        } else {
+            getIndex++;
+        }
+        ActiveBolinha(getIndex);
+        ActiveSlide(getIndex);
+    }, 5000);
 
     // Add smooth scrolling to all links
     $("a").on('click', function(event) {
