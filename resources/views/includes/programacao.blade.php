@@ -1,54 +1,65 @@
-<section id="programacao" class="programacao">
-    <h3 class="titulo-separador">Programação</h3>
-    <div class="cultos">
-        <div>
-            <ion-icon name="calendar-outline"></ion-icon>
-            <div class="info">
-                <p>Terça-feira</p>
-                <div>
-                    <span>20:00h</span> - Reunião de Mulheres
+<section id="programacao" class="flex flex-col items-center p-3 pb-10 md:p-0 md:py-10 md:pb-20">
+    <div class="container mx-auto max-w-[1280px]">
+        <h3 class="titulo-separador">Programação</h3>
+        <div class="flex flex-col flex-wrap p-3 w-full md:flex-row md:px-12">
+            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-medium mb-1 md:text-xl">Terça-feira</div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">20:00h</span> - Reunião de Mulheres
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-medium mb-1 md:text-xl">Quarta-feira</div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">16:00h</span> - Culto de Oração
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-medium mb-1 md:text-xl">Quinta-feira</div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">20:00h</span> - Culto de Imersão
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-medium mb-1 md:text-xl">Sábado</div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">20:00h</span> - Conexão Jovem
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <div class="flex flex-col">
+                    <div class="font-medium mb-1 md:text-xl">Domingo</div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">09:30h</span> - Escola Bíblica Dominical
+                    </div>
+                    <div class="text-sm text-gray-500 md:text-base">
+                        <span class="font-semibold">19:00h</span> - Culto Público
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
-            <ion-icon name="calendar-outline"></ion-icon>
-            <div class="info">
-                <p>Quarta-feira</p>
-                <div>
-                    <span>16:00h</span> - Culto de Oração
-                </div>
-            </div>
-        </div>
-        <div>
-            <ion-icon name="calendar-outline"></ion-icon>
-            <div class="info">
-                <p>Quinta-feira</p>
-                <div>
-                    <span>20:00h</span> - Culto de Imersão
-                </div>
-            </div>
-        </div>
-        <div>
-            <ion-icon name="calendar-outline"></ion-icon>
-            <div class="info">
-                <p>Sábado</p>
-                <div>
-                    <span>20:00h</span> - Conexão Jovem
-                </div>
-            </div>
-        </div>
-        <div>
-            <ion-icon name="calendar-outline"></ion-icon>
-            <div class="info">
-                <p>Domingo</p>
-                <div>
-                    <span>09:30h</span> - Escola Bíblica Dominical
-                </div>
-                <div>
-                    <span>19:00h</span> - Culto Público
-                </div>
-            </div>
-        </div>
-        <div></div>
     </div>
 </section>
