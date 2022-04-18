@@ -27,7 +27,7 @@
                              src="{{ $video['snippet']['thumbnails']['high']['url'] }}"
                              alt="Último Vídeo Postado no YouTube">
                     </a>
-                    <div class="pointer-events-none absolute opacity-60 hover:opacity-70">
+                    <div class="flex justify-center items-center pointer-events-none absolute opacity-60 hover:opacity-70">
                         <ion-icon class="text-[60px] md:text-[70px]" name="logo-youtube"></ion-icon>
                     </div>
                 @else
