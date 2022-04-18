@@ -54,10 +54,8 @@ $(document).ready(function () {
 
     //SLIDER
     const slides = document.querySelectorAll('.slides');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
     const balls = document.querySelectorAll('.balls');
-    let i = 0;
+    let loopCarrossel;
 
     function ActiveSlide(n) {
         for (let slide of slides) {
@@ -73,43 +71,7 @@ $(document).ready(function () {
         }
     }
 
-    if (next) {
-        next.addEventListener('click', function () {
-            if (i == slides.length - 1) {
-                i = 0;
-            } else {
-                i++;
-            }
-            ActiveSlide(i);
-        });
-    }
-
-    if (prev) {
-        prev.addEventListener('click', function () {
-            if (i == 0) {
-                i = slides.length - 1;
-            } else {
-                i--;
-            }
-            ActiveSlide(i);
-        });
-    }
-
-    if (balls) {
-        for (let ball of balls) {
-            ball.addEventListener('click', function () {
-                i = ball.getAttribute('data-id');
-                ActiveBolinha(i);
-                ActiveSlide(i);
-            });
-        }
-    }
-
-    // let timeoutID = setInterval(function(){
-    //     console.log('teste');
-    // }, 8000);
-
-    let timeoutID = setInterval(function () {
+    function carrosselImages() {
         let list = document.querySelectorAll('.slides');
         let getIndex = 0;
         for (const [index, slide] of list.entries()) {
@@ -124,7 +86,23 @@ $(document).ready(function () {
         }
         ActiveBolinha(getIndex);
         ActiveSlide(getIndex);
-    }, 5000);
+    }
+
+    if (balls) {
+        for (let ball of balls) {
+            ball.addEventListener('click', function () {
+                let id = ball.getAttribute('data-id');
+                ActiveBolinha(id);
+                ActiveSlide(id);
+                clearInterval(loopCarrossel);
+                loopCarrossel = setInterval(carrosselImages, 5500);
+            });
+        }
+    }
+
+    if (slides.length > 1) {
+        loopCarrossel = setInterval(carrosselImages, 5500);
+    }
 
     // Add smooth scrolling to all links
     $("a").on('click', function(event) {
