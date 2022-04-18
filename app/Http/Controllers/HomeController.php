@@ -50,9 +50,14 @@ class HomeController extends Controller
 
         $banners = array(
             [
+                'url-mobile' => 'img/banner/mobile/20220417143217.png',
+                'url-web' => 'img/banner/web/20220417143217.png',
+                'active' => true,
+            ],
+            [
                 'url-mobile' => 'img/banner/mobile/20220416192833.png',
                 'url-web' => 'img/banner/web/20220416192833.png',
-                'active' => true,
+                'active' => false,
             ],
         );
 
