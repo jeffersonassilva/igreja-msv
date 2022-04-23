@@ -53,7 +53,6 @@
 @endsection
 
 @section('add-scripts')
-    <script src="https://plentz.github.io/jquery-maskmoney/javascripts/jquery.maskMoney.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
