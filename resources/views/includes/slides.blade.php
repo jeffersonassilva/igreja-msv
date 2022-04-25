@@ -1,10 +1,19 @@
 <section class="w-full slider mx-auto bg-gray-100">
     @foreach($banners as $key => $banner)
         <div class="slides {{ $key === 0 ? 'active' : '' }}">
-            <picture class="w-full">
-                <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
-                <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
-            </picture>
+            @if($banner['link'])
+                <a href="{{ $banner['link'] }}" target="_blank" rel="noopener noreferrer" class="outline-0">
+                    <picture class="w-full">
+                        <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
+                        <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
+                    </picture>
+                </a>
+            @else
+                <picture class="w-full">
+                    <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
+                    <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
+                </picture>
+            @endif
         </div>
     @endforeach
 </section>
