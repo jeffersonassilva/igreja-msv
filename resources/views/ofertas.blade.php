@@ -38,7 +38,7 @@
 
                     <div class="mt-4">
                         <button onclick="montarUrl()"
-                                class="bg-blue-900 text-white px-4 py-2 md:px-10 md:py-3 rounded-md">
+                                class="bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white px-4 py-2 md:px-10 md:py-3 rounded-md">
                             Gerar QrCode
                         </button>
                     </div>
