@@ -50,7 +50,7 @@ class HomeController extends Controller
             [
                 'url-mobile' => 'img/banner/mobile/20220416192833.png',
                 'url-web' => 'img/banner/web/20220416192833.png',
-                'link' => null,
+                'link' => 'http://ebd.igrejamsv.org',
             ],
             [
                 'url-mobile' => 'img/banner/mobile/20220425115402.png',
