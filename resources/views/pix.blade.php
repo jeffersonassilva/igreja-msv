@@ -5,7 +5,12 @@
     </span>
     <input class="flex-1 min-w-0 border-none bg-white outline-0 focus:outline-0 ring-0 focus:ring-0 text-sm"
            type="text" value="{{$pix}}" id="qrCode">
-    <button class="p-2 md:px-4 rounded-md bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white text-sm" onclick="copyQrCode()">Copiar</button>
+    <button class="btnCopy p-2 md:px-4 rounded-md bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white text-sm"
+{{--            onclick="copyQrCode()"--}}
+            data-clipboard-target="#qrCode"
+    >
+        Copiar
+    </button>
 </div>
 
-<p id="retornoCopyQrCode" class="flex gap-1 items-center py-1 mb-3 text-sm">&nbsp;</p>
+<p id="messageCopyText" class="flex gap-1 items-center py-1 mb-3 text-sm">&nbsp;</p>
