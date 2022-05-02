@@ -32,7 +32,7 @@
                 <h1 class="pb-6 sm:text-lg">Propósitos</h1>
                 <div class="font-light text-sm text-center sm:text-base">
                     O propósito maior da Igreja MSV é fazer com que o evangelho do Senhor Jesus Cristo seja proclamado,
-                    anunciado, publicado, declarado e propagado em toda sua magnificente plenitude, afim, de que as
+                    anunciado, publicado, declarado e propagado em toda sua magnificente plenitude, a fim de que as
                     vidas que lhe deem ouvidos sejam abençoadas e salvas.
                 </div>
             </div>
