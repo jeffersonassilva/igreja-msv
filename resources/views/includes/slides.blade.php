@@ -1,22 +1,24 @@
-<section class="w-full slider mx-auto bg-gray-100">
-    @foreach($banners as $key => $banner)
-        <div class="slides {{ $key === 0 ? 'active' : '' }}">
-            @if($banner['link'])
-                <a href="{{ $banner['link'] }}" target="_blank" rel="noopener noreferrer" class="outline-0">
+@if($banners)
+    <section class="w-full slider mx-auto bg-gray-100">
+        @foreach($banners as $key => $banner)
+            <div class="slides {{ $key === 0 ? 'active' : '' }}">
+                @if($banner['link'])
+                    <a href="{{ $banner['link'] }}" target="_blank" rel="noopener noreferrer" class="outline-0">
+                        <picture class="w-full">
+                            <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
+                            <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
+                        </picture>
+                    </a>
+                @else
                     <picture class="w-full">
                         <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
                         <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
                     </picture>
-                </a>
-            @else
-                <picture class="w-full">
-                    <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['url-web']) }}">
-                    <img src="{{ asset($banner['url-mobile']) }}" alt="Banner">
-                </picture>
-            @endif
-        </div>
-    @endforeach
-</section>
+                @endif
+            </div>
+        @endforeach
+    </section>
+@endif
 @if(count($banners) > 1)
     <section class="flex items-center justify-center mt-2">
         @foreach($banners as $key => $banner)
