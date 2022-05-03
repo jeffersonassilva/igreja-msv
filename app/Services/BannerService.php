@@ -2,23 +2,24 @@
 
 namespace App\Services;
 
+use App\Models\Banner;
+
 /**
  * Class BannerService
  * @package App\Services
  */
-class BannerService
+class BannerService extends AbstractService
 {
     /**
-     * @return \string[][]
+     * @var Banner
      */
-    public function all()
+    protected $model;
+
+    /**
+     * BannerService constructor.
+     */
+    public function __construct()
     {
-        return array(
-            [
-                'url-mobile' => 'img/banner/mobile/20220425115402.png',
-                'url-web' => 'img/banner/web/20220425115402.png',
-                'link' => 'http://batismo.igrejamsv.org',
-            ],
-        );
+        $this->model = new Banner();
     }
 }
