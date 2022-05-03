@@ -6,7 +6,7 @@
                     Confira como foi o culto desse domingo.
                 </div>
                 <div class="font-light text-sm lg:text-base 2xl:text-xl leading-6 lg:leading-7 2xl:leading-9 mb-6 lg:m-6 2xl:m-10">
-                    Cultos todos os domingos às 19:00h presencial e com transmissão simultânea em nosso canal do YouTube.
+                    Cultos presenciais todo domingo às 19:00h com transmissão simultânea em nosso canal do YouTube.
                 </div>
                 <div>
                     <button onclick="window.open('https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg')"
