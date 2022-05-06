@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\BannerService;
 use App\Services\PropositoService;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,21 @@ class IndexController extends Controller
     /**
      * @var PropositoService
      */
-    private $service;
+    private $propositoService;
 
     /**
-     * IndexController constructor.
-     * @param PropositoService $service
+     * @var BannerService
      */
-    public function __construct(PropositoService $service)
+    private $bannerService;
+
+    /**
+     * @param PropositoService $propositoService
+     * @param BannerService $bannerService
+     */
+    public function __construct(PropositoService $propositoService, BannerService $bannerService)
     {
-        $this->service = $service;
+        $this->propositoService = $propositoService;
+        $this->bannerService = $bannerService;
     }
 
     /**
@@ -28,8 +35,12 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        $propositos = $this->service->all();
+        $propositos = $this->propositoService->all();
+        $banners = $this->bannerService->all();
 
-        return view('admin/index')->with(['propositos' => $propositos]);
+        return view('admin/index')->with([
+            'propositos' => $propositos,
+            'banners' => $banners
+        ]);
     }
 }
