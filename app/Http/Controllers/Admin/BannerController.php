@@ -66,6 +66,7 @@ class BannerController extends Controller
     private function uploadImagens($request)
     {
         $time = date('YmdHis');
+        $this->uploadImgOriginal($time, $request);
 
         return array(
             'img_mobile' => $this->diretorio . $this->uploadImgMobile($time, $request),
@@ -76,44 +77,34 @@ class BannerController extends Controller
     /**
      * @param $time
      * @param $request
+     * @return void
+     */
+    private function uploadImgOriginal($time, $request)
+    {
+        $nomeImagem = $time . '_m.' . $request->file('img_mobile')->extension();
+        Storage::disk('banners')->putFileAs('original', $request->file('img_mobile'), $nomeImagem);
+
+        $nomeImagem = $time . '_w.' . $request->file('img_web')->extension();
+        Storage::disk('banners')->putFileAs('original', $request->file('img_web'), $nomeImagem);
+    }
+
+    /**
+     * @param $time
+     * @param $request
      * @return false|string
      */
     private function uploadImgMobile($time, $request)
     {
         $extension = $request->file('img_mobile')->extension();
-        $nomeImagem = $time . '.' . $extension;
+        $nomeImagem = $time . '.jpg';
 
         $name = Storage::disk('banners')->putFileAs('mobile', $request->file('img_mobile'), $nomeImagem);
 
         if (Storage::disk('banners')->exists($name)) {
-            $this->redimensionarImagemMobile($this->diretorio . $name, $extension);
+            $this->optimizarImagem($this->diretorio . $name, $extension, 640, 360);
         }
 
         return $name;
-    }
-
-    /**
-     * @param $fileName
-     * @param $extension
-     * @return void
-     */
-    private function redimensionarImagemMobile($fileName, $extension)
-    {
-        if ($extension == 'jpg' || $extension == 'jpeg') {
-            $image = @imagecreatefromjpeg($fileName);
-            $img = imagescale($image, 640, 360);
-            imagejpeg($img, $fileName, 70);
-
-        } elseif ($extension == 'png') {
-            $image = @imagecreatefrompng($fileName);
-            $img = imagescale($image, 640, 360);
-            imagepng($img, $fileName, 70);
-
-        } else {
-            return;
-        }
-
-        imagedestroy($img);
     }
 
     /**
@@ -123,9 +114,50 @@ class BannerController extends Controller
      */
     private function uploadImgWeb($time, $request)
     {
-        $nomeImagem = $time . '.' . $request->file('img_web')->extension();
+        $extension = $request->file('img_web')->extension();
+        $nomeImagem = $time . '.jpg';
 
-        return Storage::disk('banners')->putFileAs('web', $request->file('img_web'), $nomeImagem);
+        $name = Storage::disk('banners')->putFileAs('web', $request->file('img_web'), $nomeImagem);
+
+        if (Storage::disk('banners')->exists($name)) {
+            $this->optimizarImagem($this->diretorio . $name, $extension, 1920, 400);
+        }
+
+        return $name;
+    }
+
+    /**
+     * @param $fileName
+     * @param $extension
+     * @param $width
+     * @param $height
+     * @return void
+     */
+    private function optimizarImagem($fileName, $extension, $width, $height)
+    {
+        if ($extension == 'jpg' || $extension == 'jpeg') {
+            $image = @imagecreatefromjpeg($fileName);
+            $img = imagescale($image, $width, $height);
+            imagejpeg($img, $fileName);
+
+        } elseif ($extension == 'png') {
+            $image = @imagecreatefrompng($fileName);
+            $bg = imagecreatetruecolor(imagesx($image), imagesy($image));
+            imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+            imagealphablending($bg, true);
+            imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+
+            $img = imagescale($bg, $width, $height);
+
+            imagedestroy($bg);
+            imagejpeg($img, $fileName);
+
+        } else {
+            return;
+        }
+
+        imagedestroy($image);
+        imagedestroy($img);
     }
 
     /**
