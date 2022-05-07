@@ -9,7 +9,9 @@
             <section id="timeline" class="w-full flex flex-wrap flex-col lg:flex-row justify-evenly bg-gray-100">
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute left-0 lg:left-auto lg:right-0 bottom-0 lg:bottom-auto lg:top-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:p-3 w-[40px] lg:w-auto">5</span>
+                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                        <span class="text-sm text-gray-500">DIA</span><br>5
+                    </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Entrega de cestas básicas</p>
                         <img class="w-full" src="{{ asset('img/timeline-1.jpg') }}" alt="Foto da entrega de cestas básicas">
@@ -17,7 +19,9 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:p-3 w-[40px] lg:w-auto">10</span>
+                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                        <span class="text-sm text-gray-500">DIA</span><br>10
+                    </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Entrega de alimentos e sopas no SCS</p>
                         <img class="w-full" src="{{ asset('img/timeline-2.jpg') }}" alt="Foto da entrega de alimentos e sopas no SCS">
@@ -25,7 +29,9 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:p-3 w-[40px] lg:w-auto">15</span>
+                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                        <span class="text-sm text-gray-500">DIA</span><br>15
+                    </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Construção do Templo</p>
                         <img class="w-full" src="{{ asset('img/timeline-3.jpg') }}" alt="Foto da Construção do Templo">
@@ -33,7 +39,9 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:p-3 w-[40px] lg:w-auto">20</span>
+                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                        <span class="text-sm text-gray-500">DIA</span><br>20
+                    </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Projeto Missionário na Índia</p>
                         <img class="w-full" src="{{ asset('img/timeline-4.jpg') }}" alt="Foto do Projeto Missionário na Índia">
@@ -41,7 +49,9 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute top-0 left-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:p-3 w-[40px] lg:w-auto">25</span>
+                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                        <span class="text-sm text-gray-500">DIA</span><br>25
+                    </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Projeto Social no Anexo do Templo</p>
                         <img class="w-full" src="{{ asset('img/timeline-5.jpg') }}" alt="Foto do Projeto Social no Anexo do Templo">
