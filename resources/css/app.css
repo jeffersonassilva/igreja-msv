@@ -145,6 +145,11 @@ html {
     overflow: hidden;
 }
 
+#timeline > div::before {
+    content: "";
+    @apply absolute rounded-full -left-2 lg:left-auto lg:-top-2 h-5 w-5 bg-cyan-400;
+}
+
 
 /* Responsive Layout */
 @media (min-width: 576px) {
