@@ -9,7 +9,7 @@
             <section id="timeline" class="w-full flex flex-wrap flex-col lg:flex-row justify-evenly bg-gray-100">
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute left-0 lg:left-auto lg:right-0 bottom-0 lg:bottom-auto lg:top-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                    <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>5
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                    <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>10
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                    <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>15
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
                     <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                    <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>20
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
                     <div class="absolute top-0 left-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
-                    <span class="flex-none text-2xl lg:pb-3 w-[50px] lg:w-auto lg:text-center leading-6">
+                    <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>25
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
