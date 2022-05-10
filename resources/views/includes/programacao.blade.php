@@ -2,8 +2,8 @@
     <div class="container mx-auto max-w-[1280px]">
         <h1 class="titulo-separador">Programação</h1>
         <div class="flex flex-col flex-wrap p-3 w-full md:flex-row md:px-12">
-            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
-                <div class="text-2xl">
+            <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
                 <div class="flex flex-col">
@@ -13,8 +13,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
-                <div class="text-2xl">
+            <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
                 <div class="flex flex-col">
@@ -24,8 +24,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
-                <div class="text-2xl">
+            <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
                 <div class="flex flex-col">
@@ -35,8 +35,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
-                <div class="text-2xl">
+            <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
                 <div class="flex flex-col">
@@ -46,8 +46,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
-                <div class="text-2xl">
+            <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
+                <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
                 <div class="flex flex-col">
