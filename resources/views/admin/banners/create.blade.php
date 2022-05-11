@@ -50,6 +50,18 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="ordem" class="text-gray-900 mb-2">Ordem</label>
+                <span class="text-sm font-thin text-gray-500">- Quanto menor o número, maior é a prioridade.</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Se houver outro banner com a mesma prioridade, será considerada a data de cadastro.</span>
+                <input type="number" pattern="[0-9]*" name="ordem" id="ordem"
+                       class="max-w-[75px] border-gray-400 rounded-sm text-gray-700 @error('ordem') border-[1px] border-red-500 @enderror"
+                       value="{{ old('ordem') }}">
+                @error('ordem')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="mb-6 flex items-center gap-2">
                 <button aria-label="Salvar" type="submit"
                    class="outline-0 rounded-md text-white font-normal border border-blue-400 bg-blue-400

@@ -20,7 +20,6 @@ class BannerController extends Controller
     public function __construct(BannerService $service)
     {
         $this->service = $service;
-        $this->diretorio = 'img/banner/';
     }
 
     /**
