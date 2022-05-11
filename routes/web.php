@@ -29,15 +29,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [IndexController::class, 'index'])->name('dashboard');
 
     //Propósitos
-    Route::get('/propositos/{id}/edit', [PropositoController::class, 'edit'])->name('propositos.edit');
-    Route::post('/propositos/{id}/update', [PropositoController::class, 'update'])->name('propositos.update');
+    Route::get('/propositos/{proposito}/editar', [PropositoController::class, 'edit'])->name('propositos.edit');
+    Route::put('/propositos/{proposito}', [PropositoController::class, 'update'])->name('propositos.update');
 
     //Banners
     Route::get('/banners/adicionar', [BannerController::class, 'create'])->name('banners.create');
     Route::post('/banners', [BannerController::class, 'store'])->name('banners.store');
-    Route::get('/banners/{id}/edit', [BannerController::class, 'edit'])->name('banners.edit');
-    Route::put('/banners/{id}', [BannerController::class, 'update'])->name('banners.update');
-    Route::delete('/banners/{id}', [BannerController::class, 'destroy'])->name('banners.destroy');
+    Route::get('/banners/{banner}/editar', [BannerController::class, 'edit'])->name('banners.edit');
+    Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
+    Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
 });
 
 require __DIR__.'/auth.php';

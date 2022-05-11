@@ -5,8 +5,9 @@
 
     <section>
         <form class="form-horizontal" role="form"
-              action="{{ route('propositos.update', array('id' => $proposito->id)) }}"
+              action="{{ route('propositos.update', $proposito) }}"
               method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
 
             <div class="flex flex-col mb-4 p-4 bg-white">

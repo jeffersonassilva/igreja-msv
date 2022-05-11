@@ -5,7 +5,7 @@
 
     <section>
         <form class="form-horizontal" role="form"
-              action="{{ route('banners.update', array('id' => $data->id)) }}"
+              action="{{ route('banners.update', $data) }}"
               method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
