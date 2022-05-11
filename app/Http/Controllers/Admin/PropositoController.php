@@ -29,7 +29,6 @@ class PropositoController extends Controller
     public function edit($id)
     {
         $proposito = $this->service->edit($id);
-
         return view('admin/propositos/edit')->with(['proposito' => $proposito]);
     }
 
@@ -40,10 +39,7 @@ class PropositoController extends Controller
      */
     public function update(PropositoRequest $request, $id)
     {
-        $dados = $request->all();
-        $data = $this->service->edit($id);
-        $data->fill($dados)->save();
-
+        $this->service->update($request, $id);
         return redirect()->route('dashboard');
     }
 }
