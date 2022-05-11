@@ -49,12 +49,34 @@ abstract class AbstractService
     }
 
     /**
+     * @param $request
+     * @return mixed
+     */
+    public function store($request)
+    {
+        return $this->model->fill($request->all())->save();
+    }
+
+    /**
      * @param $id
      * @return mixed
      */
     public function edit($id)
     {
         return $this->model->find($id);
+    }
+
+    /**
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public function update($request, $id)
+    {
+        $data = $this->model->find($id);
+        $data->fill($request->all())->save();
+
+        return $data;
     }
 
     /**
