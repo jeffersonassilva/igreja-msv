@@ -21,7 +21,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($banners as $banner)
                 <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
-                    <span class="absolute top-2 right-2 flex justify-center items-center text-sm bg-yellow-400 w-6 h-6 p-1">{{ $banner->ordem }}</span>
+                    <span class="absolute top-2 right-2 flex justify-center items-center text-sm bg-yellow-400 rounded-sm w-6 h-6 p-1">{{ $banner->ordem }}</span>
                     <img class="rounded-md" src="{{ asset($banner->img_mobile) }}" alt="banner">
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $banner->descricao }}
