@@ -7,6 +7,7 @@
         <form class="form-horizontal" role="form"
               action="{{ route('banners.update', array('id' => $data->id)) }}"
               method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="descricao" class="text-gray-900 mb-2">Descrição</label>

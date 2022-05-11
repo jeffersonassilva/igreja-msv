@@ -63,7 +63,7 @@ class BannerService extends AbstractService
         try {
             $data->fill($dados)->save();
             DB::commit();
-            $this->removerImagensAntigas($dadosAntigos);
+            $this->removerImagensAntigas($dadosAntigos, $data->getChanges());
 
         } catch (ValidationException $e) {
             DB::rollback();

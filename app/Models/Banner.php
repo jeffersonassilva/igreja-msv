@@ -34,10 +34,11 @@ class Banner extends AbstractModel
      */
     public function setOrdemAttribute($value)
     {
+        $this->attributes['ordem'] = $value;
+
         if (!$value) {
-            $banner = Banner::orderBy('ordem', 'desc')->first();
-            $nrOrdem = $banner ? (int)$banner->ordem + 1 : 10;
-            $this->attributes['ordem'] = $nrOrdem;
+            $banner = Banner::max('ordem');
+            $this->attributes['ordem'] = $banner + 1;
         }
     }
 }
