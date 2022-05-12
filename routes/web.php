@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\Admin\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,10 @@ Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('admin/dashboard');
     })->name('dashboard');
 
-    Route::get('/home', function () {
-        dd('tela de administração da home');
-    })->name('home');
+    Route::get('/home', [IndexController::class, 'index'])->name('home');
 });
 
 require __DIR__.'/auth.php';
