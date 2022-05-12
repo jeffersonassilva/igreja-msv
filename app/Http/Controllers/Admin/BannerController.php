@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BannerRequest;
 use App\Services\BannerService;
@@ -37,7 +38,7 @@ class BannerController extends Controller
     public function store(BannerRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('dashboard');
+        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_CREATE));
     }
 
     /**
@@ -58,7 +59,7 @@ class BannerController extends Controller
     public function update(BannerRequest $request, $id)
     {
         $this->service->update($request, $id);
-        return redirect()->route('dashboard');
+        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
     }
 
     /**
@@ -68,6 +69,6 @@ class BannerController extends Controller
     public function destroy($id)
     {
         $this->service->destroy($id);
-        return redirect()->route('dashboard');
+        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_ARCHIVE));
     }
 }

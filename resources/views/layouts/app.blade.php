@@ -73,6 +73,17 @@
                     </div>
                 </section>
                 <section class="mt-16 md:mt-0 p-4 md:p-0">
+                    @if (session('message'))
+                        <div id="message_alert" class="bg-green-200 p-4 mb-4 md:mt-4 md:mb-0 rounded-md flex justify-between items-center">
+                            <span class="text-gray-700">
+                                {{ session('message') }}
+                            </span>
+                            <span class="text-2xl flex items-center cursor-pointer" id="close-message-btn">
+                                <ion-icon name="close-outline"></ion-icon>
+                            </span>
+                        </div>
+                    @endif
+
                     {{ $slot }}
                 </section>
             </main>
@@ -100,13 +111,25 @@
         const sideMenu = document.querySelector("aside");
         const menuBtn = document.querySelector("#adm__menu-btn");
         const closeBtn = document.querySelector("#aside__close-btn");
+        const closeMessageBtn = document.querySelector("#close-message-btn");
+        const messageAlert = document.querySelector("#message_alert");
 
-        menuBtn.addEventListener('click', () => {
-            sideMenu.style.display = 'block';
-        });
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                sideMenu.style.display = 'block';
+            });
+        }
 
-        closeBtn.addEventListener('click', () => {
-            sideMenu.style.display = 'none';
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                sideMenu.style.display = 'none';
+            });
+        }
+
+        if (closeMessageBtn) {
+            closeMessageBtn.addEventListener('click', () => {
+                messageAlert.style.display = 'none';
+            });
+        }
     </script>
 </html>
