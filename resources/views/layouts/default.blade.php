@@ -32,9 +32,11 @@
         <meta name="theme-color" content="#ffffff">
     </head>
     <body class="flex flex-col min-h-full">
-        <section id="main" class="main" style="background-image: url({{ asset('img/banner.jpg?v=2') }})">
+        <nav id="menu" class="menu bg-black">
             @include('includes/header')
-        </section>
+        </nav>
+
+        <section id="main" class="main" style="background-image: url({{ asset('img/banner.png?v=3') }})"></section>
 
         <div class="flex-1">
             @yield('content')
