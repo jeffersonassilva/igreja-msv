@@ -3,7 +3,7 @@
         <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="w-[70px] sm:w-[90px] md:w-[110px] md:w-[130px]">
     </a>
     <div class="toggle lg:hidden"></div>
-    <ul class="navigation">
+    <ul class="navigation hidden lg:flex">
         <li class="link text-white"><a href="{{ route('index') }}">Home</a></li>
         <li class="link text-white"><a href="/#propositos">Propósitos</a></li>
         <li class="link text-white"><a href="{{ route('ofertas') }}">Ofertas</a></li>
