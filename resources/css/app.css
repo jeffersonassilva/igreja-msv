@@ -40,63 +40,29 @@ html {
     z-index: 20;
 }
 
-.navigation.active {
-    position: fixed;
-    top: 0;
+.navigation {
+    @apply bg-black z-30 flex flex-col lg:flex-row justify-center items-center absolute lg:relative w-full lg:w-auto h-full lg:h-auto;
+    top: calc(100% - 200%);
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--dark);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+}
+
+.navigation.active {
+    @apply fixed top-0
 }
 
 .navigation li a {
-    font-size: 1.2em;
-    margin: 8px 0;
-    display: inline-block;
+    @apply inline-block text-black lg:text-white text-lg lg:text-base my-2 lg:my-0 lg:ml-10;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
-/*.navigation {*/
-/*    position: absolute;*/
-/*    z-index: 100;*/
-/*    top: calc(100% - 200%);*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background: var(--dark);*/
-/*    color: var(--white);*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    -webkit-transition: all .25s ease-in-out;*/
-/*    -moz-transition: all .25s ease-in-out;*/
-/*    transition: all .25s ease-in-out;*/
-/*}*/
-
-/*.navigation.active {*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    -webkit-transition: all .25s ease-in-out;*/
-/*    -moz-transition: all .25s ease-in-out;*/
-/*    transition: all .25s ease-in-out;*/
-/*}*/
-
-/*.navigation.active li a {*/
-/*    color: var(--white);*/
-/*    font-size: 1.2em;*/
-/*    margin: 8px 0;*/
-/*    display: inline-block;*/
-/*}*/
-
-/*.navigation li a {*/
-/*    color: var(--dark);*/
-/*}*/
+.navigation.active li a {
+    @apply text-white;
+}
 
 .toggle {
     position: relative;
@@ -210,15 +176,6 @@ html {
 @media (min-width: 992px) {
     .main {
         height: 270px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .navigation li a {
-        position: relative;
-        text-decoration: none;
-        margin-left: 40px;
-        font-size: 1em;
     }
 }
 
