@@ -2,7 +2,7 @@
     <x-adm-menu-item :route="'dashboard'" :icon="'home-outline'">Home</x-adm-menu-item>
     <x-adm-menu-item :route="'#'" :icon="'wallet-outline'">Ofertas</x-adm-menu-item>
     <x-adm-menu-item :route="'usuarios'" :icon="'person-outline'">Usuários</x-adm-menu-item>
-    <x-adm-menu-item :route="'#'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
+    <x-adm-menu-item :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
 
     <div>
         <form method="POST" action="{{ route('logout') }}">
