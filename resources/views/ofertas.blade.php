@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="hidden sm:block flex-1 mt-4 sm:px-6 sm:mt-0" id="qrcode">
-                    <img src="https://fakeimg.pl/300x300/fff/fff/">
+                    <img src="{{ asset('img/qr-code-empty.jpg') }}">
                 </div>
             </div>
         </div>
@@ -194,7 +194,7 @@
             $('input[type=radio][name=tipo]').change(function () {
                 $('#campoValor').removeClass('hidden');
                 $('#valor').val('');
-                $('#qrcode').html('<img src="https://fakeimg.pl/300x300/fff/fff/">');
+                $('#qrcode').html('<img src="{{ asset('img/qr-code-empty.jpg') }}">');
                 if (this.value === 'almoco') {
                     $('#campoValor').addClass('hidden');
                 }
