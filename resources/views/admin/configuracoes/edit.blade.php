@@ -3,7 +3,7 @@
         Configurações
     </x-slot>
 
-    <section class="pb-4 md:py-4">
+    <section>
         <form class="form-horizontal" role="form"
               action="{{ route('configuracoes.update', $data) }}"
               method="post" enctype="multipart/form-data">
