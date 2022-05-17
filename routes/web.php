@@ -26,7 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
-Route::get('/testemunhos', [TestemunhoController::class, 'index'])->name('testemunhos');
+Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -43,6 +43,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/banners/{banner}/editar', [BannerController::class, 'edit'])->name('banners.edit');
     Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+
+    //Testemunhos
+    Route::get('/testemunhos', [TestemunhoController::class, 'index'])->name('testemunhos');
+    Route::get('/testemunhos/{testemunho}/editar', [TestemunhoController::class, 'edit'])->name('testemunhos.edit');
+    Route::put('/testemunhos/{testemunho}', [TestemunhoController::class, 'update'])->name('testemunhos.update');
+    Route::get('/testemunhos/{testemunho}/ativar', [TestemunhoController::class, 'enable'])->name('testemunhos.enable');
+    Route::get('/testemunhos/{testemunho}/desativar', [TestemunhoController::class, 'disable'])->name('testemunhos.disable');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');

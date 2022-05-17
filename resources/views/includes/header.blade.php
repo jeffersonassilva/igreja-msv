@@ -7,7 +7,7 @@
         <li class="link text-white"><a accesskey="h" href="{{ route('index') }}">Home</a></li>
         <li class="link text-white"><a accesskey="p" href="/#propositos">Propósitos</a></li>
         <li class="link text-white"><a accesskey="o" href="{{ route('ofertas') }}">Ofertas</a></li>
-        <li class="link text-white"><a accesskey="t" href="{{ route('testemunhos') }}">Testemunhos</a></li>
+        <li class="link text-white"><a accesskey="t" href="{{ route('testemunhos.list') }}">Testemunhos</a></li>
         <li class="link text-white"><a accesskey="b" href="https://horadeberear.com.br/" target="_blank" rel="noopener noreferrer">Blog</a></li>
         <li class="link text-white"><a accesskey="f" href="https://www.flickr.com/photos/igrejamsv/albums" target="_blank" rel="noopener noreferrer">Fotos</a></li>
         <li class="link text-white"><a accesskey="s" href="/#pastores">Pastores</a></li>
