@@ -54,7 +54,10 @@ html {
 }
 
 .navigation li a {
-    @apply inline-block text-black lg:text-white text-lg lg:text-base my-2 lg:my-0 lg:ml-10;
+    @apply inline-block text-black lg:text-white text-lg lg:text-base p-1 my-2 lg:my-0 lg:mx-4
+    outline-0 border border-transparent
+    hover:opacity-70
+    focus:opacity-70 focus:border-dashed focus:border-gray-400;
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;
     transition: all .1s ease-in-out;
