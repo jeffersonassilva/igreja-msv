@@ -21,7 +21,7 @@
                 @if($video)
                     <a href="{{ 'https://www.youtube.com/watch?v=' . $video['id']['videoId'] }}"
                        target="_blank" class="bg-gray-200">
-                        <img loading="lazy" width="540" height="306"
+                        <img loading="lazy" width="540" height="306" class="aspect-video object-cover"
                              src="{{ $video['snippet']['thumbnails']['high']['url'] }}"
                              alt="Último Vídeo Postado no YouTube">
                     </a>
