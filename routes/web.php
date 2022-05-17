@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\TestemunhoController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\IndexController;
@@ -25,6 +26,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
+Route::get('/testemunhos', [TestemunhoController::class, 'index'])->name('testemunhos');
+Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [IndexController::class, 'index'])->name('home');

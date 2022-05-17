@@ -26,26 +26,31 @@ abstract class AbstractService
     }
 
     /**
-     * @param array $filtros
-     * @param null $order
-     * @param false $orderDesc
+     * @param array $where
+     * @param array $orders
      * @return mixed
      */
-    public function paginate($filtros = array(), $order = null, $orderDesc = false)
+    public function where(array $where = array(), array $orders = array())
     {
         $query = $this->model;
 
-        if ($order) {
-            $query = $query->orderBy($order, $orderDesc ? 'desc' : 'asc');
+        foreach ($where as $key => $value) {
+            $query = $query->where($key, $value);
         }
 
-        foreach ($filtros as $filtro) {
-            if ($filtro['type'] === 'like') {
-                $query->where($filtro['field'], "like", "%{$filtro['value']}%");
-            }
+        foreach ($orders as $key => $value) {
+            $query = $query->orderBy($key, $value);
         }
 
-        return $query->paginate();
+        return $query;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function paginate()
+    {
+        return $this->model->paginate();
     }
 
     /**
