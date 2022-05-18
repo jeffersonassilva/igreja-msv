@@ -12,13 +12,7 @@ use Illuminate\Support\Facades\Http;
  */
 class HomeController extends Controller
 {
-    /**
-     * HomeController constructor.
-     */
-    public function __construct()
-    {
-
-    }
+    const CACHE_YOUTUBE_KEY = 'msv::youtube-last-video';
 
     /**
      * @param Request $request
@@ -58,8 +52,8 @@ class HomeController extends Controller
      */
     private function getLastVideoYouTube()
     {
-        if (Cache::has('msv::youtube-last-video')) {
-            $lastVideo = Cache::get('msv::youtube-last-video');
+        if (Cache::has(self::CACHE_YOUTUBE_KEY)) {
+            $lastVideo = Cache::get(self::CACHE_YOUTUBE_KEY);
         } else {
             $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
                 'key' => env('API_YOUTUBE_KEY'),
@@ -70,7 +64,7 @@ class HomeController extends Controller
             ]);
 
             $lastVideo = $response->json('items') ? $response->json('items')[0] : array();
-            Cache::put('msv::youtube-last-video', $lastVideo, (60 * 60));
+            Cache::put(self::CACHE_YOUTUBE_KEY, $lastVideo, (60 * 60));
         }
 
         return $lastVideo;
