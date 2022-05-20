@@ -1,6 +1,6 @@
 <section id="programacao" class="flex flex-col items-center p-3 pb-10 md:p-0 md:py-10 md:pb-20">
     <div class="container mx-auto max-w-[1280px]">
-        <h3 class="titulo-separador">Programação</h3>
+        <h1 class="titulo-separador">Programação</h1>
         <div class="flex flex-col flex-wrap p-3 w-full md:flex-row md:px-12">
             <div class="flex items-center gap-4 py-4 md:basis-1/2 lg:basis-1/3">
                 <div class="text-2xl">

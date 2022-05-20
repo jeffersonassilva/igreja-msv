@@ -9,8 +9,10 @@
                     Cultos presenciais todo domingo às 19:00h com transmissão simultânea em nosso canal do YouTube.
                 </div>
                 <div>
-                    <button onclick="window.open('https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg')"
-                            class="bg-blue-900 text-white px-4 py-2 mb-10 md:px-10 md:py-3 md:mb-6 lg:ml-6 2xl:ml-10 rounded-md">
+                    <button aria-label="Assista mais vídeos" onclick="window.open('https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg')"
+                            class="outline-0 rounded-md text-white border border-white bg-blue-900
+                            hover:border-blue-800 focus:border-blue-800 hover:bg-blue-800 focus:bg-blue-800
+                            px-4 py-2 mb-10 md:px-10 md:py-3 md:mb-6 lg:ml-6 2xl:ml-10">
                         Assista mais vídeos
                     </button>
 
@@ -20,7 +22,7 @@
             <div class="relative mx-auto lg:flex-[50%] lg:flex-1 flex justify-center items-center order-1 lg:order-2 cursor-pointer">
                 @if($video)
                     <a href="{{ 'https://www.youtube.com/watch?v=' . $video['id']['videoId'] }}"
-                       target="_blank" class="bg-gray-200">
+                       target="_blank" rel="noopener noreferrer" class="bg-gray-200">
                         <img loading="lazy" width="540" height="306" class="aspect-video object-cover"
                              src="{{ $video['snippet']['thumbnails']['high']['url'] }}"
                              alt="Último Vídeo Postado no YouTube">
@@ -30,7 +32,7 @@
                     </div>
                 @else
                     <a href="https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg"
-                       target="_blank" class="bg-gray-200">
+                       target="_blank" rel="noopener noreferrer" class="bg-gray-200">
                         <img loading="lazy" width="540" height="306" src="{{ asset('img/canal-youtube.jpg') }}"
                              alt="Último Vídeo Postado no YouTube">
                     </a>
