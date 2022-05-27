@@ -21,7 +21,18 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $fotos = array(
+        $fotos = $this->getFotos();
+        $banners = $this->getBanners();
+
+        return view('home')->with(['banners' => $banners, 'fotos' => $fotos, 'video' => $video]);
+    }
+
+    /**
+     * @return \string[][]
+     */
+    private function getFotos()
+    {
+        return array(
             [
                 'url' => 'consagracao',
                 'pasta' => 'consagracao',
@@ -47,21 +58,23 @@ class HomeController extends Controller
                 'descricao' => 'Fotos do projeto Sharon',
             ],
         );
+    }
 
-        $banners = array(
+    /**
+     * @return \string[][]
+     */
+    private function getBanners()
+    {
+        return array(
             [
                 'url-mobile' => 'img/banner/mobile/20220417143217.png',
                 'url-web' => 'img/banner/web/20220417143217.png',
-                'active' => true,
             ],
             [
                 'url-mobile' => 'img/banner/mobile/20220416192833.png',
                 'url-web' => 'img/banner/web/20220416192833.png',
-                'active' => false,
             ],
         );
-
-        return view('home')->with(['banners' => $banners, 'fotos' => $fotos, 'video' => $video]);
     }
 
     /**
