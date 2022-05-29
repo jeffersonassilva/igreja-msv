@@ -6,7 +6,7 @@
 
     @include('includes.propositos')
 
-    @include('includes.fotos')
+    @include('includes.ministerios')
 
     @include('includes.videos')
 
