@@ -21,43 +21,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $fotos = $this->getFotos();
         $banners = $this->getBanners();
 
-        return view('home')->with(['banners' => $banners, 'fotos' => $fotos, 'video' => $video]);
-    }
-
-    /**
-     * @return \string[][]
-     */
-    private function getFotos()
-    {
-        return array(
-            [
-                'url' => 'consagracao',
-                'pasta' => 'consagracao',
-                'titulo' => 'Consagração',
-                'descricao' => 'Consagração de obreiros 2020',
-            ],
-            [
-                'url' => 'aniversario',
-                'pasta' => 'aniversario',
-                'titulo' => 'Aniversário',
-                'descricao' => '1º Aniversário da Igreja MSV',
-            ],
-            [
-                'url' => 'confraternizacao-2020',
-                'pasta' => 'confraternizacao_2020',
-                'titulo' => 'Confraternização',
-                'descricao' => 'Confraternização 2020',
-            ],
-            [
-                'url' => 'projeto-sharon',
-                'pasta' => 'projeto_sharon',
-                'titulo' => 'Projeto Sharon',
-                'descricao' => 'Fotos do projeto Sharon',
-            ],
-        );
+        return view('home')->with(['banners' => $banners, 'video' => $video]);
     }
 
     /**
