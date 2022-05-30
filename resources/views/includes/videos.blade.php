@@ -22,8 +22,8 @@
             <div class="relative mx-auto lg:flex-[50%] lg:flex-1 flex justify-center items-center order-1 lg:order-2 cursor-pointer">
                 @if($video)
                     <a href="{{ 'https://www.youtube.com/watch?v=' . $video['id']['videoId'] }}"
-                       target="_blank" rel="noopener noreferrer" class="bg-gray-200">
-                        <img loading="lazy" width="540" height="306" class="aspect-video object-cover"
+                       target="_blank" rel="noopener noreferrer" class="bg-gray-200 rounded-md">
+                        <img loading="lazy" width="540" height="306" class="aspect-video object-cover rounded-md"
                              src="{{ $video['snippet']['thumbnails']['high']['url'] }}"
                              alt="Último Vídeo Postado no YouTube">
                     </a>
