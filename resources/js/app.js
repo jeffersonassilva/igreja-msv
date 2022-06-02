@@ -46,10 +46,13 @@ $(document).ready(function () {
     const navigation = document.querySelector('.navigation');
     const menuToggle = document.querySelector('.toggle');
     const body = document.querySelector('body');
-    menuToggle.onclick = function () {
-        body.classList.toggle('overflow-hidden');
-        navigation.classList.toggle('active');
-        menuToggle.classList.toggle('active');
+
+    if (menuToggle) {
+        menuToggle.onclick = function () {
+            body.classList.toggle('overflow-hidden');
+            navigation.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
     }
 
     //SLIDER
