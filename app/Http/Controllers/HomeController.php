@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PropositoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -15,6 +16,19 @@ class HomeController extends Controller
     const CACHE_YOUTUBE_KEY = 'msv::youtube-last-video';
 
     /**
+     * @var PropositoService
+     */
+    private $propositoService;
+
+    /**
+     * @param PropositoService $propositoService
+     */
+    public function __construct(PropositoService $propositoService)
+    {
+        $this->propositoService = $propositoService;
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -22,8 +36,9 @@ class HomeController extends Controller
     {
         $video = $this->getLastVideoYouTube();
         $banners = $this->getBanners();
+        $propositos = $this->propositoService->all();
 
-        return view('home')->with(['banners' => $banners, 'video' => $video]);
+        return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
     }
 
     /**

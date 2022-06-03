@@ -28,6 +28,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     })->name('dashboard');
 
     Route::get('/home', [IndexController::class, 'index'])->name('home');
+    Route::get('/propositos', [IndexController::class, 'propositos'])->name('propositos');
+    Route::get('/propositos/{id}/edit', [IndexController::class, 'propositosEdit'])->name('propositos.edit');
+    Route::post('/propositos/{id}/update', [IndexController::class, 'propositosUpdate'])->name('propositos.update');
 });
 
 require __DIR__.'/auth.php';

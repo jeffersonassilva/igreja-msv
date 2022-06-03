@@ -39,7 +39,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 grid
-            grid-cols-[60px,1fr]
+            grid-cols-[220px,1fr]
             grid-rows-[70px,1fr]
         ">
 {{--            @include('layouts.navigation')--}}
@@ -52,46 +52,50 @@
 {{--            </header>--}}
 
             <!-- Page Content -->
-            <section class="bg-white border-r-[1px] row-start-1 row-end-3 flex flex-col items-center">
-                <div class="h-[70px] w-full flex justify-center items-center p-3">
-                    <img class="h-full" src="{{ asset('img/logo-vazada.png') }}" alt="logomarca">
-                </div>
-                <ul class="text-2xl mt-4 py-4 flex-1">
-                    <li class="p-3 my-1 hover:bg-gray-100 rounded-md @if(request()->routeIs('dashboard')) bg-indigo-400 @endif">
-                        <a class="flex @if(request()->routeIs('dashboard')) text-white @endif" href="{{ route('dashboard') }}">
-                            <ion-icon name="grid-outline"></ion-icon>
+            <section class="bg-white text-black row-start-2 row-end-3 flex flex-col pt-4">
+                <ul class="text-2xl flex-1">
+                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('dashboard')) border-blue-400 @else border-white @endif">
+                        <a class="flex text-[18px]" href="{{ route('dashboard') }}">
+                            <ion-icon name="grid-outline" class="@if(request()->routeIs('dashboard')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
+                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('dashboard')) text-blue-400 @else text-gray-700 @endif">Dashboard</span>
                         </a>
                     </li>
-                    <li class="p-3 my-1 hover:bg-gray-100 rounded-md @if(request()->routeIs('home')) bg-indigo-400 @endif">
-                        <a class="flex @if(request()->routeIs('home')) text-white @endif" href="{{ route('home') }}">
-                            <ion-icon name="image-outline"></ion-icon>
+                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('home')) border-blue-400 @else border-white @endif">
+                        <a class="flex text-[18px]" href="{{ route('home') }}">
+                            <ion-icon name="image-outline" class="@if(request()->routeIs('home')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
+                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('home')) text-blue-400 @else text-gray-700 @endif">Home</span>
                         </a>
                     </li>
-                    <li class="p-3 my-1 hover:bg-gray-100 rounded-md">
-                        <a class="flex" href="{{ route('home') }}">
-                            <ion-icon name="locate-outline"></ion-icon>
+                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('propositos')) border-blue-400 @else border-white @endif">
+                        <a class="flex text-[18px]" href="{{ route('propositos') }}">
+                            <ion-icon name="locate-outline" class="@if(request()->routeIs('propositos')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
+                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('propositos')) text-blue-400 @else text-gray-700 @endif">Propósitos</span>
                         </a>
                     </li>
-                    <li class="p-3 my-1 hover:bg-gray-100 rounded-md">
-                        <a class="flex" href="#">
+                    <li class="p-4 border-l-4 hover:bg-gray-50">
+                        <a class="flex text-[18px]" href="#">
                             <ion-icon name="calendar-outline"></ion-icon>
+                            <span class="text-sm px-2 flex items-center text-gray-700">Programação</span>
                         </a>
                     </li>
-                    <li class="p-3 my-1 hover:bg-gray-100 rounded-md">
-                        <a class="flex" href="#">
+                    <li class="p-4 border-l-4 hover:bg-gray-50">
+                        <a class="flex text-[18px]" href="#">
                             <ion-icon name="person-outline"></ion-icon>
+                            <span class="text-sm px-2 flex items-center text-gray-700">Usuários</span>
                         </a>
                     </li>
                 </ul>
             </section>
 
-            <section class="bg-white flex items-center justify-between px-4">
-                <div>{{ $header }}</div>
+            <section class="bg-black flex items-center justify-between pr-4 col-span-2 shadow-md">
+                <div class="w-[220px] h-full flex justify-center items-center bg-blue-400">
+                    <img class="h-[50px]" src="{{ asset('img/logo-branca.png') }}" alt="logomarca">
+                </div>
                 <div class="flex justify-center items-center gap-2 md:gap-4">
-                    <div class="text-sm text-white block md:hidden bg-indigo-400 w-8 h-8 flex justify-center items-center rounded-full">
+                    <div class="text-sm text-white block md:hidden bg-blue-400 w-8 h-8 flex justify-center items-center rounded-full">
                         {{ strstr(Auth::user()->name, ' ', true)[0] . trim(strstr(Auth::user()->name, ' ')[1]) }}
                     </div>
-                    <div class="text-sm hidden md:block">
+                    <div class="text-white text-sm hidden md:block">
                         {{ Auth::user()->name }}
                     </div>
                     <div>
@@ -111,7 +115,7 @@
                 </div>
             </section>
 
-            <main class="p-4">
+            <main class="p-0 md:p-4">
                 {{ $slot }}
             </main>
         </div>
