@@ -42,50 +42,7 @@
             grid-cols-[220px,1fr]
             grid-rows-[70px,1fr]
         ">
-{{--            @include('layouts.navigation')--}}
-
-{{--            <!-- Page Heading -->--}}
-{{--            <header class="bg-white shadow">--}}
-{{--                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
-{{--                    {{ $header }}--}}
-{{--                </div>--}}
-{{--            </header>--}}
-
-            <!-- Page Content -->
-            <section class="bg-white text-black row-start-2 row-end-3 flex flex-col pt-4">
-                <ul class="text-2xl flex-1">
-                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('dashboard')) border-blue-400 @else border-white @endif">
-                        <a class="flex text-[18px]" href="{{ route('dashboard') }}">
-                            <ion-icon name="grid-outline" class="@if(request()->routeIs('dashboard')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
-                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('dashboard')) text-blue-400 @else text-gray-700 @endif">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('home')) border-blue-400 @else border-white @endif">
-                        <a class="flex text-[18px]" href="{{ route('home') }}">
-                            <ion-icon name="image-outline" class="@if(request()->routeIs('home')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
-                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('home')) text-blue-400 @else text-gray-700 @endif">Home</span>
-                        </a>
-                    </li>
-                    <li class="p-4 border-l-4 hover:bg-gray-50 @if(request()->routeIs('propositos')) border-blue-400 @else border-white @endif">
-                        <a class="flex text-[18px]" href="{{ route('propositos') }}">
-                            <ion-icon name="locate-outline" class="@if(request()->routeIs('propositos')) text-blue-400 @else text-gray-500 @endif"></ion-icon>
-                            <span class="text-sm px-2 flex items-center @if(request()->routeIs('propositos')) text-blue-400 @else text-gray-700 @endif">Propósitos</span>
-                        </a>
-                    </li>
-                    <li class="p-4 border-l-4 hover:bg-gray-50">
-                        <a class="flex text-[18px]" href="#">
-                            <ion-icon name="calendar-outline"></ion-icon>
-                            <span class="text-sm px-2 flex items-center text-gray-700">Programação</span>
-                        </a>
-                    </li>
-                    <li class="p-4 border-l-4 hover:bg-gray-50">
-                        <a class="flex text-[18px]" href="#">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="text-sm px-2 flex items-center text-gray-700">Usuários</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
+            <x-menu></x-menu>
 
             <section class="bg-black flex items-center justify-between pr-4 col-span-2 shadow-md">
                 <div class="w-[220px] h-full flex justify-center items-center bg-blue-400">
