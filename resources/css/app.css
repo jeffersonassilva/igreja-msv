@@ -158,7 +158,7 @@ html {
 }
 
 .slider .slides.active {
-    @apply opacity-100;
+    @apply opacity-100 z-10;
 }
 
 .balls {
