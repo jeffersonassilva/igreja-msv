@@ -5,6 +5,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\PropositoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +24,10 @@ Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin/dashboard');
-    })->name('dashboard');
-
     Route::get('/home', [IndexController::class, 'index'])->name('home');
-    Route::get('/propositos', [IndexController::class, 'propositos'])->name('propositos');
-    Route::get('/propositos/{id}/edit', [IndexController::class, 'propositosEdit'])->name('propositos.edit');
-    Route::post('/propositos/{id}/update', [IndexController::class, 'propositosUpdate'])->name('propositos.update');
+    Route::get('/dashboard', [IndexController::class, 'index'])->name('dashboard');
+    Route::get('/propositos/{id}/edit', [PropositoController::class, 'edit'])->name('propositos.edit');
+    Route::post('/propositos/{id}/update', [PropositoController::class, 'update'])->name('propositos.update');
 });
 
 require __DIR__.'/auth.php';
