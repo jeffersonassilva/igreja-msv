@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BannerService;
 use App\Services\PropositoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -21,11 +22,21 @@ class HomeController extends Controller
     private $propositoService;
 
     /**
-     * @param PropositoService $propositoService
+     * @var BannerService
      */
-    public function __construct(PropositoService $propositoService)
+    private $bannerService;
+
+    /**
+     * @param PropositoService $propositoService
+     * @param BannerService $bannerService
+     */
+    public function __construct(
+        PropositoService $propositoService,
+        BannerService $bannerService
+    )
     {
         $this->propositoService = $propositoService;
+        $this->bannerService = $bannerService;
     }
 
     /**
@@ -35,24 +46,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $banners = $this->getBanners();
+        $banners = $this->bannerService->all();
         $propositos = $this->propositoService->all();
 
         return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
-    }
-
-    /**
-     * @return \string[][]
-     */
-    private function getBanners()
-    {
-        return array(
-            [
-                'url-mobile' => 'img/banner/mobile/20220425115402.png',
-                'url-web' => 'img/banner/web/20220425115402.png',
-                'link' => 'http://batismo.igrejamsv.org',
-            ],
-        );
     }
 
     /**
