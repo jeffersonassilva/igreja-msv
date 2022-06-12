@@ -19,6 +19,7 @@ class Banner extends AbstractModel
      */
     protected $fillable = [
         'id',
+        'descricao',
         'img_mobile',
         'img_web',
         'link',
