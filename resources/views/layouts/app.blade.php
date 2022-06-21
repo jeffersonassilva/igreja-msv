@@ -37,44 +37,76 @@
         <meta name="msapplication-TileImage" content="{{ asset('img/icons/ms-icon-144x144.png') }}">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 grid
-            grid-cols-[220px,1fr]
-            grid-rows-[70px,1fr]
-        ">
-            <x-menu></x-menu>
 
-            <section class="bg-black flex items-center justify-between pr-4 col-span-2 shadow-md">
-                <div class="w-[220px] h-full flex justify-center items-center bg-blue-400">
-                    <img class="h-[50px]" src="{{ asset('img/logo-branca.png') }}" alt="logomarca">
-                </div>
-                <div class="flex justify-center items-center gap-2 md:gap-4">
-                    <div class="text-sm text-white block md:hidden bg-blue-400 w-8 h-8 flex justify-center items-center rounded-full">
-                        {{ strstr(Auth::user()->name, ' ', true)[0] . trim(strstr(Auth::user()->name, ' ')[1]) }}
-                    </div>
-                    <div class="text-white text-sm hidden md:block">
-                        {{ Auth::user()->name }}
-                    </div>
-                    <div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="block rounded-full"
-                               href="route('logout')"
-                               onclick="event.preventDefault();
-                               this.closest('form').submit();">
-                                <span class="text-2xl bg-gray-200 w-8 h-8 md:w-10 md:h-10 flex justify-center items-center rounded-full
-                                focus:outline-none focus:bg-gray-300 hover:bg-gray-300 transition duration-150 ease-in-out">
-                                    <ion-icon name="log-out-outline"></ion-icon>
-                                </span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </section>
+    <body class="bg-gray-100">
+        <div id="container" class="w-full grid mx-auto md:h-[100vh] md:grid-cols-[5rem,1fr] lg:grid-cols-[14rem,1fr]">
 
-            <main class="p-0 md:p-4">
-                {{ $slot }}
+            <aside id="adm__aside" class="hidden md:block fixed left-[-100%] md:relative bg-white w-[70%] max-w-[270px] md:w-[5rem] lg:w-auto min-h-full h-[100vh] z-30 shadow-md">
+                <div class="flex justify-between items-center bg-gray-200 md:bg-white pl-6 py-6 md:py-6 md:pl-0 lg:p-6 h-[6rem]">
+                    <div class="md:mx-auto">
+                        <img class="w-2/3 md:hidden lg:block" src="{{ asset('img/logo-preta.png') }}" alt="logo">
+                        <img class="h-12 hidden md:block lg:hidden" src="{{ asset('img/logo-vazada.png') }}" alt="logo">
+                    </div>
+                    <button class="md:hidden cursor-pointer text-3xl flex justify-center items-center p-3" id="aside__close-btn">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </div>
+
+                <x-adm-menu></x-adm-menu>
+            </aside>
+
+            <main class="md:overflow-y-auto md:px-6 md:py-2">
+                <section class="fixed w-full h-[65px] z-20 md:relative flex justify-between items-center bg-white md:bg-transparent shadow-sm md:shadow-none px-4 md:px-0 border-b">
+                    <button id="adm__menu-btn" class="text-3xl flex items-center md:hidden">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </button>
+                    <h2 class="font-thin text-xl md:text-2xl text-gray-500">
+                        {{ $header ?? '' }}
+                    </h2>
+                    <div class="adm__profile flex items-center gap-2">
+                        <div class="info hidden md:block">
+                            <span class="font-thin">Olá, <b>{{ Auth::user()->name }}</b></span>!
+                        </div>
+                        <div class="md:hidden text-sm text-white block bg-blue-400 w-8 h-8 flex justify-center items-center rounded-full">
+                            {{ strstr(Auth::user()->name, ' ', true)[0] . trim(strstr(Auth::user()->name, ' ')[1]) }}
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-16 md:mt-0 p-4 md:p-0">
+                    {{ $slot }}
+                </section>
             </main>
         </div>
     </body>
+
+    <style>
+        #adm__aside {
+            animation: showMenu 400ms ease forwards;
+        }
+        @keyframes showMenu {
+            to {
+                left: 0;
+            }
+        }
+        #adm__aside .sidebar a ion-icon {
+            font-size: 1.4rem;
+        }
+        #adm__aside .sidebar a.active {
+            color: #3b82f6;
+        }
+    </style>
+
+    <script type="text/javascript">
+        const sideMenu = document.querySelector("aside");
+        const menuBtn = document.querySelector("#adm__menu-btn");
+        const closeBtn = document.querySelector("#aside__close-btn");
+
+        menuBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sideMenu.style.display = 'none';
+        });
+    </script>
 </html>

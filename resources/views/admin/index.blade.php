@@ -1,10 +1,10 @@
 <x-app-layout>
-    <h2 class="font-thin text-2xl text-gray-500 p-3">
-        {{ __('Dashboard') }}
-    </h2>
+    <x-slot name="header">
+        Home
+    </x-slot>
 
-    <div class="mb-5">
-        <div class="h-[60px] bg-gray-50 mx-3 p-3 rounded-sm border-[1px] border-gray-200 flex items-center justify-between">
+    <div class="pb-6 md:py-6">
+        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-between">
             <h3 class="text-gray-500">
                 Lista de Banners
             </h3>
@@ -18,10 +18,10 @@
                 </a>
             </div>
         </div>
-        <div class="grid md:grid-cols-3 2xl:grid-cols-4 p-3 gap-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($banners as $banner)
-                <div class="flex flex-col bg-white p-3 shadow-sm rounded-sm border-[1px] border-gray-200">
-                    <img src="{{ asset($banner->img_mobile) }}" alt="banner">
+                <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
+                    <img class="rounded-md" src="{{ asset($banner->img_mobile) }}" alt="banner">
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $banner->descricao }}
                     </p>
@@ -50,15 +50,15 @@
         </div>
     </div>
 
-    <div class="mb-5">
-        <div class="h-[60px] bg-gray-50 mx-3 p-3 rounded-sm border-[1px] border-gray-200 flex items-center justify-between">
+    <div class="pb-6 md:py-6">
+        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-between">
             <h3 class="text-gray-500">
                 Lista de Propósitos
             </h3>
         </div>
-        <div class="grid md:grid-cols-3 2xl:grid-cols-4 p-3 gap-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($propositos as $proposito)
-                <div class="flex flex-col bg-white p-3 shadow-sm rounded-sm border-[1px] border-gray-200">
+                <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
                     <h3 class="text-gray-700 font-semibold">{{ $proposito->titulo }}</h3>
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $proposito->descricao }}
