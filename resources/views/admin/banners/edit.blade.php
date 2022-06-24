@@ -54,8 +54,8 @@
                 <label for="ordem" class="text-gray-900 mb-2">Ordem</label>
                 <span class="text-sm font-thin text-gray-500">- Quanto menor o número, maior é a prioridade.</span>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Se houver outro banner com a mesma prioridade, será considerada a data de cadastro.</span>
-                <input type="text" name="ordem" id="ordem" maxlength="100"
-                       class="border-gray-400 rounded-sm text-gray-700 @error('ordem') border-[1px] border-red-500 @enderror"
+                <input type="number" pattern="[0-9]*" name="ordem" id="ordem"
+                       class="max-w-[75px] border-gray-400 rounded-sm text-gray-700 @error('ordem') border-[1px] border-red-500 @enderror"
                        value="{{ old('ordem') ?? $data->ordem }}">
                 @error('ordem')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>

@@ -30,10 +30,7 @@ class HomeController extends Controller
      * @param PropositoService $propositoService
      * @param BannerService $bannerService
      */
-    public function __construct(
-        PropositoService $propositoService,
-        BannerService $bannerService
-    )
+    public function __construct(PropositoService $propositoService, BannerService $bannerService)
     {
         $this->propositoService = $propositoService;
         $this->bannerService = $bannerService;
@@ -46,7 +43,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $banners = $this->bannerService->all();
+        $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
         $propositos = $this->propositoService->all();
 
         return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);

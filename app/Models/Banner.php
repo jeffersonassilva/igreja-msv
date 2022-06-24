@@ -23,7 +23,21 @@ class Banner extends AbstractModel
         'img_mobile',
         'img_web',
         'link',
+        'ordem',
         'data_inicial',
         'data_final',
     ];
+
+    /**
+     * @param $value
+     * @return void
+     */
+    public function setOrdemAttribute($value)
+    {
+        if (!$value) {
+            $banner = Banner::orderBy('ordem', 'desc')->first();
+            $nrOrdem = $banner ? (int)$banner->ordem + 1 : 10;
+            $this->attributes['ordem'] = $nrOrdem;
+        }
+    }
 }

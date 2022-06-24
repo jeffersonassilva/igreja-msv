@@ -9,16 +9,17 @@ namespace App\Services;
 abstract class AbstractService
 {
     /**
-     * @param null $order
-     * @param false $orderDesc
+     * @param array $orders
      * @return mixed
      */
-    public function all($order = null, $orderDesc = false)
+    public function all(array $orders = array())
     {
         $query = $this->model;
 
-        if ($order) {
-            $query = $query->orderBy($order, $orderDesc ? 'desc' : 'asc');
+        foreach ($orders as $key => $value) {
+            if (isset($value) && !empty($value)) {
+                $query = $query->orderBy($key, $value);
+            }
         }
 
         return $query->get();
