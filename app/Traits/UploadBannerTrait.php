@@ -14,8 +14,6 @@ trait UploadBannerTrait
     public function setNameImagesIfExits($request, $dados)
     {
         $time = date('YmdHis');
-        $dados['img_mobile'] = null;
-        $dados['img_web'] = null;
 
         if ($request->hasFile('img_mobile')) {
             $dados['img_mobile'] = $this->diretorio . $this->uploadImgMobile($time, $request);
@@ -104,11 +102,17 @@ trait UploadBannerTrait
 
     /**
      * @param $data
+     * @param $alteracoes
      * @return void
      */
-    private function removerImagensAntigas($data)
+    private function removerImagensAntigas($data, $alteracoes)
     {
-        Storage::disk('banners')->delete(str_replace($this->diretorio, '', $data['img_mobile']));
-        Storage::disk('banners')->delete(str_replace($this->diretorio, '', $data['img_web']));
+        if (isset($alteracoes['img_mobile'])) {
+            Storage::disk('banners')->delete(str_replace($this->diretorio, '', $data['img_mobile']));
+        }
+
+        if (isset($alteracoes['img_web'])) {
+            Storage::disk('banners')->delete(str_replace($this->diretorio, '', $data['img_web']));
+        }
     }
 }

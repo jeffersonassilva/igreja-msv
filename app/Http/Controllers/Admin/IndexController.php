@@ -36,7 +36,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $propositos = $this->propositoService->all();
-        $banners = $this->bannerService->all();
+        $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
 
         return view('admin/index')->with([
             'propositos' => $propositos,
