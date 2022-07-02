@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\UsuarioController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
+Route::get('/seminario', [OfertaController::class, 'seminario'])->name('seminario');
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');

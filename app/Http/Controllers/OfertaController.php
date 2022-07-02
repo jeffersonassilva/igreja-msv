@@ -20,6 +20,14 @@ class OfertaController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function seminario()
+    {
+        return view('ofertas')->with(array('pagina' => 'seminario'));
+    }
+
+    /**
      * @param Request $request
      * @return string
      */

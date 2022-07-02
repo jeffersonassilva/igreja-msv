@@ -140,7 +140,7 @@
                             <label for="sharon">Projeto Sharon</label>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="seminario" name="tipo" value="seminario">
+                            <input type="radio" id="seminario" name="tipo" value="seminario"  @if(isset($pagina)) checked @endif>
                             <label for="seminario">II Seminário de Liderança Cristã</label>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
