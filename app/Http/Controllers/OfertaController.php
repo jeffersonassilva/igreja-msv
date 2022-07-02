@@ -30,7 +30,7 @@ class OfertaController extends Controller
         $pix = new Pix();
         $objPayload = $pix->setPixKey('23244224000144')
             ->setDescription($request->get('descricao'))
-            ->setMerchantName('IGREJA MSV')
+            ->setMerchantName('IGREJA EVANGELICA MINISTERIO SEMEANDO A VERDADE')
             ->setMerchantCity('BRASILIA')
             ->setAmount($request->get('valor'))
             ->setTxId($this->gerarTxId($request->get('descricao')));
@@ -59,6 +59,9 @@ class OfertaController extends Controller
                 break;
             case 'projeto sharon':
                 $txIdPrefix = 'SH';
+                break;
+            case 'seminario':
+                $txIdPrefix = 'SM';
                 break;
             default:
                 $txIdPrefix = 'OU';

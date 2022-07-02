@@ -136,12 +136,16 @@
                             <label for="oferta">Oferta</label>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="almoco" name="tipo" value="almoco">
-                            <label for="almoco">Almoço de domingo</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
                             <input type="radio" id="sharon" name="tipo" value="sharon">
                             <label for="sharon">Projeto Sharon</label>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
+                            <input type="radio" id="seminario" name="tipo" value="seminario">
+                            <label for="seminario">II Seminário de Liderança Cristã</label>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
+                            <input type="radio" id="almoco" name="tipo" value="almoco">
+                            <label for="almoco">Almoço de domingo</label>
                         </div>
                         <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
                             <input type="radio" id="outros" name="tipo" value="outros">
@@ -195,7 +199,7 @@
                 $('#campoValor').removeClass('hidden');
                 $('#valor').val('');
                 $('#qrcode').html('<img src="{{ asset('img/qr-code-empty.jpg') }}">');
-                if (this.value === 'almoco') {
+                if (this.value === 'almoco' || this.value === 'seminario') {
                     $('#campoValor').addClass('hidden');
                 }
             });
@@ -218,6 +222,9 @@
                     break;
                 case "sharon":
                     url = 'pix?valor=' + valor + '&descricao=Projeto Sharon';
+                    break;
+                case "seminario":
+                    url = 'pix?valor=20&descricao=Seminario';
                     break;
                 default:
                     url = 'pix?valor=' + valor + '&descricao=Outros';
