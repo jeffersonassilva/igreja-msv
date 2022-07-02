@@ -3,7 +3,7 @@
         @foreach($banners as $key => $banner)
             <div class="slides {{ $key === 0 ? 'active' : '' }}">
                 @if($banner['link'])
-                    <a href="{{ $banner['link'] }}" target="_blank" rel="noopener noreferrer" class="outline-0">
+                    <a href="{{ $banner['link'] }}" @if(str_contains($banner['link'], 'http')) target="_blank" rel="noopener noreferrer" @endif class="outline-0">
                         <picture class="w-full">
                             <source type="image/png" media="(min-width:640px)" srcset="{{ asset($banner['img_web']) }}">
                             <img src="{{ asset($banner['img_mobile']) }}" alt="Banner">
