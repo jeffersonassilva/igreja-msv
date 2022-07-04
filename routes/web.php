@@ -7,6 +7,7 @@ use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PropositoController;
+use App\Http\Controllers\Admin\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/banners/{banner}/editar', [BannerController::class, 'edit'])->name('banners.edit');
     Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+
+    //Usuários
+    Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
+    Route::get('/usuarios/adicionar', [UsuarioController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
+    Route::get('/usuarios/{usuario}/editar', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+    Route::put('/usuarios/{usuario}', [UsuarioController::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{banner}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
 });
 
 require __DIR__.'/auth.php';
