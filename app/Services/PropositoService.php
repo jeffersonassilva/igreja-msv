@@ -22,31 +22,4 @@ class PropositoService extends AbstractService
     {
         $this->model = new Proposito();
     }
-
-    /**
-     * @param $request
-     * @return Proposito
-     */
-    public function store($request)
-    {
-        $dados = $request->all();
-        $data = new Proposito();
-        $data->fill($dados)->save();
-
-        return $data;
-    }
-
-    /**
-     * @param $request
-     * @param $id
-     * @return mixed
-     */
-    public function update($request, $id)
-    {
-        $dados = $request->all();
-        $data = $this->model->find($id);
-        $data->fill($dados)->save();
-
-        return $data;
-    }
 }
