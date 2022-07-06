@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
 use App\Services\UsuarioService;
@@ -48,7 +49,7 @@ class UsuarioController extends Controller
     public function store(UsuarioRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('usuarios');
+        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_CREATE));
     }
 
     /**
@@ -69,7 +70,7 @@ class UsuarioController extends Controller
     public function update(UsuarioRequest $request, $id)
     {
         $this->service->update($request, $id);
-        return redirect()->route('usuarios');
+        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_UPDATE));
     }
 
     /**
@@ -79,6 +80,6 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         $this->service->destroy($id);
-        return redirect()->route('usuarios');
+        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_DESTROY));
     }
 }

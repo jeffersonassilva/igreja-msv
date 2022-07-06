@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropositoRequest;
 use App\Services\PropositoService;
@@ -40,6 +41,6 @@ class PropositoController extends Controller
     public function update(PropositoRequest $request, $id)
     {
         $this->service->update($request, $id);
-        return redirect()->route('dashboard');
+        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
     }
 }
