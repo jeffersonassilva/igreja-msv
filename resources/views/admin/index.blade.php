@@ -3,7 +3,7 @@
         Home
     </x-slot>
 
-    <div class="pb-6 md:py-6">
+    <section>
         <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-between">
             <h3 class="text-gray-500">
                 Lista de Banners
@@ -49,9 +49,9 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </section>
 
-    <div class="pb-6 md:py-6">
+    <section class="pb-6 md:py-6">
         <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-between">
             <h3 class="text-gray-500">
                 Lista de Propósitos
@@ -76,5 +76,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </section>
 </x-app-layout>

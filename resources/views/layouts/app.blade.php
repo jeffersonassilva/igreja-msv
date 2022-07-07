@@ -56,7 +56,7 @@
             </aside>
 
             <main class="md:overflow-y-auto md:px-6 md:py-2">
-                <section class="fixed w-full h-[65px] z-20 md:relative flex justify-between items-center bg-white md:bg-transparent shadow-sm md:shadow-none px-4 md:px-0 border-b">
+                <section class="fixed w-full h-[65px] z-20 md:relative flex justify-between items-center bg-white md:bg-transparent shadow-sm md:shadow-none mb-4 px-4 md:px-0 border-b">
                     <button id="adm__menu-btn" class="text-3xl flex items-center md:hidden">
                         <ion-icon name="menu-outline"></ion-icon>
                     </button>
@@ -74,7 +74,7 @@
                 </section>
                 <section class="mt-16 md:mt-0 p-4 md:p-0">
                     @if (session('message'))
-                        <div id="message_alert" class="bg-green-200 p-4 mb-4 md:mt-4 md:mb-0 rounded-md flex justify-between items-center">
+                        <div id="message_alert" class="bg-green-200 p-4 mb-4 rounded-md flex justify-between items-center">
                             <span class="text-gray-700">
                                 {{ session('message') }}
                             </span>
