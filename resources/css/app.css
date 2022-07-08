@@ -43,7 +43,8 @@ html {
 }
 
 .navigation li a {
-    @apply inline-block text-black lg:text-white text-lg lg:text-base p-1 my-1 lg:my-0 lg:mx-4
+    @apply inline-block text-black lg:text-white text-lg lg:text-base
+    p-1 my-1 lg:my-0 lg:mx-2.5 xl:mx-3
     outline-0 border border-transparent
     hover:opacity-70
     focus:opacity-70 focus:border-dashed focus:border-gray-400;
