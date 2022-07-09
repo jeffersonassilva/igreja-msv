@@ -35,7 +35,11 @@ abstract class AbstractService
         $query = $this->model;
 
         foreach ($where as $key => $value) {
-            $query = $query->where($key, $value);
+            if (is_array($value)) {
+                $query = $query->where($key, $value[0], $value[1]);
+            } else {
+                $query = $query->where($key, $value);
+            }
         }
 
         foreach ($orders as $key => $value) {
