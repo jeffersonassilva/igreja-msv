@@ -29,10 +29,19 @@ class TestemunhoController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function list()
     {
         $data = $this->service->where(['situacao' => Constants::TRUE], ['created_at' => Constants::DECRESCENTE])->paginate();
         return view('testemunhos')->with('testemunhos', $data);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function index()
+    {
+        $data = $this->service->where(array(), ['created_at' => Constants::DECRESCENTE])->paginate();
+        return view('admin/testemunhos/index')->with('testemunhos', $data);
     }
 
     /**
@@ -42,6 +51,47 @@ class TestemunhoController extends Controller
     public function store(TestemunhoRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('testemunhos')->with('nome', $request->get('nome'));
+        return redirect()->route('testemunhos.list')->with('nome', $request->get('nome'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit($id)
+    {
+        $data = $this->service->edit($id);
+        return view('admin/testemunhos/edit')->with(['data' => $data]);
+    }
+
+    /**
+     * @param TestemunhoRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(TestemunhoRequest $request, $id)
+    {
+        $this->service->update($request, $id);
+        return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function enable($id)
+    {
+        $this->service->enable($id);
+        return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function disable($id)
+    {
+        $this->service->disable($id);
+        return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
     }
 }
