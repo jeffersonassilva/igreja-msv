@@ -111,7 +111,7 @@ class Pix
      */
     public function setAmount(string $amount = null)
     {
-        $this->amount = '0';
+        $this->amount = '0.00';
         if ($amount) {
             $amount = str_replace(',', '.', str_replace('.', '', $amount));
             $this->amount = (string)number_format($amount, 2, '.', '');
