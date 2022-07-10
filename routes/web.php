@@ -56,6 +56,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/testemunhos/{testemunho}/ativar', [TestemunhoController::class, 'enable'])->name('testemunhos.enable');
     Route::get('/testemunhos/{testemunho}/desativar', [TestemunhoController::class, 'disable'])->name('testemunhos.disable');
 
+    //Escalas
+    Route::get('/escalas', [EscalaController::class, 'index'])->name('escalas');
+    Route::get('/escalas/adicionar', [EscalaController::class, 'create'])->name('escalas.create');
+    Route::post('/escalas', [EscalaController::class, 'store'])->name('escalas.store');
+    Route::get('/escalas/{escala}/editar', [EscalaController::class, 'edit'])->name('escalas.edit');
+    Route::put('/escalas/{escala}', [EscalaController::class, 'update'])->name('escalas.update');
+    Route::delete('/escalas/{escala}', [EscalaController::class, 'destroy'])->name('escalas.destroy');
+
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/adicionar', [UsuarioController::class, 'create'])->name('usuarios.create');

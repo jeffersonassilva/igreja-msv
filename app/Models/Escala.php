@@ -21,6 +21,7 @@ class Escala extends AbstractModel
         'id',
         'data',
         'situacao',
+        'evento_id',
     ];
 
     protected $appends = [
