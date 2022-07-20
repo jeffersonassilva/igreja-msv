@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\EscalaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TestemunhoController;
+use App\Http\Controllers\VoluntarioController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\IndexController;
@@ -29,6 +31,8 @@ Route::get('/seminario', [OfertaController::class, 'seminario'])->name('seminari
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
+Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
+Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [IndexController::class, 'index'])->name('home');
