@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\EscalaController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TestemunhoController;
@@ -55,6 +56,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/testemunhos/{testemunho}', [TestemunhoController::class, 'update'])->name('testemunhos.update');
     Route::get('/testemunhos/{testemunho}/ativar', [TestemunhoController::class, 'enable'])->name('testemunhos.enable');
     Route::get('/testemunhos/{testemunho}/desativar', [TestemunhoController::class, 'disable'])->name('testemunhos.disable');
+
+    //Eventos
+    Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
+    Route::get('/eventos/adicionar', [EventoController::class, 'create'])->name('eventos.create');
+    Route::post('/eventos', [EventoController::class, 'store'])->name('eventos.store');
+    Route::get('/eventos/{evento}/editar', [EventoController::class, 'edit'])->name('eventos.edit');
+    Route::put('/eventos/{evento}', [EventoController::class, 'update'])->name('eventos.update');
+    Route::delete('/eventos/{evento}', [EventoController::class, 'destroy'])->name('eventos.destroy');
 
     //Escalas
     Route::get('/escalas', [EscalaController::class, 'index'])->name('escalas');
