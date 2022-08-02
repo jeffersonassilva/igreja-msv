@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Cache;
+
 /**
  * Class AbstractService
  * @package App\Services
@@ -10,10 +12,16 @@ abstract class AbstractService
 {
     /**
      * @param array $orders
+     * @param $cacheKey
+     * @param $cacheTime
      * @return mixed
      */
-    public function all(array $orders = array())
+    public function all(array $orders = array(), $cacheKey = null, $cacheTime = null)
     {
+        if ($cacheKey && Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
         $query = $this->model;
 
         foreach ($orders as $key => $value) {
@@ -22,7 +30,13 @@ abstract class AbstractService
             }
         }
 
-        return $query->get();
+        $result = $query->get();
+
+        if ($cacheKey) {
+            Cache::put($cacheKey, $result, $cacheTime ?? 60 * 60);
+        }
+
+        return $result;
     }
 
     /**
