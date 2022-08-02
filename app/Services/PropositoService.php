@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Proposito;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class PropositoService
@@ -21,5 +22,16 @@ class PropositoService extends AbstractService
     public function __construct()
     {
         $this->model = new Proposito();
+    }
+
+    /**
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public function update($request, $id)
+    {
+        Cache::pull('msv::lista-propositos');
+        return parent::update($request, $id);
     }
 }
