@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Constants;
 use App\Services\BannerService;
 use App\Services\PropositoService;
 use Illuminate\Http\Request;
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Http;
  */
 class HomeController extends Controller
 {
-    const CACHE_YOUTUBE_KEY = 'msv::youtube-last-video';
-
     /**
      * @var PropositoService
      */
@@ -44,7 +43,7 @@ class HomeController extends Controller
     {
         $video = $this->getLastVideoYouTube();
         $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
-        $propositos = $this->propositoService->all(array(), 'msv::lista-propositos', 60 * 60);
+        $propositos = $this->propositoService->all(array(), Constants::CACHE_LISTA_PROPOSITOS, 60 * 60);
 
         return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
     }
@@ -54,8 +53,8 @@ class HomeController extends Controller
      */
     private function getLastVideoYouTube()
     {
-        if (Cache::has(self::CACHE_YOUTUBE_KEY)) {
-            $lastVideo = Cache::get(self::CACHE_YOUTUBE_KEY);
+        if (Cache::has(Constants::CACHE_YOUTUBE_KEY)) {
+            $lastVideo = Cache::get(Constants::CACHE_YOUTUBE_KEY);
         } else {
             $response = Http::get('https://www.googleapis.com/youtube/v3/search', [
                 'key' => env('API_YOUTUBE_KEY'),
@@ -66,7 +65,7 @@ class HomeController extends Controller
             ]);
 
             $lastVideo = $response->json('items') ? $response->json('items')[0] : array();
-            Cache::put(self::CACHE_YOUTUBE_KEY, $lastVideo, (60 * 60));
+            Cache::put(Constants::CACHE_YOUTUBE_KEY, $lastVideo, (60 * 60));
         }
 
         return $lastVideo;

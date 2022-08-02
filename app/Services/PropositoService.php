@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\Constants;
 use App\Models\Proposito;
 use Illuminate\Support\Facades\Cache;
 
@@ -31,7 +32,7 @@ class PropositoService extends AbstractService
      */
     public function update($request, $id)
     {
-        Cache::pull('msv::lista-propositos');
+        Cache::pull(Constants::CACHE_LISTA_PROPOSITOS);
         return parent::update($request, $id);
     }
 }
