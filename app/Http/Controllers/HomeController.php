@@ -44,7 +44,7 @@ class HomeController extends Controller
     {
         $video = $this->getLastVideoYouTube();
         $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
-        $propositos = $this->propositoService->all();
+        $propositos = $this->propositoService->all(array(), 'msv::lista-propositos', 60 * 60);
 
         return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
     }
