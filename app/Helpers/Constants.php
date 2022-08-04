@@ -24,4 +24,10 @@ class Constants
     const SUCCESS_UPDATE = 'responses.success.update';
     const SUCCESS_DESTROY = 'responses.success.destroy';
     const SUCCESS_ARCHIVE = 'responses.success.archive';
+
+    /**
+     * CACHE KEYS
+     */
+    const CACHE_YOUTUBE_KEY = 'msv::youtube-last-video';
+    const CACHE_LISTA_PROPOSITOS = 'msv::lista-propositos';
 }
