@@ -42,8 +42,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $video = $this->getLastVideoYouTube();
-        $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
-        $propositos = $this->propositoService->all(array(), Constants::CACHE_LISTA_PROPOSITOS, 60 * 60);
+        $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc'], Constants::CACHE_LISTA_BANNERS);
+        $propositos = $this->propositoService->all(array(), Constants::CACHE_LISTA_PROPOSITOS);
 
         return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
     }
