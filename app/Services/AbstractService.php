@@ -33,7 +33,7 @@ abstract class AbstractService
         $result = $query->get();
 
         if ($cacheKey) {
-            Cache::put($cacheKey, $result, $cacheTime ?? 60 * 60);
+            Cache::put($cacheKey, $result, $cacheTime);
         }
 
         return $result;
