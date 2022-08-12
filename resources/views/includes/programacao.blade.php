@@ -53,7 +53,7 @@
                 <div class="flex flex-col">
                     <div class="font-medium mb-1 md:text-xl">Domingo</div>
                     <div class="text-sm text-gray-500 md:text-base">
-                        <span class="font-semibold">09:30h</span> - Escola Bíblica Dominical
+                        <span class="font-semibold">09:00h</span> - Escola Bíblica Dominical
                     </div>
                     <div class="text-sm text-gray-500 md:text-base">
                         <span class="font-semibold">19:00h</span> - Culto Público
