@@ -11,6 +11,7 @@ use App\Http\Controllers\VoluntarioController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\PastorController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\UsuarioController;
 
@@ -49,6 +50,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/banners/{banner}/editar', [BannerController::class, 'edit'])->name('banners.edit');
     Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
+
+    //Pastor
+    Route::get('/pastor/{pastor}/editar', [PastorController::class, 'edit'])->name('pastor.edit');
+    Route::put('/pastor/{pastor}', [PastorController::class, 'update'])->name('pastor.update');
 
     //Testemunhos
     Route::get('/testemunhos', [TestemunhoController::class, 'index'])->name('testemunhos');

@@ -91,7 +91,7 @@
                     {{ $pastor->descricao }}
                 </p>
                 <div class="text-rights text-sm mt-3">
-                    <a aria-label="Editar" href="{{ route('propositos.edit', $proposito) }}"
+                    <a aria-label="Editar" href="{{ route('pastor.edit', $pastor) }}"
                        class="outline-0 rounded-md text-blue-400 border border-blue-400
                             hover:text-white hover:bg-blue-400
                             focus:text-white focus:bg-blue-400
