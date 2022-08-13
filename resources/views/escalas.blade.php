@@ -45,7 +45,7 @@
                             <div class="p-4 sm:p-6 mt-6 flex-1">
                                 @if($escala->evento_id == 1)
                                     <ul class="text-gray-500 text-xs leading-6 font-thin sm:text-sm sm:leading-7">
-                                        @foreach($escala->vonluntarios as $voluntario)
+                                        @foreach($escala->voluntarios as $voluntario)
                                         <li class="line-clamp-1">{{ $voluntario->nome }}</li>
                                         @endforeach
                                     </ul>
@@ -56,7 +56,7 @@
                                         @php
                                             $funcoes = array('CG' => 'Coordenador Geral','R' => 'Recepção','A' => 'Apoio','H' => 'Higienização','SI' => 'Segurança Interna','SE' => 'Segurança Externa');
                                         @endphp
-                                        @foreach($escala->vonluntarios as $voluntario)
+                                        @foreach($escala->voluntarios as $voluntario)
                                             <li class="line-clamp-1">
                                                 <span class="{{ $voluntario->funcao ? 'bg-gray-100' : 'border border-dashed border-gray-200' }} font-normal rounded-sm w-[25px] h-[20px] mr-1
                                                          inline-flex items-center justify-center cursor-help select-none"
