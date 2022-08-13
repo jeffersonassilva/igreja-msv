@@ -62,7 +62,7 @@ class Escala extends AbstractModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vonluntarios()
+    public function voluntarios()
     {
         return $this->hasMany(Voluntario::class, 'escala_id', 'id');
     }

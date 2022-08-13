@@ -31,7 +31,7 @@ class EscalaService extends AbstractService
     public function list()
     {
         return $this->model->with('evento')
-            ->with('vonluntarios')
+            ->with('voluntarios')
             ->where('situacao', Constants::TRUE)
             ->where('data', '>=', Carbon::now()->format('Y-m-d'))
             ->orderBy('data')
