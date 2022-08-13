@@ -78,6 +78,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/escalas/{escala}', [EscalaController::class, 'update'])->name('escalas.update');
     Route::delete('/escalas/{escala}', [EscalaController::class, 'destroy'])->name('escalas.destroy');
 
+    //Voluntários
+    Route::put('/voluntarios/{voluntario}', [VoluntarioController::class, 'update'])->name('voluntarios.update');
+    Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
+
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/adicionar', [UsuarioController::class, 'create'])->name('usuarios.create');
