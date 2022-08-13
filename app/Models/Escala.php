@@ -43,6 +43,12 @@ class Escala extends AbstractModel
             case 3: //Mulheres
                 $color = '#e969ff';
                 break;
+            case 4: //Imersão
+                $color = '#355bf0';
+                break;
+            case 5: //EBD
+                $color = '#42cb82';
+                break;
             default:
                 $color = '#333';
                 break;
