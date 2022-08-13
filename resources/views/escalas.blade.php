@@ -6,20 +6,20 @@
         <section class="bg-gray-100">
             <div class="container mx-auto max-w-[1080px] p-4">
                 <h1 class="titulo-separador">Escalas</h1>
-                <ul class="inline-flex gap-4 mb-8 text-sm font-thin">
-                    <li class="flex items-center">
-                        <ion-icon name="radio-button-on" class="text-[#ff8537] bg-[#ff8537]"></ion-icon>
-                        <span class="pl-1 text-gray-500">Limpeza</span>
-                    </li>
-                    <li class="flex items-center">
-                        <ion-icon name="radio-button-on" class="text-[#00d5ff] bg-[#00d5ff]"></ion-icon>
-                        <span class="pl-1 text-gray-500">Culto Público</span>
-                    </li>
-                    <li class="flex items-center">
-                        <ion-icon name="radio-button-on" class="text-[#e969ff] bg-[#e969ff]"></ion-icon>
-                        <span class="pl-1 text-gray-500">Culto Das Mulheres</span>
-                    </li>
-                </ul>
+{{--                <ul class="inline-flex gap-4 mb-8 text-sm font-thin">--}}
+{{--                    <li class="flex items-center">--}}
+{{--                        <ion-icon name="radio-button-on" class="text-[#ff8537] bg-[#ff8537]"></ion-icon>--}}
+{{--                        <span class="pl-1 text-gray-500">Limpeza</span>--}}
+{{--                    </li>--}}
+{{--                    <li class="flex items-center">--}}
+{{--                        <ion-icon name="radio-button-on" class="text-[#00d5ff] bg-[#00d5ff]"></ion-icon>--}}
+{{--                        <span class="pl-1 text-gray-500">Culto Público</span>--}}
+{{--                    </li>--}}
+{{--                    <li class="flex items-center">--}}
+{{--                        <ion-icon name="radio-button-on" class="text-[#e969ff] bg-[#e969ff]"></ion-icon>--}}
+{{--                        <span class="pl-1 text-gray-500">Culto Das Mulheres</span>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
 
                 <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 xl:grid-cols-3 mb-8">
                     @foreach($escalas as $escala)
