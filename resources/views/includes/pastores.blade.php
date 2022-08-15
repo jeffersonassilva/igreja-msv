@@ -16,11 +16,11 @@
                 </picture>
             </div>
             <div class="md:flex-[50%] md:flex-1 flex flex-col justify-center">
-                <h2 class="text-lg lg:text-2xl font-medium my-6 md:mx-3 lg:my-0 lg:mx-6 2xl:mx-10 text-neutral-700">SAMUEL e HACSA NOVAIS</h2>
+                <h2 class="text-lg lg:text-2xl font-medium my-6 md:mx-3 lg:my-0 lg:mx-6 2xl:mx-10 text-neutral-700">
+                    {{ $pastor->titulo }}
+                </h2>
                 <div class="font-light text-sm lg:text-base 2xl:text-xl leading-6 lg:leading-7 2xl:leading-9 mb-6 md:mx-3 lg:m-6 2xl:m-10">
-                    O Ministério Semeando a Verdade foi um projeto que Deus colocou em nossos corações.
-                    Cremos que o Senhor nos deu entendimento a respeito dos nossos ministérios, e nos direcionou para realizar
-                    aquilo que nos foi confiado.
+                    {{ $pastor->descricao }}
                 </div>
             </div>
         </div>

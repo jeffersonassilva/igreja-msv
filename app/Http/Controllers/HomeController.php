@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Constants;
 use App\Services\BannerService;
+use App\Services\PastorService;
 use App\Services\PropositoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -26,13 +27,24 @@ class HomeController extends Controller
     private $bannerService;
 
     /**
+     * @var PastorService
+     */
+    private $pastorService;
+
+    /**
      * @param PropositoService $propositoService
      * @param BannerService $bannerService
+     * @param PastorService $pastorService
      */
-    public function __construct(PropositoService $propositoService, BannerService $bannerService)
+    public function __construct(
+        PropositoService $propositoService,
+        BannerService    $bannerService,
+        PastorService    $pastorService
+    )
     {
         $this->propositoService = $propositoService;
         $this->bannerService = $bannerService;
+        $this->pastorService = $pastorService;
     }
 
     /**
@@ -44,8 +56,14 @@ class HomeController extends Controller
         $video = $this->getLastVideoYouTube();
         $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc'], Constants::CACHE_LISTA_BANNERS);
         $propositos = $this->propositoService->all(array(), Constants::CACHE_LISTA_PROPOSITOS);
+        $pastor = $this->pastorService->all(array(), Constants::CACHE_LISTA_PASTORES);
 
-        return view('home')->with(['banners' => $banners, 'video' => $video, 'propositos' => $propositos]);
+        return view('home')->with([
+            'banners' => $banners,
+            'video' => $video,
+            'propositos' => $propositos,
+            'pastor' => $pastor->first(),
+        ]);
     }
 
     /**

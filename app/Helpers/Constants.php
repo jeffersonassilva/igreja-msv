@@ -31,4 +31,5 @@ class Constants
     const CACHE_YOUTUBE_KEY = 'msv::youtube-last-video';
     const CACHE_LISTA_PROPOSITOS = 'msv::lista-propositos';
     const CACHE_LISTA_BANNERS = 'msv::lista-banners';
+    const CACHE_LISTA_PASTORES = 'msv::lista-pastores';
 }
