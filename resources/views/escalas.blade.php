@@ -69,7 +69,6 @@
                             </div>
                             <form role="form" action="{{ route('voluntarios.store') }}" method="post">
                                 <div class="px-4 pb-4 flex justify-center items-center gap-1">
-                                    @csrf
                                     <input type="hidden" name="escala_id" value="{{ $escala->id }}">
                                     <input name="nome" type="text" placeholder="Digite seu nome" class="border border-gray-200 rounded-md w-full text-sm font-thin" />
                                     <div class="pl-2 text-2xl">
