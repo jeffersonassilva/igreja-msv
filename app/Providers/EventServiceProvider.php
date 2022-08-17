@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Banner;
+use App\Models\Pastor;
 use App\Models\Proposito;
 use App\Observers\BannerObserver;
+use App\Observers\PastorObserver;
 use App\Observers\PropositoObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -33,5 +35,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Banner::observe(BannerObserver::class);
         Proposito::observe(PropositoObserver::class);
+        Pastor::observe(PastorObserver::class);
     }
 }
