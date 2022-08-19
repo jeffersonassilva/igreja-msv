@@ -70,6 +70,6 @@ class Escala extends AbstractModel
      */
     public function voluntarios()
     {
-        return $this->hasMany(EscalaVoluntario::class, 'escala_id', 'id');
+        return $this->hasMany(EscalaVoluntario::class, 'escala_id', 'id')->has('voluntario');
     }
 }
