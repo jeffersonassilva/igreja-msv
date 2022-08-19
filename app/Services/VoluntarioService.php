@@ -22,4 +22,13 @@ class VoluntarioService extends AbstractService
     {
         $this->model = new Voluntario();
     }
+
+    /**
+     * @param $nome
+     * @return mixed
+     */
+    public function firstOrCreate($nome)
+    {
+        return Voluntario::firstOrCreate(['nome' => $nome]);
+    }
 }

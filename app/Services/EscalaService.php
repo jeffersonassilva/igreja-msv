@@ -30,7 +30,7 @@ class EscalaService extends AbstractService
      */
     public function list()
     {
-        return $this->model
+        return $this->model->with('voluntarios.voluntario')
             ->whereHas('evento', function ($query) {
                 return $query->where('situacao', Constants::TRUE);
             })
