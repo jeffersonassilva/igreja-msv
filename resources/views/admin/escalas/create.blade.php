@@ -14,7 +14,7 @@
                 <span class="text-sm font-thin text-gray-500 mb-2">- Informe a data da escala.</span>
                 <input type="date" min="{{ date('Y-m-d') }}" max="{{ date("Y-m-d", strtotime("+1 month")) }}"
                        name="dt_escala" id="dt_escala"
-                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('dt_escala') border-[1px] border-red-500 @enderror"
+                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('dt_escala') border-red-500 @enderror"
                        value="{{ old('dt_escala') }}">
                 @error('dt_escala')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -25,7 +25,7 @@
                 <label for="hr_escala" class="text-gray-900 mb-2">Hora <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Informe o horário de início da escala.</span>
                 <input type="time" name="hr_escala" id="hr_escala"
-                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('hr_escala') border-[1px] border-red-500 @enderror"
+                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('hr_escala') border-red-500 @enderror"
                        value="{{ old('hr_escala') }}">
                 @error('hr_escala')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -35,7 +35,7 @@
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="evento_id" class="text-gray-900 mb-2">Evento <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Selecione o evento a qual a escala estará atrelada.</span>
-                <select name="evento_id" id="evento_id" @error('hr_escala') class="border-[1px] border-red-500" @enderror>
+                <select name="evento_id" id="evento_id" class="border border-gray-400 text-gray-700 @error('hr_escala') border-red-500 @enderror">
                     <option value=""></option>
                     @foreach($eventos as $evento)
                     <option value="{{ $evento->id }}">{{ $evento->descricao }}</option>
