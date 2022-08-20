@@ -1,6 +1,6 @@
 <nav class="sidebar flex flex-col mt-4 md:mt-10">
     <x-adm-menu-item :route="'dashboard'" :icon="'home-outline'">Home</x-adm-menu-item>
-    <x-adm-menu-item :route="'#'" :icon="'wallet-outline'">Ofertas</x-adm-menu-item>
+{{--    <x-adm-menu-item :route="'#'" :icon="'wallet-outline'">Ofertas</x-adm-menu-item>--}}
     <x-adm-menu-item :route="'testemunhos'" :icon="'chatbox-outline'">Testemunhos</x-adm-menu-item>
     <x-adm-menu-item :route="'eventos'" :icon="'calendar-outline'">Eventos</x-adm-menu-item>
     <x-adm-menu-item :route="'escalas'" :icon="'calendar-number-outline'">Escalas</x-adm-menu-item>
