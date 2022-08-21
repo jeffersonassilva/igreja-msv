@@ -1,13 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-    <section class="bg-gray-100">
 
-        <div class="container mx-auto max-w-[1080px] p-4">
-            @if($escalas->count())
-
+    @if($escalas->count())
+        <section class="bg-gray-100">
+            <div class="container mx-auto max-w-[1080px] p-4">
                 <h1 class="titulo-separador">Escalas</h1>
-
                 <ul class="inline-flex gap-4 mb-8 text-sm font-thin">
                     <li class="flex items-center">
                         <ion-icon name="radio-button-on" class="text-[#ff8537] bg-[#ff8537]"></ion-icon>
@@ -84,8 +82,22 @@
                         </section>
                     @endforeach
                 </div>
-
-            @endif
-        </div>
-    </section>
+            </div>
+        </section>
+    @else
+        <section>
+            <div class="container mx-auto max-w-[1080px] pt-4 flex flex-col justify-center items-center">
+                <h1 class="titulo-separador">Escalas</h1>
+                <div>
+                    <img
+                        class="w-[200px] md:w-[300px]"
+                        src="{{ asset('/img/results-not-found.jpg') }}"
+                        alt="sem registros">
+                </div>
+                <div class="md:text-xl text-neutral-500 py-4 mb-10 md:mb-20">
+                    Nenhum registro encontrado!
+                </div>
+            </div>
+        </section>
+    @endif
 @endsection
