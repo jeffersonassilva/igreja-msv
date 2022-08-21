@@ -37,7 +37,7 @@ class EscalaVoluntarioController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function new(Request $request)
     {
         if (!$request->get('nome')) {
             return redirect('escalas/#' . $request->get('escala_id'));
@@ -48,6 +48,25 @@ class EscalaVoluntarioController extends Controller
         $this->service->store($request);
 
         return redirect('escalas/#' . $request->get('escala_id'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        if (!$request->get('nome')) {
+            return redirect()->route('escalas.edit', $request->get('escala_id'));
+        }
+
+        $voluntario = $this->voluntarioService->firstOrCreate($request->get('nome'));
+        $request->request->add(['voluntario_id' => $voluntario->id]);
+        $this->service->store($request);
+
+        return redirect()
+            ->route('escalas.edit', $request->get('escala_id'))
+            ->with(Constants::MESSAGE, __(Constants::SUCCESS_UPDATE));
     }
 
     /**
