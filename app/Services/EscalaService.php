@@ -30,8 +30,10 @@ class EscalaService extends AbstractService
      */
     public function list()
     {
-        return $this->model->with('evento')
-            ->with('voluntarios')
+        return $this->model
+            ->whereHas('evento', function ($query) {
+                return $query->where('situacao', Constants::TRUE);
+            })
             ->where('situacao', Constants::TRUE)
             ->where('data', '>=', Carbon::now()->format('Y-m-d'))
             ->orderBy('data')

@@ -70,7 +70,7 @@ class EscalaController extends Controller
      */
     public function create()
     {
-        $eventos = $this->eventoService->all(['descricao' => Constants::CRESCENTE]);
+        $eventos = $this->eventoService->where(['situacao' => Constants::TRUE], ['descricao' => Constants::CRESCENTE])->get();
         return view('admin/escalas/create', array('eventos' => $eventos));
     }
 
