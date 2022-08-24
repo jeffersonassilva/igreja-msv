@@ -20,7 +20,7 @@ class Escala extends AbstractModel
     protected $fillable = [
         'id',
         'data',
-        'situacao',
+        'fechada',
         'evento_id',
     ];
 
