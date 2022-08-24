@@ -15,7 +15,7 @@
                     <span class="absolute top-2 right-2 flex justify-center items-center rounded-sm h-6 p-1 {{ $testemunho->situacao ? 'text-green-600' : 'text-red-400' }}">
                         <span class="text-xl flex items-center ml-1"><ion-icon name="{{ $testemunho->situacao ? 'checkmark-circle-outline' : 'close-circle-outline' }}"></ion-icon></span>
                     </span>
-                    <h3 class="text-gray-700 font-semibold">{{ $testemunho->nome }}</h3>
+                    <h3 class="text-gray-700 font-medium">{{ $testemunho->nome }}</h3>
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $testemunho->mensagem }}
                     </p>
