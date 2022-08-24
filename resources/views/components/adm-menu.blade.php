@@ -11,7 +11,7 @@
     <div>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <a class="px-6 lg:w-full h-14 relative text-gray-400
+            <a class="px-6 lg:w-full h-14 relative text-gray-500
                 flex gap-4 md:justify-center lg:justify-start items-center
                 hover:text-blue-500 hover:pl-8
                 transition-all duration-300 ease-in-out"
