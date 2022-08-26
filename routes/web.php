@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PastorController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Middleware\VerifyCsrfToken;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
-Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store');
+Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [IndexController::class, 'index'])->name('home');
