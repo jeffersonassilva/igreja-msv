@@ -7,6 +7,7 @@ use App\Http\Requests\EscalaRequest;
 use App\Services\EscalaFuncaoService;
 use App\Services\EscalaService;
 use App\Services\EventoService;
+use App\Services\VoluntarioService;
 
 /**
  * Class EscalaController
@@ -30,19 +31,27 @@ class EscalaController extends Controller
     private $eventoService;
 
     /**
+     * @var VoluntarioService
+     */
+    private $voluntarioService;
+
+    /**
      * @param EscalaService $service
      * @param EscalaFuncaoService $escalaFuncaoService
      * @param EventoService $eventoService
+     * @param VoluntarioService $voluntarioService
      */
     public function __construct(
         EscalaService $service,
         EscalaFuncaoService $escalaFuncaoService,
-        EventoService $eventoService
+        EventoService $eventoService,
+        VoluntarioService $voluntarioService
     )
     {
         $this->service = $service;
         $this->escalaFuncaoService = $escalaFuncaoService;
         $this->eventoService = $eventoService;
+        $this->voluntarioService = $voluntarioService;
     }
 
     /**
@@ -52,8 +61,13 @@ class EscalaController extends Controller
     {
         $data = $this->service->list();
         $funcoes = $this->escalaFuncaoService->list();
+        $voluntarios = $this->voluntarioService->all();
 
-        return view('escalas')->with(['escalas' => $data, 'funcoes' => $funcoes]);
+        return view('escalas')->with([
+            'escalas' => $data,
+            'funcoes' => $funcoes,
+            'voluntarios' => $voluntarios
+        ]);
     }
 
     /**
