@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PastorController;
 use App\Http\Controllers\Admin\PropositoController;
+use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Middleware\VerifyCsrfToken;
 
@@ -96,6 +97,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/voluntarios/{voluntario}/editar', [VoluntarioController::class, 'edit'])->name('voluntarios.edit');
     Route::put('/voluntarios/{voluntario}', [VoluntarioController::class, 'update'])->name('voluntarios.update');
     Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
+
+    //Relatorios
+    Route::get('/relatorio/voluntarios', [RelatorioController::class, 'voluntarios'])->name('relatorio.voluntarios');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
