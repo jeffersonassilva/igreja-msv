@@ -17,7 +17,15 @@
 {{--                    </li>--}}
 {{--                    <li class="flex items-center">--}}
 {{--                        <ion-icon name="radio-button-on" class="text-[#e969ff] bg-[#e969ff]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Culto Das Mulheres</span>--}}
+{{--                        <span class="pl-1 text-gray-500">Culto de Mulheres</span>--}}
+{{--                    </li>--}}
+{{--                    <li class="flex items-center">--}}
+{{--                        <ion-icon name="radio-button-on" class="text-[#355bf0] bg-[#355bf0]"></ion-icon>--}}
+{{--                        <span class="pl-1 text-gray-500">Culto de Imersão</span>--}}
+{{--                    </li>--}}
+{{--                    <li class="flex items-center">--}}
+{{--                        <ion-icon name="radio-button-on" class="text-[#42cb82] bg-[#42cb82]"></ion-icon>--}}
+{{--                        <span class="pl-1 text-gray-500">EBD</span>--}}
 {{--                    </li>--}}
 {{--                </ul>--}}
 
@@ -44,7 +52,7 @@
                                 @if($escala->evento_id == 1)
                                     <ul class="text-gray-500 text-xs leading-6 font-thin sm:text-sm sm:leading-7">
                                         @foreach($escala->voluntarios as $voluntario)
-                                        <li class="line-clamp-1">{{ $voluntario->nome }}</li>
+                                        <li class="line-clamp-1">{{ $voluntario->voluntario->nome }}</li>
                                         @endforeach
                                     </ul>
                                 @endif
@@ -60,17 +68,24 @@
                                                          inline-flex items-center justify-center cursor-help select-none"
                                                       title="{{ $voluntario->funcao ? $funcoes[$voluntario->funcao] : 'Função não definida' }}">{!! $voluntario->funcao ?? '&nbsp;' !!}
                                                 </span>
-                                                {{ $voluntario->nome }}
+                                                {{ $voluntario->voluntario->nome }}
                                             </li>
                                         @endforeach
                                     </ul>
                                 @endif
-
                             </div>
-                            <form role="form" action="{{ route('voluntarios.store') }}" method="post">
+
+                            <form role="form" action="{{ route('escalaVoluntario.store') }}" method="post">
                                 <div class="px-4 pb-4 flex justify-center items-center gap-1">
                                     <input type="hidden" name="escala_id" value="{{ $escala->id }}">
-                                    <input name="nome" type="text" placeholder="Digite seu nome" class="border border-gray-200 rounded-md w-full text-sm font-thin" />
+                                    <input name="nome" list="nome" autocomplete="off" type="text" placeholder="Digite seu nome" class="border border-gray-200 rounded-md w-full text-sm font-thin" />
+
+                                    <datalist id="nome">
+                                        @foreach($voluntarios as $voluntarioItem)
+                                        <option value="{{ $voluntarioItem->nome }}">
+                                        @endforeach
+                                    </datalist>
+
                                     <div class="pl-2 text-2xl">
                                         <button aria-label="Salvar" type="submit" class="flex items-center">
                                             <ion-icon name="add-circle-outline" class="text-gray-400"></ion-icon>
