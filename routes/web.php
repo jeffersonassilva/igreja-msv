@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\EscalaController;
+use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
@@ -35,7 +36,9 @@ Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
-Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/voluntarios', [EscalaVoluntarioController::class, 'store'])
+    ->name('escalaVoluntario.store')
+    ->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [IndexController::class, 'index'])->name('home');
@@ -79,9 +82,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/escalas/{escala}', [EscalaController::class, 'update'])->name('escalas.update');
     Route::delete('/escalas/{escala}', [EscalaController::class, 'destroy'])->name('escalas.destroy');
 
-    //Voluntários
-    Route::put('/voluntarios/{voluntario}', [VoluntarioController::class, 'update'])->name('voluntarios.update');
-    Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
+    //Escala-Voluntário
+    Route::put('/escala-voluntario/{voluntario}', [EscalaVoluntarioController::class, 'update'])->name('escalaVoluntario.update');
+    Route::delete('/escala-voluntario/{voluntario}', [EscalaVoluntarioController::class, 'destroy'])
+        ->name('escalaVoluntario.destroy')
+        ->withoutMiddleware([VerifyCsrfToken::class]);
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
@@ -96,4 +101,4 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/configuracoes/{usuario}', [ConfiguracaoController::class, 'update'])->name('configuracoes.update');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
