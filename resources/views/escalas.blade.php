@@ -75,7 +75,7 @@
                                 @endif
                             </div>
 
-                            <form role="form" action="{{ route('escalaVoluntario.store') }}" method="post">
+                            <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
                                 <div class="px-4 pb-4 flex justify-center items-center gap-1">
                                     <input type="hidden" name="escala_id" value="{{ $escala->id }}">
                                     <input name="nome" list="nome" autocomplete="off" type="text" placeholder="Digite seu nome" class="border border-gray-200 rounded-md w-full text-sm font-thin" />

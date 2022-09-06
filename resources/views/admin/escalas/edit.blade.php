@@ -111,6 +111,38 @@
     </section>
     @endif
 
+    <section>
+        <div class="mb-4 p-4 bg-white flex flex-col sm:flex-row sm:items-center">
+            <form class="form-horizontal w-full" role="form" method="post" action="{{ route('escalaVoluntario.store') }}">
+                @csrf
+                <input type="hidden" name="escala_id" value="{{ $data->id }}">
+
+                <label for="nome" class="text-gray-900">Novo voluntário</label><br />
+                <span class="text-sm font-thin text-gray-500">Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
+                <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center md:w-full mt-2">
+                    <input type="text" list="voluntarios" name="nome" id="nome" maxlength="100" autocomplete="off"
+                           class="border-gray-400 rounded-sm text-gray-700 w-[225px] @error('nome') border-[1px] border-red-500 @enderror">
+
+                    <datalist id="voluntarios">
+                        @foreach($voluntarios as $voluntarioItem)
+                            <option value="{{ $voluntarioItem->nome }}">
+                        @endforeach
+                    </datalist>
+
+                    <button aria-label="Salvar" type="submit"
+                            class="outline-0 rounded-md text-white font-normal border border-blue-400 bg-blue-400
+                                        hover:bg-blue-500
+                                        focus:bg-blue-500
+                                        px-3 py-1 mt-3 md:mt-0 inline-flex justify-center items-center w-fit
+                                        md:text-right">
+                        <ion-icon name="add-circle-outline"></ion-icon><span class="ml-2">Adicionar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('.funcao_select').change(function (){

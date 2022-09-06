@@ -105,9 +105,14 @@ class EscalaController extends Controller
      */
     public function edit($id)
     {
+        $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
         $eventos = $this->eventoService->all(['descricao' => Constants::CRESCENTE]);
         $data = $this->service->edit($id);
-        return view('admin/escalas/edit')->with(['data' => $data, 'eventos' => $eventos]);
+        return view('admin/escalas/edit')->with([
+            'data' => $data,
+            'eventos' => $eventos,
+            'voluntarios' => $voluntarios
+        ]);
     }
 
     /**

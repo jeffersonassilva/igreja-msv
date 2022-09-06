@@ -36,8 +36,8 @@ Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
-Route::post('/voluntarios', [EscalaVoluntarioController::class, 'store'])
-    ->name('escalaVoluntario.store')
+Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])
+    ->name('escalaVoluntario.new')
     ->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -83,6 +83,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::delete('/escalas/{escala}', [EscalaController::class, 'destroy'])->name('escalas.destroy');
 
     //Escala-Voluntário
+    Route::post('/escala-voluntario', [EscalaVoluntarioController::class, 'store'])->name('escalaVoluntario.store');
     Route::put('/escala-voluntario/{voluntario}', [EscalaVoluntarioController::class, 'update'])->name('escalaVoluntario.update');
     Route::delete('/escala-voluntario/{voluntario}', [EscalaVoluntarioController::class, 'destroy'])
         ->name('escalaVoluntario.destroy')
