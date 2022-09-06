@@ -76,7 +76,7 @@
             Lista de Voluntários
         </h3>
         @foreach($data->voluntarios as $voluntario)
-            <div class="mb-4 p-4 bg-white flex items-center">
+            <div class="mb-4 p-4 bg-white flex flex-col sm:flex-row sm:items-center">
                 <form class="form-horizontal" role="form" method="post" action="{{ route('escalaVoluntario.update', $voluntario) }}">
                 @method('PUT')
                 @csrf
@@ -94,7 +94,7 @@
                         </select>
                     </div>
                 </form>
-                <div class="flex-1 text-right">
+                <div class="flex-1 mt-3 sm:mt-0 sm:text-right">
                     <form action="{{ route('escalaVoluntario.destroy', $voluntario) }}" method="POST" class="inline">
                         @method('DELETE')
                         <button aria-label="Excluir"
@@ -102,7 +102,7 @@
                                 hover:text-white hover:bg-blue-400
                                 focus:text-white focus:bg-blue-400
                                 px-2 py-1 mr-1 inline-flex justify-center items-center">
-                            <ion-icon name="archive-outline"></ion-icon><span class="ml-1">Excluir</span>
+                            <ion-icon name="trash-outline"></ion-icon><span class="ml-1">Excluir</span>
                         </button>
                     </form>
                 </div>
