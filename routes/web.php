@@ -88,6 +88,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         ->name('escalaVoluntario.destroy')
         ->withoutMiddleware([VerifyCsrfToken::class]);
 
+    //Voluntários
+    Route::get('/voluntarios', [VoluntarioController::class, 'index'])->name('voluntarios');
+    Route::get('/voluntarios/adicionar', [VoluntarioController::class, 'create'])->name('voluntarios.create');
+    Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store');
+    Route::get('/voluntarios/{voluntario}/editar', [VoluntarioController::class, 'edit'])->name('voluntarios.edit');
+    Route::put('/voluntarios/{voluntario}', [VoluntarioController::class, 'update'])->name('voluntarios.update');
+    Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
+
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/adicionar', [UsuarioController::class, 'create'])->name('usuarios.create');
