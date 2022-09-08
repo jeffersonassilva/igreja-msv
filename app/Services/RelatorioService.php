@@ -31,7 +31,7 @@ class RelatorioService extends AbstractService
             })
             ->leftJoin('escalas', 'escalas.id', 'escala_voluntario.escala_id')
             ->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME)
-            ->orderBy(self::QUANTIDADE)
+            ->orderBy(self::QUANTIDADE, 'desc')
             ->orderBy(self::VOLUNTARIO_NOME)
             ->get();
     }
