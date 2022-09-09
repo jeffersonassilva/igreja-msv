@@ -49,6 +49,9 @@ class Escala extends AbstractModel
             case 5: //EBD
                 $color = '#42cb82';
                 break;
+            case 8: //Seminário de Casais
+                $color = '#ed143d';
+                break;
             default:
                 $color = '#333';
                 break;
