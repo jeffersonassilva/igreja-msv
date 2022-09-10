@@ -21,7 +21,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($usuarios as $usuario)
                 <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
-                    <h3 class="text-gray-700 font-semibold">{{ $usuario->name }}</h3>
+                    <h3 class="text-gray-700 font-medium">{{ $usuario->name }}</h3>
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $usuario->email }}
                     </p>
