@@ -34,7 +34,7 @@ class EscalaService extends AbstractService
             ->whereHas('evento', function ($query) {
                 return $query->where('situacao', Constants::TRUE);
             })
-            ->where('data', '>=', Carbon::now()->format('Y-m-d'))
+            ->where('data', '>=', Carbon::now()->format('Y-m-d H:i'))
             ->orderBy('data')
             ->get();
     }
