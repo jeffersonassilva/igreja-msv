@@ -26,16 +26,22 @@ class EscalaService extends AbstractService
     }
 
     /**
+     * @param $filter
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function list()
+    public function list($filter = array())
     {
-        return $this->model->with('voluntarios.voluntario')
+        $query = $this->model->with('voluntarios.voluntario')
             ->whereHas('evento', function ($query) {
                 return $query->where('situacao', Constants::TRUE);
-            })
-            ->where('data', '>=', Carbon::now()->format('Y-m-d H:i'))
-            ->orderBy('data')
-            ->get();
+            });
+
+        if (!isset($filter['fechada']) || $filter['fechada'] == 1) {
+            $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
+        }
+
+        $query->orderBy('data');
+
+        return $query->get();
     }
 }

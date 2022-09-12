@@ -8,6 +8,7 @@ use App\Services\EscalaFuncaoService;
 use App\Services\EscalaService;
 use App\Services\EventoService;
 use App\Services\VoluntarioService;
+use Illuminate\Http\Request;
 
 /**
  * Class EscalaController
@@ -55,11 +56,12 @@ class EscalaController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function list()
+    public function list(Request $request)
     {
-        $data = $this->service->list();
+        $data = $this->service->list($request->all());
         $funcoes = $this->escalaFuncaoService->list();
         $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
 
@@ -71,11 +73,12 @@ class EscalaController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->service->list();
+        $data = $this->service->list($request->all());
         return view('admin/escalas/index')->with('escalas', $data);
     }
 
