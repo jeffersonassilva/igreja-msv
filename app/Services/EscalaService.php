@@ -40,6 +40,23 @@ class EscalaService extends AbstractService
             $query->where('evento_id', $filter['evento_id']);
         }
 
+        if (isset($filter['periodo'])) {
+            switch ($filter['periodo']) {
+                case 'manha':
+                    $query->whereTime('data', '>=', Carbon::parse('06:00'))
+                        ->whereTime('data', '<=', Carbon::parse('11:59'));
+                    break;
+                case 'tarde':
+                    $query->whereTime('data', '>=', Carbon::parse('12:00'))
+                        ->whereTime('data', '<=', Carbon::parse('17:59'));
+                    break;
+                case 'noite':
+                    $query->whereTime('data', '>=', Carbon::parse('18:00'))
+                        ->whereTime('data', '<=', Carbon::parse('23:59'));
+                    break;
+            }
+        }
+
         if (isset($filter['mes'])) {
             $query->whereMonth('data', '=', $filter['mes']);
         }
