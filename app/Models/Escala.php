@@ -52,8 +52,14 @@ class Escala extends AbstractModel
             case 8: //Seminário de Casais
                 $color = '#ed143d';
                 break;
+            case 9: //Conferência de Louvor
+                $color = '#5d33a4';
+                break;
+            case 10: //Professor EBD
+                $color = '#92400e';
+                break;
             default:
-                $color = '#333';
+                $color = '#64748b';
                 break;
         }
 

@@ -5,8 +5,8 @@
          @if($escala->fechada) bg-[#dae8dc] border-gray-200 @else bg-white border-gray-100 @endif"
     >
     <div class="px-4 sm:px-6 mt-6 relative">
-        <div class="absolute left-[-3px] h-full w-[3px] @if($escala->fechada) bg-teal-600 @else bg-[{{ $escala->cor_indicacao }}] @endif"></div>
-        <div class="mb-3 @if($escala->fechada) text-teal-600 @else text-[{{ $escala->cor_indicacao }}] @endif">
+        <div class="absolute left-[-3px] h-full w-[3px]" style="background: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}"></div>
+        <div class="mb-3" style="color: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}">
             {{ $escala->evento->descricao }}
         </div>
         <div class="flex items-center">
