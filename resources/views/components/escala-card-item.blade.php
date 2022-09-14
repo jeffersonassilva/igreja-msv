@@ -1,4 +1,4 @@
-@props(['escala'])
+@props(['escala', 'funcoes'])
 
 <section id="{{ $escala->id }}"
          class="text-gray-600 border rounded-lg shadow-sm flex flex-col relative
@@ -37,16 +37,24 @@
 
         @if($escala->evento_id != 1)
             <ul class="text-xs leading-6 font-thin sm:text-sm sm:leading-7 @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
-                @php
-                    $funcoes = array('CG' => 'Coordenador Geral','R' => 'Recepção','A' => 'Apoio','H' => 'Higienização','SI' => 'Segurança Interna','SE' => 'Segurança Externa');
-                @endphp
                 @foreach($escala->voluntarios as $voluntario)
                     <li class="line-clamp-1">
-                        <span class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-100' : 'border border-dashed border-gray-200' }} font-normal rounded-sm w-[25px] h-[20px] mr-1
-                                 inline-flex items-center justify-center cursor-help select-none"
-                              title="{{ $voluntario->funcao ? $funcoes[$voluntario->funcao] : 'Função não definida' }}">{!! $voluntario->funcao ?? '&nbsp;' !!}
-                        </span>
+                        <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-100' : 'border border-dashed border-gray-200' }}
+                                font-normal rounded-sm px-1 h-[20px] mr-1 {{ $escala->evento_id == '10' ? 'w-[35px]' : 'w-[25px]' }}
+                                inline-flex items-center justify-center cursor-help select-none"
+                                data-popover-target="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}"
+                                data-popover-trigger="click" type="button">
+                            {!! $voluntario->funcao ?? '&nbsp;' !!}
+                        </button>
                         {{ $voluntario->voluntario->nome }}
+                        <div data-popover id="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}" role="tooltip"
+                             class="inline-block absolute invisible z-10 text-sm font-light text-gray-600 bg-amber-100
+                             rounded-lg border border-gray-200 shadow-md opacity-0 transition-opacity duration-300">
+                            <div class="p-3 space-y-2">
+                                {{ $voluntario->funcao ? $funcoes[$voluntario->funcao] : 'Função não definida' }}
+                            </div>
+                            <div data-popper-arrow></div>
+                        </div>
                     </li>
                 @endforeach
             </ul>
