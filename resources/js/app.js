@@ -135,4 +135,20 @@ $(document).ready(function () {
             });
         } // End if
     });
+
+    $('.btn-order').on('click', function () {
+        const params = document.location.search.substr(1).split('&');
+        const searchParams = new URLSearchParams(params.toString());
+        const field = $(this).attr('data-order-name');
+        let sort = 'asc';
+
+        if (searchParams.has('order')) {
+            let order = searchParams.get('order');
+            let arrOrder = order.split(':');
+            sort = arrOrder[1] === 'desc' ? 'asc' : 'desc';
+        }
+
+        searchParams.set('order', field + ':' + sort);
+        document.location.search = searchParams;
+    });
 });

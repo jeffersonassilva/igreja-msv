@@ -31,7 +31,7 @@ class RelatorioController extends Controller
         $filter = new UnserializeFilter();
         $order = $filter->getOrder($request);
 
-        $voluntarios = $this->relatorioService->voluntarios(array(), $order);
+        $voluntarios = $this->relatorioService->voluntarios(array(), $order ?: array('quantidade' => 'desc'));
         return view('admin/relatorios/voluntarios')->with(['voluntarios' => $voluntarios]);
     }
 }
