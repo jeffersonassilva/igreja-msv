@@ -32,6 +32,18 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="professor_ebd" class="text-gray-900 mb-2">Professor EBD <span class="text-red-500 font-bold">*</span></label>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Esse campo define se o voluntário participará da escala dos professores da EBD.</span>
+                <select name="professor_ebd" id="professor_ebd" class="md:max-w-[180px] text-gray-700 border-gray-400 @error('professor_ebd') border-red-500 @enderror">
+                    <option value="1" @if($data->professor_ebd == '1') selected @endif>Sim</option>
+                    <option value="0" @if($data->professor_ebd == '0') selected @endif>Não</option>
+                </select>
+                @error('professor_ebd')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="flex justify-between flex-col sm:flex-row">
                 <div class="mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"

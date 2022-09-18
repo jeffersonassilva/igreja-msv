@@ -27,6 +27,7 @@ class VoluntarioRequest extends FormRequest
         return [
             'nome' => 'required|max:100',
             'sexo' => ['required', Rule::in(['M', 'F'])],
+            'professor_ebd' => ['required', Rule::in(['0', '1'])],
         ];
     }
 
@@ -38,6 +39,7 @@ class VoluntarioRequest extends FormRequest
         return [
             'nome' => 'Nome',
             'sexo' => 'Sexo',
+            'professor_ebd' => 'Professor EBD',
         ];
     }
 }
