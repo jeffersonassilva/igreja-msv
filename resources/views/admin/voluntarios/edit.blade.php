@@ -13,9 +13,21 @@
                 <label for="nome" class="text-gray-900 mb-2">Nome <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Máximo de 100 caracteres.</span>
                 <input type="text" name="nome" id="nome" maxlength="100"
-                       class="border-gray-400 rounded-sm text-gray-700 @error('nome') border-[1px] border-red-500 @enderror"
+                       class="border-gray-400 rounded-sm text-gray-700 @error('nome') border-red-500 @enderror"
                        value="{{ old('nome') ?? $data->nome }}">
                 @error('nome')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="sexo" class="text-gray-900 mb-2">Sexo <span class="text-red-500 font-bold">*</span></label>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Esse campo será utilizado para o voluntariado em funções específicas.</span>
+                <select name="sexo" id="sexo" class="md:max-w-[180px] text-gray-700 border-gray-400 @error('sexo') border-red-500 @enderror">
+                    <option value="M" @if($data->sexo === 'M') selected @endif>Masculino</option>
+                    <option value="F" @if($data->sexo === 'F') selected @endif>Feminino</option>
+                </select>
+                @error('sexo')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
                 @enderror
             </div>
