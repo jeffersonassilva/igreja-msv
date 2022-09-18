@@ -6,11 +6,11 @@
     >
     <div class="px-4 sm:px-6 mt-6 relative">
         <div class="absolute left-[-3px] h-full w-[3px]" style="background: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}"></div>
-        <div class="mb-3" style="color: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}">
+        <div class="mb-3 text-lg" style="color: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}">
             {{ $escala->evento->descricao }}
         </div>
         <div class="flex items-center">
-            <div class="text-5xl font-thin tracking-tighter">
+            <div class="text-6xl font-thin tracking-tighter">
                 {{ \Carbon\Carbon::parse($escala->data)->format('d') }}
             </div>
             <div class="flex flex-col pl-4 flex-1">
@@ -26,9 +26,9 @@
             </div>
         </div>
     </div>
-    <div class="p-4 sm:p-6 mt-6 flex-1">
+    <div class="p-4 py-6 sm:px-6 flex-1">
         @if($escala->evento_id == 1)
-            <ul class="text-xs leading-6 font-thin sm:text-sm sm:leading-7 @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+            <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
                 @foreach($escala->voluntarios as $voluntario)
                     <li class="line-clamp-1">{{ $voluntario->voluntario->nome }}</li>
                 @endforeach
@@ -36,7 +36,7 @@
         @endif
 
         @if($escala->evento_id != 1)
-            <ul class="text-xs leading-6 font-thin sm:text-sm sm:leading-7 @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+            <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
                 @foreach($escala->voluntarios as $voluntario)
                     <li class="line-clamp-1">
                         <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-100' : 'border border-dashed border-gray-200' }}
@@ -59,11 +59,21 @@
                 @endforeach
             </ul>
         @endif
+
+        @if(!count($escala->voluntarios))
+            <div class="flex flex-col justify-center items-center text-gray-400 font-thin text-sm">
+                <img width="150" height="150" src="{{ asset('img/results-not-found.png') }}" alt="Sem voluntários">
+                Sem voluntários
+            </div>
+        @endif
     </div>
 
     {{ $slot }}
 
     @if($escala->fechada)
+        <div class="p-4 sm:px-6 text-sm text-gray-500 font-thin">
+            * Todos deverão estar a postos às {{ \Carbon\Carbon::parse($escala->data)->subMinutes(30)->format('H:i') }}h.
+        </div>
         <div class="absolute right-2 top-2">
             <span class="font-thin text-xs p-1 uppercase border border-teal-600 rounded-[4px] text-white bg-teal-600">
                 fechada
