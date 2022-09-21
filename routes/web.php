@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\CampanhaController;
 use App\Http\Controllers\EscalaController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\EventoController;
@@ -37,9 +38,11 @@ Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
-Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])
-    ->name('escalaVoluntario.new')
-    ->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);
+
+//Campanha de Daniel
+Route::get('/campanha-de-daniel', [CampanhaController::class, 'index'])->name('campanha.index');
+Route::post('/campanha-de-daniel', [CampanhaController::class, 'store'])->name('campanha.store')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/home', [IndexController::class, 'index'])->name('home');
