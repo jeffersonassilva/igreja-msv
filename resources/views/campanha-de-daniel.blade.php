@@ -3,10 +3,11 @@
 @section('content')
     <section class="bg-gray-100">
 
-        <div class="container mx-auto max-w-[1080px] md:p-4">
-            <div>
-                <img class="" src="{{ asset('img/campanha-de-daniel.jpg') }}" alt="adoracao">
-            </div>
+        <div class="w-full slider mx-auto bg-gray-100">
+            <picture class="w-full">
+                <source type="image/jpg" media="(min-width:640px)" srcset="{{ asset('img/campanha-web.jpg')}}">
+                <img src="{{ asset('img/campanha-mobile.jpg')}}" alt="Banner">
+            </picture>
         </div>
 
         <div class="container mx-auto max-w-[1080px] px-4 pb-4">
@@ -16,7 +17,7 @@
                     <div class="p-6 sm:p-8 my-4 sm:my-8 text-gray-600 bg-white border border-gray-100 rounded-lg font-thin italic sm:text-lg">
                         &ldquo;Naqueles dias, eu, Daniel, pranteei durante três semanas.
                         Manjar desejável não comi, nem carne, nem vinho encontraram na minha boca,
-                        nem me ungi com óleo algum, até que passaram as três semanas inteiras.&rdquo; (Dn 10:2-3)
+                        nem me ungi com óleo algum, até que passaram as três semanas inteiras.&rdquo; <nobr>(Dn 10:2-3)</nobr>
                     </div>
                 </div>
                 <form class="form-horizontal" role="form"
