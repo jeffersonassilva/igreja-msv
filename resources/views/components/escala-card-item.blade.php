@@ -2,11 +2,11 @@
 
 <section id="{{ $escala->id }}"
          class="text-gray-600 border rounded-lg shadow-sm flex flex-col relative
-         @if($escala->fechada) bg-[#d2e5d5] border-[#d2e5d5] @else bg-white border-gray-100 @endif"
+         @if($escala->fechada) bg-[#dae8dc] border-gray-200 @else bg-white border-gray-100 @endif"
     >
     <div class="px-4 sm:px-6 mt-6 relative">
-        <div class="absolute left-[-3px] h-full w-[3px] @if($escala->fechada) bg-gray-700 @else bg-[{{ $escala->cor_indicacao }}] @endif"></div>
-        <div class="mb-3 @if($escala->fechada) text-gray-700 @else text-[{{ $escala->cor_indicacao }}] @endif">
+        <div class="absolute left-[-3px] h-full w-[3px] @if($escala->fechada) bg-teal-600 @else bg-[{{ $escala->cor_indicacao }}] @endif"></div>
+        <div class="mb-3 @if($escala->fechada) text-teal-600 @else text-[{{ $escala->cor_indicacao }}] @endif">
             {{ $escala->evento->descricao }}
         </div>
         <div class="flex items-center">
@@ -57,7 +57,7 @@
 
     @if($escala->fechada)
         <div class="absolute right-2 top-2">
-            <span class="font-thin text-xs p-1 uppercase border border-gray-400 text-gray-400">
+            <span class="font-thin text-xs p-1 uppercase border border-teal-600 rounded-[4px] text-white bg-teal-600">
                 fechada
             </span>
         </div>
