@@ -36,7 +36,17 @@ class EscalaService extends AbstractService
                 return $query->where('situacao', Constants::TRUE);
             });
 
-        if (!isset($filter['fechada']) || $filter['fechada'] == 1) {
+        if (isset($filter['evento_id'])) {
+            $query->where('evento_id', $filter['evento_id']);
+        }
+
+        if (isset($filter['mes'])) {
+            $query->whereMonth('data', '=', $filter['mes']);
+        }
+
+        if (isset($filter['fechada'])) {
+            $query->where('fechada', $filter['fechada']);
+        } else {
             $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
         }
 
