@@ -64,11 +64,13 @@ class EscalaController extends Controller
         $data = $this->service->list($request->all());
         $funcoes = $this->escalaFuncaoService->list();
         $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
+        $eventos = $this->eventoService->all();
 
         return view('escalas')->with([
             'escalas' => $data,
             'funcoes' => $funcoes,
-            'voluntarios' => $voluntarios
+            'voluntarios' => $voluntarios,
+            'eventos' => $eventos
         ]);
     }
 
