@@ -3,6 +3,21 @@
         Relatório de Voluntários
     </x-slot>
 
+    <section>
+        <form class="form-horizontal" role="form" action="">
+            <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
+                <div class="flex justify-between">
+                    <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                        <option value=""></option>
+                        @foreach($meses as $key => $mes)
+                        <option value="{{ $key }}" @if(request()->query('mes') == $key) selected @endif>{{ $mes }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </form>
+    </section>
+
     <div class="p-0 sm:p-4 sm:bg-white sm:rounded-lg">
         <section class="lg:w-1/2">
             <header class="text-sm text-gray-500 bg-white p-4 text-center border border-gray-200 rounded-t-xl">
@@ -43,4 +58,12 @@
             @endforeach
         </section>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#mes_relatorio').on('change', function () {
+                $('.form-horizontal').submit();
+            });
+        });
+    </script>
 </x-app-layout>

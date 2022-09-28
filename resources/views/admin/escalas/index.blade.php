@@ -19,7 +19,7 @@
                 <div class="mb-2 sm:grid sm:gap-x-6 xl:grid-cols-3 lg:mb-0">
                     <div class="w-full lg:w-[300px] mb-6 sm:mb-4">
                         <h3 class="mb-1 font-medium text-sm text-gray-700">Evento</h3>
-                        <select name="evento_id" class="lg:max-w-[250px] apx-3 apy-2 mb-1 bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                        <select name="evento_id" class="lg:max-w-[250px] mb-1 bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
                             <option value="" selected>Todos</option>
                             @foreach($eventos as $evento)
                                 <option value="{{ $evento->id }}" @if(request()->query('evento_id') && request()->query('evento_id') == $evento->id) selected @endif>

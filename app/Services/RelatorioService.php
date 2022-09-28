@@ -31,7 +31,7 @@ class RelatorioService extends AbstractService
      */
     public function voluntarios(array $where = array(), array $order = array())
     {
-        $voluntario = Voluntario::select(
+        $query = Voluntario::select(
             self::VOLUNTARIO_ID,
             self::VOLUNTARIO_NOME,
             self::VOLUNTARIO_SEXO,
@@ -44,18 +44,19 @@ class RelatorioService extends AbstractService
             })
             ->leftJoin('escalas', 'escalas.id', 'escala_voluntario.escala_id');
 
-        foreach ($where as $key => $value) {
-            $voluntario->where($key, 'like', $value);
+        if (isset($where['mes']) && !empty($where['mes'])) {
+            $query->whereMonth('data', '=', substr($where['mes'], 5, 2));
+            $query->whereYear('data', '=', substr($where['mes'], 0, 4));
         }
 
-        $voluntario->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME, self::VOLUNTARIO_SEXO, self::VOLUNTARIO_PROFESSOR_EBD);
+        $query->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME, self::VOLUNTARIO_SEXO, self::VOLUNTARIO_PROFESSOR_EBD);
 
         foreach ($order as $key => $value) {
             if (in_array($key, $this->allowedFilters)) {
-                $voluntario->orderBy($key, $value);
+                $query->orderBy($key, $value);
             }
         }
 
-        return $voluntario->get();
+        return $query->get();
     }
 }

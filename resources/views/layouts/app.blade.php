@@ -11,10 +11,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=27">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=28">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js?v=7') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}?v=8" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

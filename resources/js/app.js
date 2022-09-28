@@ -137,7 +137,7 @@ $(document).ready(function () {
     });
 
     $('.btn-order').on('click', function () {
-        const params = document.location.search.substr(1).split('&');
+        const params = document.location.search;
         const searchParams = new URLSearchParams(params.toString());
         const field = $(this).attr('data-order-name');
         let sort = 'asc';
