@@ -24,6 +24,22 @@ class VoluntarioService extends AbstractService
     }
 
     /**
+     * @param array $where
+     * @param array $orders
+     * @return mixed
+     */
+    public function where(array $where = array(), array $orders = array())
+    {
+        $where = array_filter($where);
+
+        if (isset($where['nome'])) {
+            $where['nome'] = ['like', '%' . $where['nome'] . '%'];
+        }
+
+        return parent::where($where, $orders);
+    }
+
+    /**
      * @param $nome
      * @return mixed
      */

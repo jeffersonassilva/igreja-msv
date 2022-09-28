@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Constants;
 use App\Http\Requests\VoluntarioRequest;
 use App\Services\VoluntarioService;
+use Illuminate\Http\Request;
 
 /**
  * Class VoluntarioController
@@ -26,11 +27,12 @@ class VoluntarioController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = $this->service->all(array('nome' => Constants::CRESCENTE));
+        $data = $this->service->where($request->all(), array('nome' => Constants::CRESCENTE))->get();
         return view('admin/voluntarios/index')->with('voluntarios', $data);
     }
 
