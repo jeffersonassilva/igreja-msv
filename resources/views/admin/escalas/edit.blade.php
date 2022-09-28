@@ -12,7 +12,7 @@
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="dt_escala" class="text-gray-900 mb-2">Data <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Informe a data da escala.</span>
-                <input type="date" min="{{ date('Y-m-d') }}" max="{{ date("Y-m-d", strtotime("+2 month")) }}"
+                <input type="date" min="{{ \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}" max="{{ date("Y-m-d", strtotime("+2 month")) }}"
                        name="dt_escala" id="dt_escala"
                        class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('dt_escala') border-[1px] border-red-500 @enderror"
                        value="{{ old('dt_escala') ?? \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}">
