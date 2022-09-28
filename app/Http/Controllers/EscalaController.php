@@ -80,8 +80,9 @@ class EscalaController extends Controller
      */
     public function index(Request $request)
     {
+        $eventos = $this->eventoService->all();
         $data = $this->service->list($request->all());
-        return view('admin/escalas/index')->with('escalas', $data);
+        return view('admin/escalas/index')->with(['escalas' => $data, 'eventos' => $eventos]);
     }
 
     /**

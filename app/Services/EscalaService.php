@@ -57,12 +57,16 @@ class EscalaService extends AbstractService
             }
         }
 
+        if (isset($filter['fechada'])) {
+            $query->where('fechada', $filter['fechada']);
+        }
+
         if (isset($filter['mes'])) {
             $query->whereMonth('data', '=', $filter['mes']);
         }
 
-        if (isset($filter['fechada'])) {
-            $query->where('fechada', $filter['fechada']);
+        if (isset($filter['dt_escala'])) {
+            $query->whereDate('data', '=', $filter['dt_escala']);
         } else {
             $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
         }

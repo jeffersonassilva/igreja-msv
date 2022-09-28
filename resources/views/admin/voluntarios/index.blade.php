@@ -16,7 +16,7 @@
 
         <form class="form-horizontal" role="form" action="{{ route('voluntarios') }}">
             <div id="filtros" class="p-4 mb-4 md:p-6 bg-white rounded-lg hidden">
-                <div class="mb-6 md:grid md:gap-x-6 xl:grid-cols-3 lg:mb-0">
+                <div class="mb-2 md:grid md:gap-x-6 xl:grid-cols-3 lg:mb-0">
                     <div class="w-full lg:w-[300px] mb-6 md:mb-4 md:col-span-2 xl:col-span-1">
                         <h3 class="mb-1 font-medium text-sm text-gray-700">Nome</h3>
                         <input id="nome" type="text" value="{{ request()->query('nome') }}" name="nome"
