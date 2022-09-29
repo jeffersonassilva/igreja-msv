@@ -1,8 +1,8 @@
 @props(['escala', 'funcoes'])
 
 <section id="{{ $escala->id }}"
-         class="text-gray-600 border rounded-lg shadow-sm flex flex-col relative
-         @if($escala->fechada) bg-[#dae8dc] border-gray-200 @else bg-white border-gray-100 @endif"
+         class="text-gray-600 border-2 rounded-lg flex flex-col relative
+         @if($escala->fechada) bg-[#dae8dc] border-[#dae8dd] @else bg-white border-[#efefef] @endif"
     >
     <div class="px-4 sm:px-6 mt-6 relative">
         <div class="absolute left-[-3px] h-full w-[3px]" style="background: {{ $escala->fechada ? '#0D9488' : $escala->cor_indicacao }}"></div>

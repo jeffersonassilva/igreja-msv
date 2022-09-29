@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="bg-gray-100">
-        <div class="container mx-auto max-w-[1080px] p-4">
+        <div class="container mx-auto max-w-[1080px] 2xl:max-w-full p-4">
             <h1 class="titulo-separador" style="margin-bottom: 10px;">Escalas</h1>
 
             <div class="mb-6 flex justify-center items-center rounded-md" role="group">
@@ -130,7 +130,7 @@
             </div>
 
             @if($escalas->count())
-            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 xl:grid-cols-3 mb-8">
+            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 2xl:grid-cols-5 mb-8">
                 @foreach($escalas as $escala)
                     <x-escala-card-item :escala="$escala" :funcoes="$funcoes">
                         @if(!$escala->fechada)
