@@ -104,9 +104,14 @@
                     <p class="text-sm mt-2 text-gray-500">
                         Sexo: <span class="font-thin">{{ $voluntario->sexo === 'M' ? 'Masculino' : 'Feminino' }}</span>
                     </p>
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-gray-500 flex-1">
                         Professor EBD: <span class="font-thin">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</span>
                     </p>
+                    @if($voluntario->observacao)
+                    <p class="text-sm text-gray-500">
+                        Observação: <span class="font-thin">{{ $voluntario->observacao }}</span>
+                    </p>
+                    @endif
                     <div class="text-rights text-sm mt-3">
                         <a aria-label="Editar" href="{{ route('voluntarios.edit', $voluntario) }}"
                            class="outline-0 rounded-md text-blue-400 border border-blue-400
