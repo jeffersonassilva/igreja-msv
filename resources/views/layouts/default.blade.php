@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=16">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=17">
 {{--        <link rel="stylesheet" href="{{ asset('css/flickity.min.css') }}">--}}
 {{--        <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">--}}
 
@@ -58,6 +58,7 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/maskmoney/dist/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
         @yield('add-scripts')
     </body>
