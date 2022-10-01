@@ -5,8 +5,8 @@
 
         <div class="w-full slider mx-auto bg-gray-100">
             <picture class="w-full">
-                <source type="image/jpg" media="(min-width:640px)" srcset="{{ asset('img/campanha-web.jpg')}}">
-                <img src="{{ asset('img/campanha-mobile.jpg')}}" alt="Banner">
+                <source type="image/jpeg" media="(min-width:640px)" srcset="{{ asset('img/campanha-web.jpg') }}">
+                <img src="{{ asset('img/campanha-mobile.jpg') }}" alt="Banner">
             </picture>
         </div>
 
