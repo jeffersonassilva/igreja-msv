@@ -13,14 +13,23 @@ class RelatorioService extends AbstractService
 {
     const VOLUNTARIO_ID = 'voluntarios.id';
     const VOLUNTARIO_NOME = 'voluntarios.nome';
-    const QUANTIDADE = 'quantidade';
 
     /**
+     * @var string[]
+     */
+    private $allowedFilters = [
+        'nome',
+        'quantidade'
+    ];
+
+    /**
+     * @param array $where
+     * @param array $order
      * @return mixed
      */
-    public function voluntarios()
+    public function voluntarios(array $where = array(), array $order = array())
     {
-        return Voluntario::select(
+        $voluntario = Voluntario::select(
             self::VOLUNTARIO_ID,
             self::VOLUNTARIO_NOME,
             DB::raw('count(escala_voluntario.voluntario_id) AS quantidade')
@@ -29,10 +38,20 @@ class RelatorioService extends AbstractService
                 $join->on('escala_voluntario.voluntario_id', self::VOLUNTARIO_ID)
                     ->whereNull('escala_voluntario.deleted_at');
             })
-            ->leftJoin('escalas', 'escalas.id', 'escala_voluntario.escala_id')
-            ->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME)
-            ->orderBy(self::QUANTIDADE, 'desc')
-            ->orderBy(self::VOLUNTARIO_NOME)
-            ->get();
+            ->leftJoin('escalas', 'escalas.id', 'escala_voluntario.escala_id');
+
+        foreach ($where as $key => $value) {
+            $voluntario->where($key, 'like', $value);
+        }
+
+        $voluntario->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME);
+
+        foreach ($order as $key => $value) {
+            if (in_array($key, $this->allowedFilters)) {
+                $voluntario->orderBy($key, $value);
+            }
+        }
+
+        return $voluntario->get();
     }
 }
