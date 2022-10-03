@@ -83,21 +83,38 @@
                     <table class="w-full text-left text-gray-700">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-200 border-b">
                         <tr class="text-sm sm:text-base">
-                            <th scope="row" class="p-4 sm:px-6">Nome</th>
-                            <th scope="row" class="p-4 sm:px-6 text-center">Data</th>
-                            <th scope="row" class="p-4 sm:px-6 w-[1%]">Período</th>
+                            <th scope="row" class="p-4 sm:px-6 sm:w-[50%]">Nome</th>
+                            <th scope="row" class="p-4 sm:px-6 w-[1%] sm:w-[25%] text-center sm:text-left">Data</th>
+                            <th scope="row" class="p-4 sm:px-6 w-[1%] sm:w-[25%] hidden sm:block">Período</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($participantes as $participante)
                             <tr class="bg-gray-50 odd:bg-white border-b text-sm sm:text-base">
-                                <th scope="row" class="p-4 sm:px-6 whitespace-nowrap font-normal">
+                                <th scope="row" class="p-4 sm:px-6 font-normal">
                                     {{ $participante['nome'] }}
                                 </th>
-                                <td class="py-4 px-6 whitespace-nowrap text-center">
+                                <td class="py-4 px-6 whitespace-nowrap w-[1%] sm:w-[25%] text-right sm:text-left">
                                     {{ $participante['data_br'] }}
+                                    <div class="pt-1 sm:hidden text-xs font-thin">
+                                        @switch($participante['periodo'])
+                                            @case('Manhã')
+                                            <ion-icon name="sunny-outline"></ion-icon>
+                                            @break
+                                            @case('Tarde')
+                                            <ion-icon name="cloud-outline"></ion-icon>
+                                            @break
+                                            @case('Noite')
+                                            <ion-icon name="moon-outline"></ion-icon>
+                                            @break
+                                            @default
+                                            <ion-icon name="cloudy-night-outline"></ion-icon>
+                                            @break
+                                        @endswitch
+                                        <span class="pl-1">{{ $participante['periodo'] }}</span>
+                                    </div>
                                 </td>
-                                <td class="py-4 px-6 whitespace-nowrap">
+                                <td class="py-4 px-6 whitespace-nowrap hidden sm:block w-[1%] sm:w-[25%]">
                                     @switch($participante['periodo'])
                                         @case('Manhã')
                                         <ion-icon name="sunny-outline"></ion-icon>
