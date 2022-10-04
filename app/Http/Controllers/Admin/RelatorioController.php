@@ -6,7 +6,7 @@ use App\Helpers\UnserializeFilter;
 use App\Http\Controllers\Controller;
 use App\Services\EscalaService;
 use App\Services\RelatorioService;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
