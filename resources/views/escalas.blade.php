@@ -129,33 +129,6 @@
                 </p>
             </div>
 
-{{--                <ul class="inline-flex gap-4 mb-8 text-sm font-thin">--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#ff8537] bg-[#ff8537]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Limpeza</span>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#00d5ff] bg-[#00d5ff]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Culto Público</span>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#e969ff] bg-[#e969ff]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Culto de Mulheres</span>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#355bf0] bg-[#355bf0]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Culto de Imersão</span>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#42cb82] bg-[#42cb82]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">EBD</span>--}}
-{{--                    </li>--}}
-{{--                    <li class="flex items-center">--}}
-{{--                        <ion-icon name="radio-button-on" class="text-[#ed143d] bg-[#ed143d]"></ion-icon>--}}
-{{--                        <span class="pl-1 text-gray-500">Seminário de Casais</span>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-
             @if($escalas->count())
             <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 xl:grid-cols-3 mb-8">
                 @foreach($escalas as $escala)
