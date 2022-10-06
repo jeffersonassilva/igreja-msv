@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PastorController;
+use App\Http\Controllers\Admin\PerfilController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\UsuarioController;
@@ -111,7 +112,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
     Route::get('/usuarios/{usuario}/editar', [UsuarioController::class, 'edit'])->name('usuarios.edit');
     Route::put('/usuarios/{usuario}', [UsuarioController::class, 'update'])->name('usuarios.update');
-    Route::delete('/usuarios/{banner}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
+    Route::delete('/usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
+
+    //Perfis
+    Route::get('/perfis', [PerfilController::class, 'index'])->name('perfis');
+    Route::get('/perfis/adicionar', [PerfilController::class, 'create'])->name('perfis.create');
+    Route::post('/perfis', [PerfilController::class, 'store'])->name('perfis.store');
+    Route::get('/perfis/{perfil}/editar', [PerfilController::class, 'edit'])->name('perfis.edit');
+    Route::put('/perfis/{perfil}', [PerfilController::class, 'update'])->name('perfis.update');
+    Route::delete('/perfis/{perfil}', [PerfilController::class, 'destroy'])->name('perfis.destroy');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');

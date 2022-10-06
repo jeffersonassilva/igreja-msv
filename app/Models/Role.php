@@ -17,10 +17,6 @@ class Role extends AbstractModel
         'descricao',
     ];
 
-    protected $appends = [
-        'permissions'
-    ];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
