@@ -100,6 +100,7 @@
                 <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                     {{ $pastor->descricao }}
                 </p>
+                @can('adm-editar-pastor')
                 <div class="text-rights text-sm mt-3">
                     <a aria-label="Editar" href="{{ route('pastor.edit', $pastor) }}"
                        class="outline-0 rounded-md text-blue-400 border border-blue-400
@@ -109,6 +110,7 @@
                         <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
                     </a>
                 </div>
+                @endcan
             </div>
         </div>
     </section>
