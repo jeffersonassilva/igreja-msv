@@ -23,6 +23,7 @@
                         Situação: {{ $testemunho->situacao ? 'Ativo' : 'Pendente' }}
                     </p>
                     <div class="text-rights text-sm mt-3">
+                        @can('adm-editar-testemunho')
                         <a aria-label="Editar" href="{{ route('testemunhos.edit', $testemunho) }}"
                            class="outline-0 rounded-md text-blue-400 border border-blue-400
                             hover:text-white hover:bg-blue-400
@@ -30,7 +31,9 @@
                             px-2 py-1 inline-flex justify-center items-center">
                             <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
                         </a>
+                        @endcan
                         @if($testemunho->situacao)
+                            @can('adm-desativar-testemunho')
                             <a aria-label="Inativar" href="{{ route('testemunhos.disable', $testemunho) }}"
                                class="outline-0 rounded-md text-blue-400 border border-blue-400
                                 hover:text-white hover:bg-blue-400
@@ -38,7 +41,9 @@
                                 px-2 py-1 inline-flex justify-center items-center">
                                 <ion-icon name="close-circle-outline"></ion-icon><span class="ml-1">Desativar</span>
                             </a>
+                            @endcan
                         @else
+                            @can('adm-ativar-testemunho')
                             <a aria-label="Ativar" href="{{ route('testemunhos.enable', $testemunho) }}"
                                class="outline-0 rounded-md text-blue-400 border border-blue-400
                             hover:text-white hover:bg-blue-400
@@ -46,6 +51,7 @@
                             px-2 py-1 inline-flex justify-center items-center">
                                 <ion-icon name="checkmark-circle-outline"></ion-icon><span class="ml-1">Ativar</span>
                             </a>
+                            @endcan
                         @endif
                     </div>
                 </div>
