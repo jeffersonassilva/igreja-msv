@@ -8,7 +8,8 @@
             <h3 class="text-gray-500">
                 Lista de Usuários
             </h3>
-            <div class="text-rights text-sm">
+            <div class="text-sm">
+                @can('adm-adicionar-usuario')
                 <a aria-label="Adicionar" href="{{ route('usuarios.create') }}"
                    class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
                                 hover:bg-blue-500
@@ -16,6 +17,7 @@
                                 px-2 py-1 inline-flex justify-center items-center">
                     <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
                 </a>
+                @endcan
             </div>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
