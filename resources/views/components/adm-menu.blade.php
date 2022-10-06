@@ -6,7 +6,7 @@
     <x-adm-menu-item :route="'escalas'" :icon="'calendar-number-outline'">Escalas</x-adm-menu-item>
     <x-adm-menu-item :route="'voluntarios'" :icon="'shirt-outline'">Voluntários</x-adm-menu-item>
     <x-adm-menu-item :route="'relatorio.voluntarios'" :icon="'document-text-outline'">Relatório</x-adm-menu-item>
-    <x-adm-menu-item :route="'usuarios'" :icon="'person-outline'">Usuários</x-adm-menu-item>
+    @can('adm-menu-usuario')<x-adm-menu-item :route="'usuarios'" :icon="'person-outline'">Usuários</x-adm-menu-item>@endcan
     <x-adm-menu-item :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
 
     <div class="pb-24 md:pb-4">
