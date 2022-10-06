@@ -9,6 +9,7 @@
                 Lista de Banners
             </h3>
             <div class="text-rights text-sm">
+                @can('adm-adicionar-banner')
                 <a aria-label="Adicionar" href="{{ route('banners.create') }}"
                    class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
                                 hover:bg-blue-500
@@ -16,6 +17,7 @@
                                 px-2 py-1 inline-flex justify-center items-center">
                     <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
                 </a>
+                @endcan
             </div>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
@@ -26,7 +28,9 @@
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $banner->descricao }}
                     </p>
+                    @can('adm-editar-banner', 'adm-excluir-banner')
                     <div class="text-rights text-sm mt-3">
+                        @can('adm-editar-banner')
                         <a aria-label="Editar" href="{{ route('banners.edit', $banner) }}"
                            class="outline-0 rounded-md text-blue-400 border border-blue-400
                                 hover:text-white hover:bg-blue-400
@@ -34,6 +38,8 @@
                                 px-2 py-1 mr-1 inline-flex justify-center items-center">
                             <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
                         </a>
+                        @endcan
+                        @can('adm-excluir-banner')
                         <form action="{{ route('banners.destroy', $banner) }}" method="POST" class="inline">
                             @method('DELETE')
                             @csrf
@@ -45,7 +51,9 @@
                                 <ion-icon name="archive-outline"></ion-icon><span class="ml-1">Arquivar</span>
                             </button>
                         </form>
+                        @endcan
                     </div>
+                    @endcan
                 </div>
             @endforeach
         </div>

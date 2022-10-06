@@ -28,6 +28,7 @@ class BannerController extends Controller
      */
     public function create()
     {
+        $this->checkPermission('adm-adicionar-banner');
         return view('admin/banners/create');
     }
 
@@ -37,6 +38,7 @@ class BannerController extends Controller
      */
     public function store(BannerRequest $request)
     {
+        $this->checkPermission('adm-adicionar-banner');
         $this->service->store($request);
         return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_CREATE));
     }
@@ -47,6 +49,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-banner');
         $data = $this->service->edit($id);
         return view('admin/banners/edit')->with(['data' => $data]);
     }
@@ -58,6 +61,7 @@ class BannerController extends Controller
      */
     public function update(BannerRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-banner');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
     }
@@ -68,6 +72,7 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
+        $this->checkPermission('adm-excluir-banner');
         $this->service->destroy($id);
         return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_ARCHIVE));
     }
