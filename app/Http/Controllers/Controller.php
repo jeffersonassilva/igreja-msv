@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Constants;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Gate;
 
 class Controller extends BaseController
 {
@@ -20,5 +22,16 @@ class Controller extends BaseController
     public function redirectWithMessage($route, $mensagem): \Illuminate\Http\RedirectResponse
     {
         return redirect()->route($route)->with(Constants::MESSAGE, $mensagem);
+    }
+
+    /**
+     * @param $action
+     * @return void
+     */
+    public function checkPermission($action)
+    {
+        if (Gate::denies($action, User::class)) {
+            abort(403, 'Sem permissão de acesso');
+        }
     }
 }
