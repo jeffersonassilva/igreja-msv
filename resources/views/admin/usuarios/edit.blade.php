@@ -31,6 +31,32 @@
                 @enderror
             </div>
 
+            @can('adm-editar-perfil')
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="permissoes" class="text-gray-900 mb-2">Perfis</label>
+                <span class="text-sm font-thin text-gray-500 mb-4">- Selecione os perfis que o usuário possui.</span>
+
+                <div class="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-4">
+                    @foreach($perfis as $perfil)
+                        <div class="flex border border-gray-200 rounded p-2">
+                            <div class="flex items-center h-5">
+                                <input name="roles[]" id="role-checkbox-{{ $perfil['id'] }}"
+                                       type="checkbox" value="{{ $perfil['id'] }}"
+                                       @if($perfil['checked']) checked="checked" @endif
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="role-checkbox-{{ $perfil['id'] }}"
+                                       class="font-medium text-gray-700 cursor-pointer select-none">
+                                    {{ $perfil['descricao'] }}
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endcan
+
             <div class="flex justify-between flex-col sm:flex-row">
                 <div class="mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"
