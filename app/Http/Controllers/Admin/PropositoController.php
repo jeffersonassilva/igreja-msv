@@ -29,6 +29,7 @@ class PropositoController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-proposito');
         $proposito = $this->service->edit($id);
         return view('admin/propositos/edit')->with(['proposito' => $proposito]);
     }
@@ -40,6 +41,7 @@ class PropositoController extends Controller
      */
     public function update(PropositoRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-proposito');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
     }
