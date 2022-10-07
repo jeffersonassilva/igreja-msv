@@ -35,7 +35,7 @@
                             @endcan
 
                             @can('adm-excluir-banner')
-                                <x-button.delete :route="'banners.destroy'" :object="$banner" title="Arquivar" icon="archive-outline"></x-button.delete>
+                                <x-button.delete :route="'banners.destroy'" :object="$banner" title="Arquivar"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany

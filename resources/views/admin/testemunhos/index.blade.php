@@ -28,11 +28,11 @@
                         @endcan
                         @if($testemunho->situacao)
                             @can('adm-desativar-testemunho')
-                                <x-button.edit :route="'testemunhos.disable'" :object="$testemunho" title="Desativar" icon="close-circle-outline"></x-button.edit>
+                                <x-button.edit :route="'testemunhos.disable'" :object="$testemunho" title="Desativar" :lighter="true"></x-button.edit>
                             @endcan
                         @else
                             @can('adm-ativar-testemunho')
-                                <x-button.edit :route="'testemunhos.enable'" :object="$testemunho" title="Ativar" icon="checkmark-circle-outline"></x-button.edit>
+                                <x-button.edit :route="'testemunhos.enable'" :object="$testemunho" title="Ativar" :lighter="true"></x-button.edit>
                             @endcan
                         @endif
                     </div>
