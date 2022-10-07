@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
+use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PastorController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CampanhaController;
-use App\Http\Controllers\EscalaController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;

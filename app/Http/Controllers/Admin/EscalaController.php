@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Constants;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EscalaRequest;
 use App\Services\EscalaFuncaoService;
 use App\Services\EscalaService;
@@ -80,6 +81,7 @@ class EscalaController extends Controller
      */
     public function index(Request $request)
     {
+        $this->checkPermission('adm-listar-escala');
         $eventos = $this->eventoService->all();
         $data = $this->service->list($request->all());
         return view('admin/escalas/index')->with(['escalas' => $data, 'eventos' => $eventos]);
@@ -90,6 +92,7 @@ class EscalaController extends Controller
      */
     public function create()
     {
+        $this->checkPermission('adm-adicionar-escala');
         $eventos = $this->eventoService->where(['situacao' => Constants::TRUE], ['descricao' => Constants::CRESCENTE])->get();
         return view('admin/escalas/create', array('eventos' => $eventos));
     }
@@ -100,6 +103,7 @@ class EscalaController extends Controller
      */
     public function store(EscalaRequest $request)
     {
+        $this->checkPermission('adm-adicionar-escala');
         $this->setDataEscala($request);
         $this->service->store($request);
         return $this->redirectWithMessage('escalas', __(Constants::SUCCESS_CREATE));
@@ -111,6 +115,7 @@ class EscalaController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-escala');
         $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
         $eventos = $this->eventoService->all(['descricao' => Constants::CRESCENTE]);
         $data = $this->service->edit($id);
@@ -128,6 +133,7 @@ class EscalaController extends Controller
      */
     public function update(EscalaRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-escala');
         $this->setDataEscala($request);
         $this->service->update($request, $id);
         return $this->redirectWithMessage('escalas', __(Constants::SUCCESS_UPDATE));
@@ -139,6 +145,7 @@ class EscalaController extends Controller
      */
     public function destroy($id)
     {
+        $this->checkPermission('adm-excluir-escala');
         $this->service->destroy($id);
         return $this->redirectWithMessage('escalas', __(Constants::SUCCESS_DESTROY));
     }
