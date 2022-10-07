@@ -23,9 +23,9 @@
                 <label for="permissoes" class="text-gray-900 mb-2">Permissões</label>
                 <span class="text-sm font-thin text-gray-500 mb-4">- Selecione todas as permissões que o perfil possui.</span>
 
-                <div class="grid gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-4">
+                <div class="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-4">
                     @foreach($permissoes as $permissao)
-                        <div class="flex">
+                        <div class="flex border border-gray-200 rounded p-2">
                             <div class="flex items-center h-5">
                                 <input name="permissions[]" id="permissao-checkbox-{{ $permissao->id }}"
                                        type="checkbox" value="{{ $permissao->id }}"
@@ -35,7 +35,8 @@
                                 <label for="permissao-checkbox-{{ $permissao->id }}" class="font-medium text-gray-700">
                                     {{ $permissao->descricao }}
                                 </label>
-                                <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500">
+                                <p id="permissao-checkbox-{{ $permissao->id }}"
+                                   class="text-xs font-normal text-gray-500">
                                     {{ $permissao->nome }}
                                 </p>
                             </div>
