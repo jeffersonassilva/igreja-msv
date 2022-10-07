@@ -5,6 +5,8 @@
     flex gap-4 md:justify-center lg:justify-start items-center
     hover:text-blue-500 lg:hover:pl-8
     transition-all duration-300 ease-in-out">
-    <ion-icon name="{{ $icon }}"></ion-icon>
+    <div class="lg:w-[22px]">
+        <ion-icon name="{{ $icon }}"></ion-icon>
+    </div>
     <h3 class="md:hidden lg:block text-sm font-medium">{{ $slot }}</h3>
 </a>
