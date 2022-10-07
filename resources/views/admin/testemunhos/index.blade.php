@@ -28,23 +28,11 @@
                         @endcan
                         @if($testemunho->situacao)
                             @can('adm-desativar-testemunho')
-                            <a aria-label="Inativar" href="{{ route('testemunhos.disable', $testemunho) }}"
-                               class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                hover:text-white hover:bg-blue-400
-                                focus:text-white focus:bg-blue-400
-                                px-2 py-1 inline-flex justify-center items-center">
-                                <ion-icon name="close-circle-outline"></ion-icon><span class="ml-1">Desativar</span>
-                            </a>
+                                <x-button.edit :route="'testemunhos.disable'" :object="$testemunho" title="Desativar" icon="close-circle-outline"></x-button.edit>
                             @endcan
                         @else
                             @can('adm-ativar-testemunho')
-                            <a aria-label="Ativar" href="{{ route('testemunhos.enable', $testemunho) }}"
-                               class="outline-0 rounded-md text-blue-400 border border-blue-400
-                            hover:text-white hover:bg-blue-400
-                            focus:text-white focus:bg-blue-400
-                            px-2 py-1 inline-flex justify-center items-center">
-                                <ion-icon name="checkmark-circle-outline"></ion-icon><span class="ml-1">Ativar</span>
-                            </a>
+                                <x-button.edit :route="'testemunhos.enable'" :object="$testemunho" title="Ativar" icon="checkmark-circle-outline"></x-button.edit>
                             @endcan
                         @endif
                     </div>
