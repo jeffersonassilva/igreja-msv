@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * Class VoluntarioRequest
@@ -25,6 +26,7 @@ class VoluntarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:100',
+            'sexo' => ['required', Rule::in(['M', 'F'])],
         ];
     }
 
@@ -35,6 +37,7 @@ class VoluntarioRequest extends FormRequest
     {
         return [
             'nome' => 'Nome',
+            'sexo' => 'Sexo',
         ];
     }
 }
