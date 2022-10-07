@@ -120,13 +120,7 @@
                     @canany(['adm-adicionar-voluntario', 'adm-excluir-voluntario'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-adicionar-voluntario')
-                                <a aria-label="Editar" href="{{ route('voluntarios.edit', $voluntario) }}"
-                                   class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                   hover:text-white hover:bg-blue-400 focus:text-white focus:bg-blue-400
-                                   px-2 py-1 inline-flex justify-center items-center">
-                                    <ion-icon name="create-outline"></ion-icon>
-                                    <span class="ml-1">Editar</span>
-                                </a>
+                                <x-button.edit :route="'voluntarios.edit'" :object="$voluntario"></x-button.edit>
                             @endcan
 
                             @can('adm-excluir-voluntario')

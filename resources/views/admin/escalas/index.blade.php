@@ -95,13 +95,7 @@
                     @canany(['adm-editar-escala', 'adm-excluir-escala'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-editar-escala')
-                                <a aria-label="Editar" href="{{ route('escalas.edit', $escala) }}"
-                                   class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                   hover:text-white hover:bg-blue-400 focus:text-white focus:bg-blue-400
-                                   px-2 py-1 inline-flex justify-center items-center">
-                                    <ion-icon name="create-outline"></ion-icon>
-                                    <span class="ml-1">Editar</span>
-                                </a>
+                                <x-button.edit :route="'escalas.edit'" :object="$escala"></x-button.edit>
                             @endcan
 
                             @can('adm-excluir-escala')

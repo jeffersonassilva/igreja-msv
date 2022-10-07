@@ -28,32 +28,27 @@
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
                         {{ $banner->descricao }}
                     </p>
-                    @can('adm-editar-banner', 'adm-excluir-banner')
-                    <div class="text-rights text-sm mt-3">
-                        @can('adm-editar-banner')
-                        <a aria-label="Editar" href="{{ route('banners.edit', $banner) }}"
-                           class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                hover:text-white hover:bg-blue-400
-                                focus:text-white focus:bg-blue-400
-                                px-2 py-1 mr-1 inline-flex justify-center items-center">
-                            <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
-                        </a>
-                        @endcan
-                        @can('adm-excluir-banner')
-                        <form action="{{ route('banners.destroy', $banner) }}" method="POST" class="inline">
-                            @method('DELETE')
-                            @csrf
-                            <button aria-label="Arquivar"
-                               class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                hover:text-white hover:bg-blue-400
-                                focus:text-white focus:bg-blue-400
-                                px-2 py-1 mr-1 inline-flex justify-center items-center">
-                                <ion-icon name="archive-outline"></ion-icon><span class="ml-1">Arquivar</span>
-                            </button>
-                        </form>
-                        @endcan
-                    </div>
-                    @endcan
+                    @canany(['adm-editar-banner', 'adm-excluir-banner'])
+                        <div class="text-rights text-sm mt-3">
+                            @can('adm-editar-banner')
+                                <x-button.edit :route="'banners.edit'" :object="$banner"></x-button.edit>
+                            @endcan
+
+                            @can('adm-excluir-banner')
+                                <form action="{{ route('banners.destroy', $banner) }}" method="POST" class="inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button aria-label="Arquivar"
+                                            class="outline-0 rounded-md text-blue-400 border border-blue-400
+                                            hover:text-white hover:bg-blue-400 focus:text-white focus:bg-blue-400
+                                            px-2 py-1 mr-1 inline-flex justify-center items-center">
+                                        <ion-icon name="archive-outline"></ion-icon>
+                                        <span class="ml-1">Arquivar</span>
+                                    </button>
+                                </form>
+                            @endcan
+                        </div>
+                    @endcanany
                 </div>
             @endforeach
         </div>
@@ -74,13 +69,7 @@
                     </p>
                     @can('adm-editar-proposito')
                     <div class="text-rights text-sm mt-3">
-                        <a aria-label="Editar" href="{{ route('propositos.edit', $proposito) }}"
-                           class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                hover:text-white hover:bg-blue-400
-                                focus:text-white focus:bg-blue-400
-                                px-2 py-1 inline-flex justify-center items-center">
-                            <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
-                        </a>
+                        <x-button.edit :route="'propositos.edit'" :object="$proposito"></x-button.edit>
                     </div>
                     @endcan
                 </div>
@@ -102,13 +91,7 @@
                 </p>
                 @can('adm-editar-pastor')
                 <div class="text-rights text-sm mt-3">
-                    <a aria-label="Editar" href="{{ route('pastor.edit', $pastor) }}"
-                       class="outline-0 rounded-md text-blue-400 border border-blue-400
-                            hover:text-white hover:bg-blue-400
-                            focus:text-white focus:bg-blue-400
-                            px-2 py-1 inline-flex justify-center items-center">
-                        <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
-                    </a>
+                    <x-button.edit :route="'pastor.edit'" :object="$pastor"></x-button.edit>
                 </div>
                 @endcan
             </div>
