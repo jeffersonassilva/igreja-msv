@@ -4,7 +4,9 @@
     @can('adm-menu-testemunho')
         <x-adm-menu-item :route="'testemunhos'" :icon="'chatbox-outline'">Testemunhos</x-adm-menu-item>
     @endcan
-    <x-adm-menu-item :route="'eventos'" :icon="'calendar-outline'">Eventos</x-adm-menu-item>
+    @can('adm-menu-evento')
+        <x-adm-menu-item :route="'eventos'" :icon="'calendar-outline'">Eventos</x-adm-menu-item>
+    @endcan
     <x-adm-menu-item :route="'escalas'" :icon="'calendar-number-outline'">Escalas</x-adm-menu-item>
     <x-adm-menu-item :route="'voluntarios'" :icon="'shirt-outline'">Voluntários</x-adm-menu-item>
     <x-adm-menu-item :route="'relatorio.voluntarios'" :icon="'document-text-outline'">Relatório</x-adm-menu-item>
