@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Constants;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\VoluntarioRequest;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class VoluntarioController extends Controller
      */
     public function index(Request $request)
     {
+        $this->checkPermission('adm-listar-voluntario');
         $data = $this->service->where($request->all(), array('nome' => Constants::CRESCENTE))->get();
         return view('admin/voluntarios/index')->with('voluntarios', $data);
     }
@@ -41,6 +43,7 @@ class VoluntarioController extends Controller
      */
     public function create()
     {
+        $this->checkPermission('adm-adicionar-voluntario');
         return view('admin/voluntarios/create');
     }
 
@@ -50,6 +53,7 @@ class VoluntarioController extends Controller
      */
     public function store(VoluntarioRequest $request)
     {
+        $this->checkPermission('adm-adicionar-voluntario');
         $this->service->store($request);
         return $this->redirectWithMessage('voluntarios', __(Constants::SUCCESS_CREATE));
     }
@@ -60,6 +64,7 @@ class VoluntarioController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-voluntario');
         $data = $this->service->edit($id);
         return view('admin/voluntarios/edit')->with(['data' => $data]);
     }
@@ -71,6 +76,7 @@ class VoluntarioController extends Controller
      */
     public function update(VoluntarioRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-voluntario');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('voluntarios', __(Constants::SUCCESS_UPDATE));
     }
@@ -81,6 +87,7 @@ class VoluntarioController extends Controller
      */
     public function destroy($id)
     {
+        $this->checkPermission('adm-excluir-voluntario');
         $this->service->destroy($id);
         return $this->redirectWithMessage('voluntarios', __(Constants::SUCCESS_DESTROY));
     }
