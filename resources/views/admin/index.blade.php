@@ -10,13 +10,7 @@
             </h3>
             <div class="text-rights text-sm">
                 @can('adm-adicionar-banner')
-                <a aria-label="Adicionar" href="{{ route('banners.create') }}"
-                   class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
-                                hover:bg-blue-500
-                                focus:bg-blue-500
-                                px-2 py-1 inline-flex justify-center items-center">
-                    <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
-                </a>
+                    <x-button.link title="Adicionar" :route="route('banners.create')"></x-button.link>
                 @endcan
             </div>
         </div>
@@ -31,11 +25,11 @@
                     @canany(['adm-editar-banner', 'adm-excluir-banner'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-editar-banner')
-                                <x-button.edit :route="'banners.edit'" :object="$banner"></x-button.edit>
+                                <x-button.link title="Editar" :route="route('banners.edit', $banner)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-banner')
-                                <x-button.delete :route="'banners.destroy'" :object="$banner" title="Arquivar"></x-button.delete>
+                                <x-button.delete title="Arquivar" :route="route('banners.destroy', $banner)"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
@@ -58,9 +52,9 @@
                         {{ $proposito->descricao }}
                     </p>
                     @can('adm-editar-proposito')
-                    <div class="text-rights text-sm mt-3">
-                        <x-button.edit :route="'propositos.edit'" :object="$proposito"></x-button.edit>
-                    </div>
+                        <div class="text-rights text-sm mt-3">
+                            <x-button.link title="Editar" :route="route('propositos.edit', $proposito)"></x-button.link>
+                        </div>
                     @endcan
                 </div>
             @endforeach
@@ -80,9 +74,9 @@
                     {{ $pastor->descricao }}
                 </p>
                 @can('adm-editar-pastor')
-                <div class="text-rights text-sm mt-3">
-                    <x-button.edit :route="'pastor.edit'" :object="$pastor"></x-button.edit>
-                </div>
+                    <div class="text-rights text-sm mt-3">
+                        <x-button.link title="Editar" :route="route('pastor.edit', $pastor)"></x-button.link>
+                    </div>
                 @endcan
             </div>
         </div>

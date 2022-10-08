@@ -117,14 +117,14 @@
                     </p>
                     @endif
 
-                    @canany(['adm-adicionar-voluntario', 'adm-excluir-voluntario'])
+                    @canany(['adm-editar-voluntario', 'adm-excluir-voluntario'])
                         <div class="text-rights text-sm mt-3">
-                            @can('adm-adicionar-voluntario')
-                                <x-button.edit :route="'voluntarios.edit'" :object="$voluntario"></x-button.edit>
+                            @can('adm-editar-voluntario')
+                                <x-button.link title="Editar" :route="route('voluntarios.edit', $voluntario)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-voluntario')
-                                <x-button.delete :route="'voluntarios.destroy'" :object="$voluntario"></x-button.delete>
+                                <x-button.delete :route="route('voluntarios.destroy', $voluntario)"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany

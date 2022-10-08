@@ -10,13 +10,7 @@
             </h3>
             <div class="text-sm">
                 @can('adm-adicionar-usuario')
-                <a aria-label="Adicionar" href="{{ route('usuarios.create') }}"
-                   class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
-                                hover:bg-blue-500
-                                focus:bg-blue-500
-                                px-2 py-1 inline-flex justify-center items-center">
-                    <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
-                </a>
+                    <x-button.link title="Adicionar" :route="route('usuarios.create')"></x-button.link>
                 @endcan
             </div>
         </div>
@@ -31,11 +25,11 @@
                         @canany(['adm-editar-usuario', 'adm-excluir-usuario'])
                             <div class="text-rights text-sm mt-3">
                                 @can('adm-editar-usuario')
-                                    <x-button.edit :route="'usuarios.edit'" :object="$usuario"></x-button.edit>
+                                    <x-button.link title="Editar" :route="route('usuarios.edit', $usuario)"></x-button.link>
                                 @endcan
 
                                 @can('adm-excluir-usuario')
-                                    <x-button.delete :route="'usuarios.destroy'" :object="$usuario"></x-button.delete>
+                                    <x-button.delete :route="route('usuarios.destroy', $usuario)"></x-button.delete>
                                 @endcan
                             </div>
                         @endcanany

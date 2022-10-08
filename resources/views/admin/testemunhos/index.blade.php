@@ -24,15 +24,15 @@
                     </p>
                     <div class="text-rights text-sm mt-3">
                         @can('adm-editar-testemunho')
-                            <x-button.edit :route="'testemunhos.edit'" :object="$testemunho"></x-button.edit>
+                            <x-button.link title="Editar" :route="route('testemunhos.edit', $testemunho)"></x-button.link>
                         @endcan
                         @if($testemunho->situacao)
                             @can('adm-desativar-testemunho')
-                                <x-button.edit :route="'testemunhos.disable'" :object="$testemunho" title="Desativar" :lighter="true"></x-button.edit>
+                                <x-button.link title="Desativar" :route="route('testemunhos.disable', $testemunho)" :lighter="true"></x-button.link>
                             @endcan
                         @else
                             @can('adm-ativar-testemunho')
-                                <x-button.edit :route="'testemunhos.enable'" :object="$testemunho" title="Ativar" :lighter="true"></x-button.edit>
+                                <x-button.link title="Ativar" :route="route('testemunhos.enable', $testemunho)" :lighter="true"></x-button.link>
                             @endcan
                         @endif
                     </div>

@@ -10,13 +10,7 @@
             </h3>
             <div class="text-rights text-sm">
                 @can('adm-adicionar-perfil')
-                <a aria-label="Adicionar" href="{{ route('perfis.create') }}"
-                   class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
-                                hover:bg-blue-500
-                                focus:bg-blue-500
-                                px-2 py-1 inline-flex justify-center items-center">
-                    <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
-                </a>
+                    <x-button.link title="Adicionar" :route="route('perfis.create')"></x-button.link>
                 @endcan
             </div>
         </div>
@@ -27,11 +21,11 @@
                     @canany(['adm-editar-perfil', 'adm-excluir-perfil'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-editar-perfil')
-                                <x-button.edit :route="'perfis.edit'" :object="$perfil"></x-button.edit>
+                                <x-button.link title="Editar" :route="route('perfis.edit', $perfil)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-perfil')
-                                <x-button.delete :route="'perfis.destroy'" :object="$perfil"></x-button.delete>
+                                <x-button.delete :route="route('perfis.destroy', $perfil)"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany

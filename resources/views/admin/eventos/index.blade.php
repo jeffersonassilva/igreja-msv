@@ -10,13 +10,7 @@
             </h3>
             <div class="text-rights text-sm">
                 @can('adm-adicionar-evento')
-                <a aria-label="Adicionar" href="{{ route('eventos.create') }}"
-                   class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
-                                hover:bg-blue-500
-                                focus:bg-blue-500
-                                px-2 py-1 inline-flex justify-center items-center">
-                    <ion-icon name="add-circle-outline"></ion-icon><span class="ml-1">Adicionar</span>
-                </a>
+                    <x-button.link title="Adicionar" :route="route('eventos.create')"></x-button.link>
                 @endcan
             </div>
         </div>
@@ -30,11 +24,11 @@
                     @canany(['adm-editar-evento', 'adm-excluir-evento'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-editar-evento')
-                                <x-button.edit :route="'eventos.edit'" :object="$evento"></x-button.edit>
+                                <x-button.link title="Editar" :route="route('eventos.edit', $evento)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-evento')
-                                <x-button.delete :route="'eventos.destroy'" :object="$evento"></x-button.delete>
+                                <x-button.delete :route="route('eventos.destroy', $evento)"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
