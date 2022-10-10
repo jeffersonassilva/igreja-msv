@@ -29,7 +29,7 @@
                                 @endcan
 
                                 @can('adm-excluir-usuario')
-                                    <x-button.delete :route="route('usuarios.destroy', $usuario)"></x-button.delete>
+                                    <x-button.delete :route="route('usuarios.destroy', $usuario)" formId="form-excluir-usuario-{{ $usuario->id }}"></x-button.delete>
                                 @endcan
                             </div>
                         @endcanany
@@ -38,4 +38,7 @@
             @endforeach
         </div>
     </section>
+
+    <x-dialog.confirm></x-dialog.confirm>
+
 </x-app-layout>

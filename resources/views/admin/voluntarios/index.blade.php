@@ -124,7 +124,7 @@
                             @endcan
 
                             @can('adm-excluir-voluntario')
-                                <x-button.delete :route="route('voluntarios.destroy', $voluntario)"></x-button.delete>
+                                <x-button.delete :route="route('voluntarios.destroy', $voluntario)" formId="form-excluir-voluntario-{{ $voluntario->id }}"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
@@ -133,7 +133,9 @@
         </div>
     </section>
 
-    <script type="text/javascript">
+    <x-dialog.confirm></x-dialog.confirm>
+
+    <script>
         $(document).ready(function () {
             $('#btn-filtros').on('click', function () {
                 $('#filtros').toggle();

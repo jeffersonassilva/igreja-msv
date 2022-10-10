@@ -29,13 +29,14 @@
                             @endcan
 
                             @can('adm-excluir-banner')
-                                <x-button.delete title="Arquivar" :route="route('banners.destroy', $banner)"></x-button.delete>
+                                <x-button.delete title="Arquivar" :route="route('banners.destroy', $banner)" formId="form-excluir-banner-{{ $banner->id }}"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
                 </div>
             @endforeach
         </div>
+        <x-dialog.confirm message="Você tem certeza que deseja arquivar este banner?"></x-dialog.confirm>
     </section>
 
     <section class="pb-6">
