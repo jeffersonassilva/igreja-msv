@@ -22,6 +22,7 @@ class EscalaVoluntario extends AbstractModel
         'funcao',
         'voluntario_id',
         'escala_id',
+        'user_id',
     ];
 
     /**
