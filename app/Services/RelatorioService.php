@@ -13,6 +13,8 @@ class RelatorioService extends AbstractService
 {
     const VOLUNTARIO_ID = 'voluntarios.id';
     const VOLUNTARIO_NOME = 'voluntarios.nome';
+    const VOLUNTARIO_SEXO = 'voluntarios.sexo';
+    const VOLUNTARIO_PROFESSOR_EBD = 'voluntarios.professor_ebd';
 
     /**
      * @var string[]
@@ -32,6 +34,8 @@ class RelatorioService extends AbstractService
         $voluntario = Voluntario::select(
             self::VOLUNTARIO_ID,
             self::VOLUNTARIO_NOME,
+            self::VOLUNTARIO_SEXO,
+            self::VOLUNTARIO_PROFESSOR_EBD,
             DB::raw('count(escala_voluntario.voluntario_id) AS quantidade')
         )
             ->leftJoin('escala_voluntario', function ($join) {
@@ -44,7 +48,7 @@ class RelatorioService extends AbstractService
             $voluntario->where($key, 'like', $value);
         }
 
-        $voluntario->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME);
+        $voluntario->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME, self::VOLUNTARIO_SEXO, self::VOLUNTARIO_PROFESSOR_EBD);
 
         foreach ($order as $key => $value) {
             if (in_array($key, $this->allowedFilters)) {
