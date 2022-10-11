@@ -13,7 +13,9 @@
     @can('adm-menu-voluntario')
         <x-adm-menu-item :route="'voluntarios'" :icon="'shirt-outline'">Voluntários</x-adm-menu-item>
     @endcan
-    <x-adm-menu-item :route="'relatorio.voluntarios'" :icon="'document-text-outline'">Relatório</x-adm-menu-item>
+    @can('adm-menu-relatorios')
+        <x-adm-menu-item :route="'relatorio.mensal.voluntarios'" :icon="'document-text-outline'">Relatório</x-adm-menu-item>
+    @endcan
     @can('adm-menu-usuario')
         <x-adm-menu-item :route="'usuarios'" :icon="'person-outline'">Usuários</x-adm-menu-item>
     @endcan
@@ -21,6 +23,7 @@
         <x-adm-menu-item :route="'perfis'" :icon="'id-card-outline'">Perfis</x-adm-menu-item>
     @endcan
     <x-adm-menu-item :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
+    {{--    <x-adm-menu-item :route="'usuarios'" :icon="'lock-open-outline'">Permissões</x-adm-menu-item>--}}
 
     <div class="pb-24 md:pb-4">
         <form method="POST" action="{{ route('logout') }}">

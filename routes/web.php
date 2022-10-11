@@ -103,8 +103,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
 
     //Relatorios
-    Route::get('/relatorio/voluntarios', [RelatorioController::class, 'voluntarios'])->name('relatorio.voluntarios');
-    Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'download'])->name('relatorio.voluntarios.download');
+    Route::get('/relatorio/voluntarios', [RelatorioController::class, 'mensalVoluntarios'])->name('relatorio.mensal.voluntarios');
+    Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'mensalVoluntariosDownload'])->name('relatorio.voluntarios.download');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
