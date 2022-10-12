@@ -44,6 +44,16 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="observacao" class="text-gray-900 mb-2">Observações</label>
+                <span class="text-sm font-thin text-gray-500">- Esse campo serve para informar as particularidades de cada voluntário.</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Máximo de 1000 caracteres.</span>
+                <textarea name="observacao" id="observacao" rows="4" class="border-gray-400 rounded-sm text-gray-700 w-full @error('observacao') border-[1px] border-red-500 @enderror">{{ old('observacao') ?? $data->observacao }}</textarea>
+                @error('observacao')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="flex justify-between flex-col sm:flex-row">
                 <div class="mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"

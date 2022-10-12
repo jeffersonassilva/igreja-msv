@@ -22,5 +22,6 @@ class Voluntario extends AbstractModel
         'nome',
         'sexo',
         'professor_ebd',
+        'observacao',
     ];
 }
