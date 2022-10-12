@@ -32,4 +32,12 @@ class EscalaVoluntario extends AbstractModel
     {
         return $this->belongsTo(Voluntario::class, 'voluntario_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
