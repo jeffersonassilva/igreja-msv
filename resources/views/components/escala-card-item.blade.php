@@ -62,8 +62,7 @@
 
         @if(!count($escala->voluntarios))
             <div class="flex flex-col justify-center items-center text-gray-400 font-thin text-sm">
-                <img width="150" height="150" src="{{ asset('img/results-not-found.png') }}" alt="Sem voluntários">
-                Sem voluntários
+                <img width="80%" src="{{ asset('img/precisamos_de_voluntarios.png') }}" alt="Nenhum voluntário">
             </div>
         @endif
     </div>
