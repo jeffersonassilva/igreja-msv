@@ -9,7 +9,7 @@
     <x-adm-menu-item :route="'usuarios'" :icon="'person-outline'">Usuários</x-adm-menu-item>
     <x-adm-menu-item :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
 
-    <div>
+    <div class="pb-24 md:pb-4">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a class="px-6 lg:w-full h-14 relative text-gray-500

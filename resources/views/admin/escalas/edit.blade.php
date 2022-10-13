@@ -89,14 +89,14 @@
             Lista de Voluntários
         </h3>
         @foreach($data->voluntarios as $voluntario)
-            <div class="mb-4 p-4 bg-white flex flex-col sm:flex-row sm:items-center">
-                <form class="form-horizontal" role="form" method="post" action="{{ route('escalaVoluntario.update', $voluntario) }}">
+            <div class="mb-4 p-4 bg-white flex flex-col md:flex-row md:items-center">
+                <form class="form-horizontal flex-1" role="form" method="post" action="{{ route('escalaVoluntario.update', $voluntario) }}">
                 @method('PUT')
                 @csrf
                     <div class="flex flex-col md:flex-row-reverse md:justify-end md:items-center">
                         <label for="funcao_{{ $voluntario->id }}" class="text-sm font-thin text-gray-700 mb-2 md:mb-0 md:ml-4">{{ $voluntario->voluntario->nome }}</label>
                         <select name="funcao" id="funcao_{{ $voluntario->id }}"
-                                class="funcao_select border border-gray-400 text-gray-700 @error('funcao') border-[1px] border-red-500 @enderror">
+                                class="funcao_select border border-gray-400 w-full sm:w-auto text-gray-700 @error('funcao') border-[1px] border-red-500 @enderror">
                                 <option value=""></option>
                                 <optgroup label="Geral">
                                 <option value="CG" @if('CG' === $voluntario->funcao) selected @endif>CG - Coordenador Geral</option>
@@ -121,7 +121,7 @@
                         </select>
                     </div>
                 </form>
-                <div class="flex-1 mt-3 sm:mt-0 sm:text-right">
+                <div class="mt-3 md:mt-0 md:text-right">
                     <form action="{{ route('escalaVoluntario.destroy', $voluntario) }}" method="POST" class="inline">
                         @method('DELETE')
                         <button aria-label="Excluir"
