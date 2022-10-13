@@ -34,7 +34,7 @@
                         <div class="inline">
                             {{ $voluntario->voluntario->nome }}
                             @if($voluntario->user_id)
-                                <button type="button"
+                                <button type="button" class="ml-1"
                                         data-popover-target="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}"
                                         data-popover-trigger="click">
                                     <ion-icon name="create-outline"></ion-icon>
@@ -67,7 +67,7 @@
                         <div class="inline">
                             {{ $voluntario->voluntario->nome }}
                             @if($voluntario->user_id)
-                                <button type="button"
+                                <button type="button" class="ml-1"
                                         data-popover-target="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}"
                                         data-popover-trigger="click">
                                     <ion-icon name="create-outline"></ion-icon>
