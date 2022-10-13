@@ -23,8 +23,14 @@ class EscalaRequest extends FormRequest
      */
     public function rules()
     {
+        $afterYesterday = '|after:yesterday';
+
+        if ($this->isMethod('PUT')) {
+            $afterYesterday = null;
+        }
+
         return [
-            'dt_escala' => 'required|date|after:yesterday',
+            'dt_escala' => 'required|date' . $afterYesterday,
             'hr_escala' => 'required',
             'evento_id' => 'required',
         ];
