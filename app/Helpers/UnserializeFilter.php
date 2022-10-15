@@ -20,12 +20,8 @@ class UnserializeFilter
      */
     public function getFilters($search)
     {
-        $search = explode(';', $search);
-
-        foreach ($search as $val) {
-            $tmp = explode(':', $val);
-            $this->filters[$tmp[0]] = $tmp[1];
-        }
+        unset($search['order']);
+        $this->filters = array_filter($search);
 
         return $this->filters;
     }
