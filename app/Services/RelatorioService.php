@@ -36,18 +36,20 @@ class RelatorioService extends AbstractService
             self::VOLUNTARIO_NOME,
             self::VOLUNTARIO_SEXO,
             self::VOLUNTARIO_PROFESSOR_EBD,
-            DB::raw('count(escala_voluntario.voluntario_id) AS quantidade')
+            DB::raw('count(escalas.id) AS quantidade')
         )
             ->leftJoin('escala_voluntario', function ($join) {
                 $join->on('escala_voluntario.voluntario_id', self::VOLUNTARIO_ID)
                     ->whereNull('escala_voluntario.deleted_at');
             })
-            ->leftJoin('escalas', 'escalas.id', 'escala_voluntario.escala_id');
+            ->leftJoin('escalas', function ($joinLeft) use ($where) {
+                $joinLeft->on('escalas.id', 'escala_voluntario.escala_id');
 
-        if (isset($where['mes']) && !empty($where['mes'])) {
-            $query->whereMonth('data', '=', substr($where['mes'], 5, 2));
-            $query->whereYear('data', '=', substr($where['mes'], 0, 4));
-        }
+                if (isset($where['mes']) && !empty($where['mes'])) {
+                    $joinLeft->whereMonth('data', '=', substr($where['mes'], 5, 2));
+                    $joinLeft->whereYear('data', '=', substr($where['mes'], 0, 4));
+                }
+            });
 
         $query->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME, self::VOLUNTARIO_SEXO, self::VOLUNTARIO_PROFESSOR_EBD);
 

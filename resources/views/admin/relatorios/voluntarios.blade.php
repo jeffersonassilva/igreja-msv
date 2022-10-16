@@ -4,11 +4,11 @@
     </x-slot>
 
     <section>
-        <form class="form-horizontal" role="form" action="">
+        <form class="form-horizontal" role="form" action="{{ route('relatorio.voluntarios') }}">
             <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
                 <div class="flex justify-between">
                     <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
-                        <option value=""></option>
+                        <option value="">Geral</option>
                         @foreach($meses as $key => $mes)
                         <option value="{{ $key }}" @if(request()->query('mes') == $key) selected @endif>{{ $mes }}</option>
                         @endforeach

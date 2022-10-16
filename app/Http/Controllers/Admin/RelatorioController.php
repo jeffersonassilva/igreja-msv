@@ -44,7 +44,7 @@ class RelatorioController extends Controller
         $where = $filter->getFilters($request->all());
         $order = $filter->getOrder($request);
 
-        $voluntarios = $this->relatorioService->voluntarios($where, $order ?: array('quantidade' => 'desc'));
+        $voluntarios = $this->relatorioService->voluntarios($where, $order ?: array('quantidade' => 'desc', 'nome' => 'asc'));
         return view('admin/relatorios/voluntarios')->with(['voluntarios' => $voluntarios, 'meses' => $meses]);
     }
 
