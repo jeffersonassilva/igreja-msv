@@ -33,37 +33,22 @@ class Escala extends AbstractModel
      */
     public function getCorIndicacaoAttribute()
     {
-        switch ($this->evento_id) {
-            case 1: //Limpeza do Templo
-                $color = '#ff8537';
-                break;
-            case 2: //Culto publico
-                $color = '#00d5ff';
-                break;
-            case 3: //Mulheres
-                $color = '#e969ff';
-                break;
-            case 4: //Imersão
-                $color = '#355bf0';
-                break;
-            case 5: //EBD
-                $color = '#42cb82';
-                break;
-            case 8: //Seminário de Casais
-                $color = '#ed143d';
-                break;
-            case 9: //Conferência de Louvor
-                $color = '#5d33a4';
-                break;
-            case 10: //Professor EBD
-                $color = '#92400e';
-                break;
-            default:
-                $color = '#64748b';
-                break;
-        }
+        $corDefault = '#777777'; // 6=Mutirao e etc...
+        $cores = array(
+            1 => '#ff8537', // Limpeza do Templo
+            2 => '#00d5ff', // Culto Público
+            3 => '#e969ff', // Mulheres
+            4 => '#355bf0', // Imersão
+            5 => '#53c98a', // EBD
+            7 => '#c9b73b', // Santa Ceia
+            8 => '#ed143d', // Seminário de Casais
+            9 => '#5d33a4', // Conferência de Louvor
+            10 => '#92400e', // Professor EBD
+            11 => '#5d33a4', // Conexão Jovem
+            12 => '#5d33a4', // Conferência KIDS
+        );
 
-        return $color;
+        return $cores[$this->evento_id] ?? $corDefault;
     }
 
     /**
