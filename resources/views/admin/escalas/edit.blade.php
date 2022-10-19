@@ -48,7 +48,7 @@
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="fechada" class="text-gray-900 mb-2">Status</label>
                 <span class="text-sm font-thin text-gray-500">- Por padrão, toda escala é cadastrada como <span class="text-blue-400">Aberta</span>.</span>
-                <span class="text-sm font-thin text-gray-500 mb-2">- Se o status for <span class="text-blue-400">Fechada</span>, os voluntário não terão mais acesso a esta escala.</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Se o status for <span class="text-blue-400">Fechada</span>, os voluntários não terão mais acesso a esta escala.</span>
                 <select name="fechada" id="fechada" class="md:max-w-[150px] @error('fechada') border-[1px] border-red-500 @enderror">
                     <option value="1" @if($data->fechada === 1) selected @endif>Fechada</option>
                     <option value="0" @if($data->fechada === 0) selected @endif>Aberta</option>
