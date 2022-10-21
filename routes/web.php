@@ -103,6 +103,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     //Relatorios
     Route::get('/relatorio/voluntarios', [RelatorioController::class, 'voluntarios'])->name('relatorio.voluntarios');
+    Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'download'])->name('relatorio.voluntarios.download');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');

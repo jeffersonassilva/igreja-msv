@@ -6,6 +6,7 @@ use App\Helpers\UnserializeFilter;
 use App\Http\Controllers\Controller;
 use App\Services\EscalaService;
 use App\Services\RelatorioService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -39,13 +40,22 @@ class RelatorioController extends Controller
     {
         $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
         $meses = $this->getListMonths();
+        $voluntarios = $this->getVoluntarios($request);
 
+        return view('admin/relatorios/voluntarios')->with(['voluntarios' => $voluntarios, 'meses' => $meses]);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getVoluntarios(Request $request)
+    {
         $filter = new UnserializeFilter();
         $where = $filter->getFilters($request->all());
         $order = $filter->getOrder($request);
 
-        $voluntarios = $this->relatorioService->voluntarios($where, $order ?: array('quantidade' => 'desc', 'nome' => 'asc'));
-        return view('admin/relatorios/voluntarios')->with(['voluntarios' => $voluntarios, 'meses' => $meses]);
+        return $this->relatorioService->voluntarios($where, $order ?: array('quantidade' => 'desc', 'nome' => 'asc'));
     }
 
     /**
@@ -58,9 +68,30 @@ class RelatorioController extends Controller
 
         foreach ($escalas as $escala) {
             $meses[Carbon::parse($escala['data'])->format('Y') . '-' . Carbon::parse($escala['data'])->format('m')] =
-                Carbon::parse($escala['data'])->format('Y') .' - '. ucfirst(Carbon::parse($escala['data'])->monthName);
+                Carbon::parse($escala['data'])->format('Y') . ' - ' . ucfirst(Carbon::parse($escala['data'])->monthName);
         }
 
         return $meses;
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function download(Request $request)
+    {
+        $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
+        $mes = $request->get('mes');
+        $periodo = 'Período: ' . ($mes ? ucfirst(Carbon::parse($mes)->monthName) . ' - ' . Carbon::parse($mes)->format('Y') : 'Geral');
+        $voluntarios = $this->getVoluntarios($request);
+
+        $pdf = PDF::loadView('admin/relatorios/voluntarios-pdf', [
+            'title' => 'Relatório - Voluntários',
+            'periodo' => $periodo,
+            'voluntarios' => $voluntarios,
+            'data' => date('d/m/Y - H:i:s')
+        ]);
+
+        return $pdf->stream('relatorio_voluntarios_' . ($request->get('mes') ? $request->get('mes') : 'geral') . '.pdf');
     }
 }

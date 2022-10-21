@@ -4,18 +4,30 @@
     </x-slot>
 
     <section>
-        <form class="form-horizontal" role="form" action="{{ route('relatorio.voluntarios') }}">
-            <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
-                <div class="flex justify-between">
-                    <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
-                        <option value="">Geral</option>
-                        @foreach($meses as $key => $mes)
-                        <option value="{{ $key }}" @if(request()->query('mes') == $key) selected @endif>{{ $mes }}</option>
-                        @endforeach
-                    </select>
+        <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
+            <div class="flex justify-between gap-2">
+                <div class="flex-1">
+                    <form class="form-horizontal" role="form" action="{{ route('relatorio.voluntarios') }}">
+                        <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                            <option value="">Geral</option>
+                            @foreach($meses as $key => $mes)
+                            <option value="{{ $key }}" @if(request()->query('mes') == $key) selected @endif>{{ $mes }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
+                <div class="flex items-center">
+                    <button id="btn-gerar-relatorio-pdf"
+                            class="outline-0 rounded-md text-2xl sm:text-base text-blue-400 font-normal
+                                    border border-blue-400
+                                    hover:text-white hover:bg-blue-400
+                                    focus:text-white focus:bg-blue-400
+                                    px-3 py-2 inline-flex justify-center items-center">
+                        <ion-icon name="cloud-download-outline"></ion-icon><span class="hidden sm:block ml-2">Baixar Arquivo</span>
+                    </button>
                 </div>
             </div>
-        </form>
+        </div>
     </section>
 
     <div class="p-0 sm:p-4 sm:bg-white sm:rounded-lg">
@@ -63,6 +75,11 @@
         $(document).ready(function () {
             $('#mes_relatorio').on('change', function () {
                 $('.form-horizontal').submit();
+            });
+
+            $('#btn-gerar-relatorio-pdf').on('click', function () {
+                const queryString = window.location.search;
+                window.open('{{ route('relatorio.voluntarios.download') }}' + queryString, '_blank');
             });
         });
     </script>
