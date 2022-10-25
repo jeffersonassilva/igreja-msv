@@ -137,13 +137,12 @@
                         <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
                             <div class="px-4 pb-4 flex justify-center items-center gap-1">
                                 <input type="hidden" name="escala_id" value="{{ $escala->id }}">
-                                <input name="nome" list="nome" autocomplete="off" type="text" placeholder="Digite seu nome" class="border border-gray-200 rounded-md w-full text-sm font-thin" />
-
-                                <datalist id="nome">
+                                <select name="nome" class="border border-gray-200 rounded-md w-full text-sm font-thin">
+                                    <option value=""> - Selecione seu nome - </option>
                                     @foreach($voluntarios as $voluntarioItem)
-                                        <option value="{{ $voluntarioItem->nome }}">
+                                        <option value="{{ $voluntarioItem->nome }}">{{ $voluntarioItem->nome }}</option>
                                     @endforeach
-                                </datalist>
+                                </select>
 
                                 <div class="pl-2 text-2xl">
                                     <button aria-label="Salvar" type="submit" class="flex items-center">
