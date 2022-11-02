@@ -27,6 +27,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+        $this->checkPermission('adm-listar-usuario');
         $usuarios = $this->service->all();
 
         return view('admin/usuarios/index')->with([
@@ -39,6 +40,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
+        $this->checkPermission('adm-adicionar-usuario');
         return view('admin/usuarios/create');
     }
 
@@ -48,6 +50,7 @@ class UsuarioController extends Controller
      */
     public function store(UsuarioRequest $request)
     {
+        $this->checkPermission('adm-adicionar-usuario');
         $this->service->store($request);
         return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_CREATE));
     }
@@ -58,6 +61,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-usuario');
         $data = $this->service->edit($id);
         return view('admin/usuarios/edit')->with(['data' => $data]);
     }
@@ -69,6 +73,7 @@ class UsuarioController extends Controller
      */
     public function update(UsuarioRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-usuario');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_UPDATE));
     }
@@ -79,6 +84,7 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
+        $this->checkPermission('adm-excluir-usuario');
         $this->service->destroy($id);
         return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_DESTROY));
     }
