@@ -113,4 +113,16 @@ abstract class AbstractService
 
         return $data;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function forceDestroy($id)
+    {
+        $data = $this->model->find($id);
+        $data->forceDelete();
+
+        return $data;
+    }
 }
