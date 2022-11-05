@@ -40,6 +40,7 @@ class TestemunhoController extends Controller
      */
     public function index()
     {
+        $this->checkPermission('adm-listar-testemunho');
         $data = $this->service->where(array(), ['created_at' => Constants::DECRESCENTE])->paginate();
         return view('admin/testemunhos/index')->with('testemunhos', $data);
     }
@@ -60,6 +61,7 @@ class TestemunhoController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-testemunho');
         $data = $this->service->edit($id);
         return view('admin/testemunhos/edit')->with(['data' => $data]);
     }
@@ -71,6 +73,7 @@ class TestemunhoController extends Controller
      */
     public function update(TestemunhoRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-testemunho');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
     }
@@ -81,6 +84,7 @@ class TestemunhoController extends Controller
      */
     public function enable($id)
     {
+        $this->checkPermission('adm-ativar-testemunho');
         $this->service->enable($id);
         return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
     }
@@ -91,6 +95,7 @@ class TestemunhoController extends Controller
      */
     public function disable($id)
     {
+        $this->checkPermission('adm-desativar-testemunho');
         $this->service->disable($id);
         return $this->redirectWithMessage('testemunhos', __(Constants::SUCCESS_UPDATE));
     }
