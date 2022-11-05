@@ -78,7 +78,7 @@ class RelatorioController extends Controller
         $where = $filter->getFilters($request->all());
         $order = $filter->getOrder($request);
 
-        return $this->relatorioService->voluntarios($where, $order ?: array('quantidade' => 'desc', 'nome' => 'asc'));
+        return $this->relatorioService->voluntarios($where, $order ?: array('presenca' => 'desc', 'nome' => 'asc'));
     }
 
     /**
@@ -93,6 +93,9 @@ class RelatorioController extends Controller
             $meses[Carbon::parse($escala['data'])->format('Y') . '-' . Carbon::parse($escala['data'])->format('m')] =
                 Carbon::parse($escala['data'])->format('Y') . ' - ' . ucfirst(Carbon::parse($escala['data'])->monthName);
         }
+
+        $meses[date('Y-m')] = Carbon::parse(date('Y-m-d'))->format('Y') . ' - ' . ucfirst(Carbon::parse(date('Y-m-d'))->monthName);
+        krsort($meses);
 
         return $meses;
     }
