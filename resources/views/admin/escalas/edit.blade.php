@@ -14,7 +14,7 @@
                 <span class="text-sm font-thin text-gray-500 mb-2">- Informe a data da escala.</span>
                 <input type="date" min="{{ \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}" max="{{ date("Y-m-d", strtotime("+2 month")) }}"
                        name="dt_escala" id="dt_escala"
-                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('dt_escala') border-[1px] border-red-500 @enderror"
+                       class="border border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px] @error('dt_escala') border-red-500 @enderror"
                        value="{{ old('dt_escala') ?? \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}">
                 @error('dt_escala')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -25,7 +25,7 @@
                 <label for="hr_escala" class="text-gray-900 mb-2">Hora <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Informe o horário de início da escala.</span>
                 <input type="time" name="hr_escala" id="hr_escala"
-                       class="md:max-w-[250px] border-gray-400 rounded-sm text-gray-700 @error('hr_escala') border-[1px] border-red-500 @enderror"
+                       class="border border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px] @error('hr_escala') border-red-500 @enderror"
                        value="{{ old('hr_escala') ?? \Carbon\Carbon::parse($data->data)->format('H:i') }}">
                 @error('hr_escala')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
@@ -35,7 +35,7 @@
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="evento_id" class="text-gray-900 mb-2">Evento <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Selecione o evento a qual a escala se refere.</span>
-                <select name="evento_id" id="evento_id" class="border border-gray-400 text-gray-700 @error('evento_id') border-red-500 @enderror">
+                <select name="evento_id" id="evento_id" class="border border-gray-400 text-gray-700 w-full md:max-w-[250px] @error('evento_id') border-red-500 @enderror">
                     @foreach($eventos as $evento)
                         <option value="{{ $evento->id }}" @if($data->evento_id === $evento->id) selected @endif>{{ $evento->descricao }}</option>
                     @endforeach
@@ -49,7 +49,7 @@
                 <label for="fechada" class="text-gray-900 mb-2">Status</label>
                 <span class="text-sm font-thin text-gray-500">- Por padrão, toda escala é cadastrada como <span class="text-blue-400">Aberta</span>.</span>
                 <span class="text-sm font-thin text-gray-500 mb-2">- Se o status for <span class="text-blue-400">Fechada</span>, os voluntários não terão mais acesso a esta escala.</span>
-                <select name="fechada" id="fechada" class="md:max-w-[150px] @error('fechada') border-[1px] border-red-500 @enderror">
+                <select name="fechada" id="fechada" class="border border-gray-400 w-full md:max-w-[250px] @error('fechada') border-red-500 @enderror">
                     <option value="1" @if($data->fechada === 1) selected @endif>Fechada</option>
                     <option value="0" @if($data->fechada === 0) selected @endif>Aberta</option>
                 </select>
@@ -88,17 +88,19 @@
         <h3 class="text-gray-500 pb-4">
             Lista de Voluntários
         </h3>
-        @foreach($data->voluntarios as $voluntario)
-            <div class="mb-4 p-4 bg-white flex flex-col md:flex-row md:items-center">
-                <form class="form-horizontal flex-1" role="form" method="post" action="{{ route('escalaVoluntario.update', $voluntario) }}">
-                @method('PUT')
-                @csrf
-                    <div class="flex flex-col md:flex-row-reverse md:justify-end md:items-center">
-                        <label for="funcao_{{ $voluntario->id }}" class="text-sm font-thin text-gray-700 mb-2 md:mb-0 md:ml-4">{{ $voluntario->voluntario->nome }}</label>
-                        <select name="funcao" id="funcao_{{ $voluntario->id }}"
-                                class="funcao_select border border-gray-400 w-full sm:w-auto text-gray-700 @error('funcao') border-[1px] border-red-500 @enderror">
-                                <option value=""></option>
-                                <optgroup label="Geral">
+        @foreach($data->voluntarios as $key => $voluntario)
+            <div>
+                <div class="flex flex-col mb-4 px-4 pt-4 bg-white">
+                    <p class="text-gray-500 font-normal mb-2">
+                        <span class="inline-flex justify-center items-center w-6 h-6 bg-gray-400 rounded-full text-white">{{ ++$key }}</span>
+                        {{ $voluntario->voluntario->nome }}
+                    </p>
+                    <div class="flex flex-col">
+                        <label for="funcao-{{ $voluntario->id }}" class="text-sm font-thin text-gray-500 mb-1">Selecione a função do voluntário.</label>
+                        <select name="funcao" id="funcao-{{ $voluntario->id }}"
+                                class="border border-gray-400 w-full md:max-w-[250px] @error('funcao') border-red-500 @enderror">
+                            <option value=""></option>
+                            <optgroup label="Geral">
                                 <option value="CG" @if('CG' === $voluntario->funcao) selected @endif>CG - Coordenador Geral</option>
                                 <option value="R" @if('R' === $voluntario->funcao) selected @endif>R - Recepção</option>
                                 <option value="A" @if('A' === $voluntario->funcao) selected @endif>A - Apoio</option>
@@ -120,21 +122,41 @@
                             </optgroup>
                         </select>
                     </div>
-                </form>
-                <div class="mt-3 md:mt-0 md:text-right">
-                    <form action="{{ route('escalaVoluntario.destroy', $voluntario) }}" method="POST" class="inline">
-                        @method('DELETE')
-                        <button aria-label="Excluir"
-                                class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                hover:text-white hover:bg-blue-400
-                                focus:text-white focus:bg-blue-400
-                                px-2 py-1 mr-1 inline-flex justify-center items-center">
-                            <ion-icon name="trash-outline"></ion-icon><span class="ml-1">Excluir</span>
+
+                    <div class="flex flex-col mt-4">
+                        <label for="date" class="text-sm font-thin text-gray-500 mb-1">Indicador de presença do voluntário.</label>
+                        <select name="comparecimento" id="comparecimento-{{ $voluntario->id }}" data-comparecimento-id="{{ $voluntario->id }}"
+                                class="border border-gray-400 w-full md:max-w-[250px] selectComparecimento @error('comparecimento') border-red-500 @enderror">
+                            <option value="P" @if('P' === $voluntario->comparecimento) selected @endif>Presente</option>
+                            <option value="F" @if('F' === $voluntario->comparecimento) selected @endif>Falta</option>
+                            <option value="FJ" @if('FJ' === $voluntario->comparecimento) selected @endif>Falta Justificada</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col mt-4 @if($voluntario->comparecimento !== 'FJ') hidden @endif">
+                        <label for="date" class="text-sm font-thin text-gray-500 mb-1">Descreva a justificativa da ausência do voluntário.</label>
+                        <textarea name="justificativa" id="justificativa-{{ $voluntario->id }}"
+                                  class="border-gray-400 rounded-sm text-gray-700 w-full
+                                  @error('justificativa') border-[1px] border-red-500 @enderror">{{ $voluntario->justificativa }}</textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <button aria-label="Atualizar" type="button"
+                                data-voluntario-id="{{ $voluntario->id }}"
+                                class="btn-atualizar outline-0 rounded-md px-3 py-1 inline-flex justify-center items-center
+                                text-white bg-primary hover:bg-primary-dark focus:bg-primary-dark">
+                            Atualizar
                         </button>
-                    </form>
+
+                        <x-button.delete :route="route('escalaVoluntario.destroy', $voluntario)"
+                                         formId="form-excluir-voluntario-{{ $voluntario->id }}">
+                        </x-button.delete>
+                    </div>
+                    <div id="message-api-{{ $voluntario->id }}" class="text-sm p-1 transition duration-1000 ease-in-out opacity-0">Atualizado com sucesso!</div>
                 </div>
             </div>
         @endforeach
+        <x-dialog.confirm></x-dialog.confirm>
     </section>
     @endif
 
@@ -148,7 +170,7 @@
                 <span class="text-sm font-thin text-gray-500">Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
                 <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center md:w-full mt-2">
-                    <select name="voluntario_id" class="border-gray-400 rounded-sm text-gray-700 md:w-[250px] @error('voluntario_id') border-[1px] border-red-500 @enderror">
+                    <select name="voluntario_id" class="border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px] @error('voluntario_id') border-[1px] border-red-500 @enderror">
                         <option value=""></option>
                         @foreach($voluntarios as $voluntarioItem)
                             <option value="{{ $voluntarioItem->id }}">{{ $voluntarioItem->nome }}</option>
@@ -170,9 +192,58 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.funcao_select').change(function () {
-                let form = $(this).parent().parent();
-                form.submit();
+            $('.selectComparecimento').on('change', function () {
+                let comparecimento = $(this).val();
+                let id = $(this).attr('data-comparecimento-id');
+                let divJustificativa = $('#justificativa-' + id).parent();
+                if (comparecimento === 'FJ') {
+                    divJustificativa.removeClass('hidden');
+                } else {
+                    !divJustificativa.hasClass('hidden') ? divJustificativa.addClass('hidden') : null;
+                }
+            });
+
+            $('.btn-atualizar').on('click', function () {
+                const id = $(this).attr('data-voluntario-id');
+                const funcao = $('#funcao-' + id).val();
+                const comparecimento = $('#comparecimento-' + id).val();
+                const justificativa = $('#justificativa-' + id).val();
+                const botao = $(this);
+                botao.attr('disabled', true);
+
+                $.ajax({
+                    type: "PUT",
+                    url: '{{ route('api.escala.voluntario') }}',
+                    dataType: "json",
+                    data: {
+                        'id': id ?? null,
+                        'funcao': funcao ?? null,
+                        'comparecimento': comparecimento ?? 'P',
+                        'justificativa': comparecimento === 'FJ' ? justificativa ?? null : null,
+                    },
+                    success: function (response) {
+                        if (response.retorno) {
+                            $('#message-api-' + id)
+                                .html('Atualizado com sucesso!')
+                                .removeClass('text-red-400')
+                                .addClass(['text-green-400', 'opacity-100']);
+                        }
+                    },
+                    error: function () {
+                        $('#message-api-' + id)
+                            .html('Ocorreu um erro.')
+                            .removeClass('text-green-400')
+                            .addClass(['text-red-400', 'opacity-100']);
+                    },
+                    complete: function () {
+                        botao.attr('disabled', false);
+                        setTimeout(function () {
+                            $('#message-api-' + id)
+                                .removeClass(['text-green-400', 'text-red-400', 'opacity-100'])
+                                .addClass('opacity-0');
+                        }, 5000);
+                    }
+                });
             });
         });
     </script>

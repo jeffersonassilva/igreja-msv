@@ -4,6 +4,10 @@ namespace App\Models;
 
 class EscalaVoluntario extends AbstractModel
 {
+    const COMPARECIMENTO_PRESENTE = 'P';
+    const COMPARECIMENTO_FALTA = 'F';
+    const COMPARECIMENTO_FALTA_JUSTIFICADA = 'FJ';
+
     /**
      * @var string
      */
@@ -23,6 +27,8 @@ class EscalaVoluntario extends AbstractModel
         'voluntario_id',
         'escala_id',
         'user_id',
+        'comparecimento',
+        'justificativa',
     ];
 
     /**
