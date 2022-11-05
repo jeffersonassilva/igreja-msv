@@ -24,7 +24,7 @@
                 <label for="permissoes" class="text-gray-900 mb-2">Permissões</label>
                 <span class="text-sm font-thin text-gray-500 mb-4">- Selecione todas as permissões que o perfil possui.</span>
 
-                <div class="grid grid-cols-4 gap-4">
+                <div class="grid gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-4">
                     @foreach($permissoes as $permissao)
                         <div class="flex">
                             <div class="flex items-center h-5">
@@ -34,7 +34,7 @@
                                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
                             </div>
                             <div class="ml-2 text-sm">
-                                <label for="permissao-checkbox-{{ $permissao['id'] }}" class="font-medium text-gray-900">
+                                <label for="permissao-checkbox-{{ $permissao['id'] }}" class="font-medium text-gray-700">
                                     {{ $permissao['descricao'] }}
                                 </label>
                                 <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500">
