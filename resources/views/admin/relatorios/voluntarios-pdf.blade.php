@@ -114,6 +114,7 @@
     <table>
         <thead>
         <tr>
+            <th style="width: 1px;">#</th>
             <th style="text-align: left;">Nome</th>
             <th>Sexo</th>
             <th>Professor EBD</th>
@@ -123,8 +124,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($voluntarios as $voluntario)
+        @foreach($voluntarios as $key => $voluntario)
             <tr style="{{ $loop->even ? 'background: #eee;' : null  }}">
+                <td class="text-center">{{ $key + 1 }}</td>
                 <td>{{ $voluntario->nome }}</td>
                 <td class="text-center">{{ $voluntario->sexo == 'M' ? 'Masculino' : 'Feminino' }}</td>
                 <td class="text-center">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</td>
