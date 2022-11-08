@@ -29,6 +29,7 @@ class PastorController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-pastor');
         $pastor = $this->service->edit($id);
         return view('admin/pastor/edit')->with(['pastor' => $pastor]);
     }
@@ -40,6 +41,7 @@ class PastorController extends Controller
      */
     public function update(PastorRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-pastor');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
     }
