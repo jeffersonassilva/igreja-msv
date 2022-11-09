@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
+use App\Services\PerfilService;
 use App\Services\UsuarioService;
 
 class UsuarioController extends Controller
@@ -15,11 +16,18 @@ class UsuarioController extends Controller
     private $service;
 
     /**
-     * @param UsuarioService $service
+     * @var PerfilService
      */
-    public function __construct(UsuarioService $service)
+    private $perfilService;
+
+    /**
+     * @param UsuarioService $service
+     * @param PerfilService $perfilService
+     */
+    public function __construct(UsuarioService $service, PerfilService $perfilService)
     {
         $this->service = $service;
+        $this->perfilService = $perfilService;
     }
 
     /**
@@ -63,7 +71,24 @@ class UsuarioController extends Controller
     {
         $this->checkPermission('adm-editar-usuario');
         $data = $this->service->edit($id);
-        return view('admin/usuarios/edit')->with(['data' => $data]);
+        $perfis = $this->perfilService->all();
+        $arrayPerfis = [];
+        $arrayPerfisCadastrados = [];
+
+        foreach ($data->roles as $perfilCadastrado) {
+            $arrayPerfisCadastrados[] = $perfilCadastrado->id;
+        }
+
+        foreach ($perfis as $key => $perfil) {
+            $arrayPerfis[$key]['id'] = $perfil->id;
+            $arrayPerfis[$key]['descricao'] = $perfil->descricao;
+            $arrayPerfis[$key]['checked'] = in_array($perfil->id, $arrayPerfisCadastrados);
+        }
+
+        return view('admin/usuarios/edit')->with([
+            'data' => $data,
+            'perfis' => $arrayPerfis
+        ]);
     }
 
     /**

@@ -35,4 +35,20 @@ class UsuarioService extends AbstractService
 
         return parent::store($request);
     }
+
+    /**
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public function update($request, $id)
+    {
+        $data = $this->model->find($id);
+        $data->fill($request->all())->save();
+        if ($request->roles) {
+            $data->roles()->sync($request->roles);
+        }
+
+        return $data;
+    }
 }
