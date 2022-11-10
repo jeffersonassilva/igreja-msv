@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Constants;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EventoRequest;
 use App\Services\EventoService;
 
@@ -30,6 +31,7 @@ class EventoController extends Controller
      */
     public function index()
     {
+        $this->checkPermission('adm-listar-evento');
         $data = $this->service->all();
         return view('admin/eventos/index')->with('eventos', $data);
     }
@@ -39,6 +41,7 @@ class EventoController extends Controller
      */
     public function create()
     {
+        $this->checkPermission('adm-adicionar-evento');
         return view('admin/eventos/create');
     }
 
@@ -48,6 +51,7 @@ class EventoController extends Controller
      */
     public function store(EventoRequest $request)
     {
+        $this->checkPermission('adm-adicionar-evento');
         $this->service->store($request);
         return $this->redirectWithMessage('eventos', __(Constants::SUCCESS_CREATE));
     }
@@ -58,6 +62,7 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
+        $this->checkPermission('adm-editar-evento');
         $data = $this->service->edit($id);
         return view('admin/eventos/edit')->with(['data' => $data]);
     }
@@ -69,6 +74,7 @@ class EventoController extends Controller
      */
     public function update(EventoRequest $request, $id)
     {
+        $this->checkPermission('adm-editar-evento');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('eventos', __(Constants::SUCCESS_UPDATE));
     }
@@ -79,6 +85,7 @@ class EventoController extends Controller
      */
     public function destroy($id)
     {
+        $this->checkPermission('adm-excluir-evento');
         $this->service->destroy($id);
         return $this->redirectWithMessage('eventos', __(Constants::SUCCESS_DESTROY));
     }
