@@ -9,7 +9,7 @@
                 Lista de Eventos
             </h3>
             <div class="text-rights text-sm">
-                @can('adm-menu-evento')
+                @can('adm-adicionar-evento')
                 <a aria-label="Adicionar" href="{{ route('eventos.create') }}"
                    class="outline-0 rounded-md text-white border border-blue-400 bg-blue-400
                                 hover:bg-blue-500
@@ -52,7 +52,7 @@
                         </form>
                         @endcan
                     </div>
-                    @endcan
+                    @endcanany
                 </div>
             @endforeach
         </div>

@@ -24,6 +24,7 @@
             @foreach($perfis as $perfil)
                 <div class="flex flex-col bg-white p-3 rounded-md">
                     <h3 class="text-gray-700 font-medium">{{ $perfil->descricao }}</h3>
+                    @canany(['adm-editar-perfil', 'adm-excluir-perfil'])
                     <div class="text-rights text-sm mt-3">
                         @can('adm-editar-perfil')
                         <a aria-label="Editar" href="{{ route('perfis.edit', $perfil) }}"
@@ -49,6 +50,7 @@
                         </form>
                         @endcan
                     </div>
+                    @endcanany
                 </div>
             @endforeach
         </div>
