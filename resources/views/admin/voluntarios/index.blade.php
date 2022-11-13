@@ -5,13 +5,17 @@
 
     <section>
         <div class="mb-4 p-4 flex justify-center items-center rounded-md bg-white" role="group">
-            <button type="button" id="btn-filtros" class="py-1 px-4 text-sm text-white bg-blue-400 rounded-l-lg border-r border-white">
+            <button type="button" id="btn-filtros"
+                    class="py-1 px-4 text-sm text-white bg-blue-400
+                    rounded-l-lg border-r border-white @cannot('adm-adicionar-voluntario') rounded-r-lg @endcan">
                 Filtros
             </button>
+            @can('adm-adicionar-voluntario')
             <button type="button" onclick="window.location.href='{{ route('voluntarios.create') }}'"
                     class="py-1 px-4 text-sm text-white bg-blue-400 rounded-r-md">
                 Adicionar Voluntário
             </button>
+            @endcan
         </div>
 
         <form class="form-horizontal" role="form" action="{{ route('voluntarios') }}">
@@ -112,7 +116,10 @@
                         Observação: <span class="font-thin">{{ $voluntario->observacao }}</span>
                     </p>
                     @endif
+
+                    @canany(['adm-adicionar-voluntario', 'adm-excluir-voluntario'])
                     <div class="text-rights text-sm mt-3">
+                        @can('adm-adicionar-voluntario')
                         <a aria-label="Editar" href="{{ route('voluntarios.edit', $voluntario) }}"
                            class="outline-0 rounded-md text-blue-400 border border-blue-400
                             hover:text-white hover:bg-blue-400
@@ -120,6 +127,9 @@
                             px-2 py-1 inline-flex justify-center items-center">
                             <ion-icon name="create-outline"></ion-icon><span class="ml-1">Editar</span>
                         </a>
+                        @endcan
+
+                        @can('adm-excluir-voluntario')
                         <form action="{{ route('voluntarios.destroy', $voluntario) }}" method="POST" class="inline">
                             @method('DELETE')
                             @csrf
@@ -131,7 +141,9 @@
                                 <ion-icon name="trash-outline"></ion-icon><span class="ml-1">Excluir</span>
                             </button>
                         </form>
+                        @endcan
                     </div>
+                    @endcanany
                 </div>
             @endforeach
         </div>

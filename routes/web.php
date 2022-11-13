@@ -10,13 +10,13 @@ use App\Http\Controllers\Admin\PerfilController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\Admin\VoluntarioController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CampanhaController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TestemunhoController;
-use App\Http\Controllers\VoluntarioController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
