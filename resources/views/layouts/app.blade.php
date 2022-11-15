@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=34">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=35">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}?v=8" defer></script>
@@ -41,7 +41,7 @@
     <body class="bg-gray-100">
         <div id="container" class="w-full grid mx-auto md:h-[100vh] md:grid-cols-[5rem,1fr] lg:grid-cols-[14rem,1fr]">
 
-            <aside id="adm__aside" class="hidden md:block fixed left-[-100%] md:relative bg-white w-[70%] max-w-[270px] md:w-[5rem] lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
+            <aside id="adm__aside" class="hidden md:block fixed left-[-100%] md:left-[-40%] md:relative bg-white w-[70%] max-w-[270px] md:w-[5rem] lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
                 <div class="flex justify-between items-center bg-gray-100 md:bg-white pl-6 py-6 md:py-6 md:pl-0 lg:p-6 h-[6rem]">
                     <div class="md:mx-auto">
                         <img class="w-2/3 md:hidden lg:block" src="{{ asset('img/logo-preta.png') }}" alt="logo">
