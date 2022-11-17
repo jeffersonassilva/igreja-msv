@@ -31,13 +31,7 @@
                         @canany(['adm-editar-usuario', 'adm-excluir-usuario'])
                             <div class="text-rights text-sm mt-3">
                                 @can('adm-editar-usuario')
-                                    <a aria-label="Editar" href="{{ route('usuarios.edit', $usuario) }}"
-                                       class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                       hover:text-white hover:bg-blue-400 focus:text-white focus:bg-blue-400
-                                       px-2 py-1 inline-flex justify-center items-center">
-                                        <ion-icon name="create-outline"></ion-icon>
-                                        <span class="ml-1">Editar</span>
-                                    </a>
+                                    <x-button.edit :route="'usuarios.edit'" :object="$usuario"></x-button.edit>
                                 @endcan
 
                                 @can('adm-excluir-usuario')
