@@ -35,17 +35,7 @@
                             @endcan
 
                             @can('adm-excluir-banner')
-                                <form action="{{ route('banners.destroy', $banner) }}" method="POST" class="inline">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button aria-label="Arquivar"
-                                            class="outline-0 rounded-md text-blue-400 border border-blue-400
-                                            hover:text-white hover:bg-blue-400 focus:text-white focus:bg-blue-400
-                                            px-2 py-1 mr-1 inline-flex justify-center items-center">
-                                        <ion-icon name="archive-outline"></ion-icon>
-                                        <span class="ml-1">Arquivar</span>
-                                    </button>
-                                </form>
+                                <x-button.delete :route="'banners.destroy'" :object="$banner" title="Arquivar" icon="archive-outline"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
