@@ -47,8 +47,8 @@
                 </div>
             </div>
             @foreach($voluntarios as $key => $voluntario)
-            <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200 flex justify-between @if($loop->last) rounded-b-xl @endif">
-                <div class="text-gray-400 mr-2 md:mr-4">
+            <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200 flex gap-1 justify-between @if($loop->last) rounded-b-xl @endif">
+                <div class="text-center text-gray-400 mr-2 md:mr-4 w-4">
                     {{ $key + 1 }}
                 </div>
                 <div class="flex-1">
