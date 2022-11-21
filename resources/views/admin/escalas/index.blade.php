@@ -95,11 +95,11 @@
                     @canany(['adm-editar-escala', 'adm-excluir-escala'])
                         <div class="text-rights text-sm mt-3">
                             @can('adm-editar-escala')
-                                <x-button.edit :route="'escalas.edit'" :object="$escala"></x-button.edit>
+                                <x-button.link title="Editar" :route="route('escalas.edit', $escala)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-escala')
-                                <x-button.delete :route="'escalas.destroy'" :object="$escala"></x-button.delete>
+                                <x-button.delete :route="route('escalas.destroy', $escala)"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
