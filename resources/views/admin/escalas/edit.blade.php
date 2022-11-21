@@ -131,9 +131,9 @@
                         <label for="date" class="text-sm font-thin text-gray-500 mb-1">Indicador de presença do voluntário.</label>
                         <select name="comparecimento" id="comparecimento-{{ $voluntario->id }}" data-comparecimento-id="{{ $voluntario->id }}"
                                 class="border border-gray-400 w-full md:max-w-[250px] selectComparecimento @error('comparecimento') border-red-500 @enderror">
-                            <option value="P" @if('P' === $voluntario->comparecimento) selected @endif>Presente</option>
-                            <option value="F" @if('F' === $voluntario->comparecimento) selected @endif>Falta</option>
-                            <option value="FJ" @if('FJ' === $voluntario->comparecimento) selected @endif>Falta Justificada</option>
+                            @foreach(\App\Helpers\Constants::COMPARECIMENTO_LISTA as $key => $comparecimento)
+                            <option value="{{ $key }}" @if($key === $voluntario->comparecimento) selected @endif>{{ $comparecimento }}</option>
+                            @endforeach
                         </select>
                     </div>
 
