@@ -100,6 +100,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/voluntarios', [VoluntarioController::class, 'store'])->name('voluntarios.store');
     Route::get('/voluntarios/{voluntario}/editar', [VoluntarioController::class, 'edit'])->name('voluntarios.edit');
     Route::put('/voluntarios/{voluntario}', [VoluntarioController::class, 'update'])->name('voluntarios.update');
+    Route::get('/voluntarios/{voluntario}', [VoluntarioController::class, 'show'])->name('voluntarios.show');
     Route::delete('/voluntarios/{voluntario}', [VoluntarioController::class, 'destroy'])->name('voluntarios.destroy');
 
     //Relatorios
