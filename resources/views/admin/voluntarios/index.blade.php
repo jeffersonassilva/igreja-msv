@@ -103,36 +103,7 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
             @foreach($voluntarios as $voluntario)
-                <div class="flex flex-col bg-white p-3 rounded-md shadow-sm">
-                    <h3 class="text-gray-700 font-medium">{{ $voluntario->nome }}</h3>
-                    <p class="text-sm mt-2 text-gray-500">
-                        Sexo: <span class="font-thin">{{ $voluntario->sexo === 'M' ? 'Masculino' : 'Feminino' }}</span>
-                    </p>
-                    <p class="text-sm text-gray-500 flex-1">
-                        Professor EBD: <span class="font-thin">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</span>
-                    </p>
-                    @if($voluntario->observacao)
-                    <p class="text-sm text-gray-500">
-                        Observação: <span class="font-thin">{{ $voluntario->observacao }}</span>
-                    </p>
-                    @endif
-
-                    @canany(['adm-editar-voluntario', 'adm-excluir-voluntario'])
-                        <div class="text-sm mt-3 flex gap-2">
-                            @can('adm-editar-voluntario')
-                                <x-button.link title="Editar" :route="route('voluntarios.edit', $voluntario)"></x-button.link>
-                            @endcan
-
-                            @can('adm-detalhar-voluntario')
-                                <x-button.link title="Detalhar" :lighter="true" :route="route('voluntarios.show', $voluntario)"></x-button.link>
-                            @endcan
-
-                            @can('adm-excluir-voluntario')
-                                <x-button.delete :route="route('voluntarios.destroy', $voluntario)" formId="form-excluir-voluntario-{{ $voluntario->id }}"></x-button.delete>
-                            @endcan
-                        </div>
-                    @endcanany
-                </div>
+                <x-card.voluntario :voluntario="$voluntario"></x-card.voluntario>
             @endforeach
         </div>
     </section>
