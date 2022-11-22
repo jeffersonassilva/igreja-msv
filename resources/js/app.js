@@ -136,6 +136,7 @@ $(document).ready(function () {
         } // End if
     });
 
+    //BOTOES DA ORDENACAO DE LISTAS
     $('.btn-order').on('click', function () {
         const params = document.location.search;
         const searchParams = new URLSearchParams(params.toString());
@@ -151,4 +152,26 @@ $(document).ready(function () {
         searchParams.set('order', field + ':' + sort);
         document.location.search = searchParams;
     });
+
+    //BOTOES DO MODAL DE DIALOGO
+    const targetEl = document.getElementById('dialog-confirm');
+    if (targetEl) {
+        $('.btn-dialog-open').on('click', function () {
+            const formReference = $(this).attr('data-form-reference');
+            $('#dialog-confirm').attr('data-form-reference', formReference).show();
+        });
+
+        $('.btn-dialog-close').on('click', function () {
+            $('#dialog-confirm').removeAttr('data-form-reference').hide();
+        });
+
+        $('.btn-dialog-cancel').on('click', function () {
+            $('#dialog-confirm').hide();
+        });
+
+        $('.btn-dialog-confirm').on('click', function () {
+            const formId = $('#dialog-confirm').attr('data-form-reference');
+            $('#' + 'submit-' + formId).submit();
+        });
+    }
 });

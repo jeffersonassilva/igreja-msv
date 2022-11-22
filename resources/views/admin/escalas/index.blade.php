@@ -99,7 +99,7 @@
                             @endcan
 
                             @can('adm-excluir-escala')
-                                <x-button.delete :route="route('escalas.destroy', $escala)"></x-button.delete>
+                                <x-button.delete :route="route('escalas.destroy', $escala)" formId="form-excluir-escala-{{ $escala->id }}"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
@@ -107,6 +107,8 @@
             @endforeach
         </div>
     </section>
+
+    <x-dialog.confirm></x-dialog.confirm>
 
     <script type="text/javascript">
         $(document).ready(function () {

@@ -25,7 +25,7 @@
                             @endcan
 
                             @can('adm-excluir-perfil')
-                                <x-button.delete :route="route('perfis.destroy', $perfil)"></x-button.delete>
+                                <x-button.delete :route="route('perfis.destroy', $perfil)" formId="form-excluir-perfil-{{ $perfil->id }}"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
@@ -33,4 +33,7 @@
             @endforeach
         </div>
     </section>
+
+    <x-dialog.confirm></x-dialog.confirm>
+
 </x-app-layout>

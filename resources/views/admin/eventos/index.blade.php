@@ -28,7 +28,7 @@
                             @endcan
 
                             @can('adm-excluir-evento')
-                                <x-button.delete :route="route('eventos.destroy', $evento)"></x-button.delete>
+                                <x-button.delete :route="route('eventos.destroy', $evento)" formId="form-excluir-evento-{{ $evento->id }}"></x-button.delete>
                             @endcan
                         </div>
                     @endcanany
@@ -36,4 +36,7 @@
             @endforeach
         </div>
     </section>
+
+    <x-dialog.confirm></x-dialog.confirm>
+
 </x-app-layout>
