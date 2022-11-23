@@ -36,8 +36,9 @@ class RelatorioController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function voluntarios(Request $request)
+    public function mensalVoluntarios(Request $request)
     {
+        $this->checkPermission('adm-relatorio-mensal-voluntario');
         $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
         $meses = $this->getListMonths();
         $voluntarios = $this->getVoluntarios($request);
@@ -47,9 +48,31 @@ class RelatorioController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function mensalVoluntariosDownload(Request $request)
+    {
+        $this->checkPermission('adm-relatorio-mensal-voluntario');
+        $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
+        $mes = $request->get('mes');
+        $periodo = 'Período: ' . ($mes ? ucfirst(Carbon::parse($mes)->monthName) . ' - ' . Carbon::parse($mes)->format('Y') : 'Geral');
+        $voluntarios = $this->getVoluntarios($request);
+
+        $pdf = PDF::loadView('admin/relatorios/voluntarios-pdf', [
+            'title' => 'Relatório - Voluntários',
+            'periodo' => $periodo,
+            'voluntarios' => $voluntarios,
+            'data' => date('d/m/Y - H:i:s')
+        ]);
+
+        return $pdf->stream('relatorio_voluntarios_' . ($request->get('mes') ? $request->get('mes') : 'geral') . '.pdf');
+    }
+
+    /**
+     * @param Request $request
      * @return mixed
      */
-    public function getVoluntarios(Request $request)
+    private function getVoluntarios(Request $request)
     {
         $filter = new UnserializeFilter();
         $where = $filter->getFilters($request->all());
@@ -72,26 +95,5 @@ class RelatorioController extends Controller
         }
 
         return $meses;
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function download(Request $request)
-    {
-        $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
-        $mes = $request->get('mes');
-        $periodo = 'Período: ' . ($mes ? ucfirst(Carbon::parse($mes)->monthName) . ' - ' . Carbon::parse($mes)->format('Y') : 'Geral');
-        $voluntarios = $this->getVoluntarios($request);
-
-        $pdf = PDF::loadView('admin/relatorios/voluntarios-pdf', [
-            'title' => 'Relatório - Voluntários',
-            'periodo' => $periodo,
-            'voluntarios' => $voluntarios,
-            'data' => date('d/m/Y - H:i:s')
-        ]);
-
-        return $pdf->stream('relatorio_voluntarios_' . ($request->get('mes') ? $request->get('mes') : 'geral') . '.pdf');
     }
 }

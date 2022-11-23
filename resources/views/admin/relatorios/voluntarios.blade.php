@@ -7,7 +7,7 @@
         <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
             <div class="flex justify-between gap-2">
                 <div class="flex-1">
-                    <form class="form-horizontal" role="form" action="{{ route('relatorio.voluntarios') }}">
+                    <form class="form-horizontal" role="form" action="{{ route('relatorio.mensal.voluntarios') }}">
                         <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
                             <option value="">Geral</option>
                             @foreach($meses as $key => $mes)
