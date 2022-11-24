@@ -148,10 +148,10 @@
                 <span class="text-sm font-thin text-gray-500">Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
                 <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center md:w-full mt-2">
-                    <select name="nome" class="border-gray-400 rounded-sm text-gray-700 md:w-[250px] @error('nome') border-[1px] border-red-500 @enderror">
+                    <select name="voluntario_id" class="border-gray-400 rounded-sm text-gray-700 md:w-[250px] @error('voluntario_id') border-[1px] border-red-500 @enderror">
                         <option value=""></option>
                         @foreach($voluntarios as $voluntarioItem)
-                            <option value="{{ $voluntarioItem->nome }}">{{ $voluntarioItem->nome }}</option>
+                            <option value="{{ $voluntarioItem->id }}">{{ $voluntarioItem->nome }}</option>
                         @endforeach
                     </select>
 

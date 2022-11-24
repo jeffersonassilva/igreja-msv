@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Constants;
+use App\Http\Requests\EscalaVoluntarioRequest;
 use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EscalaVoluntarioController
@@ -51,17 +53,13 @@ class EscalaVoluntarioController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param EscalaVoluntarioRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(EscalaVoluntarioRequest $request)
     {
-        if (!$request->get('nome')) {
-            return redirect()->route('escalas.edit', $request->get('escala_id'));
-        }
-
-        $voluntario = $this->voluntarioService->firstOrCreate($request->get('nome'));
-        $request->request->add(['voluntario_id' => $voluntario->id]);
+        $this->checkPermission('adm-editar-escala');
+        $request->request->add(['user_id' => Auth::id()]);
         $this->service->store($request);
 
         return redirect()
@@ -76,6 +74,7 @@ class EscalaVoluntarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->checkPermission('adm-editar-escala');
         $voluntario = $this->service->update($request, $id);
         return redirect()->route('escalas.edit', $voluntario->escala_id)->with(
             Constants::MESSAGE, __(Constants::SUCCESS_UPDATE)
