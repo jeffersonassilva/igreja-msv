@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Models\Voluntario;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class VoluntarioService
@@ -10,10 +13,17 @@ use App\Models\Voluntario;
  */
 class VoluntarioService extends AbstractService
 {
+    use UploadTrait;
+
     /**
      * @var Voluntario
      */
     protected $model;
+
+    /**
+     * @var string
+     */
+    private $diretorio;
 
     /**
      * VoluntarioService constructor.
@@ -21,6 +31,7 @@ class VoluntarioService extends AbstractService
     public function __construct()
     {
         $this->model = new Voluntario();
+        $this->diretorio = 'img/voluntarios/';
     }
 
     /**
@@ -46,5 +57,31 @@ class VoluntarioService extends AbstractService
     public function firstOrCreate($nome)
     {
         return Voluntario::firstOrCreate(['nome' => $nome]);
+    }
+
+    /**
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public function update($request, $id)
+    {
+        $dados = $request->all();
+        $dados = $this->definirNomeDaFotoDoVoluntario($request, $dados);
+
+        DB::beginTransaction();
+        $data = $this->model->find($id);
+        $dadosAntigos = $data->toArray();
+
+        try {
+            $data->fill($dados)->save();
+            DB::commit();
+            $this->removerFotoAntigaVoluntario($dadosAntigos, $data->getChanges());
+
+        } catch (ValidationException $e) {
+            DB::rollback();
+        }
+
+        return $data;
     }
 }

@@ -26,6 +26,7 @@ class VoluntarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:100',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|dimensions:min_width=200,min_height=200',
             'sexo' => ['required', Rule::in(['M', 'F'])],
             'professor_ebd' => ['required', Rule::in(['0', '1'])],
             'observacao' => 'max:1000',
@@ -39,9 +40,20 @@ class VoluntarioRequest extends FormRequest
     {
         return [
             'nome' => 'Nome',
+            'foto' => 'Foto',
             'sexo' => 'Sexo',
             'professor_ebd' => 'Professor EBD',
             'observacao' => 'Observações',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages()
+    {
+        return [
+            'foto.dimensions' => 'A imagem deve ter o tamanho mínimo de 200x200.',
         ];
     }
 }

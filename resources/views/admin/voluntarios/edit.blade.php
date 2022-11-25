@@ -6,7 +6,7 @@
     <section>
         <form class="form-horizontal" role="form"
               action="{{ route('voluntarios.update', $data) }}"
-              method="post">
+              method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="flex flex-col mb-4 p-4 bg-white">
@@ -40,6 +40,22 @@
                     <option value="0" @if($data->professor_ebd == '0') selected @endif>Não</option>
                 </select>
                 @error('professor_ebd')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="foto" class="text-gray-900 mb-2">Foto</label>
+                <span class="text-sm font-thin text-gray-500">- O tamanho mínimo é de 240x240.</span>
+                <span class="text-sm font-thin text-gray-500">- A imagem ideal é com a proporção 1/1 (formato quadrado).</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Extensões válidas: jpg, jpeg e png.</span>
+                <label for="foto" class="md:hidden text-gray-900 mb-2 bg-gray-200 border-b rounded-md p-3 flex justify-center items-center sm:max-w-[200px] text-sm">
+                    Selecionar arquivo
+                </label>
+                <input type="file" name="foto" id="foto"
+                       class="@error('foto') border-[1px] border-red-500 @enderror hidden md:block"
+                       value="{{ old('foto') ?? $data->foto }}">
+                @error('foto')
                 <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
                 @enderror
             </div>

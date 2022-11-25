@@ -40,6 +40,11 @@ return [
             'root' => 'img/banner',
         ],
 
+        'voluntarios' => [
+            'driver' => 'local',
+            'root' => 'img/voluntarios',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
