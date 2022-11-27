@@ -64,7 +64,7 @@ class RelatorioService extends AbstractService
     {
         $countSubQuery = EscalaVoluntario::selectRaw('count(escala_voluntario.id)')
             ->leftJoin('escalas', function ($joinLeft) {
-                $joinLeft->on('escalas.id', 'escala_voluntario.escala_id');
+                $joinLeft->on('escalas.id', 'escala_voluntario.escala_id')->whereNull('escalas.deleted_at');
             })
             ->whereColumn('escala_voluntario.voluntario_id', 'voluntarios.id')
             ->whereRaw("escala_voluntario.comparecimento = '$comparecimento'");
