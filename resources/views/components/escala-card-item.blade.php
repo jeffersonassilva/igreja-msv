@@ -46,7 +46,7 @@
                                 data-popover-trigger="click" type="button">
                             {!! $voluntario->funcao ?? '&nbsp;' !!}
                         </button>
-                        {{ $voluntario->voluntario->nome }}
+                        {{ $voluntario->voluntario->nome }} {{ $voluntario->user_id ? '*' : '' }}
                         <div data-popover id="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}" role="tooltip"
                              class="inline-block absolute invisible z-10 text-sm font-light text-gray-600 bg-amber-100
                              rounded-lg border border-gray-200 shadow-md opacity-0 transition-opacity duration-300">
@@ -70,8 +70,8 @@
     {{ $slot }}
 
     @if($escala->fechada)
-        <div class="p-4 sm:px-6 text-sm text-gray-500 font-thin">
-            * Todos deverão estar a postos às {{ \Carbon\Carbon::parse($escala->data)->subMinutes(30)->format('H:i') }}h.
+        <div class="p-4 sm:px-6 text-sm text-gray-700">
+            Todos deverão estar a postos às {{ \Carbon\Carbon::parse($escala->data)->subMinutes(30)->format('H:i') }}h.
         </div>
         <div class="absolute right-2 top-2">
             <span class="font-thin text-xs p-1 uppercase border border-teal-600 rounded-[4px] text-white bg-teal-600">
