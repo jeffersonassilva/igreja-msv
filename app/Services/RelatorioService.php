@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\EscalaVoluntario;
 use App\Models\Voluntario;
 use Illuminate\Support\Facades\DB;
 
@@ -40,7 +41,8 @@ class RelatorioService extends AbstractService
         )
             ->leftJoin('escala_voluntario', function ($join) {
                 $join->on('escala_voluntario.voluntario_id', self::VOLUNTARIO_ID)
-                    ->whereNull('escala_voluntario.deleted_at');
+                    ->whereNull('escala_voluntario.deleted_at')
+                    ->where('escala_voluntario.comparecimento', EscalaVoluntario::COMPARECIMENTO_PRESENTE);
             })
             ->leftJoin('escalas', function ($joinLeft) use ($where) {
                 $joinLeft->on('escalas.id', 'escala_voluntario.escala_id');

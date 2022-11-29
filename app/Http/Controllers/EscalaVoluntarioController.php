@@ -92,4 +92,14 @@ class EscalaVoluntarioController extends Controller
             Constants::MESSAGE, __(Constants::SUCCESS_DESTROY)
         );
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateApi(Request $request)
+    {
+        $data = $this->service->update($request, $request->get('id'));
+        return response()->json(['data' => $data, 'retorno' => true]);
+    }
 }
