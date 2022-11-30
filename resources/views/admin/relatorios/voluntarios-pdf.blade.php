@@ -52,11 +52,27 @@
         right: 0;
     }
 
-    footer {
+    .footer {
+        font-size: 12px;
         position: fixed;
         bottom: -80px;
-        right: 0;
         height: 20px;
+        width: 100%;
+    }
+
+    .footer-left {
+        float: left;
+        color: #6B7280;
+    }
+
+    .footer-left span {
+        background-color: #e9e9e9;
+        color: #333333;
+        padding: 3px;
+    }
+
+    .footer-right {
+        float: right;
     }
 
     footer .pagenum:before {
@@ -89,8 +105,9 @@
     </table>
 </header>
 
-<footer style="font-size: 12px;">
-    <div class="pagenum-container">Página <span class="pagenum"></span></div>
+<footer class="footer">
+    <div class="footer-left"><span>P</span> = Presença; <span>F</span> = Falta; <span>FJ</span> = Falta Justificada.</div>
+    <div class="footer-right">Página <span class="pagenum"></span></div>
 </footer>
 
 <main>
@@ -100,7 +117,9 @@
             <th style="text-align: left;">Nome</th>
             <th>Sexo</th>
             <th>Professor EBD</th>
-            <th>Quantidade</th>
+            <th>P</th>
+            <th>F</th>
+            <th>FJ</th>
         </tr>
         </thead>
         <tbody>
@@ -109,7 +128,9 @@
                 <td>{{ $voluntario->nome }}</td>
                 <td class="text-center">{{ $voluntario->sexo == 'M' ? 'Masculino' : 'Feminino' }}</td>
                 <td class="text-center">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</td>
-                <td class="text-center">{{ $voluntario->quantidade }}</td>
+                <td class="text-center">{{ $voluntario->presenca }}</td>
+                <td class="text-center">{{ $voluntario->falta }}</td>
+                <td class="text-center">{{ $voluntario->falta_justificada }}</td>
             </tr>
         @endforeach
         </tbody>

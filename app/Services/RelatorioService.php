@@ -22,7 +22,7 @@ class RelatorioService extends AbstractService
      */
     private $allowedFilters = [
         'nome',
-        'quantidade'
+        'presenca'
     ];
 
     /**
@@ -32,28 +32,19 @@ class RelatorioService extends AbstractService
      */
     public function voluntarios(array $where = array(), array $order = array())
     {
+        $qntdPresenca = $this->getCountSubQuery('P', $where);
+        $qntdFalta = $this->getCountSubQuery('F', $where);
+        $qntdFaltaJustificada = $this->getCountSubQuery('FJ', $where);
+
         $query = Voluntario::select(
             self::VOLUNTARIO_ID,
             self::VOLUNTARIO_NOME,
             self::VOLUNTARIO_SEXO,
             self::VOLUNTARIO_PROFESSOR_EBD,
-            DB::raw('count(escalas.id) AS quantidade')
-        )
-            ->leftJoin('escala_voluntario', function ($join) {
-                $join->on('escala_voluntario.voluntario_id', self::VOLUNTARIO_ID)
-                    ->whereNull('escala_voluntario.deleted_at')
-                    ->where('escala_voluntario.comparecimento', EscalaVoluntario::COMPARECIMENTO_PRESENTE);
-            })
-            ->leftJoin('escalas', function ($joinLeft) use ($where) {
-                $joinLeft->on('escalas.id', 'escala_voluntario.escala_id');
-
-                if (isset($where['mes']) && !empty($where['mes'])) {
-                    $joinLeft->whereMonth('data', '=', substr($where['mes'], 5, 2));
-                    $joinLeft->whereYear('data', '=', substr($where['mes'], 0, 4));
-                }
-            });
-
-        $query->groupBy(self::VOLUNTARIO_ID, self::VOLUNTARIO_NOME, self::VOLUNTARIO_SEXO, self::VOLUNTARIO_PROFESSOR_EBD);
+            DB::raw("({$qntdPresenca->toSql()}) as presenca"),
+            DB::raw("({$qntdFalta->toSql()}) as falta"),
+            DB::raw("({$qntdFaltaJustificada->toSql()}) as falta_justificada")
+        );
 
         foreach ($order as $key => $value) {
             if (in_array($key, $this->allowedFilters)) {
@@ -62,5 +53,27 @@ class RelatorioService extends AbstractService
         }
 
         return $query->get();
+    }
+
+    /**
+     * @param $comparecimento
+     * @param $where
+     * @return mixed
+     */
+    private function getCountSubQuery($comparecimento, $where)
+    {
+        $countSubQuery = EscalaVoluntario::selectRaw('count(escala_voluntario.id)')
+            ->leftJoin('escalas', function ($joinLeft) {
+                $joinLeft->on('escalas.id', 'escala_voluntario.escala_id');
+            })
+            ->whereColumn('escala_voluntario.voluntario_id', 'voluntarios.id')
+            ->whereRaw("escala_voluntario.comparecimento = '$comparecimento'");
+
+        if (isset($where['mes']) && !empty($where['mes'])) {
+            $countSubQuery->whereRaw('month(data) = ' . substr($where['mes'], 5, 2));
+            $countSubQuery->whereRaw('year(data) = ' . substr($where['mes'], 0, 4));
+        }
+
+        return $countSubQuery;
     }
 }

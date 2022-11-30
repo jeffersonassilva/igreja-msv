@@ -40,13 +40,13 @@
                     Nome
                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512"><path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/></svg>
                 </div>
-                <div class="flex items-center cursor-pointer btn-order" data-order-name="quantidade">
+                <div class="flex items-center cursor-pointer btn-order" data-order-name="presenca">
                     Quantidade
                     <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512"><path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/></svg>
                 </div>
             </div>
             @foreach($voluntarios as $voluntario)
-            <div class="bg-gray-50 odd:bg-white p-3 sm:p-4 sm:px-6 border-b border-x border-gray-200 flex justify-between items-center @if($loop->last) rounded-b-xl @endif">
+            <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200 flex justify-between items-center @if($loop->last) rounded-b-xl @endif">
                 <div class="flex-1">
                     <div class="text-gray-900">
                         {{ $voluntario->nome }}
@@ -63,9 +63,30 @@
                         @endif
                     </div>
                 </div>
-                <span class="border border-gray-200 block flex justify-center items-center w-8 h-8 rounded-full">
-                    {{ $voluntario->quantidade }}
-                </span>
+
+                <div class="flex gap-1 font-thin">
+                    @if($voluntario->falta)
+                    <div class="text-center">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs">
+                            {{ $voluntario->falta }}
+                        </div>
+                        <div class="text-xs text-gray-400">F</div>
+                    </div>
+                    @endif
+                    @if($voluntario->falta_justificada)
+                    <div class="text-center">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs">
+                            {{ $voluntario->falta_justificada }}
+                        </div>
+                        <div class="text-xs text-gray-400">FJ</div>
+                    </div>
+                    @endif
+                    <div class="text-center">
+                        <div class="border border-gray-200 block flex justify-center items-center w-10 h-10 rounded-full text-xl font-normal">
+                            {{ $voluntario->presenca }}
+                        </div>
+                    </div>
+                </div>
             </div>
             @endforeach
         </section>
