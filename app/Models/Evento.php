@@ -4,6 +4,8 @@ namespace App\Models;
 
 class Evento extends AbstractModel
 {
+    const EBD = 5;
+
     /**
      * @var string
      */

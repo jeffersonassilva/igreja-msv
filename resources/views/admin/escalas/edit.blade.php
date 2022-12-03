@@ -100,13 +100,16 @@
                         <select name="funcao" id="funcao-{{ $voluntario->id }}"
                                 class="border border-gray-400 w-full md:max-w-[250px] @error('funcao') border-red-500 @enderror">
                             <option value=""></option>
+                            @if($data->evento_id == \App\Models\Evento::EBD)
                             <optgroup label="Geral">
+                            @endif
                                 <option value="CG" @if('CG' === $voluntario->funcao) selected @endif>CG - Coordenador Geral</option>
                                 <option value="R" @if('R' === $voluntario->funcao) selected @endif>R - Recepção</option>
                                 <option value="A" @if('A' === $voluntario->funcao) selected @endif>A - Apoio</option>
                                 <option value="H" @if('H' === $voluntario->funcao) selected @endif>H - Higienização</option>
                                 <option value="SI" @if('SI' === $voluntario->funcao) selected @endif>SI - Segurança Interna</option>
                                 <option value="SE" @if('SE' === $voluntario->funcao) selected @endif>SE - Segurança Externa</option>
+                            @if($data->evento_id == \App\Models\Evento::EBD)
                             </optgroup>
                             <optgroup label="Professores">
                                 <option value="DIR" @if('DIR' === $voluntario->funcao) selected @endif>DIR - Direção EBD</option>
@@ -120,6 +123,7 @@
                                 <option value="PLO" @if('PLO' === $voluntario->funcao) selected @endif>PLO - Prof. Classe Líderes e Obreiros</option>
                                 <option value="PCA" @if('PCA' === $voluntario->funcao) selected @endif>PCA - Prof. Classe Casais</option>
                             </optgroup>
+                            @endif
                         </select>
                     </div>
 
