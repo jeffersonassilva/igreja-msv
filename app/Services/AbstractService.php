@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Cache;
 abstract class AbstractService
 {
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return $this->model->find($id);
+    }
+
+    /**
      * @param array $orders
      * @param $cacheKey
      * @param $cacheTime
@@ -86,7 +95,7 @@ abstract class AbstractService
      */
     public function edit($id)
     {
-        return $this->model->find($id);
+        return $this->find($id);
     }
 
     /**

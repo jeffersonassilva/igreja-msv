@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VoluntarioRequest;
+use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,18 @@ class VoluntarioController extends Controller
     private $service;
 
     /**
-     * @param VoluntarioService $service
+     * @var EscalaVoluntarioService
      */
-    public function __construct(VoluntarioService $service)
+    private $escalaVoluntarioService;
+
+    /**
+     * @param VoluntarioService $service
+     * @param EscalaVoluntarioService $escalaVoluntarioService
+     */
+    public function __construct(VoluntarioService $service, EscalaVoluntarioService $escalaVoluntarioService)
     {
         $this->service = $service;
+        $this->escalaVoluntarioService = $escalaVoluntarioService;
     }
 
     /**
@@ -79,6 +87,18 @@ class VoluntarioController extends Controller
         $this->checkPermission('adm-editar-voluntario');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('voluntarios', __(Constants::SUCCESS_UPDATE));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show($id)
+    {
+        $this->checkPermission('adm-detalhar-voluntario');
+        $data = $this->service->find($id);
+        $escalas = $this->escalaVoluntarioService->listaEscalasPorVoluntarioId($id);
+        return view('admin/voluntarios/show')->with(['data' => $data, 'escalas' => $escalas]);
     }
 
     /**

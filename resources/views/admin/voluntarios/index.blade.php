@@ -103,7 +103,7 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
             @foreach($voluntarios as $voluntario)
-                <div class="flex flex-col bg-white p-3 rounded-md">
+                <div class="flex flex-col bg-white p-3 rounded-md shadow-sm">
                     <h3 class="text-gray-700 font-medium">{{ $voluntario->nome }}</h3>
                     <p class="text-sm mt-2 text-gray-500">
                         Sexo: <span class="font-thin">{{ $voluntario->sexo === 'M' ? 'Masculino' : 'Feminino' }}</span>
@@ -118,9 +118,13 @@
                     @endif
 
                     @canany(['adm-editar-voluntario', 'adm-excluir-voluntario'])
-                        <div class="text-rights text-sm mt-3">
+                        <div class="text-sm mt-3 flex gap-2">
                             @can('adm-editar-voluntario')
                                 <x-button.link title="Editar" :route="route('voluntarios.edit', $voluntario)"></x-button.link>
+                            @endcan
+
+                            @can('adm-detalhar-voluntario')
+                                <x-button.link title="Detalhar" :lighter="true" :route="route('voluntarios.show', $voluntario)"></x-button.link>
                             @endcan
 
                             @can('adm-excluir-voluntario')
