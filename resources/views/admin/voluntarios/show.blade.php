@@ -63,7 +63,7 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="font-thin text-xs md:text-sm text-gray-500">Função</div>
-                            <div class="text-gray-700 text-sm">{{ $escala->funcao ?  \App\Helpers\Constants::FUNCOES_LISTA[$escala->funcao] : 'Geral' }}</div>
+                            <div class="text-gray-700 text-sm">{{ $escala->funcao ?  \App\Helpers\Constants::FUNCOES_LISTA[$escala->funcao] : 'Serviços Gerais' }}</div>
                         </div>
                         <div class="flex flex-col">
                             <div class="font-thin text-xs md:text-sm text-gray-500">Comparecimento</div>
