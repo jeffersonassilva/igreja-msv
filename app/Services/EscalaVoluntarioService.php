@@ -33,6 +33,6 @@ class EscalaVoluntarioService extends AbstractService
             ->join('escalas', 'escala_id', '=', 'escalas.id')
             ->join('eventos', 'escalas.evento_id', '=', 'eventos.id')
             ->orderByRaw('escalas.data desc')
-            ->paginate(15);
+            ->paginate(18);
     }
 }
