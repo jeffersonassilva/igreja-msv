@@ -30,6 +30,7 @@ class VoluntarioRequest extends FormRequest
             'sexo' => ['required', Rule::in(['M', 'F'])],
             'professor_ebd' => ['required', Rule::in(['0', '1'])],
             'observacao' => 'max:1000',
+            'disponibilidades' => 'required|min:1',
         ];
     }
 
@@ -44,6 +45,7 @@ class VoluntarioRequest extends FormRequest
             'sexo' => 'Sexo',
             'professor_ebd' => 'Professor EBD',
             'observacao' => 'Observações',
+            'disponibilidades' => 'Disponibilidade',
         ];
     }
 

@@ -52,7 +52,16 @@ class VoluntarioController extends Controller
     public function create()
     {
         $this->checkPermission('adm-adicionar-voluntario');
-        return view('admin/voluntarios/create');
+
+        $listaDisponibilidades = array();
+        foreach (Constants::DIAS_SEMANA_LISTA as $key => $disponibilidade) {
+            $listaDisponibilidades[$key]['id'] = $key;
+            $listaDisponibilidades[$key]['descricao'] = $disponibilidade;
+        }
+
+        return view('admin/voluntarios/create')->with([
+            'disponibilidades' => $listaDisponibilidades
+        ]);
     }
 
     /**
@@ -74,7 +83,21 @@ class VoluntarioController extends Controller
     {
         $this->checkPermission('adm-editar-voluntario');
         $data = $this->service->edit($id);
-        return view('admin/voluntarios/edit')->with(['data' => $data]);
+        $disponibilidades = Constants::DIAS_SEMANA_LISTA;
+        $arrayDisponibilidades = [];
+        $arrayDisponibilidadesCadastradas = [];
+
+        foreach ($data->disponibilidades as $disponibilidade) {
+            $arrayDisponibilidadesCadastradas[] = $disponibilidade->dia;
+        }
+
+        foreach ($disponibilidades as $key => $disponibilidade) {
+            $arrayDisponibilidades[$key]['id'] = $key;
+            $arrayDisponibilidades[$key]['descricao'] = $disponibilidade;
+            $arrayDisponibilidades[$key]['checked'] = in_array($key, $arrayDisponibilidadesCadastradas);
+        }
+
+        return view('admin/voluntarios/edit')->with(['data' => $data, 'disponibilidades' => $arrayDisponibilidades]);
     }
 
     /**
