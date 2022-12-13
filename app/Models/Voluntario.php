@@ -20,6 +20,7 @@ class Voluntario extends AbstractModel
     protected $fillable = [
         'id',
         'nome',
+        'foto',
         'sexo',
         'professor_ebd',
         'observacao',

@@ -3,17 +3,22 @@
 <div class="bg-white border border-gray-200 rounded-md shadow-sm">
     <div class="flex p-4">
         <div class="flex justify-center items-start mr-2">
-            @if($voluntario->sexo == 'M')
-                <img src="{{ asset('img/icon_profile_man.jpg') }}"
+            @if($voluntario->foto)
+                <img src="{{ asset($voluntario->foto) }}"
                      alt="avatar" class="w-[60px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
             @else
-                <img src="{{ asset('img/icon_profile_woman.jpg') }}"
-                     alt="avatar" class="w-[60px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                @if($voluntario->sexo == 'M')
+                    <img src="{{ asset('img/icon_profile_man.jpg') }}"
+                         alt="avatar" class="w-[60px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                @else
+                    <img src="{{ asset('img/icon_profile_woman.jpg') }}"
+                         alt="avatar" class="w-[60px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                @endif
             @endif
         </div>
-        <div class="flex-1 grid grid-cols-2 gap-y-2 md:gap-y-2 ml-2">
+        <div class="flex-1 grid grid-cols-2 gap-y-2 ml-2">
             <div class="flex flex-col col-span-2">
-                <div class="text-gray-800 leading-4 text-lg md:text-xl 2xl:text-2xl font-semibold sm:font-medium">
+                <div class="text-gray-800 leading-4 text-lg font-semibold sm:font-medium">
                     {{ $voluntario->nome }}
                 </div>
             </div>
