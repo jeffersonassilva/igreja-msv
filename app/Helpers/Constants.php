@@ -63,4 +63,17 @@ class Constants
         'F' => 'Falta',
         'FJ' => 'Falta Justificada',
     ];
+
+    /**
+     * LISTA DE DIAS DA SEMANA
+     */
+    const DIAS_SEMANA_LISTA = [
+        '1' => 'Domingo',
+        '2' => 'Segunda',
+        '3' => 'Terça',
+        '4' => 'Quarta',
+        '5' => 'Quinta',
+        '6' => 'Sexta',
+        '7' => 'Sábado',
+    ];
 }
