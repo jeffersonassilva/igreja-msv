@@ -11,14 +11,14 @@
                 <div class="flex justify-center items-center sm:block">
                     @if($data->foto)
                         <img src="{{ asset($data->foto) }}"
-                             alt="avatar" class="w-[60px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-200 p-[2px] md:p-[3px]">
+                             alt="avatar" class="w-[60px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-200 p-[2px] md:p-[3px]">
                     @else
                         @if($data->sexo == 'M')
                             <img src="{{ asset('img/icon_profile_man.jpg') }}"
-                                 alt="avatar" class="w-[66px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
                         @else
                             <img src="{{ asset('img/icon_profile_woman.jpg') }}"
-                                 alt="avatar" class="w-[66px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
                         @endif
                     @endif
                 </div>

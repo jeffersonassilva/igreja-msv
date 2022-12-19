@@ -97,7 +97,7 @@ trait UploadTrait
         $name = Storage::disk('voluntarios')->putFileAs('', $request->file('foto'), $nomeImagem);
 
         if (Storage::disk('voluntarios')->exists($name)) {
-            $this->optimizarImagem($this->diretorio . $name, $extension, 60, 60);
+            $this->optimizarImagem($this->diretorio . $name, $extension, 240, 240);
         }
 
         return $name;
