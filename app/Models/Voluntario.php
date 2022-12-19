@@ -25,4 +25,12 @@ class Voluntario extends AbstractModel
         'professor_ebd',
         'observacao',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function disponibilidades()
+    {
+        return $this->hasMany(Disponibilidade::class, 'voluntario_id', 'id');
+    }
 }
