@@ -45,6 +45,32 @@
             </div>
 
             <div class="flex flex-col mb-4 p-4 bg-white">
+                <label class="text-gray-900 mb-2">Disponibilidade <span class="text-red-500 font-bold">*</span></label>
+                <span class="text-sm font-thin text-gray-500 mb-4">- Selecione os dias que o voluntário está disponível.</span>
+                <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 py-4">
+                    @foreach($disponibilidades as $disponibilidade)
+                        <div class="flex border border-gray-200 rounded p-2">
+                            <div class="flex items-center h-5">
+                                <input name="disponibilidades[]" id="role-checkbox-{{ $disponibilidade['id'] }}"
+                                       type="checkbox" value="{{ $disponibilidade['id'] }}"
+                                       @if($disponibilidade['checked']) checked="checked" @endif
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="role-checkbox-{{ $disponibilidade['id'] }}"
+                                       class="font-medium text-gray-700 cursor-pointer select-none">
+                                    {{ $disponibilidade['descricao'] }}
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                @error('disponibilidades')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="foto" class="text-gray-900 mb-2">Foto</label>
                 <span class="text-sm font-thin text-gray-500">- O tamanho mínimo é de 240x240.</span>
                 <span class="text-sm font-thin text-gray-500">- A imagem ideal é com a proporção 1/1 (formato quadrado).</span>
