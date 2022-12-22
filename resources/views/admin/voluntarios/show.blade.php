@@ -6,38 +6,54 @@
     <section class="flex flex-col gap-1 mb-4">
         <div class="text-gray-400 text-lg font-thin">Informações Gerais</div>
 
-        <div class="bg-white border border-gray-200 rounded-md shadow-sm p-4 md:p-6 mb-6">
-            <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
-                <div class="flex col-span-2 md:col-span-4 items-center md:items-start">
-{{--                        <div class="mr-2 md:mr-8">--}}
-{{--                            <img src="https://thumbs.dreamstime.com/b/handsome-man-black-suit-white-shirt-posing-studio-attractive-guy-fashion-hairstyle-confident-man-short-beard-125019349.jpg"--}}
-{{--                                 alt="avatar" class="w-[60px] sm:w-[80px] md:w-[100px] rounded-full">--}}
-{{--                        </div>--}}
-                    <div class="flex flex-col">
+        <div class="bg-white border border-gray-200 rounded-md shadow-sm p-4 sm:p-6 lg:p-8 mb-6">
+            <div class="flex justify-center gap-3 sm:gap-6 md:gap-8">
+                <div class="flex justify-center items-center sm:block">
+                    @if($data->foto)
+                        <img src="{{ asset($data->foto) }}"
+                             alt="avatar" class="w-[60px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-200 p-[2px] md:p-[3px]">
+                    @else
+                        @if($data->sexo == 'M')
+                            <img src="{{ asset('img/icon_profile_man.jpg') }}"
+                                 alt="avatar" class="w-[66px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                        @else
+                            <img src="{{ asset('img/icon_profile_woman.jpg') }}"
+                                 alt="avatar" class="w-[66px] sm:w-[86px] md:w-[106px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                        @endif
+                    @endif
+                </div>
+                <div class="flex-1 flex flex-col gap-3 md:gap-4">
+                    <div>
                         <div class="font-thin text-xs md:text-sm text-gray-500">Nome</div>
                         <div class="text-gray-800 text-xl sm:text-2xl md:text-3xl font-medium sm:font-normal">
                             {{ $data->nome }}
                         </div>
                     </div>
-                </div>
+                    <div class="grid grid-cols-2 gap-x-2 gap-y-4">
+                        <div class="flex flex-col">
+                            <div class="font-thin text-xs md:text-sm text-gray-500">Sexo</div>
+                            <div class="text-gray-800">{{ $data->sexo === 'M' ? 'Masculino' : 'Feminino' }}</div>
+                        </div>
 
-                <div class="flex flex-col">
-                    <div class="font-thin text-xs md:text-sm text-gray-500">Sexo</div>
-                    <div class="text-gray-800">{{ $data->sexo === 'M' ? 'Masculino' : 'Feminino' }}</div>
-                </div>
-
-                <div class="flex flex-col">
-                    <div class="font-thin text-xs md:text-sm text-gray-500">Professor EBD</div>
-                    <div class="text-gray-800">{{ $data->professor_ebd == '1' ? 'Sim' : 'Não' }}</div>
-                </div>
-
-                @if($data->observacao)
-                    <div class="flex flex-col col-span-2">
-                        <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
-                        <div class="text-gray-800">{{ $data->observacao }}</div>
+                        <div class="flex flex-col">
+                            <div class="font-thin text-xs md:text-sm text-gray-500">Professor EBD</div>
+                            <div class="text-gray-800">{{ $data->professor_ebd == '1' ? 'Sim' : 'Não' }}</div>
+                        </div>
+                        @if($data->observacao)
+                            <div class="flex flex-col col-span-2 hidden sm:block">
+                                <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
+                                <div class="text-gray-800">{{ $data->observacao }}</div>
+                            </div>
+                        @endif
                     </div>
-                @endif
+                </div>
             </div>
+            @if($data->observacao)
+                <div class="flex flex-col mt-4 sm:hidden">
+                    <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
+                    <div class="text-gray-800">{{ $data->observacao }}</div>
+                </div>
+            @endif
         </div>
 
         @if(count($escalas))
