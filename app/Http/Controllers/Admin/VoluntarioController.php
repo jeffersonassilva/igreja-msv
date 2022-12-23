@@ -121,7 +121,26 @@ class VoluntarioController extends Controller
         $this->checkPermission('adm-detalhar-voluntario');
         $data = $this->service->find($id);
         $escalas = $this->escalaVoluntarioService->listaEscalasPorVoluntarioId($id);
-        return view('admin/voluntarios/show')->with(['data' => $data, 'escalas' => $escalas]);
+
+        $disponibilidades = Constants::DIAS_SEMANA_LISTA;
+        $arrayDisponibilidades = [];
+        $arrayDisponibilidadesCadastradas = [];
+
+        foreach ($data->disponibilidades as $disponibilidade) {
+            $arrayDisponibilidadesCadastradas[] = $disponibilidade->dia;
+        }
+
+        foreach ($disponibilidades as $key => $disponibilidade) {
+            $arrayDisponibilidades[$key]['id'] = $key;
+            $arrayDisponibilidades[$key]['descricao'] = $disponibilidade;
+            $arrayDisponibilidades[$key]['checked'] = in_array($key, $arrayDisponibilidadesCadastradas);
+        }
+
+        return view('admin/voluntarios/show')->with([
+            'data' => $data,
+            'escalas' => $escalas,
+            'disponibilidades' => $arrayDisponibilidades
+        ]);
     }
 
     /**
