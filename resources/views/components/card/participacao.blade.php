@@ -1,9 +1,9 @@
 @props(['escala'])
 
 <div class="flex flex-col relative bg-white border border-gray-200 p-4 md:px-6 rounded-md">
-    <div class="absolute left-[-3px] h-[65px] w-[3px]" style="background: #ddd{{ $escala->cor_indicacao }}"></div>
+    <div class="absolute left-[-3px] h-[30px] w-[3px]" style="background: {{ $escala->cor ?? '#ccc' }}"></div>
     <div class="text-gray-700 col-span-2">
-        <div class="text-lg mb-1" style="color: {{ $escala->cor_indicacao }}">{{ $escala->descricao }}</div>
+        <div class="text-lg mb-1" style="color: {{ $escala->cor ?? '#6b7280' }}">{{ $escala->descricao }}</div>
         <div class="flex gap-1 text-xs font-thin">
             <div class="bg-gray-200 py-1 px-2 rounded-md">{{ \Carbon\Carbon::parse($escala->data)->format('d/m/Y') }}</div>
             <div class="bg-gray-200 py-1 px-2 rounded-md">{{ \Carbon\Carbon::parse($escala->data)->format('H:i') }}h</div>
