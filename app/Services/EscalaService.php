@@ -31,7 +31,7 @@ class EscalaService extends AbstractService
      */
     public function list($filter = array())
     {
-        $query = $this->model->with('voluntarios.voluntario')
+        $query = $this->model->with('voluntarios.voluntario', 'evento')
             ->whereHas('evento', function ($query) {
                 return $query->where('situacao', Constants::TRUE);
             });
@@ -53,6 +53,8 @@ class EscalaService extends AbstractService
                 case 'noite':
                     $query->whereTime('data', '>=', Carbon::parse('18:00'))
                         ->whereTime('data', '<=', Carbon::parse('23:59'));
+                    break;
+                default:
                     break;
             }
         }
