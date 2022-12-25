@@ -53,7 +53,7 @@
                         <div class="flex border border-gray-200 rounded p-2">
                             <div class="flex items-center h-5">
                                 <input name="disponibilidades[]" id="role-checkbox-{{ $disponibilidade['id'] }}"
-                                       type="checkbox" value="{{ $disponibilidade['id'] }}"
+                                       type="checkbox" checked value="{{ $disponibilidade['id'] }}"
                                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
                             </div>
                             <div class="ml-2 text-sm">
