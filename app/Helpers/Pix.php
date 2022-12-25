@@ -170,7 +170,9 @@ class Pix
             for ($offset = 0; $offset < $length; $offset++) {
                 $resultado ^= (ord($payload[$offset]) << 8);
                 for ($bitwise = 0; $bitwise < 8; $bitwise++) {
-                    if (($resultado <<= 1) & 0x10000) $resultado ^= $polinomio;
+                    if (($resultado <<= 1) & 0x10000) {
+                        $resultado ^= $polinomio;
+                    }
                     $resultado &= 0xFFFF;
                 }
             }
