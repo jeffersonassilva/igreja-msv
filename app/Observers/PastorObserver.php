@@ -3,52 +3,46 @@
 namespace App\Observers;
 
 use App\Helpers\Constants;
-use App\Models\Pastor;
 use Illuminate\Support\Facades\Cache;
 
 class PastorObserver
 {
     /**
-     * @param Pastor $pastor
      * @return void
      */
-    public function created(Pastor $pastor)
+    public function created()
     {
         //
     }
 
     /**
-     * @param Pastor $pastor
      * @return void
      */
-    public function updated(Pastor $pastor)
+    public function updated()
     {
         Cache::pull(Constants::CACHE_LISTA_PASTORES);
     }
 
     /**
-     * @param Pastor $pastor
      * @return void
      */
-    public function deleted(Pastor $pastor)
+    public function deleted()
     {
         //
     }
 
     /**
-     * @param Pastor $pastor
      * @return void
      */
-    public function restored(Pastor $pastor)
+    public function restored()
     {
         //
     }
 
     /**
-     * @param Pastor $pastor
      * @return void
      */
-    public function forceDeleted(Pastor $pastor)
+    public function forceDeleted()
     {
         //
     }

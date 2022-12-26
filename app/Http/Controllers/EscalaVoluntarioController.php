@@ -76,9 +76,9 @@ class EscalaVoluntarioController extends Controller
     {
         $this->checkPermission('adm-editar-escala');
         $voluntario = $this->service->update($request, $id);
-        return redirect()->route('escalas.edit', $voluntario->escala_id)->with(
-            Constants::MESSAGE, __(Constants::SUCCESS_UPDATE)
-        );
+        return redirect()
+            ->route('escalas.edit', $voluntario->escala_id)
+            ->with(Constants::MESSAGE, __(Constants::SUCCESS_UPDATE));
     }
 
     /**
@@ -88,8 +88,9 @@ class EscalaVoluntarioController extends Controller
     public function destroy($id)
     {
         $voluntario = $this->service->destroy($id);
-        return redirect()->route('escalas.edit', $voluntario->escala_id)->with(
-            Constants::MESSAGE, __(Constants::SUCCESS_DESTROY)
+        return redirect()
+            ->route('escalas.edit', $voluntario->escala_id)
+            ->with(Constants::MESSAGE, __(Constants::SUCCESS_DESTROY)
         );
     }
 

@@ -3,52 +3,46 @@
 namespace App\Observers;
 
 use App\Helpers\Constants;
-use App\Models\Banner;
 use Illuminate\Support\Facades\Cache;
 
 class BannerObserver
 {
     /**
-     * @param Banner $banner
      * @return void
      */
-    public function created(Banner $banner)
+    public function created()
     {
         Cache::pull(Constants::CACHE_LISTA_BANNERS);
     }
 
     /**
-     * @param Banner $banner
      * @return void
      */
-    public function updated(Banner $banner)
+    public function updated()
     {
         Cache::pull(Constants::CACHE_LISTA_BANNERS);
     }
 
     /**
-     * @param Banner $banner
      * @return void
      */
-    public function deleted(Banner $banner)
+    public function deleted()
     {
         Cache::pull(Constants::CACHE_LISTA_BANNERS);
     }
 
     /**
-     * @param Banner $banner
      * @return void
      */
-    public function restored(Banner $banner)
+    public function restored()
     {
         //
     }
 
     /**
-     * @param Banner $banner
      * @return void
      */
-    public function forceDeleted(Banner $banner)
+    public function forceDeleted()
     {
         //
     }
