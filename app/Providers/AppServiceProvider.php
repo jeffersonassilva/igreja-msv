@@ -25,18 +25,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $roles = Role::with('permissions')->get();
-        $permissionsArray = [];
-        foreach ($roles as $role) {
-            foreach ($role->permissions as $permissions) {
-                $permissionsArray[$permissions->nome][] = $role->id;
+        if (strpos(php_sapi_name(), 'cli') === false) {
+            $roles = Role::with('permissions')->get();
+            $permissionsArray = [];
+            foreach ($roles as $role) {
+                foreach ($role->permissions as $permissions) {
+                    $permissionsArray[$permissions->nome][] = $role->id;
+                }
             }
-        }
 
-        foreach ($permissionsArray as $title => $roles) {
-            Gate::define($title, function ($user) use ($roles) {
-                return count(array_intersect($user->roles->pluck('id')->toArray(), $roles)) > 0;
-            });
+            foreach ($permissionsArray as $title => $roles) {
+                Gate::define($title, function ($user) use ($roles) {
+                    return count(array_intersect($user->roles->pluck('id')->toArray(), $roles)) > 0;
+                });
+            }
         }
     }
 }
