@@ -7,21 +7,23 @@
         <div class="text-gray-400 text-lg font-thin">Informações Gerais</div>
 
         <div class="bg-white border border-gray-200 rounded-md shadow-sm p-4 sm:p-6 lg:p-8 mb-6">
-            <div class="flex justify-center gap-3 sm:gap-6 md:gap-8">
-                <div class="flex justify-center items-center sm:block">
+            <div class="flex md:flex-row justify-center gap-3 sm:gap-6 md:gap-8">
+
+                <div class="flex justify-start items-center">
                     @if($data->foto)
                         <img src="{{ asset($data->foto) }}"
-                             alt="avatar" class="w-[60px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-200 p-[2px] md:p-[3px]">
+                             alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] lg:w-[200px] rounded-full object-cover aspect-square border-2 border-gray-200 p-[2px] md:p-[3px]">
                     @else
                         @if($data->sexo == 'M')
                             <img src="{{ asset('img/icon_profile_man.jpg') }}"
-                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] lg:w-[200px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
                         @else
                             <img src="{{ asset('img/icon_profile_woman.jpg') }}"
-                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
+                                 alt="avatar" class="w-[66px] sm:w-[96px] md:w-[126px] lg:w-[200px] rounded-full object-cover aspect-square border-2 border-gray-100 p-[2px]">
                         @endif
                     @endif
                 </div>
+
                 <div class="flex-1 flex flex-col gap-3 md:gap-4">
                     <div>
                         <div class="font-thin text-xs md:text-sm text-gray-500">Nome</div>
@@ -40,20 +42,50 @@
                             <div class="text-gray-800">{{ $data->professor_ebd == '1' ? 'Sim' : 'Não' }}</div>
                         </div>
                         @if($data->observacao)
-                            <div class="flex flex-col col-span-2 hidden sm:block">
+                            <div class="hidden lg:block flex flex-col col-span-2">
                                 <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
                                 <div class="text-gray-800">{{ $data->observacao }}</div>
                             </div>
                         @endif
+                        <div class="hidden lg:block">
+                            <div class="font-thin text-xs md:text-sm text-gray-500">Disponibilidade</div>
+                            <div class="flex gap-1 mt-1">
+                                @foreach($disponibilidades as $disponibilidade)
+                                <div class="flex justify-center items-center py-1 px-3 text-sm
+                                            border border-gray-300 rounded-md select-none
+                                            @if($disponibilidade['checked']) bg-green-200 text-gray-800 @else bg-gray-100 text-gray-400 @endif">
+                                    <div class="absolute bottom-5 right-[-3px] bg-green-200 w-3 h-3 rounded-full">&nbsp;</div>
+                                    {{ $disponibilidade['descricao'] }}
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             @if($data->observacao)
-                <div class="flex flex-col mt-4 sm:hidden">
+                <div class="lg:hidden flex flex-col mt-4">
                     <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
                     <div class="text-gray-800">{{ $data->observacao }}</div>
                 </div>
             @endif
+            <div class="lg:hidden mt-4">
+                <div class="font-thin text-xs md:text-sm text-gray-500">Disponibilidade</div>
+                <div class="flex justify-between gap-1 mt-1">
+                    @foreach($disponibilidades as $disponibilidade)
+                        <div class="flex justify-center items-center flex-1 p-1 text-xs
+                            border border-gray-300 rounded-sm select-none
+                            @if($disponibilidade['checked']) bg-green-200 text-gray-800 @else bg-gray-100 text-gray-400 @endif">
+                            <span class="block sm:hidden">
+                                {{ \App\Helpers\Strings::getDiaSemanaAbreviado($disponibilidade['descricao'], 3) }}
+                            </span>
+                            <span class="hidden sm:block">
+                                {{ $disponibilidade['descricao'] }}
+                            </span>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
         @if(count($escalas))
