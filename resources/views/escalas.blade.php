@@ -7,10 +7,14 @@
             <h1 class="titulo-separador" style="margin-bottom: 10px;">Escalas</h1>
 
             <div class="mb-6 flex justify-center items-center rounded-md" role="group">
-                <button type="button" id="btn-filtros" class="py-1 px-4 text-sm text-gray-700 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-200 @if(request()->query()) bg-gray-200 @endif">
+                <button type="button" id="btn-filtros"
+                        class="py-1 px-4 text-sm text-gray-700 bg-white rounded-l-lg
+                        border border-gray-300 hover:bg-gray-200 @if(request()->query()) bg-gray-200 @endif">
                     Filtros
                 </button>
-                <button type="button" id="btn-instrucoes" class="py-1 px-4 text-sm text-gray-700 bg-white rounded-r-md border-y border-r border-gray-300 hover:bg-gray-200">
+                <button type="button" id="btn-instrucoes"
+                        class="py-1 px-4 text-sm text-gray-700 bg-white rounded-r-md
+                        border-y border-r border-gray-300 hover:bg-gray-200">
                     Instruções
                 </button>
             </div>
