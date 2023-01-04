@@ -23,5 +23,6 @@ class Evento extends AbstractModel
         'id',
         'descricao',
         'situacao',
+        'qntd_voluntarios',
     ];
 }
