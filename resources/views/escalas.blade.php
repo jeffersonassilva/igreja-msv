@@ -19,7 +19,7 @@
                 </button>
             </div>
 
-            <div id="filtros" class="p-4 md:p-6 mb-12 bg-white rounded-lg @if(!request()->query()) hidden @endif">
+            <div id="filtros" class="p-4 md:p-6 mb-6 bg-white rounded-lg @if(!request()->query()) hidden @endif">
                 <div class="mb-6 md:flex lg:block gap-6">
                     <div class="w-full md:w-2/5 mb-4">
                         <h3 class="mt-4 mb-1 font-thin text-sm text-gray-400">Por Período</h3>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div id="instrucoes" class="hidden p-4 md:p-6 mb-12 bg-amber-50 text-gray-800 rounded-lg">
+            <div id="instrucoes" class="hidden p-4 md:p-6 mb-6 bg-amber-50 text-gray-800 rounded-lg">
                 <p class="font-thin mb-4">
                     Para se voluntariar, basta selecionar o seu nome no local indicado referente ao evento em questão,
                     e clicar no botão <ion-icon name="add-circle-outline" class="text-gray-500"></ion-icon>.
@@ -127,6 +127,24 @@
                     é necessário avisar o quanto antes para que possamos te substituir por outro voluntário.
                 </p>
             </div>
+
+            @if($voluntarios->count())
+            <div class="my-4 sm:my-0">
+                <div class="flex justify-center items-center text-xs text-[#b0627c] p-2">
+                    <div class="italic px-3 text-center">Quantidade<br />preenchida</div>
+                    <div class="flex items-center gap-2">
+                        <div class="text-4xl">{{$qntdVoluntariadoPreenchido}}</div>
+                        <div class="text-xs">x</div>
+                        <div class="text-4xl">{{$qntdVoluntariadoMes}}</div>
+                    </div>
+                    <div class="px-3 italic text-center">Quantidade<br />necessária</div>
+                </div>
+                <hr class="max-w-xs mx-auto">
+                <div class="text-center text-gray-600 text-xs p-4 mb-4">
+                    {!! \App\Helpers\Strings::getMsgQntdServicoPorVoluntario($qntdVoluntariadoMes, $voluntarios->count()) !!}
+                </div>
+            </div>
+            @endif
 
             @if($escalas->count())
             <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 2xl:grid-cols-5 mb-8">
