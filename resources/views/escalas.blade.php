@@ -78,8 +78,12 @@
 
             <div id="instrucoes" class="hidden p-4 md:p-6 mb-6 bg-amber-50 text-gray-800 rounded-lg">
                 <p class="font-thin mb-4">
-                    Para se voluntariar, basta selecionar o seu nome no local indicado referente ao evento em questão,
-                    e clicar no botão <ion-icon name="add-circle-outline" class="text-gray-500"></ion-icon>.
+                    Para se voluntariar, basta selecionar o seu nome no local indicado
+                    referente ao evento em questão, e clicar no botão
+                    <span class="text-sm font-normal bg-gray-200 text-gray-900 shadow-sm
+                                 border border-gray-300 rounded-md px-2 py-1 select-none">
+                        Incluir
+                    </span>.
                 </p>
                 <p class="font-thin mb-4">
                     Após sua inclusão como voluntário na escala, o responsável pelas escalas da igreja atribuirá sua
