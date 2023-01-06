@@ -84,26 +84,7 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($escalas as $escala)
-                <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
-                    <h3 class="text-gray-700 font-medium">{{ $escala->evento->descricao }}</h3>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4">
-                        {{ \Carbon\Carbon::parse($escala->data)->dayName }} -
-                        {{ \Carbon\Carbon::parse($escala->data)->format('d') }} de
-                        {{ \Carbon\Carbon::parse($escala->data)->monthName }} de
-                        {{ \Carbon\Carbon::parse($escala->data)->format('Y') }}
-                    </p>
-                    @canany(['adm-editar-escala', 'adm-excluir-escala'])
-                        <div class="text-rights text-sm mt-3">
-                            @can('adm-editar-escala')
-                                <x-button.link title="Editar" :route="route('escalas.edit', $escala)"></x-button.link>
-                            @endcan
-
-                            @can('adm-excluir-escala')
-                                <x-button.delete :route="route('escalas.destroy', $escala)" formId="form-excluir-escala-{{ $escala->id }}"></x-button.delete>
-                            @endcan
-                        </div>
-                    @endcanany
-                </div>
+                <x-card.escala :escala="$escala"></x-card.escala>
             @endforeach
         </div>
     </section>
