@@ -14,13 +14,13 @@
                 {{ \Carbon\Carbon::parse($escala->data)->format('d') }}
             </div>
             <div class="flex flex-col pl-4 flex-1">
-                <span class="text-sm @if($escala->fechada) text-gray-800 @endif">
+                <span class="text-sm text-gray-800">
                     {{ \Carbon\Carbon::parse($escala->data)->dayName }}
                 </span>
-                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-400 @endif">
+                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
                     {{ \Carbon\Carbon::parse($escala->data)->monthName }}, {{ \Carbon\Carbon::parse($escala->data)->format('Y') }}
                 </span>
-                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-400 @endif">
+                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
                     às {{ \Carbon\Carbon::parse($escala->data)->format('H:i') }}h
                 </span>
             </div>
@@ -57,7 +57,7 @@
             <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
                 @foreach($escala->voluntarios as $voluntario)
                     <li class="line-clamp-1">
-                        <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200' : 'border border-dashed border-gray-300' }}
+                        <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200' : 'border border-dashed border-gray-400' }}
                                 font-normal rounded-sm px-1 h-[20px] mr-1 {{ $escala->evento_id == '10' ? 'w-[35px]' : 'w-[25px]' }}
                                 inline-flex items-center justify-center cursor-help select-none"
                                 data-popover-target="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}"
