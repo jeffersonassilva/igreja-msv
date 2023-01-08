@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Constants;
 use App\Http\Requests\EscalaVoluntarioRequest;
+use App\Models\Escala;
+use App\Services\EscalaService;
 use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
@@ -21,18 +23,18 @@ class EscalaVoluntarioController extends Controller
     private $service;
 
     /**
-     * @var VoluntarioService
+     * @var EscalaService
      */
-    private $voluntarioService;
+    private $escalaService;
 
     /**
      * @param EscalaVoluntarioService $service
-     * @param VoluntarioService $voluntarioService
+     * @param EscalaService $escalaService
      */
-    public function __construct(EscalaVoluntarioService $service, VoluntarioService $voluntarioService)
+    public function __construct(EscalaVoluntarioService $service, EscalaService $escalaService)
     {
         $this->service = $service;
-        $this->voluntarioService = $voluntarioService;
+        $this->escalaService = $escalaService;
     }
 
     /**
@@ -41,14 +43,8 @@ class EscalaVoluntarioController extends Controller
      */
     public function new(Request $request)
     {
-        if (!$request->get('nome')) {
-            return redirect('escalas/#' . $request->get('escala_id'));
-        }
-
-        $voluntario = $this->voluntarioService->firstOrCreate($request->get('nome'));
-        $request->request->add(['voluntario_id' => $voluntario->id]);
         $this->service->store($request);
-
+        $this->regraQntdVoluntariosAtingida($request);
         return redirect('escalas/#' . $request->get('escala_id'));
     }
 
@@ -91,7 +87,7 @@ class EscalaVoluntarioController extends Controller
         return redirect()
             ->route('escalas.edit', $voluntario->escala_id)
             ->with(Constants::MESSAGE, __(Constants::SUCCESS_DESTROY)
-        );
+            );
     }
 
     /**
@@ -102,5 +98,26 @@ class EscalaVoluntarioController extends Controller
     {
         $data = $this->service->update($request, $request->get('id'));
         return response()->json(['data' => $data, 'retorno' => true]);
+    }
+
+    /**
+     * @param $request
+     * @return void
+     */
+    private function regraQntdVoluntariosAtingida($request)
+    {
+        $escalaId = $request->get('escala_id');
+        $escala = $this->escalaService->find($escalaId);
+        $qntdVoluntariosAtual = $escala->voluntarios()->count();
+        $qntdVoluntariosPossiveis = $escala->evento->qntd_voluntarios;
+
+        if (
+            !empty($qntdVoluntariosAtual) &&
+            !empty($qntdVoluntariosPossiveis) &&
+            ($qntdVoluntariosAtual >= $qntdVoluntariosPossiveis)
+        ) {
+            $escala->fechada = Constants::TRUE;
+            $escala->save();
+        }
     }
 }
