@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\Calculos;
 use App\Helpers\Constants;
 use App\Models\Escala;
 use Carbon\Carbon;
@@ -76,5 +77,37 @@ class EscalaService extends AbstractService
         $query->orderBy('data');
 
         return $query->get();
+    }
+
+    /**
+     * @return int
+     */
+    public function qntdVoluntariadoNecessarioNoMes()
+    {
+        $escalas = $this->escalasDoMesAtual();
+        return Calculos::getQntdVoluntariadoNecessarioNoMes($escalas->toArray());
+    }
+
+    /**
+     * @return int
+     */
+    public function qntdVoluntariadoPreenchidoNoMes()
+    {
+        $escalas = $this->escalasDoMesAtual();
+        return Calculos::getQntdVoluntariadoPreenchidoNoMes($escalas->toArray());
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    private function escalasDoMesAtual()
+    {
+        return Escala::with('evento', 'voluntarios')
+            ->whereHas('evento', function ($query) {
+                return $query->where('situacao', Constants::TRUE);
+            })
+            ->whereMonth('data', '=', Carbon::now()->format('m'))
+            ->whereYear('data', '=', Carbon::now()->format('Y'))
+            ->get();
     }
 }

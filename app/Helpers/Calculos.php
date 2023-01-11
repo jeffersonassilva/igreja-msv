@@ -8,7 +8,7 @@ class Calculos
      * @param array $data
      * @return int
      */
-    public static function getQntdGeralVoluntariadoDoMes(array $data)
+    public static function getQntdVoluntariadoNecessarioNoMes(array $data)
     {
         return array_reduce($data, function ($quantidade, $escala) {
             return $quantidade + $escala['evento']['qntd_voluntarios'];
@@ -19,7 +19,7 @@ class Calculos
      * @param array $data
      * @return int
      */
-    public static function getQntdVoluntariadoPreenchido(array $data)
+    public static function getQntdVoluntariadoPreenchidoNoMes(array $data)
     {
         return array_reduce($data, function ($quantidade, $escala) {
             return $quantidade + count($escala['voluntarios']);
@@ -27,16 +27,16 @@ class Calculos
     }
 
     /**
-     * @param $qntdVoluntariadoMes
-     * @param $qntdVoluntariosTotal
+     * @param $qntdVoluntariadoNecessario
+     * @param $qntdVoluntarios
      * @return false|float|int
      */
-    public static function getQntdNecessariaPorVoluntario($qntdVoluntariadoMes, $qntdVoluntariosTotal)
+    public static function getQntdNecessariaPorVoluntario($qntdVoluntariadoNecessario, $qntdVoluntarios)
     {
-        if (!$qntdVoluntariosTotal) {
+        if (!$qntdVoluntarios) {
             return 1;
         }
 
-        return ceil($qntdVoluntariadoMes / $qntdVoluntariosTotal);
+        return ceil($qntdVoluntariadoNecessario / $qntdVoluntarios);
     }
 }
