@@ -57,6 +57,7 @@ class EscalaVoluntarioController extends Controller
         $this->checkPermission('adm-editar-escala');
         $request->request->add(['user_id' => Auth::id()]);
         $this->service->store($request);
+        $this->regraQntdVoluntariosAtingida($request);
 
         return redirect()
             ->route('escalas.edit', $request->get('escala_id'))
