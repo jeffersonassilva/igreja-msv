@@ -3,52 +3,46 @@
 namespace App\Observers;
 
 use App\Helpers\Constants;
-use App\Models\Proposito;
 use Illuminate\Support\Facades\Cache;
 
 class PropositoObserver
 {
     /**
-     * @param Proposito $proposito
      * @return void
      */
-    public function created(Proposito $proposito)
+    public function created()
     {
         //
     }
 
     /**
-     * @param Proposito $proposito
      * @return void
      */
-    public function updated(Proposito $proposito)
+    public function updated()
     {
         Cache::pull(Constants::CACHE_LISTA_PROPOSITOS);
     }
 
     /**
-     * @param Proposito $proposito
      * @return void
      */
-    public function deleted(Proposito $proposito)
+    public function deleted()
     {
         //
     }
 
     /**
-     * @param Proposito $proposito
      * @return void
      */
-    public function restored(Proposito $proposito)
+    public function restored()
     {
         //
     }
 
     /**
-     * @param Proposito $proposito
      * @return void
      */
-    public function forceDeleted(Proposito $proposito)
+    public function forceDeleted()
     {
         //
     }
