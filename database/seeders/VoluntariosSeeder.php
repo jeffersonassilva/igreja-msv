@@ -13,10 +13,10 @@ class VoluntariosSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['id' => '1', 'nome' => 'Samuel Novais', 'funcao' => 'CG', 'escala_id' => 15],
-            ['id' => '2', 'nome' => 'Francirley Rodrigues', 'funcao' => 'R', 'escala_id' => 15],
-            ['id' => '3', 'nome' => 'Jefferson Alessandro', 'funcao' => 'A', 'escala_id' => 15],
-            ['id' => '4', 'nome' => 'Fernando Soares', 'funcao' => 'H', 'escala_id' => 15],
+            ['id' => '1', 'nome' => 'Samuel Novais', 'sexo' => 'M'],
+            ['id' => '2', 'nome' => 'Francirley Rodrigues', 'sexo' => 'M'],
+            ['id' => '3', 'nome' => 'Jefferson Alessandro', 'sexo' => 'M'],
+            ['id' => '4', 'nome' => 'Fernando Soares', 'sexo' => 'M'],
         ];
 
         foreach ($data as $item) {
