@@ -8,6 +8,8 @@
 .env
 .env.backup
 .phpunit.result.cache
+phpunit.coverage.xml
+phpunit.report.xml
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
