@@ -131,7 +131,7 @@
             @if($escalas->count())
             <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 2xl:grid-cols-5 mb-8">
                 @foreach($escalas as $escala)
-                    <x-escala-card-item :escala="$escala" :funcoes="$funcoes">
+                    <x-card.escala-publica :escala="$escala" :funcoes="$funcoes">
                         @if(!$escala->fechada)
                         <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
                             <div class="px-4 pb-4 flex justify-center items-center gap-1">
@@ -151,7 +151,7 @@
                             </div>
                         </form>
                         @endif
-                    </x-escala-card-item>
+                    </x-card.escala-publica>
                 @endforeach
             </div>
             @endif
