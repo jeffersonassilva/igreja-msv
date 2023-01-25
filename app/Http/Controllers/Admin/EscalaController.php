@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Calculos;
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EscalaRequest;
@@ -63,6 +64,8 @@ class EscalaController extends Controller
     public function list(Request $request)
     {
         $data = $this->service->list($request->all());
+        $qntdVoluntariadoMes = Calculos::getQntdGeralVoluntariadoDoMes($data->toArray());
+        $qntdVoluntariadoPreenchido = Calculos::getQntdVoluntariadoPreenchido($data->toArray());
         $funcoes = $this->escalaFuncaoService->list();
         $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
         $eventos = $this->eventoService->all();
@@ -71,7 +74,9 @@ class EscalaController extends Controller
             'escalas' => $data,
             'funcoes' => $funcoes,
             'voluntarios' => $voluntarios,
-            'eventos' => $eventos
+            'eventos' => $eventos,
+            'qntdVoluntariadoMes' => $qntdVoluntariadoMes,
+            'qntdVoluntariadoPreenchido' => $qntdVoluntariadoPreenchido,
         ]);
     }
 
