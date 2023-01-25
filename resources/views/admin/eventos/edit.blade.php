@@ -33,6 +33,17 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="qntd_voluntarios" class="text-gray-900 mb-2">Quantidade de Voluntários</label>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Informe a quantidade necessária de voluntários para este evento.</span>
+                <input type="number" pattern="[0-9]*" name="qntd_voluntarios" id="qntd_voluntarios"
+                       class="max-w-[75px] border-gray-400 rounded-sm text-gray-700 @error('qntd_voluntarios') border-[1px] border-red-500 @enderror"
+                       value="{{ old('qntd_voluntarios') ?? $data->qntd_voluntarios }}">
+                @error('qntd_voluntarios')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="flex justify-between flex-col sm:flex-row">
                 <div class="mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"
