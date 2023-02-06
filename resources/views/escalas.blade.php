@@ -152,18 +152,23 @@
                     <x-card.escala-publica :escala="$escala" :funcoes="$funcoes">
                         @if(!$escala->fechada)
                         <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
-                            <div class="px-4 pb-4 flex justify-center items-center gap-1">
+                            <div class="flex items-center gap-2 px-3 pb-3 sm:px-4 sm:pb-4">
                                 <input type="hidden" name="escala_id" value="{{ $escala->id }}">
-                                <select name="nome" class="border border-gray-200 rounded-md w-full text-sm font-thin">
-                                    <option value=""> - Selecione seu nome - </option>
-                                    @foreach($voluntarios as $voluntarioItem)
-                                        <option value="{{ $voluntarioItem->nome }}">{{ $voluntarioItem->nome }}</option>
-                                    @endforeach
-                                </select>
-
-                                <div class="pl-2 text-2xl">
-                                    <button aria-label="Salvar" type="submit" class="flex items-center">
-                                        <ion-icon name="add-circle-outline" class="text-gray-400"></ion-icon>
+                                <div class="flex-1">
+                                    <select name="nome"
+                                            class="py-1 leading-0 border border-gray-200
+                                            shadow-sm rounded-md w-full text-sm font-thin">
+                                        <option value="">- Selecione seu nome -</option>
+                                        @foreach($voluntarios as $voluntarioItem)
+                                            <option value="{{ $voluntarioItem->nome }}">{{ $voluntarioItem->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="text-2xl flex items-center">
+                                    <button aria-label="Salvar" type="submit"
+                                            class="text-sm bg-gray-200 text-gray-900 shadow-sm
+                                            border border-gray-300 rounded-md px-2 py-1">
+                                        Incluir
                                     </button>
                                 </div>
                             </div>
