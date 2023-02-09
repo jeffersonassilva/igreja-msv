@@ -21,14 +21,20 @@
             <p class="text-xl">Informações</p>
             <div class="py-2">
                 <div class="flex items-center text-zinc-400">
-                    <div class="text-lg pt-1"><ion-icon name="mail"></ion-icon></div>
-                    <span class="px-2 font-thin">contato@igrejamsv.org</span>
+                    <div class="text-lg pt-1"><ion-icon name="link-outline"></ion-icon></div>
+                    <a href="https://linktr.ee/igrejamsv" target="_blank" rel="noopener noreferrer" class="p-2 font-thin text-blue-300">
+                        linktr.ee/igrejamsv
+                    </a>
                 </div>
                 <div class="flex items-center text-zinc-400">
                     <div class="text-lg pt-1"><ion-icon name="logo-whatsapp"></ion-icon></div>
                     <a href="https://wa.me/5561996899317" target="_blank" rel="noopener noreferrer" class="p-2 font-thin text-blue-300">
                         (61) 99689-9317
                     </a>
+                </div>
+                <div class="flex items-center text-zinc-400">
+                    <div class="text-lg pt-1"><ion-icon name="mail"></ion-icon></div>
+                    <span class="px-2 font-thin">contato@igrejamsv.org</span>
                 </div>
             </div>
         </div>
