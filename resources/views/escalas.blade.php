@@ -159,12 +159,12 @@
                             <div class="flex items-center gap-2 px-3 pb-3 sm:px-4 sm:pb-4">
                                 <input type="hidden" name="escala_id" value="{{ $escala->id }}">
                                 <div class="flex-1">
-                                    <select name="nome"
+                                    <select name="voluntario_id"
                                             class="py-1 leading-0 border border-gray-200
                                             shadow-sm rounded-md w-full text-sm font-thin">
                                         <option value="">- Selecione seu nome -</option>
                                         @foreach($voluntarios as $voluntarioItem)
-                                            <option value="{{ $voluntarioItem->nome }}">{{ $voluntarioItem->nome }}</option>
+                                            <option value="{{ $voluntarioItem->id }}">{{ $voluntarioItem->nome }}</option>
                                         @endforeach
                                     </select>
                                 </div>
