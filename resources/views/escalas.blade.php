@@ -139,13 +139,13 @@
                     <div class="flex items-center gap-2">
                         <div class="text-4xl">{{$qntdVoluntariadoPreenchido}}</div>
                         <div class="text-xs">x</div>
-                        <div class="text-4xl">{{$qntdVoluntariadoMes}}</div>
+                        <div class="text-4xl">{{$qntdVoluntariadoNecessario}}</div>
                     </div>
                     <div class="px-3 italic text-center">Quantidade<br />necessária</div>
                 </div>
                 <hr class="max-w-xs mx-auto">
                 <div class="text-center text-gray-600 text-xs p-4 mb-4">
-                    {!! \App\Helpers\Strings::getMsgQntdServicoPorVoluntario($qntdVoluntariadoMes, $voluntarios->count()) !!}
+                    {!! \App\Helpers\Strings::getMsgQntdServicoPorVoluntario($qntdVoluntariadoNecessario, $voluntarios->count()) !!}
                 </div>
             </div>
             @endif

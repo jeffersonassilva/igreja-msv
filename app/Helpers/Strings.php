@@ -17,13 +17,13 @@ class Strings
     }
 
     /**
-     * @param $qntdVoluntariadoMes
-     * @param $qntdVoluntariosTotal
+     * @param $qntdVoluntariadoNecessario
+     * @param $qntdVoluntarios
      * @return string
      */
-    public static function getMsgQntdServicoPorVoluntario($qntdVoluntariadoMes, $qntdVoluntariosTotal)
+    public static function getMsgQntdServicoPorVoluntario($qntdVoluntariadoNecessario, $qntdVoluntarios)
     {
-        $quantidade = Calculos::getQntdNecessariaPorVoluntario($qntdVoluntariadoMes, $qntdVoluntariosTotal);
+        $quantidade = Calculos::getQntdNecessariaPorVoluntario($qntdVoluntariadoNecessario, $qntdVoluntarios);
 
         return 'Precisamos que cada voluntário participe pelo menos <strong class="text-sm">'
             . $quantidade . '</strong> ' . ($quantidade > 1 ? 'vezes' : 'vez') . ' neste mês.';
