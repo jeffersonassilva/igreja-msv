@@ -38,10 +38,10 @@ class EscalaVoluntarioController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param EscalaVoluntarioRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function new(Request $request)
+    public function new(EscalaVoluntarioRequest $request)
     {
         $this->service->store($request);
         $this->regraQntdVoluntariosAtingida($request);
