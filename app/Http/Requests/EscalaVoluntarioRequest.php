@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * Class EscalaVoluntarioRequest
@@ -23,8 +24,18 @@ class EscalaVoluntarioRequest extends FormRequest
      */
     public function rules()
     {
+        $voluntarioId = $this->get('voluntario_id');
+        $escalaId = $this->get('escala_id');
+
         return [
-            'voluntario_id' => 'required',
+            'voluntario_id' => [
+                'required',
+                Rule::unique('escala_voluntario')->where(function ($query) use ($voluntarioId, $escalaId) {
+                    return $query
+                        ->where('voluntario_id', $voluntarioId)
+                        ->where('escala_id', $escalaId);
+                }),
+            ],
             'escala_id' => 'required',
         ];
     }
