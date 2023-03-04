@@ -8,27 +8,32 @@
             </h1>
             <section id="timeline" class="w-full flex flex-wrap flex-col lg:flex-row justify-evenly bg-gray-100">
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
-                    <div class="absolute left-0 lg:left-auto lg:right-0 bottom-0 lg:bottom-auto lg:top-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
+                    <div
+                        class="absolute left-0 lg:left-auto lg:right-0 bottom-0 lg:bottom-auto lg:top-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
                     <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>5
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Entrega de cestas básicas</p>
-                        <img class="w-full" src="{{ asset('img/timeline-1.jpg') }}" alt="Foto da entrega de cestas básicas">
+                        <img class="w-full" src="{{ asset('img/timeline-1.jpg') }}"
+                             alt="Foto da entrega de cestas básicas">
                     </div>
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
-                    <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
+                    <div
+                        class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
                     <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>10
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Entrega de alimentos e sopas no SCS</p>
-                        <img class="w-full" src="{{ asset('img/timeline-2.jpg') }}" alt="Foto da entrega de alimentos e sopas no SCS">
+                        <img class="w-full" src="{{ asset('img/timeline-2.jpg') }}"
+                             alt="Foto da entrega de alimentos e sopas no SCS">
                     </div>
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
-                    <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
+                    <div
+                        class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
                     <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>15
                     </span>
@@ -38,23 +43,27 @@
                     </div>
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6 bg-white">
-                    <div class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
+                    <div
+                        class="absolute left-0 lg:left-auto lg:top-0 h-full lg:h-auto lg:w-full border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
                     <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>20
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Projeto Missionário na Índia</p>
-                        <img class="w-full" src="{{ asset('img/timeline-4.jpg') }}" alt="Foto do Projeto Missionário na Índia">
+                        <img class="w-full" src="{{ asset('img/timeline-4.jpg') }}"
+                             alt="Foto do Projeto Missionário na Índia">
                     </div>
                 </div>
                 <div class="flex-1 flex lg:flex-col items-center relative px-4 py-6">
-                    <div class="absolute top-0 left-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
+                    <div
+                        class="absolute top-0 left-0 h-1/2 lg:h-auto lg:w-1/2 border-l-[3px] lg:border-b-[3px] border-cyan-400"></div>
                     <span class="flex-none text-2xl pr-4 lg:pr-0 lg:pb-3 w-[50px] lg:w-auto text-center leading-6">
                         <span class="text-sm text-gray-500">DIA</span><br>25
                     </span>
                     <div class="flex flex-col justify-center lg:items-center">
                         <p class="lg:text-center lg:h-16 font-thin pb-2">Projeto Social no Anexo do Templo</p>
-                        <img class="w-full" src="{{ asset('img/timeline-5.jpg') }}" alt="Foto do Projeto Social no Anexo do Templo">
+                        <img class="w-full" src="{{ asset('img/timeline-5.jpg') }}"
+                             alt="Foto do Projeto Social no Anexo do Templo">
                     </div>
                 </div>
             </section>
@@ -64,7 +73,8 @@
     <section class="container mx-auto max-w-[1280px]">
         <article class="flex px-6 mb-4">
             <picture class="w-full">
-                <source type="image/jpeg" media="(min-width:640px)" srcset="{{ asset('img/campanha-cadeiras-web.jpg') }}">
+                <source type="image/jpeg" media="(min-width:640px)"
+                        srcset="{{ asset('img/campanha-cadeiras-web.jpg') }}">
                 <img src="{{ asset('img/campanha-cadeiras-mobile.jpg') }}" alt="Campanha das cadeiras">
             </picture>
         </article>
@@ -72,7 +82,8 @@
 
     <section class="container mx-auto max-w-[1280px]">
         <div class="flex flex-wrap lg:my-6">
-            <article class="flex flex-wrap flex-col gap-10 bg-gray-100 px-5 py-8 md:p-10 lg:gap-16 lg:bg-gray-50 lg:flex-1 lg:order-2">
+            <article
+                class="flex flex-wrap flex-col gap-10 bg-gray-100 px-5 py-8 md:p-10 lg:gap-16 lg:bg-gray-50 lg:flex-1 lg:order-2">
                 <section>
                     <h3 class="pb-2 text-center lg:text-left lg:indent-4 lg:text-xl">GRATIDÃO</h3>
                     <p class="font-thin text-justify indent-4">
@@ -134,52 +145,33 @@
     <section class="bg-gray-100">
         <div class="container mx-auto max-w-[1280px]">
             <div class="flex flex-col sm:flex-row p-3 md:p-10">
-                <div class="flex-1 flex-shrink-0">
-                    <div class="flex flex-wrap flex-col gap-2">
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="dizimo" name="tipo" value="dizimo">
-                            <label for="dizimo">Dízimo</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="oferta" name="tipo" value="oferta">
-                            <label for="oferta">Oferta</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="sharon" name="tipo" value="sharon">
-                            <label for="sharon">Projeto Sharon</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="seminario" name="tipo" value="seminario"  @if(isset($pagina)) checked @endif>
-                            <label for="seminario">II Seminário de Liderança Cristã</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="almoco" name="tipo" value="almoco">
-                            <label for="almoco">Almoço de domingo</label>
-                        </div>
-                        <div class="bg-white border border-gray-200 rounded-md flex items-center gap-2 p-3">
-                            <input type="radio" id="outros" name="tipo" value="outros">
-                            <label for="outros">Outros</label>
-                        </div>
-                    </div>
 
-                    <div id="campoValor" class="hidden flex flex-col mt-4">
-                        <label for="valor" class="text-sm text-gray-700 pb-1">Valor (R$):</label>
-                        <input class="border border-gray-200 rounded-md max-w-sm mask-money"
-                               type="tel" name="valor" id="valor"
-                               data-thousands="." data-decimal=","/>
+                <div class="flex-1 mt-4 sm:px-6 sm:mt-0" id="qrcode">
+                    <div class="flex justify-center pb-4">
+                        <img class="w-[250px] md:w-[350px]" src="{{ asset('img/qrcode-pix-sem-valor.png') }}">
                     </div>
-
-                    <div class="mt-4">
-                        <button onclick="montarUrl()"
-                                class="bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white px-4 py-2 md:px-10 md:py-3 rounded-md">
-                            Gerar QrCode PIX
+                    <div
+                        class="inline-flex justify-center items-center w-full bg-white border border-gray-200 rounded-md p-2">
+                        <span class="flex justify-center px-2 text-2xl
+                                     border border-l-0 border-r-1 border-y-0 border-gray-300">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                        </span>
+                        <input
+                            type="text"
+                            id="qrCodeText"
+                            class="flex-1 min-w-0 border-none bg-white outline-0 focus:outline-0 ring-0 focus:ring-0 text-sm"
+                            value="00020126360014BR.GOV.BCB.PIX0114232442240001445204000053039865802BR5910Igreja MSV6008Brasilia62100506Oferta6304C299"
+                        >
+                        <button
+                            class="btnCopy px-3 py-2 md:px-4 rounded-md bg-blue-800 hover:bg-blue-900 focus:bg-blue-900 text-white text-sm"
+                            data-clipboard-target="#qrCodeText"
+                        >
+                            Copiar
                         </button>
                     </div>
+                    <p id="messageCopyText" class="flex gap-1 items-center py-1 mb-3 text-sm">&nbsp;</p>
                 </div>
 
-                <div class="hidden sm:block flex-1 mt-4 sm:px-6 sm:mt-0" id="qrcode">
-                    <img src="{{ asset('img/qr-code-empty.jpg') }}">
-                </div>
             </div>
         </div>
     </section>
@@ -200,58 +192,5 @@
             $('#messageCopyText').html('<ion-icon name="close-outline"></ion-icon> Não foi possível copiar o código.');
             $('#messageCopyText').addClass('text-red-700');
         });
-
-        $(document).ready(function () {
-            $('.mask-money').maskMoney();
-
-            $('input[type=radio][name=tipo]').change(function () {
-                $('#campoValor').removeClass('hidden');
-                $('#valor').val('');
-                $('#qrcode').html('<img src="{{ asset('img/qr-code-empty.jpg') }}">');
-                if (this.value === 'almoco' || this.value === 'seminario') {
-                    $('#campoValor').addClass('hidden');
-                }
-            });
-        });
-
-        function montarUrl() {
-            let url = null;
-            let tipo = $('input[name=tipo]:checked').val();
-            let valor = $('#valor').val();
-
-            switch (tipo) {
-                case "dizimo":
-                    url = 'pix?valor=' + valor + '&descricao=Dizimo';
-                    break;
-                case "oferta":
-                    url = 'pix?valor=' + valor + '&descricao=Oferta';
-                    break;
-                case "almoco":
-                    url = 'pix?valor=13&descricao=Almoco';
-                    break;
-                case "sharon":
-                    url = 'pix?valor=' + valor + '&descricao=Projeto Sharon';
-                    break;
-                case "seminario":
-                    url = 'pix?valor=20&descricao=Seminario';
-                    break;
-                default:
-                    url = 'pix?valor=' + valor + '&descricao=Outros';
-            }
-
-            getImgQrCode(url);
-        }
-
-        function getImgQrCode(url) {
-            $.ajax({
-                type: "GET",
-                url: url,
-                // dataType: "json",
-                success: function (response) {
-                    $('#qrcode').show();
-                    $('#qrcode').html(response);
-                }
-            });
-        }
     </script>
 @endsection
