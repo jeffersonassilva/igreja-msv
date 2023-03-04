@@ -62,6 +62,15 @@
     </section>
 
     <section class="container mx-auto max-w-[1280px]">
+        <article class="flex px-6 mb-4">
+            <picture class="w-full">
+                <source type="image/jpeg" media="(min-width:640px)" srcset="{{ asset('img/campanha-cadeiras-web.jpg') }}">
+                <img src="{{ asset('img/campanha-cadeiras-mobile.jpg') }}" alt="Campanha das cadeiras">
+            </picture>
+        </article>
+    </section>
+
+    <section class="container mx-auto max-w-[1280px]">
         <div class="flex flex-wrap lg:my-6">
             <article class="flex flex-wrap flex-col gap-10 bg-gray-100 px-5 py-8 md:p-10 lg:gap-16 lg:bg-gray-50 lg:flex-1 lg:order-2">
                 <section>
