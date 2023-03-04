@@ -147,6 +147,9 @@
             <div class="flex flex-col sm:flex-row p-3 md:p-10">
 
                 <div class="flex-1 mt-4 sm:px-6 sm:mt-0" id="qrcode">
+                    <p class="text-center">
+                        <img class="w-[100px] lg:w-[130px] inline mb-2" src="{{ asset('img/logo-pix.png') }}" alt="Pix">
+                    </p>
                     <div class="flex justify-center pb-4">
                         <img class="w-[250px] md:w-[350px]" src="{{ asset('img/qrcode-pix-sem-valor.png') }}">
                     </div>
