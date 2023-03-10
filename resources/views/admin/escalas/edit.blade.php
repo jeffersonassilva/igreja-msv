@@ -190,6 +190,9 @@
                         <ion-icon name="add-circle-outline"></ion-icon><span class="ml-2">Adicionar</span>
                     </button>
                 </div>
+                @error('voluntario_id')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
             </form>
         </div>
     </section>
