@@ -33,7 +33,8 @@ class EscalaVoluntarioRequest extends FormRequest
                 Rule::unique('escala_voluntario')->where(function ($query) use ($voluntarioId, $escalaId) {
                     return $query
                         ->where('voluntario_id', $voluntarioId)
-                        ->where('escala_id', $escalaId);
+                        ->where('escala_id', $escalaId)
+                        ->whereNull('deleted_at');
                 }),
             ],
             'escala_id' => 'required',
@@ -48,6 +49,16 @@ class EscalaVoluntarioRequest extends FormRequest
         return [
             'voluntario_id' => 'Voluntário',
             'escala_id' => 'Evento',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages()
+    {
+        return [
+            'voluntario_id.unique' => 'Este voluntário já está adicionado nesta escala.',
         ];
     }
 }
