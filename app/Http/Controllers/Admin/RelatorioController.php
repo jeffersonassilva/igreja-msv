@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Strings;
 use App\Helpers\UnserializeFilter;
 use App\Http\Controllers\Controller;
 use App\Services\EscalaService;
@@ -39,11 +40,16 @@ class RelatorioController extends Controller
     public function mensalVoluntarios(Request $request)
     {
         $this->checkPermission('adm-relatorio-mensal-voluntario');
-        $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
+        $this->getFiltroPadrao($request);
         $meses = $this->getListMonths();
+        $anos = $this->getListYears($meses);
         $voluntarios = $this->getVoluntarios($request);
 
-        return view('admin/relatorios/voluntarios')->with(['voluntarios' => $voluntarios, 'meses' => $meses]);
+        return view('admin/relatorios/voluntarios')->with([
+            'voluntarios' => $voluntarios,
+            'anos' => $anos,
+            'meses' => $meses
+        ]);
     }
 
     /**
@@ -53,9 +59,8 @@ class RelatorioController extends Controller
     public function mensalVoluntariosDownload(Request $request)
     {
         $this->checkPermission('adm-relatorio-mensal-voluntario');
-        $request->has('mes') ?: $request->request->add(['mes' => date('Y-m')]);
-        $mes = $request->get('mes');
-        $periodo = 'Período: ' . ($mes ? ucfirst(Carbon::parse($mes)->monthName) . ' - ' . Carbon::parse($mes)->format('Y') : 'Geral');
+        $this->getFiltroPadrao($request);
+        $periodo = Strings::getPeriodoRelatorioVoluntario($request);
         $voluntarios = $this->getVoluntarios($request);
 
         $pdf = PDF::loadView('admin/relatorios/voluntarios-pdf', [
@@ -65,7 +70,7 @@ class RelatorioController extends Controller
             'data' => date('d/m/Y - H:i:s')
         ]);
 
-        return $pdf->stream('relatorio_voluntarios_' . ($request->get('mes') ? $request->get('mes') : 'geral') . '.pdf');
+        return $pdf->stream('relatorio_voluntarios' . ($request->get('periodo') ? '_' . $request->get('periodo') : null) . '.pdf');
     }
 
     /**
@@ -98,5 +103,38 @@ class RelatorioController extends Controller
         krsort($meses);
 
         return $meses;
+    }
+
+    /**
+     * @param $list
+     * @return array
+     */
+    private function getListYears($list)
+    {
+        $listaAnos = [];
+
+        foreach ($list as $key => $value) {
+            $listaAnos[substr($key, 0, 4)] = substr($key, 0, 4);
+        }
+
+        return $listaAnos;
+    }
+
+    /**
+     * @param Request $request
+     * @return Request
+     */
+    private function getFiltroPadrao(Request $request)
+    {
+        $request->request->add([
+            'mes' => substr($request->get('periodo'), 5, 2),
+            'ano' => substr($request->get('periodo'), 0, 4)
+        ]);
+
+        if (!$request->has('periodo')) {
+            $request->request->add(['periodo' => date('Y-m'), 'ano' => date('Y'), 'mes' => date('m')]);
+        }
+
+        return $request;
     }
 }

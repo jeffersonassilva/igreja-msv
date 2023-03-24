@@ -8,11 +8,24 @@
             <div class="flex justify-between gap-2">
                 <div class="flex-1">
                     <form class="form-horizontal" role="form" action="{{ route('relatorio.mensal.voluntarios') }}">
-                        <select id="mes_relatorio" name="mes" class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                        <select id="periodo_relatorio" name="periodo"
+                                class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg
+                                focus:ring-blue-500 focus:border-blue-500 w-full">
                             <option value="">Geral</option>
-                            @foreach($meses as $key => $mes)
-                            <option value="{{ $key }}" @if(request()->query('mes') == $key) selected @endif>{{ $mes }}</option>
-                            @endforeach
+                            <optgroup label="Por Ano">
+                                @foreach($anos as $key => $ano)
+                                <option value="{{ $key }}" @if(request()->query('periodo') == $key) selected @endif>
+                                    {{ $ano }}
+                                </option>
+                                @endforeach
+                            </optgroup>
+                            <optgroup label="Por Mês">
+                                @foreach($meses as $key => $mes)
+                                <option value="{{ $key }}" @if(request()->query('periodo') == $key) selected @endif>
+                                    {{ $mes }}
+                                </option>
+                                @endforeach
+                            </optgroup>
                         </select>
                     </form>
                 </div>
@@ -98,7 +111,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#mes_relatorio').on('change', function () {
+            $('#periodo_relatorio').on('change', function () {
                 $('.form-horizontal').submit();
             });
 

@@ -70,8 +70,11 @@ class RelatorioService extends AbstractService
             ->whereRaw("escala_voluntario.comparecimento = '$comparecimento'");
 
         if (isset($where['mes']) && !empty($where['mes'])) {
-            $countSubQuery->whereRaw('month(data) = ' . substr($where['mes'], 5, 2));
-            $countSubQuery->whereRaw('year(data) = ' . substr($where['mes'], 0, 4));
+            $countSubQuery->whereRaw('month(data) = ' . $where['mes']);
+        }
+
+        if (isset($where['ano']) && !empty($where['ano'])) {
+            $countSubQuery->whereRaw('year(data) = ' . $where['ano']);
         }
 
         return $countSubQuery;
