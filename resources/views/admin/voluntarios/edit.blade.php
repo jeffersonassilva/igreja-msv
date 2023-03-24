@@ -96,6 +96,19 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col mb-4 p-4 bg-white">
+                <label for="situacao" class="text-gray-900 mb-2">Situação <span class="text-red-500 font-bold">*</span></label>
+                <span class="text-sm font-thin text-gray-500">- Por padrão, todo voluntário novo é cadastrado como ativo.</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Se a situação for <span class="text-blue-400">Inativo</span>, o nome não aparecerá como opção na lista de voluntários.</span>
+                <select name="situacao" id="situacao" class="md:max-w-[150px] @error('situacao') border-[1px] border-red-500 @enderror">
+                    <option value="1" @if($data->situacao === 1) selected @endif>Ativo</option>
+                    <option value="0" @if($data->situacao === 0) selected @endif>Inativo</option>
+                </select>
+                @error('situacao')
+                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="flex justify-between flex-col sm:flex-row">
                 <div class="mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"

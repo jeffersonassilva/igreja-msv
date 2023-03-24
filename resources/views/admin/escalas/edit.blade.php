@@ -171,8 +171,9 @@
                 <input type="hidden" name="escala_id" value="{{ $data->id }}">
 
                 <label for="nome" class="text-gray-900">Novo voluntário</label><br />
-                <span class="text-sm font-thin text-gray-500">Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
-                <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>
+                <span class="text-sm font-thin text-gray-500">- Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
+                <span class="text-sm font-thin text-gray-500">- Voluntários com situação <span class="text-blue-400">Inativo</span> não aparecem nessa lista.</span><br />
+{{--                <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>--}}
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center md:w-full mt-2">
                     <select name="voluntario_id" class="border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px] @error('voluntario_id') border-[1px] border-red-500 @enderror">
                         <option value=""></option>

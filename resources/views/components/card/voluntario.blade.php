@@ -1,6 +1,11 @@
 @props(['voluntario'])
 
-<div class="bg-white border border-gray-200 rounded-md shadow-sm">
+<div class="bg-white border border-gray-200 rounded-md shadow-sm relative">
+    @if($voluntario->situacao)
+    <div class="absolute left-1 top-1 text-green-600 text-sm">&#9673;</div>
+    @else
+    <div class="absolute left-1 top-1 text-red-600 text-sm">&#9673;</div>
+    @endif
     <div class="flex p-4">
         <div class="flex justify-center items-start mr-2">
             @if($voluntario->foto)

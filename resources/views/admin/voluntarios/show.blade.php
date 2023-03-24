@@ -31,7 +31,7 @@
                             {{ $data->nome }}
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-x-2 gap-y-4">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4">
                         <div class="flex flex-col">
                             <div class="font-thin text-xs md:text-sm text-gray-500">Sexo</div>
                             <div class="text-gray-800">{{ $data->sexo === 'M' ? 'Masculino' : 'Feminino' }}</div>
@@ -41,8 +41,13 @@
                             <div class="font-thin text-xs md:text-sm text-gray-500">Professor EBD</div>
                             <div class="text-gray-800">{{ $data->professor_ebd == '1' ? 'Sim' : 'Não' }}</div>
                         </div>
+
+                        <div class="flex flex-col col-span-3 md:col-span-1">
+                            <div class="font-thin text-xs md:text-sm text-gray-500">Situação</div>
+                            <div class="text-gray-800">{{ $data->situacao == '1' ? 'Ativo' : 'Inativo' }}</div>
+                        </div>
                         @if($data->observacao)
-                            <div class="hidden lg:block flex flex-col col-span-2">
+                            <div class="hidden lg:block flex flex-col col-span-3">
                                 <div class="font-thin text-xs md:text-sm text-gray-500">Observações</div>
                                 <div class="text-gray-800">{{ $data->observacao }}</div>
                             </div>

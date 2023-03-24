@@ -67,7 +67,7 @@ class EscalaController extends Controller
         $qntdVoluntariadoNecessario = $this->service->qntdVoluntariadoNecessarioNoMes();
         $qntdVoluntariadoPreenchido = $this->service->qntdVoluntariadoPreenchidoNoMes();
         $funcoes = $this->escalaFuncaoService->list();
-        $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
+        $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
         $eventos = $this->eventoService->all();
 
         return view('escalas')->with([
@@ -121,7 +121,7 @@ class EscalaController extends Controller
     public function edit($id)
     {
         $this->checkPermission('adm-editar-escala');
-        $voluntarios = $this->voluntarioService->all(array('nome' => Constants::CRESCENTE));
+        $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
         $eventos = $this->eventoService->all(['descricao' => Constants::CRESCENTE]);
         $data = $this->service->edit($id);
         return view('admin/escalas/edit')->with([
