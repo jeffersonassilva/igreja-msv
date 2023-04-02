@@ -22,7 +22,7 @@
             <div class="flex flex-col mb-4 p-4 bg-white">
                 <label for="situacao" class="text-gray-900 mb-2">Situação <span class="text-red-500 font-bold">*</span></label>
                 <span class="text-sm font-thin text-gray-500">- Por padrão, todo evento novo é cadastrado como ativo.</span>
-                <span class="text-sm font-thin text-gray-500 mb-2">- Se a situação for "Inativo", as escalas relacionadas a este evento não serão exibidas.</span>
+                <span class="text-sm font-thin text-gray-500 mb-2">- Se a situação for <span class="text-blue-400">Inativo</span>, as escalas relacionadas a este evento não serão exibidas.</span>
                 <select name="situacao" id="situacao" class="md:max-w-[150px] @error('situacao') border-[1px] border-red-500 @enderror">
                     <option value="1" selected>Ativo</option>
                     <option value="0">Inativo</option>
