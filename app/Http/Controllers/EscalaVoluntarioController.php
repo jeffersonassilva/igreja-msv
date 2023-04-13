@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Constants;
 use App\Http\Requests\EscalaVoluntarioRequest;
-use App\Models\Escala;
 use App\Services\EscalaService;
 use App\Services\EscalaVoluntarioService;
-use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,8 +85,7 @@ class EscalaVoluntarioController extends Controller
         $voluntario = $this->service->destroy($id);
         return redirect()
             ->route('escalas.edit', $voluntario->escala_id)
-            ->with(Constants::MESSAGE, __(Constants::SUCCESS_DESTROY)
-            );
+            ->with(Constants::MESSAGE, __(Constants::SUCCESS_DESTROY));
     }
 
     /**
