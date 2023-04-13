@@ -29,7 +29,7 @@ class OfertaController extends Controller
 
     /**
      * @param Request $request
-     * @return string
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function pix(Request $request)
     {
