@@ -5,6 +5,11 @@ namespace App\Helpers;
 class Constants
 {
     /**
+     * HTTP CODES
+     */
+    const HTTP_FORBIDDEN = 403;
+
+    /**
      * VALORES BOLEANOS
      */
     const TRUE = true;

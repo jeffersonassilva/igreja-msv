@@ -31,7 +31,7 @@ class Controller extends BaseController
     public function checkPermission($action)
     {
         if (Gate::denies($action, User::class)) {
-            abort(403, 'Sem permissão de acesso');
+            abort(Constants::HTTP_FORBIDDEN, 'Sem permissão de acesso');
         }
     }
 }
