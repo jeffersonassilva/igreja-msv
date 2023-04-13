@@ -10,7 +10,6 @@ use App\Helpers\Constants;
  */
 class EscalaFuncaoService extends AbstractService
 {
-
     /**
      * @return string[]
      */

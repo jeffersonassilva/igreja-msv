@@ -62,7 +62,7 @@ class VoluntarioService extends AbstractService
 
     /**
      * @param $request
-     * @return Voluntario|mixed
+     * @return Voluntario
      */
     public function store($request)
     {
