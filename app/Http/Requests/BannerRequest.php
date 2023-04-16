@@ -26,7 +26,7 @@ class BannerRequest extends FormRequest
         return [
             'descricao' => 'required|max:100',
             'img_mobile' => (request()->isMethod('put') ? 'nullable' : 'required') . '|image|mimes:jpg,jpeg,png|dimensions:ratio=16/9|dimensions:min_width=640,min_height=360',
-            'img_web' => (request()->isMethod('put') ? 'nullable' : 'required') .  '|image|mimes:jpg,jpeg,png|dimensions:ratio=24/5|dimensions:width=1920,height=400',
+            'img_web' => (request()->isMethod('put') ? 'nullable' : 'required') . '|image|mimes:jpg,jpeg,png|dimensions:ratio=24/5|dimensions:width=1920,height=400',
             'ordem' => 'nullable|numeric',
         ];
     }
