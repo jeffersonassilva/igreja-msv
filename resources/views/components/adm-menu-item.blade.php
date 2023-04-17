@@ -1,6 +1,6 @@
-@props(['route', 'icon'])
+@props(['route', 'group', 'icon'])
 
-<a href="@if($route === '#') # @else {{ route($route) }} @endif" class="@if(request()->routeIs($route)) active @endif
+<a href="@if($route === '#') # @else {{ route($route) }} @endif" class="@if(preg_match('/^admin\/' . $group . '($|\/|\?)/', request()->path())) active @endif
     px-6 lg:w-full h-14 relative text-gray-500
     flex gap-4 md:justify-center lg:justify-start items-center
     hover:text-blue-500 lg:hover:pl-8
