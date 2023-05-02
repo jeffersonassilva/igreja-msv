@@ -44,7 +44,7 @@
     </section>
 
     <div class="p-0 sm:p-4 sm:bg-white sm:rounded-lg">
-        <section class="lg:w-1/2">
+        <section class="xl:w-1/2">
             <header class="text-sm text-gray-500 bg-white p-4 text-center border border-gray-200 rounded-t-xl">
                 Quantidade de vezes em que o voluntário foi escalado.
             </header>
