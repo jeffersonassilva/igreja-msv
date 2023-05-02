@@ -14,7 +14,7 @@
                 @endcan
             </div>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($eventos as $evento)
                 <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
                     <h3 class="text-gray-700 font-medium">{{ $evento->descricao }}</h3>

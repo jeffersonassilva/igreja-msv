@@ -101,7 +101,7 @@
             </div>
         </form>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
             @foreach($voluntarios as $voluntario)
                 <x-card.voluntario :voluntario="$voluntario"></x-card.voluntario>
             @endforeach

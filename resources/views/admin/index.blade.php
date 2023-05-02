@@ -14,7 +14,7 @@
                 @endcan
             </div>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($banners as $banner)
                 <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
                     <span class="absolute top-2 right-2 flex justify-center items-center text-sm bg-yellow-400 rounded-sm w-6 h-6 p-1">{{ $banner->ordem }}</span>
@@ -45,7 +45,7 @@
                 Lista de Propósitos
             </h3>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($propositos as $proposito)
                 <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200">
                     <h3 class="text-gray-700 font-semibold">{{ $proposito->titulo }}</h3>
