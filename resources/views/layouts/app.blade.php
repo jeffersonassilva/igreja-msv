@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=61">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=62">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}?v=9" defer></script>
@@ -39,15 +39,14 @@
     </head>
 
     <body class="bg-gray-100">
-        <div id="container" class="w-full grid mx-auto md:h-[100vh] md:grid-cols-[5rem,1fr] lg:grid-cols-[14rem,1fr]">
+        <div id="container" class="w-full grid mx-auto md:h-[100vh] lg:grid-cols-[16rem,1fr]">
 
-            <aside id="adm__aside" class="hidden md:block fixed left-[-100%] md:relative bg-white w-[70%] max-w-[270px] md:w-[5rem] lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
-                <div class="flex justify-between items-center bg-gray-100 md:bg-white pl-6 py-6 md:py-6 md:pl-0 lg:p-6 h-[6rem]">
-                    <div class="md:mx-auto">
-                        <img class="w-2/3 md:hidden lg:block" src="{{ asset('img/logo-preta.png') }}" alt="logo">
-                        <img class="h-12 hidden md:block lg:hidden" src="{{ asset('img/logo-vazada.png') }}" alt="logo">
+            <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%] max-w-[270px] lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
+                <div class="flex justify-between items-center bg-gray-100 lg:bg-white pl-6 py-6 lg:p-6 h-[6rem]">
+                    <div class="lg:mx-auto">
+                        <img class="w-2/3" src="{{ asset('img/logo-preta.png') }}" alt="logo">
                     </div>
-                    <button class="md:hidden cursor-pointer text-3xl flex justify-center items-center p-3" id="aside__close-btn">
+                    <button class="lg:hidden cursor-pointer text-3xl flex justify-center items-center p-3" id="aside__close-btn">
                         <ion-icon name="close-outline"></ion-icon>
                     </button>
                 </div>
@@ -55,24 +54,24 @@
                 <x-adm-menu></x-adm-menu>
             </aside>
 
-            <main class="md:overflow-y-auto md:px-6 md:py-2">
-                <section class="fixed w-full h-[65px] z-20 md:relative flex justify-between items-center bg-white md:bg-transparent shadow-sm md:shadow-none mb-4 px-4 md:px-0 border-b">
-                    <button id="adm__menu-btn" class="text-3xl flex items-center md:hidden">
+            <main class="lg:overflow-y-auto lg:px-6 lg:py-2">
+                <section class="fixed w-full h-[65px] z-20 lg:relative flex justify-between items-center bg-white lg:bg-transparent shadow-sm lg:shadow-none mb-4 px-4 lg:px-0 border-b">
+                    <button id="adm__menu-btn" class="text-3xl flex items-center lg:hidden">
                         <ion-icon name="menu-outline"></ion-icon>
                     </button>
                     <h2 class="font-thin text-xl md:text-2xl text-gray-500">
                         {{ $header ?? '' }}
                     </h2>
                     <div class="adm__profile flex items-center gap-2">
-                        <div class="info hidden md:block">
+                        <div class="info hidden lg:block">
                             <span class="font-thin">Olá, <b>{{ Auth::user()->name }}</b></span>!
                         </div>
-                        <div class="md:hidden text-sm text-white block bg-blue-400 w-8 h-8 flex justify-center items-center rounded-full">
+                        <div class="lg:hidden text-sm text-white block bg-blue-400 w-8 h-8 flex justify-center items-center rounded-full">
                             {{ strstr(Auth::user()->name, ' ', true)[0] . trim(strstr(Auth::user()->name, ' ')[1]) }}
                         </div>
                     </div>
                 </section>
-                <section class="mt-16 md:mt-0 p-4 md:p-0">
+                <section class="mt-16 lg:mt-0 p-4 lg:p-0">
                     @if (session('message'))
                         <div id="message_alert" class="bg-green-200 p-4 mb-4 rounded-md flex justify-between items-center">
                             <span class="text-gray-700">
@@ -130,6 +129,12 @@
             closeMessageBtn.addEventListener('click', () => {
                 messageAlert.style.display = 'none';
             });
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            let submenu = document.querySelector('.submenu');
+            submenu.classList.toggle('hidden');
         }
     </script>
 </html>
