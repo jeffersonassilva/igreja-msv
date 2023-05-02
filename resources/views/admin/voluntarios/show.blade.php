@@ -60,7 +60,12 @@
                                             border border-gray-300 rounded-md select-none
                                             @if($disponibilidade['checked']) bg-green-200 text-gray-800 @else bg-gray-100 text-gray-400 @endif">
                                     <div class="absolute bottom-5 right-[-3px] bg-green-200 w-3 h-3 rounded-full">&nbsp;</div>
-                                    {{ $disponibilidade['descricao'] }}
+                                    <span class="block xl:hidden">
+                                        {{ \App\Helpers\Strings::getDiaSemanaAbreviado($disponibilidade['descricao'], 3) }}
+                                    </span>
+                                    <span class="hidden xl:block">
+                                        {{ $disponibilidade['descricao'] }}
+                                    </span>
                                 </div>
                                 @endforeach
                             </div>
