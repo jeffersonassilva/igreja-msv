@@ -33,7 +33,7 @@
                 <li>
                     <a class="@if(preg_match('/^admin\/' . $submenu['route'] . '($|\/|\?)/', request()->path())) active @endif
                        px-7 lg:px-6 lg:w-full h-12 relative text-gray-500
-                       flex gap-1 items-center hover:pl-8
+                       flex gap-1 items-center lg:hover:pl-7
                        transition-all duration-300 ease-in-out"
                        href="@if($submenu['route'] === '#') # @else {{ route($submenu['route']) }} @endif">
                         <div class="lg:w-[22px] text-gray-300">└</div>
