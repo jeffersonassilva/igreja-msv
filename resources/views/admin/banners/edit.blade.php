@@ -84,7 +84,7 @@
                                     px-3 py-1 inline-flex justify-center items-center">
                         <ion-icon name="save-outline"></ion-icon><span class="ml-2">Salvar</span>
                     </button>
-                    <a href="{{ route('dashboard') }}" aria-label="Voltar"
+                    <a href="{{ route('site') }}" aria-label="Voltar"
                        class="outline-0 rounded-md text-blue-400 font-normal border border-blue-400
                                     hover:text-white hover:bg-blue-400
                                     focus:text-white focus:bg-blue-400
