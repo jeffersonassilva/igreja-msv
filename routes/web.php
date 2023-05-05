@@ -46,7 +46,7 @@ Route::get('/campanha-de-daniel', [CampanhaController::class, 'index'])->name('c
 Route::post('/campanha-de-daniel', [CampanhaController::class, 'store'])->name('campanha.store')->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/home', [IndexController::class, 'index'])->name('home');
+    Route::get('/site', [IndexController::class, 'site'])->name('site');
     Route::get('/dashboard', [IndexController::class, 'index'])->name('dashboard');
 
     //Propósitos

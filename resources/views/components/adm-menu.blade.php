@@ -1,9 +1,15 @@
 <nav class="sidebar flex flex-col mt-4 px-4">
-    <x-adm-menu-item group="dashboard" :route="'dashboard'" :icon="'desktop-outline'">Dashboard</x-adm-menu-item>
+    <x-adm-menu-item group="dashboard" :route="'dashboard'" :icon="'grid-outline'">Dashboard</x-adm-menu-item>
 
-{{--    @can('adm-menu-testemunho')--}}
-{{--        <x-adm-menu-item group="testemunhos" :route="'testemunhos'" :icon="'chatbox-outline'">Testemunhos</x-adm-menu-item>--}}
-{{--    @endcan--}}
+    @canany(['adm-menu-site', 'adm-menu-testemunho'])
+        <x-adm-menu-group name="Site" id="site" icon="desktop-outline"
+                          :groups='["site", "banners", "propositos", "pastor", "testemunhos"]'
+                          :submenus='[
+                            ["label" => "Tela Principal", "route" => "site", "permission" => "adm-menu-site"],
+                            ["label" => "Testemunhos", "route" => "testemunhos", "permission" => "adm-menu-testemunho"]
+                          ]'>
+        </x-adm-menu-group>
+    @endcan
 
     @canany(['adm-menu-evento', 'adm-menu-escala', 'adm-menu-voluntario', 'adm-menu-relatorios'])
         <x-adm-menu-group name="Gestão de Escalas" id="gestao_escalas" icon="shirt-outline"

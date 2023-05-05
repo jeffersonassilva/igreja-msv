@@ -43,6 +43,6 @@ class PropositoController extends Controller
     {
         $this->checkPermission('adm-editar-proposito');
         $this->service->update($request, $id);
-        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
+        return $this->redirectWithMessage('site', __(Constants::SUCCESS_UPDATE));
     }
 }

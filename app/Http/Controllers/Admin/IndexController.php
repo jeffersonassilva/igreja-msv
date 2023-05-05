@@ -47,11 +47,20 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        return view('admin/index');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function site(Request $request)
+    {
         $propositos = $this->propositoService->all();
         $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc']);
         $pastor = $this->pastorService->all();
 
-        return view('admin/index')->with([
+        return view('admin/site/index')->with([
             'propositos' => $propositos,
             'banners' => $banners,
             'pastor' => $pastor->first(),
