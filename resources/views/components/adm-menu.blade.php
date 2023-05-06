@@ -1,4 +1,4 @@
-<nav class="sidebar flex flex-col mt-4 lg:mt-10 px-4">
+<nav class="sidebar flex flex-col mt-4 px-4">
     <x-adm-menu-item group="dashboard" :route="'dashboard'" :icon="'home-outline'">Home</x-adm-menu-item>
     @can('adm-menu-testemunho')
         <x-adm-menu-item group="testemunhos" :route="'testemunhos'" :icon="'chatbox-outline'">Testemunhos</x-adm-menu-item>
