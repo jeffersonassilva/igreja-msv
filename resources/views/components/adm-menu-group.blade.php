@@ -1,4 +1,4 @@
-@props(['name', 'icon', 'groups', 'submenus'])
+@props(['name', 'id', 'icon', 'groups', 'submenus'])
 
 @php
     $hasActiveGroup = false;
@@ -11,11 +11,11 @@
 @endphp
 
 <a href="#" class="border-t border-t-gray-100
-        px-4 lg:w-full h-14 relative text-gray-500
-        flex gap-4 md:justify-center lg:justify-start items-center
-        lg:hover:pl-5
+        px-2 lg:w-full h-14 relative text-gray-500
+        flex gap-3 md:justify-center lg:justify-start items-center
+        lg:hover:pl-3
         transition-all duration-300 ease-in-out"
-   onclick="toggleSubmenu(event)">
+   onclick="toggleSubmenu(event, '{{ $id }}')">
     <div class="lg:w-[22px]">
         <ion-icon name="{{ $icon }}"></ion-icon>
     </div>
@@ -26,14 +26,14 @@
               aria-label="document text outline">
     </ion-icon>
 </a>
-<div class="submenu @if ($hasActiveGroup) block @else hidden @endif">
+<div id="{{ $id }}" class="submenu @if ($hasActiveGroup) block @else hidden @endif">
     <ul class="list-none">
         @foreach ($submenus as $submenu)
             @can($submenu['permission'])
                 <li>
                     <a class="@if(preg_match('/^admin\/' . $submenu['route'] . '($|\/|\?)/', request()->path())) active @endif
-                       px-7 lg:px-6 lg:w-full h-12 relative text-gray-500
-                       flex gap-1 items-center lg:hover:pl-7
+                       px-5 lg:px-4 lg:w-full h-12 relative text-gray-500
+                       flex gap-1 items-center lg:hover:pl-5
                        transition-all duration-300 ease-in-out"
                        href="@if($submenu['route'] === '#') # @else {{ route($submenu['route']) }} @endif">
                         <div class="lg:w-[22px] text-gray-300">└</div>

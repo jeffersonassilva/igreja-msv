@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=63">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=64">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}?v=9" defer></script>
@@ -39,12 +39,12 @@
     </head>
 
     <body class="bg-gray-100">
-        <div id="container" class="w-full grid mx-auto md:h-[100vh] lg:grid-cols-[16rem,1fr]">
+        <div id="container" class="w-full grid mx-auto md:h-[100vh] lg:grid-cols-[17rem,1fr]">
 
-            <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%] max-w-[270px] lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
+            <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%] max-w-[280px] lg:max-w-full lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto">
                 <div class="flex justify-between items-center bg-gray-100 lg:bg-white">
                     <div class="flex justify-center py-6">
-                        <img class="w-2/3 lg:w-3/5" src="{{ asset('img/logo-preta.png') }}" alt="logo">
+                        <img class="w-2/3 lg:w-3/6" src="{{ asset('img/logo-preta.png') }}" alt="logo">
                     </div>
                     <button class="lg:hidden cursor-pointer text-3xl flex justify-center items-center p-3" id="aside__close-btn">
                         <ion-icon name="close-outline"></ion-icon>
@@ -131,9 +131,14 @@
             });
         }
 
-        function toggleSubmenu(event) {
+        /**
+         * Função responsável por abrir e fechar submenus na área administrativa
+         * @param event
+         * @param id
+         */
+        function toggleSubmenu(event, id) {
             event.preventDefault();
-            let submenu = document.querySelector('.submenu');
+            let submenu = document.getElementById(id);
             submenu.classList.toggle('hidden');
         }
     </script>
