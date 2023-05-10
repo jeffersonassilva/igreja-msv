@@ -43,6 +43,6 @@ class PastorController extends Controller
     {
         $this->checkPermission('adm-editar-pastor');
         $this->service->update($request, $id);
-        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
+        return $this->redirectWithMessage('site', __(Constants::SUCCESS_UPDATE));
     }
 }

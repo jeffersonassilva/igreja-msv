@@ -40,7 +40,7 @@ class BannerController extends Controller
     {
         $this->checkPermission('adm-adicionar-banner');
         $this->service->store($request);
-        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_CREATE));
+        return $this->redirectWithMessage('site', __(Constants::SUCCESS_CREATE));
     }
 
     /**
@@ -63,7 +63,7 @@ class BannerController extends Controller
     {
         $this->checkPermission('adm-editar-banner');
         $this->service->update($request, $id);
-        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_UPDATE));
+        return $this->redirectWithMessage('site', __(Constants::SUCCESS_UPDATE));
     }
 
     /**
@@ -74,6 +74,6 @@ class BannerController extends Controller
     {
         $this->checkPermission('adm-excluir-banner');
         $this->service->destroy($id);
-        return $this->redirectWithMessage('dashboard', __(Constants::SUCCESS_ARCHIVE));
+        return $this->redirectWithMessage('site', __(Constants::SUCCESS_ARCHIVE));
     }
 }
