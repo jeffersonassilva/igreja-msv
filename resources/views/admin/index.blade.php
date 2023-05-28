@@ -4,7 +4,7 @@
     </x-slot>
 
     <section class="pb-6">
-        <div class="flex justify-center items-center text-2xl" style="height: calc(100vh - 160px)">
+        <div class="flex justify-center items-center text-2xl text-gray-800 dark:text-[#d0d9e6]" style="height: calc(100vh - 160px)">
             Seja bem-vindo!
         </div>
     </section>

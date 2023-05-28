@@ -57,6 +57,7 @@ class VoluntarioController extends Controller
         foreach (Constants::DIAS_SEMANA_LISTA as $key => $disponibilidade) {
             $listaDisponibilidades[$key]['id'] = $key;
             $listaDisponibilidades[$key]['descricao'] = $disponibilidade;
+            $listaDisponibilidades[$key]['checked'] = false;
         }
 
         return view('admin/voluntarios/create')->with([

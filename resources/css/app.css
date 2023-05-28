@@ -172,6 +172,25 @@ html {
     @apply text-gray-400;
 }
 
+.dark .dark-autofill:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px #282a45 inset;
+    -webkit-text-fill-color: #d0d9e6;
+}
+
+.dark .dark-autofill:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px #282a45 inset;
+    -webkit-text-fill-color: #d0d9e6;
+}
+
+.dark input[type="file"]::file-selector-button {
+    background-color: #343d61 !important;
+    color: #d0d9e6 !important;
+}
+
+.dark input[type="file"] {
+    color: #d0d9e6;
+}
+
 /* Responsive Layout */
 @media (min-width: 640px) {
     .slider {
