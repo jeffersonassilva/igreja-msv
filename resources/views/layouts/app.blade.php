@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=65">
 
         <!-- Scripts -->
+        <script>
+            let theme = localStorage.getItem("msv:web-theme");
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+        </script>
         <script src="{{ asset('js/app.js') }}?v=9" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -46,7 +52,7 @@
                     dark:bg-[#252c47]">
                 <div class="flex justify-between items-center bg-gray-100 lg:bg-white dark:bg-[#252c47]">
                     <div class="flex justify-center py-6">
-                        <img class="w-2/3 lg:w-3/6" src="{{ asset('img/logo-preta.png') }}" alt="logo" id="sidenav-logo">
+                        <img class="w-2/3 lg:w-3/6" src="{{ asset('img/logo-branca.png') }}" alt="logo" id="sidenav-logo">
                     </div>
                     <button class="lg:hidden cursor-pointer text-3xl flex justify-center items-center p-3 text-gray-800 dark:text-[#d0d9e6]" id="aside__close-btn">
                         <ion-icon name="close-outline"></ion-icon>
@@ -181,10 +187,8 @@
          */
         window.addEventListener("DOMContentLoaded", function() {
             let theme = localStorage.getItem("msv:web-theme");
-
-            if (theme === "dark") {
-                document.documentElement.classList.add("dark");
-                trocarLogoSideNav("{{ asset('img/logo-branca.png') }}");
+            if (theme === "light") {
+                trocarLogoSideNav("{{ asset('img/logo-preta.png') }}");
             }
         });
     </script>
