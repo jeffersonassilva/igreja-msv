@@ -4,13 +4,14 @@
     </x-slot>
 
     <section>
-        <div id="filtros" class="p-4 mb-4 bg-white rounded-lg">
+        <div id="filtros" class="p-4 mb-4 bg-white rounded-lg dark:bg-[#252c47]">
             <div class="flex justify-between gap-2">
                 <div class="flex-1">
                     <form class="form-horizontal" role="form" action="{{ route('relatorio.mensal.voluntarios') }}">
                         <select id="periodo_relatorio" name="periodo"
                                 class="sm:max-w-[250px] bg-white border border-gray-300 text-gray-500 rounded-lg
-                                focus:ring-blue-500 focus:border-blue-500 w-full">
+                                focus:ring-blue-500 focus:border-blue-500 w-full
+                                dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]">
                             <option value="">Geral</option>
                             <optgroup label="Por Ano">
                                 @foreach($anos as $key => $ano)
@@ -43,12 +44,14 @@
         </div>
     </section>
 
-    <div class="p-0 sm:p-4 sm:bg-white sm:rounded-lg">
+    <div class="p-0 sm:p-4 sm:bg-white sm:rounded-lg dark:bg-[#252c47]">
         <section class="xl:w-1/2">
-            <header class="text-sm text-gray-500 bg-white p-4 text-center border border-gray-200 rounded-t-xl">
+            <header class="text-sm text-gray-500 bg-white p-4 text-center border border-gray-200 rounded-t-xl
+                           dark:bg-[#252c47] dark:border-[#454b54] dark:border-b-transparent dark:text-[#d0d9e6]">
                 Quantidade de vezes em que o voluntário foi escalado.
             </header>
-            <div class="bg-gray-200 px-3 py-4 sm:px-6 flex justify-between text-sm sm:text-base uppercase font-medium">
+            <div class="bg-gray-200 px-3 py-4 sm:px-6 flex justify-between text-sm sm:text-base uppercase font-medium
+                        dark:bg-[#1c2039] dark:text-white dark:border-y dark:border-[#454b54]">
                 <div class="flex items-center cursor-pointer btn-order" data-order-name="nome">
                     <div class="mr-2 md:mr-4">#</div>
                     Nome
@@ -60,15 +63,17 @@
                 </div>
             </div>
             @foreach($voluntarios as $key => $voluntario)
-            <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200 flex gap-1 justify-between @if($loop->last) rounded-b-xl @endif">
-                <div class="text-center text-gray-400 mr-2 md:mr-4 w-4">
+            <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200
+                        flex gap-1 justify-between @if($loop->last) rounded-b-xl @endif
+                        dark:bg-[#2e3552] dark:odd:bg-[#2e3552] dark:border-x-transparent dark:border-y-[#454b54]">
+                <div class="text-center text-gray-400 dark:text-[#d0d9e6] mr-2 md:mr-4 w-4">
                     {{ $key + 1 }}
                 </div>
                 <div class="flex-1">
-                    <div class="text-gray-900">
+                    <div class="text-gray-900 dark:text-white">
                         {{ $voluntario->nome }}
                     </div>
-                    <div class="text-gray-700 font-thin text-sm flex gap-2">
+                    <div class="text-gray-700 dark:text-[#d0d9e6] font-thin text-sm flex gap-2">
                         @if($voluntario->sexo == 'M')
                             <div class="text-xs">Masculino</div>
                         @else
@@ -84,7 +89,7 @@
                 <div class="flex gap-1 font-thin">
                     @if($voluntario->falta)
                     <div class="text-center">
-                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-[#263141]">
                             {{ $voluntario->falta }}
                         </div>
                         <div class="text-xs text-gray-400">F</div>
@@ -92,14 +97,15 @@
                     @endif
                     @if($voluntario->falta_justificada)
                     <div class="text-center">
-                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-[#263141]">
                             {{ $voluntario->falta_justificada }}
                         </div>
                         <div class="text-xs text-gray-400">FJ</div>
                     </div>
                     @endif
                     <div class="text-center">
-                        <div class="border border-gray-200 block flex justify-center items-center w-10 h-10 rounded-full text-xl font-normal">
+                        <div class="border border-gray-200 block flex justify-center items-center w-10 h-10 rounded-full text-xl font-normal
+                        dark:text-[#d0d9e6] dark:border-[#263141]">
                             {{ $voluntario->presenca }}
                         </div>
                     </div>

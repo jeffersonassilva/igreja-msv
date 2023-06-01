@@ -40,8 +40,8 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a class="border-t border-t-gray-100 px-2 lg:w-full h-14 relative text-gray-500
-                flex gap-4 items-center lg:hover:pl-3
-                transition-all duration-300 ease-in-out"
+                flex gap-4 items-center lg:hover:pl-3 dark:border-t-[#263141] dark:text-[#d0d9e6]
+                transition-[padding] duration-300 ease-in-out"
                href="route('logout')"
                onclick="event.preventDefault();
                this.closest('form').submit();">

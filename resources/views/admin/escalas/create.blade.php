@@ -9,65 +9,34 @@
               method="post">
             @csrf
             <input type="hidden" name="data" />
-            <div class="flex flex-col mb-4 p-4 bg-white">
-                <label for="dt_escala" class="text-gray-900 mb-2">Data <span class="text-red-500 font-bold">*</span></label>
-                <span class="text-sm font-thin text-gray-500 mb-2">- Informe a data da escala.</span>
-                <input type="date" min="{{ date('Y-m-d') }}" max="{{ date("Y-m-d", strtotime("+2 month")) }}"
-                       name="dt_escala" id="dt_escala"
-                       class="border border-gray-400 rounded-sm text-gray-700 md:max-w-[250px] @error('dt_escala') border-red-500 @enderror"
-                       value="{{ old('dt_escala') }}">
-                @error('dt_escala')
-                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                @enderror
-            </div>
 
-            <div class="flex flex-col mb-4 p-4 bg-white">
-                <label for="hr_escala" class="text-gray-900 mb-2">Hora <span class="text-red-500 font-bold">*</span></label>
-                <span class="text-sm font-thin text-gray-500 mb-2">- Informe o horário de início da escala.</span>
-                <input type="time" name="hr_escala" id="hr_escala"
-                       class="border border-gray-400 rounded-sm text-gray-700 md:max-w-[250px] @error('hr_escala') border-red-500 @enderror"
-                       value="{{ old('hr_escala') }}">
-                @error('hr_escala')
-                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                @enderror
-            </div>
+            <x-form.input label="Data"
+                          name="dt_escala"
+                          type="date"
+                          min="{{ date('Y-m-d') }}"
+                          max="{{ date('Y-m-d', strtotime('+2 month')) }}"
+                          size="md:max-w-[250px]"
+                          :required="true"
+                          :observacoes='["Informe a data da escala."]' />
 
-            <div class="flex flex-col mb-4 p-4 bg-white">
-                <label for="evento_id" class="text-gray-900 mb-2">Evento <span class="text-red-500 font-bold">*</span></label>
-                <span class="text-sm font-thin text-gray-500 mb-2">- Selecione o evento a qual a escala estará atrelada.</span>
-                <select name="evento_id" id="evento_id" class="border border-gray-400 text-gray-700 md:max-w-[250px] @error('evento_id') border-red-500 @enderror">
-                    <option value=""></option>
-                    @foreach($eventos as $evento)
-                    <option value="{{ $evento->id }}">{{ $evento->descricao }}</option>
-                    @endforeach
-                </select>
-                @error('evento_id')
-                <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
-                @enderror
-            </div>
+            <x-form.input label="Hora"
+                          name="hr_escala"
+                          type="time"
+                          size="md:max-w-[250px]"
+                          :required="true"
+                          :observacoes='["Informe o horário de início da escala."]' />
 
-            <div class="flex justify-between flex-col sm:flex-row">
-                <div class="mb-6 flex items-center gap-2">
-                    <button aria-label="Salvar" type="submit"
-                            class="outline-0 rounded-md text-white font-normal border border-blue-400 bg-blue-400
-                                    hover:bg-blue-500
-                                    focus:bg-blue-500
-                                    px-3 py-1 inline-flex justify-center items-center">
-                        <ion-icon name="save-outline"></ion-icon><span class="ml-2">Salvar</span>
-                    </button>
-                    <a href="{{ route('escalas') }}" aria-label="Voltar"
-                       class="outline-0 rounded-md text-blue-400 font-normal border border-blue-400
-                                    hover:text-white hover:bg-blue-400
-                                    focus:text-white focus:bg-blue-400
-                                    px-3 py-1 inline-flex justify-center items-center">
-                        <ion-icon name="arrow-back-outline"></ion-icon><span class="ml-2">Voltar</span>
-                    </a>
-                </div>
+            <x-form.select label="Evento"
+                           name="evento_id"
+                           size="md:max-w-[250px]"
+                           :blank="true"
+                           :required="true"
+                           :options="$eventos"
+                           :observacoes='["Selecione o evento a qual a escala se refere."]' />
 
-                <div class="text-gray-400 text-xs font-thin mb-2">
-                    <span class="text-red-500 font-bold">*</span> Preenchimento obrigatório
-                </div>
-            </div>
+            <x-form.actions backLabel="Voltar"
+                            :backRoute="route('escalas')"
+                            :infoRequired="true" />
         </form>
     </section>
 </x-app-layout>

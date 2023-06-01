@@ -24,6 +24,10 @@ module.exports = {
                     DEFAULT: '#f3f4f6',
                     dark: '#e5e7eb'
                 }
+            },
+            transitionProperty: {
+                'height': 'height',
+                'spacing': 'margin, padding',
             }
         },
     },
