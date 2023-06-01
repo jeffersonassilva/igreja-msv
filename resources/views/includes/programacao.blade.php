@@ -45,7 +45,7 @@
                 <div class="flex flex-col">
                     <div class="font-medium mb-1 lg:text-xl">Sábado</div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">19:30h</span> - Conexão Jovem
+                        <span class="font-semibold">19:00h</span> - Conexão Jovem (1º domingo do mês)
                     </div>
                 </div>
             </div>
