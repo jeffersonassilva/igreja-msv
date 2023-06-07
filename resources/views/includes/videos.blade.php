@@ -3,10 +3,11 @@
         <div class="flex flex-col flex-wrap md:flex-row md:items-center p-3 lg:py-10 lg:px-20">
             <div class="mx-auto text-left sm:text-center lg:text-left lg:flex-[50%] lg:flex-1 order-2 lg:order-1">
                 <div class="text-lg lg:text-2xl font-medium my-6 lg:my-0 lg:mx-6 2xl:mx-10 text-neutral-700">
-                    Confira como foi o culto de domingo.
+                    Confira a gravação dos cultos de domingo.
                 </div>
                 <div class="font-light text-sm lg:text-base 2xl:text-xl leading-6 lg:leading-7 2xl:leading-9 mb-6 lg:m-6 2xl:m-10">
-                    Cultos presenciais todo domingo às 19:00h com transmissão simultânea em nosso canal do YouTube.
+                    Convidamos você a participar dos nossos cultos presenciais todos os domingos às 19h.
+                    Alguns desses cultos são gravados e estão disponíveis em nosso canal do YouTube.
                 </div>
                 <div>
                     <button aria-label="Assista mais vídeos" onclick="window.open('https://www.youtube.com/channel/UC1CLWC5omo_hsO08mXAUMWg')"
