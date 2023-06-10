@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="description" content="A Igreja Evangélica Ministério Semeando a Verdade é uma igreja que preza pela Palavra de Deus, cujo propósito é fazer com que o evangelho do Senhor Jesus Cristo seja proclamado, anunciado, publicado, declarado e propagado em toda a Terra.">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -13,8 +13,6 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=66">
-{{--        <link rel="stylesheet" href="{{ asset('css/flickity.min.css') }}">--}}
-{{--        <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">--}}
 
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/apple-icon-57x57.png') }}">
         <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/icons/apple-icon-60x60.png') }}">
@@ -34,32 +32,19 @@
         <meta name="msapplication-TileImage" content="{{ asset('img/icons/ms-icon-144x144.png') }}">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body class="flex flex-col min-h-full">
+    <body class="flex flex-col min-h-full bg-gray-100">
         <nav id="menu" class="menu bg-black">
-            @include('includes/header')
+            <header class="grid grid-cols-5 p-3 md:p-4 lg:p-6 lg:pl-10">
+                <a href="{{ route('index') }}">
+                    <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="w-[70px] sm:w-[90px] md:w-[110px] md:w-[130px]">
+                </a>
+                <div class="flex-1 flex justify-center items-center col-span-3">
+                    @yield('titulo')
+                </div>
+            </header>
         </nav>
-
         <div class="flex-1">
             @yield('content')
         </div>
-
-        @include('includes.footer')
-
-        <a class="btn-scrolling hidden fixed bottom-5 right-5 text-xl w-12 h-12 shadow-md border border-gray-400 bg-gray-300 rounded flex justify-center items-center"
-           href="#menu" accesskey="m">
-            <ion-icon name="arrow-up-outline"></ion-icon>
-        </a>
-
-        <!-- Scripts -->
-{{--        <script src="{{ asset('js/flickity.pkgd.min.js') }}" defer></script>--}}
-{{--        <script src="{{ asset('js/flickity-fade.js') }}" defer></script>--}}
-        <script src="{{ asset('js/app.js') }}?v=9" defer></script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <script src="{{ asset('js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/maskmoney/dist/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
-        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
-
-        @yield('add-scripts')
     </body>
 </html>
