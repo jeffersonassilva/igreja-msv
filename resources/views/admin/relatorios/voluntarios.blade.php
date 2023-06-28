@@ -66,7 +66,7 @@
             <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200
                         flex gap-1 justify-between @if($loop->last) rounded-b-xl @endif
                         dark:bg-[#2e3552] dark:odd:bg-[#2e3552] dark:border-x-transparent dark:border-y-[#454b54]">
-                <div class="text-center text-gray-400 dark:text-[#d0d9e6] mr-2 md:mr-4 w-4">
+                <div class="text-center text-gray-500 dark:text-[#d0d9e6] mr-2 md:mr-4 w-4">
                     {{ $key + 1 }}
                 </div>
                 <div class="flex-1">
@@ -89,23 +89,23 @@
                 <div class="flex gap-1 font-thin">
                     @if($voluntario->falta)
                     <div class="text-center">
-                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-[#263141]">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-gray-500 dark:text-gray-400">
                             {{ $voluntario->falta }}
                         </div>
-                        <div class="text-xs text-gray-400">F</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400">F</div>
                     </div>
                     @endif
                     @if($voluntario->falta_justificada)
                     <div class="text-center">
-                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-[#263141]">
+                        <div class="border border-gray-200 block flex justify-center items-center w-6 h-6 rounded-full text-xs dark:border-gray-500 dark:text-gray-400">
                             {{ $voluntario->falta_justificada }}
                         </div>
-                        <div class="text-xs text-gray-400">FJ</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400">FJ</div>
                     </div>
                     @endif
                     <div class="text-center">
                         <div class="border border-gray-200 block flex justify-center items-center w-10 h-10 rounded-full text-xl font-normal
-                        dark:text-[#d0d9e6] dark:border-[#263141]">
+                        dark:text-white dark:border-gray-500">
                             {{ $voluntario->presenca }}
                         </div>
                     </div>
