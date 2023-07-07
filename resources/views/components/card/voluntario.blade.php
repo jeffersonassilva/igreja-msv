@@ -37,7 +37,7 @@
             </div>
             @if($voluntario->observacao)
                 <div class="flex flex-col col-span-2 md:hidden">
-                    <div class="font-thin text-xs md:text-sm text-gray-400 dark:text-[#d0d9e6]">Observações</div>
+                    <div class="font-thin text-xs md:text-sm text-gray-400">Observações</div>
                     <div class="text-gray-700 dark:text-[#d0d9e6]">{{ $voluntario->observacao }}</div>
                 </div>
             @endif
