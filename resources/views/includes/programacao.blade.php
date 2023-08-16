@@ -6,8 +6,8 @@
                 <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div class="flex flex-col">
-                    <div class="font-medium mb-1 lg:text-xl">Terça-feira</div>
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="font-medium mb-1 md:text-xl">Terça-feira</div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">20:00h</span> - Reunião de Mulheres (quinzenal)
                     </div>
@@ -20,8 +20,8 @@
                 <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div class="flex flex-col">
-                    <div class="font-medium mb-1 lg:text-xl">Quarta-feira</div>
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="font-medium mb-1 md:text-xl">Quarta-feira</div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">16:00h</span> - Tarde de Oração
                     </div>
@@ -31,8 +31,8 @@
                 <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div class="flex flex-col">
-                    <div class="font-medium mb-1 lg:text-xl">Quinta-feira</div>
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="font-medium mb-1 md:text-xl">Quinta-feira</div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">20:00h</span> - Culto de Imersão
                     </div>
@@ -42,10 +42,13 @@
                 <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div class="flex flex-col">
-                    <div class="font-medium mb-1 lg:text-xl">Sábado</div>
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="font-medium mb-1 md:text-xl">Sábado</div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">08:00h</span> - Consagração
+                    </div>
+                    <div class="text-sm text-gray-500 lg:text-base">
+                        <span class="font-semibold">19:30h</span> - Santa Ceia (1&ordm; sábado do mês)
                     </div>
                 </div>
             </div>
@@ -53,13 +56,16 @@
                 <div class="text-2xl pt-1">
                     <ion-icon name="calendar-outline"></ion-icon>
                 </div>
-                <div class="flex flex-col">
-                    <div class="font-medium mb-1 lg:text-xl">Domingo</div>
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="font-medium mb-1 md:text-xl">Domingo</div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">09:00h</span> - Escola Bíblica Dominical
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">19:00h</span> - Culto Público
+                    </div>
+                    <div class="text-sm text-gray-500 lg:text-base">
+                        <span class="font-semibold">19:00h</span> - Culto Público (1&ordm; domigo do mês na direção dos jovens)
                     </div>
                 </div>
             </div>
