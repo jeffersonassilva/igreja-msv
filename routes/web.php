@@ -15,6 +15,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CampanhaController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NotasFiscaisController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TestemunhoController;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -40,6 +41,15 @@ Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemu
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
 Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);
+
+//Notas Fiscais
+Route::get('/nfs', [NotasFiscaisController::class, 'index'])->name('notas-fiscais.index');
+Route::post('/nfs/adicionar', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
+
+//Route::get('/email-nfs', function () {
+//    return view('emails.notas', ['content' => ['as' => 'NF-7/20230902-09', 'responsavel' => 'Samuel Novais', 'cartao' => '1234-1234-1234-1234', 'data' => '2023-09-02', 'descricao' => 'Mercado', 'categoria' => '9', 'observacao' => 'Teste de observação']]);
+//});
 
 //Campanha de Daniel
 Route::get('/campanha-de-daniel', [CampanhaController::class, 'index'])->name('campanha.index');
@@ -127,5 +137,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
     Route::put('/configuracoes/{usuario}', [ConfiguracaoController::class, 'update'])->name('configuracoes.update');
 });
+
+Route::get('/admin/{any}', function () {
+    return redirect()->route('login');
+})->where('any', '.*');
 
 require __DIR__ . '/auth.php';
