@@ -47,6 +47,20 @@ trait UploadTrait
     }
 
     /**
+     * @param $request
+     * @param $dados
+     * @return mixed
+     */
+    public function definirNomeDoArquivoNotaFiscal($request, $dados)
+    {
+        if ($request->hasFile('arquivo')) {
+            $dados['arquivo'] = $this->diretorio . $this->uploadNotaFiscal($request);
+        }
+
+        return $dados;
+    }
+
+    /**
      * @param $time
      * @param $request
      * @return false|string
@@ -101,6 +115,16 @@ trait UploadTrait
         }
 
         return $name;
+    }
+
+    /**
+     * @param $request
+     * @return false|string
+     */
+    private function uploadNotaFiscal($request)
+    {
+        $nomeImagem = $this->getDataAtual() . '.jpg';
+        return Storage::disk('notas-fiscais')->putFileAs('', $request->file('arquivo'), $nomeImagem);
     }
 
     /**
