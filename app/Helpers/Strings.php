@@ -48,4 +48,44 @@ class Strings
 
         return 'Período: ' . $texto;
     }
+
+    /**
+     * @param $numero
+     * @return string
+     */
+    public static function getCartaoFormatado($numero)
+    {
+        $numero = preg_replace('/[^0-9]/', '', $numero);
+        $mascarado = '';
+
+        for ($i = 0; $i < strlen($numero); $i++) {
+            if ($i > 0 && $i % 4 === 0) {
+                $mascarado .= '-';
+            }
+            $mascarado .= $numero[$i];
+        }
+
+        return $mascarado;
+    }
+
+    /**
+     * @param $codigo
+     * @return string
+     */
+    public static function getNomeCategoria($codigo)
+    {
+        $categorias = [
+            1 => 'Despesa com Pessoal',
+            2 => 'Despesa com Impostos',
+            3 => 'Despesas Administrativas',
+            4 => 'Despesa com Aquisições',
+            5 => 'Despesa com Serviços',
+            6 => 'Despesas com Manutenções',
+            7 => 'Despesas Financeiras',
+            8 => 'Despesas com Construção',
+            9 => 'Despesas com Eventos',
+        ];
+
+        return $categorias[$codigo];
+    }
 }
