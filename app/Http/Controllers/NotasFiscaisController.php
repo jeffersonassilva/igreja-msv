@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\CartaoInexistente;
 use App\Exceptions\MembroSemAcessoAoCartao;
 use App\Helpers\Constants;
+use App\Http\Requests\NotaFiscalRequest;
 use App\Mail\NotaFiscalEmail;
 use App\Services\CartaoMembroService;
 use App\Services\CartaoService;
@@ -39,9 +40,9 @@ class NotasFiscaisController extends Controller
      * @param NotaFiscalService $notaFiscalService
      */
     public function __construct(
-        CartaoService $cartaoService,
+        CartaoService       $cartaoService,
         CartaoMembroService $cartaoMembroService,
-        NotaFiscalService $notaFiscalService
+        NotaFiscalService   $notaFiscalService
     )
     {
         $this->cartaoService = $cartaoService;
@@ -59,13 +60,39 @@ class NotasFiscaisController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function check(Request $request)
     {
         try {
             $cartaoValido = $this->verificarCartao($request->get('identificador'));
-            $membroAutorizado = $this->verificarMembro($cartaoValido->id, $request->get('user-permission'));
+            $this->verificarMembro($cartaoValido->id, $request->get('user-permission'));
+        } catch (\Exception $exception) {
+            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage());
+        }
+
+        return redirect()->route('notas-fiscais.create', [
+            base64_encode(date('Ymd')),
+            base64_encode($request->get('identificador')),
+            base64_encode($request->get('user-permission'))
+        ]);
+    }
+
+    /**
+     * @param $date
+     * @param $id
+     * @param $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function create($date, $id, $user)
+    {
+        if (base64_decode($date) !== date('Ymd')) {
+            return $this->redirectWithMessage('notas-fiscais.index', 'Você não tem permissão de acesso a este cartão!');
+        }
+
+        try {
+            $cartaoValido = $this->verificarCartao(base64_decode($id));
+            $membroAutorizado = $this->verificarMembro($cartaoValido->id, base64_decode($user));
         } catch (\Exception $exception) {
             return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage());
         }
@@ -90,10 +117,10 @@ class NotasFiscaisController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param NotaFiscalRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(NotaFiscalRequest $request)
     {
         $nota = $this->notaFiscalService->store($request);
         $content = array_merge($request->all(), $nota->toArray());

@@ -44,7 +44,8 @@ Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('e
 
 //Notas Fiscais
 Route::get('/nfs', [NotasFiscaisController::class, 'index'])->name('notas-fiscais.index');
-Route::post('/nfs/adicionar', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::get('/nfs/check', [NotasFiscaisController::class, 'check'])->name('notas-fiscais.check')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::get('/nfs/adicionar/{date}/{identificador}/{user}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
 
 //Route::get('/email-nfs', function () {
