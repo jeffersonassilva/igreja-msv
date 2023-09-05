@@ -45,6 +45,11 @@ return [
             'root' => 'img/voluntarios',
         ],
 
+        'notas-fiscais' => [
+            'driver' => 'local',
+            'root' => 'img/notas-fiscais',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
