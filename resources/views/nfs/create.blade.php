@@ -5,6 +5,17 @@
 @endsection
 @section('content')
     <section class="container mx-auto max-w-[1080px] px-4 pb-4">
+        @if (session('message'))
+            <div id="message_alert" class="bg-yellow-200 p-4 my-4 rounded-md flex justify-between items-center">
+                <span class="text-gray-700">
+                    {{ session('message') }}
+                </span>
+                <span class="text-2xl flex items-center cursor-pointer" id="close-message-btn">
+                    <ion-icon name="close-outline"></ion-icon>
+                </span>
+            </div>
+        @endif
+
         <div
             class="p-6 sm:p-8 my-4 sm:my-8 text-center text-gray-600 bg-white border border-gray-100 rounded-lg font-thin italic sm:text-lg">
             Utilize esse formulário para enviar as notas fiscais para o departamento financeiro da igreja.

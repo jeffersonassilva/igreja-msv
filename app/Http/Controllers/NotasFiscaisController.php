@@ -126,11 +126,13 @@ class NotasFiscaisController extends Controller
         $nota = $this->notaFiscalService->store($request);
         $content = array_merge($request->all(), $nota->toArray());
 
-        Mail::to('jefferson.santos@igrejamsv.org')
+        Mail::to('samucamj@gmail.com')
             ->cc(['jeffersonassilva@gmail.com'])
             ->send(new NotaFiscalEmail($content));
 
-        return $this->redirectWithMessage('notas-fiscais.index', __(Constants::SUCCESS_CREATE));
+        return redirect()
+            ->route('notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais())
+            ->with(Constants::MESSAGE, 'Nota fiscal enviada com sucesso!');
     }
 
     /**
@@ -164,5 +166,14 @@ class NotasFiscaisController extends Controller
         }
 
         return $dados;
+    }
+
+    /**
+     * @return false|string[]
+     */
+    private function getDadosDeSegurancaNotasFiscais()
+    {
+        $urlOrigin = str_replace(url()->current() . '/adicionar/', '', $_SERVER['HTTP_REFERER']);
+        return explode('/', $urlOrigin);
     }
 }
