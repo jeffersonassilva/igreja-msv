@@ -107,6 +107,7 @@ class NotasFiscaisController extends Controller
             ['id' => 7, 'descricao' => 'Despesas Financeiras'],
             ['id' => 8, 'descricao' => 'Despesas com Construção'],
             ['id' => 9, 'descricao' => 'Despesas com Eventos'],
+            ['id' => 10, 'descricao' => 'Despesas com Tecnologia'],
         ];
 
         return view('nfs.create')->with([
