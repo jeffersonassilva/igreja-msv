@@ -46,6 +46,7 @@
                           name="valor"
                           size="md:max-w-[300px]"
                           mask="moeda"
+                          maxlength="11"
                           :required="true"/>
 
             <x-form.input label="Descrição da compra:"
