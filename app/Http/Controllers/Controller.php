@@ -34,6 +34,16 @@ class Controller extends BaseController
                 break;
         }
 
+        if (is_array($route)) {
+            list($route, $id) = $route;
+            return redirect()
+                ->route($route, $id)
+                ->with([
+                    Constants::MESSAGE => $mensagem,
+                    Constants::COLOR_TYPE_MESSAGE => $color
+                ]);
+        }
+
         return redirect()
             ->route($route)
             ->with([
