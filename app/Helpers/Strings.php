@@ -84,6 +84,7 @@ class Strings
             7 => 'Despesas Financeiras',
             8 => 'Despesas com Construção',
             9 => 'Despesas com Eventos',
+            10 => 'Despesas com Tecnologia',
         ];
 
         return $categorias[$codigo];
