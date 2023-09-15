@@ -68,7 +68,7 @@ class NotasFiscaisController extends Controller
             $cartaoValido = $this->verificarCartao($request->get('identificador'));
             $this->verificarMembro($cartaoValido->id, $request->get('user-permission'));
         } catch (\Exception $exception) {
-            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage());
+            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage(), 'warning');
         }
 
         return redirect()->route('notas-fiscais.create', [
@@ -86,15 +86,12 @@ class NotasFiscaisController extends Controller
      */
     public function create($date, $id, $user)
     {
-        if (base64_decode($date) !== date('Ymd')) {
-            return $this->redirectWithMessage('notas-fiscais.index', 'Você não tem permissão de acesso a este cartão!');
-        }
-
         try {
+            $this->verificarDataAcessoCartao(base64_decode($date));
             $cartaoValido = $this->verificarCartao(base64_decode($id));
             $membroAutorizado = $this->verificarMembro($cartaoValido->id, base64_decode($user));
         } catch (\Exception $exception) {
-            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage());
+            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage(), 'warning');
         }
 
         $categorias = [
@@ -133,6 +130,20 @@ class NotasFiscaisController extends Controller
         return redirect()
             ->route('notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais())
             ->with(Constants::MESSAGE, 'Nota fiscal enviada com sucesso!');
+    }
+
+    /**
+     * @param $date
+     * @return false|string
+     * @throws MembroSemAcessoAoCartao
+     */
+    private function verificarDataAcessoCartao($date)
+    {
+        if ($date !== date('Ymd')) {
+            throw new MembroSemAcessoAoCartao('Você não tem permissão de acesso a este cartão!');
+        }
+
+        return $date;
     }
 
     /**
