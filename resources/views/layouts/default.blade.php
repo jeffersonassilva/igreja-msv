@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=69">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=70">
 {{--        <link rel="stylesheet" href="{{ asset('css/flickity.min.css') }}">--}}
 {{--        <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">--}}
 
@@ -53,7 +53,7 @@
         <!-- Scripts -->
 {{--        <script src="{{ asset('js/flickity.pkgd.min.js') }}" defer></script>--}}
 {{--        <script src="{{ asset('js/flickity-fade.js') }}" defer></script>--}}
-        <script src="{{ asset('js/app.js') }}?v=10" defer></script>
+        <script src="{{ asset('js/app.js') }}?v=11" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
 {{--        <script src="{{ asset('js/maskmoney/dist/jquery.maskMoney.min.js') }}"></script>--}}

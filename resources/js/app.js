@@ -175,8 +175,15 @@ $(document).ready(function () {
         });
     }
 
-    //Máscara nos campos de moeda
+    //Máscara nos campos de moeda e telefone
     $('.moeda').mask("#.##0,00", {reverse: true});
+    $('.telefone').mask('(00) 0000-00009').on('keyup', function (event) {
+        if ($(this).val().length === 15) {
+            $(this).mask('(00) 00000-0000');
+        } else {
+            $(this).mask('(00) 0000-00000');
+        }
+    });
 
     //Função para adicionar o nome do arquivo selecionado em evidência no mobile
     $('[type=file]').change(function () {
@@ -184,4 +191,8 @@ $(document).ready(function () {
         let file = $(this)[0].files[0].name;
         $(this).prev('label').text(file);
     });
+
+    $('#close-message-btn').click(function () {
+        $('#message_alert').hide();
+    })
 });
