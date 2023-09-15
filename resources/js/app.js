@@ -174,4 +174,14 @@ $(document).ready(function () {
             $('#' + 'submit-' + formId).submit();
         });
     }
+
+    //Máscara nos campos de moeda
+    $('.moeda').mask("#.##0,00", {reverse: true});
+
+    //Função para adicionar o nome do arquivo selecionado em evidência no mobile
+    $('[type=file]').change(function () {
+        let i = $(this).prev('label').clone();
+        let file = $(this)[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
 });
