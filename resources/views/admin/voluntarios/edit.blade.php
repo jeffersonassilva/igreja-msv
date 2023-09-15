@@ -41,8 +41,9 @@
                                :observacoes='["Selecione os dias que o voluntário está disponível."]' />
 
             <x-form.file label="Foto"
-                          name="foto"
-                          value="{{ old('foto') ?? $data->foto }}"
+                         name="foto"
+                         value="{{ old('foto') ?? $data->foto }}"
+                         accept=".png, .jpg, .jpeg"
                          :observacoes='[
                             "O tamanho mínimo é de 240x240.",
                             "A imagem ideal é com a proporção 1/1 (formato quadrado).",
