@@ -46,5 +46,12 @@
         <div class="flex-1">
             @yield('content')
         </div>
+
+        <script src="{{ asset('js/app.js') }}?v=9" defer></script>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+        <script type="text/javascript">
+            $('.moeda').mask("#.##0,00", {reverse: true});
+        </script>
     </body>
 </html>
