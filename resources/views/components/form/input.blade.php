@@ -1,4 +1,13 @@
-@props(['label', 'name', 'type' => 'text', 'maxlength' => '255', 'required' => false, 'observacoes' => [], 'value' => null, 'size' => null, 'spacing' => 'mb-4 p-4'])
+@props([
+    'label', 'name', 'type' => 'text',
+    'maxlength' => '255',
+    'required' => false,
+    'observacoes' => [],
+    'value' => null,
+    'size' => null,
+    'mask' => null,
+    'spacing' => 'mb-4 p-4'
+    ])
 
 <div class="flex flex-col bg-white dark:bg-[#252c47] @if($spacing) {{ $spacing }} @endif">
     <label for="{{ $name }}" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">
@@ -14,6 +23,7 @@
     <input {{ $attributes->merge(['type' => $type, 'name' => $name, 'id' => $name, 'maxlength' => $maxlength]) }}
            class="border-gray-400 rounded-sm text-gray-700
            dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6] dark-autofill
+           @if($mask) {{ $mask }} @endif
            @if($size) {{ $size }} @endif
            @error($name) border-[1px] border-red-500 dark:border-[#642828] @enderror"
            value="{{ $value ?: old($name) }}" autocomplete="false">
