@@ -3,6 +3,7 @@
 @section('titulo')
     <h2 class="text-white text-xl sm:text-3xl">Notas Fiscais</h2>
 @endsection
+
 @section('content')
     <section class="container mx-auto max-w-[1080px] px-4 pb-4">
         <div
