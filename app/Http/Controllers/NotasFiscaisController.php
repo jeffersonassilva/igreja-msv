@@ -9,7 +9,6 @@ use App\Mail\NotaFiscalEmail;
 use App\Services\CartaoMembroService;
 use App\Services\CartaoService;
 use App\Services\NotaFiscalService;
-use App\Traits\DropboxTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -19,8 +18,6 @@ use Illuminate\Support\Facades\Mail;
  */
 class NotasFiscaisController extends Controller
 {
-    use DropboxTrait;
-
     /**
      * @var CartaoService
      */
@@ -101,8 +98,8 @@ class NotasFiscaisController extends Controller
         $nota = $this->notaFiscalService->store($request);
         $content = array_merge($request->all(), $nota->toArray());
 
-        Mail::to('jeffersonassilva@gmail.com')
-            ->cc(['jeffersonassilva@icloud.com'])
+        Mail::to('jefferson.santos@igrejamsv.org')
+            ->cc(['jeffersonassilva@gmail.com'])
             ->send(new NotaFiscalEmail($content));
 
         return $this->redirectWithMessage('notas-fiscais.index', __(Constants::SUCCESS_CREATE));
@@ -140,160 +137,4 @@ class NotasFiscaisController extends Controller
 
         return $dados;
     }
-
-//    public function notasFiscais()
-//    {
-//        return view('notas-fiscais');
-//    }
-
-//    /**
-//     * @param Request $request
-//     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-//     * @throws \Google\Exception
-//     */
-//    public function store(Request $request)
-//    {
-//        dd('teste');
-//        // Crie uma instância do cliente da API do Google Drive e defina as credenciais
-//        $client = new Google_Client();
-//        $client->setAuthConfig(base_path('credentials.json'));
-//        $client->setAccessType('offline');
-//        $client->setApprovalPrompt('force');
-//        $client->addScope(Drive::DRIVE);
-//        $client->setPrompt('select_account consent');
-//
-//        // obtenha o token de acesso
-//        $accessToken = session('access_token');
-//        if ($accessToken) {
-//            $client->setAccessToken($accessToken);
-//        } else {
-//            // Caso não exista, verifica se existe um código de autorização
-//            $code = request('code');
-//            if ($code) {
-//                // Se existir, troca o código de autorização por um token de acesso
-//                $accessToken = $client->fetchAccessTokenWithAuthCode($code);
-//                $client->setAccessToken($accessToken);
-//
-//                // Salva o token de acesso na sessão
-//                session(['access_token' => $accessToken]);
-//
-//                // Salva o refresh token em um arquivo
-//                $refreshToken = $client->getRefreshToken();
-//                file_put_contents(base_path('refresh_token.txt'), $refreshToken);
-//            } else {
-//                // Se não houver código de autorização, redireciona para a tela de login do Google
-//                $authUrl = $client->createAuthUrl();
-//                return redirect()->away($authUrl);
-//            }
-//        }
-//
-//        // Crie uma instância do serviço de API do Google Drive
-//        $service = new Google_Service_Drive($client);
-//
-//        $file = $request->file('nota-fiscal');
-//        $filePath = $file->getRealPath();
-//        $fileMetadata = new Google_Service_Drive_DriveFile(array(
-//            'name' => $file->getClientOriginalName()
-//        ));
-//
-//        // Define o ID da pasta do Google Drive para onde o arquivo será enviado
-//        $folderId = '1M_EqY2s6KG4-9WI9E-MHHTb5_SjSybOr';
-//
-//        // Define a pasta do Google Drive como pai do arquivo
-//        $fileMetadata->setParents(array($folderId));
-//
-//        // Cria uma instância do objeto de arquivo do Google Drive e define os metadados do arquivo
-//        $file = new Google_Service_Drive_DriveFile();
-//        $file->setName($fileMetadata->name);
-//        $file->setParents($fileMetadata->parents);
-//
-//        // Faz o upload do arquivo
-//        $content = file_get_contents($filePath);
-//        try {
-//            // Tenta enviar o arquivo
-//            $file = $service->files->create($fileMetadata, array(
-//                'data' => $content,
-//                'mimeType' => $file->getMimeType()
-//            ));
-//
-//            // Retorna o link do arquivo recém-enviado
-//            return redirect()->back()->with('success', 'Arquivo enviado com sucesso!');
-////            return response()->json([
-////                'url' => $file->getWebContentLink(),
-////            ]);
-//        } catch (\Exception $e) {
-//            // Se ocorrer um erro de autenticação, atualize o token de acesso e tente novamente
-//            if ($e instanceof \Google\Service\Exception && $e->getCode() == 401) {
-//                $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-//                $file = $service->files->create($fileMetadata, array(
-//                    'data' => $content,
-//                    'mimeType' => $file->getMimeType()
-//                ));
-//                return response()->json([
-//                    'url' => $file->getWebContentLink(),
-//                ]);
-//            }
-//            // Se ocorrer um erro diferente, retorne uma mensagem de erro
-//            return response()->json([
-//                'message' => $e->getMessage(),
-//            ]);
-//        }
-//
-////        return redirect()->back()->with('success', 'Arquivo enviado com sucesso!');
-//    }
-//
-//    public function token(Request $request)
-//    {
-//        // Cria um objeto Google_Client e configura a autenticação
-//        $client = new Client();
-//        $client->setAuthConfig(base_path('credentials.json'));
-//        $client->setAccessType('offline');
-//        $client->setApprovalPrompt('force');
-//        $client->addScope(Drive::DRIVE);
-////        $client->addScope(Drive::DRIVE);
-////        $client->addScope(Drive::DRIVE_APPDATA);
-////        $client->addScope(Drive::DRIVE_METADATA);
-////        $client->addScope(Drive::DRIVE_PHOTOS_READONLY);
-//
-//        // Verifica se existe um token de acesso salvo
-//        session(['access_token' => null]);
-//        $accessToken = session('access_token');
-////        dd($accessToken);
-//
-//        if ($accessToken) {
-//            $client->setAccessToken($accessToken);
-//        } else {
-//            // Caso não exista, verifica se existe um código de autorização
-//            $code = $request->get('code');
-//            if ($code) {
-//                // Se existir, troca o código de autorização por um token de acesso
-//                $accessToken = $client->fetchAccessTokenWithAuthCode($code);
-//                $client->setAccessToken($accessToken);
-//
-//                // Salva o token de acesso na sessão
-//                session(['access_token' => $accessToken]);
-//
-//                $refreshToken = $client->getRefreshToken();
-//                file_put_contents(base_path('refresh_token.txt'), $refreshToken);
-//            } else {
-//                // Se não existir um código de autorização, redireciona para a página de login
-//                $authUrl = $client->createAuthUrl();
-//                return redirect()->away($authUrl);
-//            }
-//        }
-//
-////        // Cria um objeto Google_Service_Drive para interagir com a API do Google Drive
-////        $service = new Drive($client);
-//
-////        // Pega a lista de pastas do Google Drive
-////        $folderList = $service->files->listFiles([
-////            'q' => "mimeType='application/vnd.google-apps.folder' and trashed = false",
-////        ]);
-////        $folders = $folderList->getFiles();
-//
-////        return view('upload', compact('folders'));
-//
-////        $participantes = $this->service->where(array(), array('data' => 'desc', 'nome' => 'asc'))->get();
-//        return $accessToken;
-//    }
 }
