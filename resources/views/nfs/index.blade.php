@@ -21,9 +21,7 @@
             Informe seus os dados de acesso para enviar as notas fiscais para o financeiro.
         </div>
         <form class="form-horizontal" role="form"
-              action="{{ route('notas-fiscais.create') }}"
-              method="post">
-            @csrf
+              action="{{ route('notas-fiscais.check') }}">
 
             <x-form.input label="Identificador do Cartão"
                           name="identificador"
