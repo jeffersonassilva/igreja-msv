@@ -69,6 +69,16 @@ class Strings
     }
 
     /**
+     * @param $valor
+     * @param $prefix
+     * @return string
+     */
+    public static function getMoedaFormatada($valor, $prefix = null)
+    {
+        return $prefix . number_format($valor,2,',','.');
+    }
+
+    /**
      * @param $codigo
      * @return string
      */
