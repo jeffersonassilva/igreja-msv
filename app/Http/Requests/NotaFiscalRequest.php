@@ -25,6 +25,7 @@ class NotaFiscalRequest extends FormRequest
     {
         return [
             'data' => 'required',
+            'valor' => 'required',
             'descricao' => 'required',
             'categoria' => 'required',
             'arquivo' => 'required',
@@ -38,6 +39,7 @@ class NotaFiscalRequest extends FormRequest
     {
         return [
             'data' => 'Data da compra',
+            'valor' => 'Valor da compra',
             'descricao' => 'Descrição da compra',
             'categoria' => 'Categoria',
             'arquivo' => 'Arquivo',

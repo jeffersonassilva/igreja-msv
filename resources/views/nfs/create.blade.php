@@ -42,6 +42,12 @@
                           size="md:max-w-[300px]"
                           :required="true"/>
 
+            <x-form.input label="Valor da compra:"
+                          name="valor"
+                          size="md:max-w-[300px]"
+                          mask="moeda"
+                          :required="true"/>
+
             <x-form.input label="Descrição da compra:"
                           name="descricao"
                           maxlength="150"
@@ -73,13 +79,11 @@
             <input type="hidden" name="cartao" value="{{ \App\Helpers\Strings::getCartaoFormatado($cartao['numero']) }}">
 
             <div class="flex flex-col mb-4 rounded-md">
-                <label for="btn" class="text-gray-600 hidden md:block">&nbsp;</label>
-                <div class="mb-6 flex items-center gap-2">
+                <div class="mt-6 mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"
                             class="outline-0 rounded-md text-white font-normal bg-blue-800
-                        hover:bg-blue-900
-                        focus:bg-blue-900
-                        px-4 py-2 md:px-6 inline-flex justify-center items-center">
+                            hover:bg-blue-900 focus:bg-blue-900
+                            px-4 py-2 md:px-6 inline-flex justify-center items-center">
                         Enviar
                     </button>
                 </div>
