@@ -70,6 +70,7 @@
 
             <x-form.file label="Arquivo"
                          name="arquivo"
+                         accept=".png, .jpg, .jpeg"
                          :required="true"
                          :observacoes='[
                             "Extensões válidas: jpg, jpeg e png."

@@ -28,7 +28,7 @@ class NotaFiscalRequest extends FormRequest
             'valor' => 'required',
             'descricao' => 'required',
             'categoria' => 'required',
-            'arquivo' => 'required',
+            'arquivo' => 'required|image|mimes:jpg,jpeg,png',
         ];
     }
 
