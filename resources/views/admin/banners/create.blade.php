@@ -17,6 +17,7 @@
 
             <x-form.file label="Imagem Mobile"
                          name="img_mobile"
+                         accept=".png, .jpg, .jpeg"
                          :required="true"
                          :observacoes='[
                             "A imagem deve respeitar a proporção 16/9.",
@@ -26,6 +27,7 @@
 
             <x-form.file label="Imagem Web"
                          name="img_web"
+                         accept=".png, .jpg, .jpeg"
                          :required="true"
                          :observacoes='[
                             "A imagem deve ter o tamanho de 1920x400.",
