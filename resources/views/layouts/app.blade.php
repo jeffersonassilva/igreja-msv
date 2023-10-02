@@ -20,8 +20,9 @@
                 document.documentElement.classList.add("dark");
             }
         </script>
-        <script src="{{ asset('js/app.js') }}?v=9" defer></script>
+        <script src="{{ asset('js/app.js') }}?v=10" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
