@@ -123,6 +123,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/cartoes', [CartaoController::class, 'index'])->name('cartoes');
     Route::get('/cartoes/adicionar', [CartaoController::class, 'create'])->name('cartoes.create');
     Route::post('/cartoes', [CartaoController::class, 'store'])->name('cartoes.store');
+    Route::delete('/cartoes/{usuario}', [CartaoController::class, 'destroy'])->name('cartoes.destroy');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
