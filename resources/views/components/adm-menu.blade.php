@@ -23,11 +23,12 @@
         </x-adm-menu-group>
     @endcan
 
-    @canany(['adm-menu-cartao'])
+    @canany(['adm-menu-cartao', 'adm-menu-nota-fiscal'])
         <x-adm-menu-group name="Tesouraria" id="tesouraria" icon="wallet"
-                          :groups='["cartoes"]'
+                          :groups='["cartoes", "notas-fiscais"]'
                           :submenus='[
                                 ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
+                                ["label" => "Notas Fiscais", "route" => "notas-fiscais", "permission" => "adm-menu-nota-fiscal"],
                               ]'>
         </x-adm-menu-group>
     @endcan

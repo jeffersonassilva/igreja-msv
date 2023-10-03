@@ -127,6 +127,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/cartoes/{cartao}', [CartaoController::class, 'update'])->name('cartoes.update');
     Route::delete('/cartoes/{cartao}', [CartaoController::class, 'destroy'])->name('cartoes.destroy');
 
+    //Notas Fiscais
+    Route::get('/notas-fiscais', [NotasFiscaisController::class, 'index'])->name('notas-fiscais');
+
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/adicionar', [UsuarioController::class, 'create'])->name('usuarios.create');
