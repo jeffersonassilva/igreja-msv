@@ -119,9 +119,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/relatorio/voluntarios', [RelatorioController::class, 'mensalVoluntarios'])->name('relatorio.mensal.voluntarios');
     Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'mensalVoluntariosDownload'])->name('relatorio.voluntarios.download');
 
-    //Tesouraria
+    //Cartões
     Route::get('/cartoes', [CartaoController::class, 'index'])->name('cartoes');
-    //Route::get('/cartoes/adicionar', [CartaoController::class, 'create'])->name('cartoes.create');
+    Route::get('/cartoes/adicionar', [CartaoController::class, 'create'])->name('cartoes.create');
+    Route::post('/cartoes', [CartaoController::class, 'store'])->name('cartoes.store');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');

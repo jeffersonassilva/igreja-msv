@@ -6,9 +6,9 @@
     <section>
         <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
             <div class="text-sm">
-{{--                @can('adm-adicionar-cartao')--}}
-{{--                    <x-button.link title="Adicionar Cartão" :route="route('cartoes.create')"></x-button.link>--}}
-{{--                @endcan--}}
+                @can('adm-adicionar-cartao')
+                    <x-button.link title="Adicionar Cartão" :route="route('cartoes.create')"></x-button.link>
+                @endcan
             </div>
         </div>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
