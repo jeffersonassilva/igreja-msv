@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CartaoController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
@@ -117,6 +118,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Relatorios
     Route::get('/relatorio/voluntarios', [RelatorioController::class, 'mensalVoluntarios'])->name('relatorio.mensal.voluntarios');
     Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'mensalVoluntariosDownload'])->name('relatorio.voluntarios.download');
+
+    //Tesouraria
+    Route::get('/cartoes', [CartaoController::class, 'index'])->name('cartoes');
+    //Route::get('/cartoes/adicionar', [CartaoController::class, 'create'])->name('cartoes.create');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');

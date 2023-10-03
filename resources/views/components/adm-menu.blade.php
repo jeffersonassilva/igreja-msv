@@ -23,6 +23,15 @@
         </x-adm-menu-group>
     @endcan
 
+    @canany(['adm-menu-cartao'])
+        <x-adm-menu-group name="Tesouraria" id="tesouraria" icon="wallet"
+                          :groups='["cartoes"]'
+                          :submenus='[
+                                ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
+                              ]'>
+        </x-adm-menu-group>
+    @endcan
+
     @canany(['adm-menu-usuario', 'adm-menu-perfil'])
         <x-adm-menu-group name="Segurança" id="seguranca" icon="key-outline"
                           :groups='["usuarios", "perfis"]'
