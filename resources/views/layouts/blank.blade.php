@@ -43,6 +43,10 @@
                 </div>
             </header>
         </nav>
+        <section class="container mx-auto max-w-[1080px] px-4 pt-4">
+            <x-alert />
+        </section>
+
         <div class="flex-1">
             @yield('content')
         </div>
@@ -50,5 +54,7 @@
         <script src="{{ asset('js/app.js') }}?v=10" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
