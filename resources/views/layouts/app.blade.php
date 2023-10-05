@@ -114,8 +114,6 @@
         const sideMenu = document.querySelector("aside");
         const menuBtn = document.querySelector("#adm__menu-btn");
         const closeBtn = document.querySelector("#aside__close-btn");
-        const closeMessageBtn = document.querySelector("#close-message-btn");
-        const messageAlert = document.querySelector("#message_alert");
 
         if (menuBtn) {
             menuBtn.addEventListener('click', () => {
@@ -126,12 +124,6 @@
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 sideMenu.style.display = 'none';
-            });
-        }
-
-        if (closeMessageBtn) {
-            closeMessageBtn.addEventListener('click', () => {
-                messageAlert.style.display = 'none';
             });
         }
 

@@ -52,7 +52,9 @@ class TestemunhoController extends Controller
     public function store(TestemunhoRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('testemunhos.list')->with('nome', $request->get('nome'));
+        return $this->redirectWithMessage(
+            'testemunhos.list',
+            'Obrigado por compartilhar seu testemunho conosco. Que o Senhor continue te bençoando!');
     }
 
     /**

@@ -13,6 +13,8 @@
             <div class="flex-1 h-[70px] sm:h-[160px] hidden md:block"><img class="w-full h-full opacity-40 object-cover" src="{{ asset('img/adoracao/7.jpg') }}" alt="adoracao"></div>
         </div>
 
+        <x-alert class="pt-4 px-4" />
+
         <div class="container mx-auto max-w-[1080px] p-4">
             @if($testemunhos->count())
 
@@ -86,7 +88,7 @@
                         <div class="flex-[30%] flex flex-col mb-4 rounded-md">
                             <label for="telefone" class="text-gray-600">Telefone <span class="text-red-500 font-bold">*</span></label>
                             <input type="text" name="telefone" id="telefone" maxlength="255"
-                                   class="border-gray-200 rounded-md text-gray-600 @error('telefone') border-[1px] border-red-500 @enderror"
+                                   class="telefone border-gray-200 rounded-md text-gray-600 @error('telefone') border-[1px] border-red-500 @enderror"
                                    value="{{ old('telefone') }}">
                             @error('telefone')
                             <span class="text-red-500 text-xs mt-1">{{ $message }}</span>

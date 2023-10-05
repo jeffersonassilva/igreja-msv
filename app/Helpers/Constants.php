@@ -25,6 +25,7 @@ class Constants
      * FLASH MESSAGES
      */
     const MESSAGE = 'message';
+    const COLOR_TYPE_MESSAGE = 'colorTypeMessage';
     const SUCCESS_CREATE = 'responses.success.create';
     const SUCCESS_UPDATE = 'responses.success.update';
     const SUCCESS_DESTROY = 'responses.success.destroy';

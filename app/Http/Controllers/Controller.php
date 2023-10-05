@@ -17,11 +17,58 @@ class Controller extends BaseController
     /**
      * @param $route
      * @param $mensagem
+     * @param string $typeMessage
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirectWithMessage($route, $mensagem): \Illuminate\Http\RedirectResponse
+    public function redirectWithMessage($route, $mensagem, string $typeMessage = 'success'): \Illuminate\Http\RedirectResponse
     {
-        return redirect()->route($route)->with(Constants::MESSAGE, $mensagem);
+        switch ($typeMessage) {
+            case 'error':
+                $color = '#ffb9b9';
+                break;
+            case 'warning':
+                $color = '#fef19b';
+                break;
+            default:
+                $color = '#bcf0da';
+                break;
+        }
+
+        return redirect()
+            ->route($route)
+            ->with([
+                Constants::MESSAGE => $mensagem,
+                Constants::COLOR_TYPE_MESSAGE => $color
+            ]);
+    }
+
+    /**
+     * @param $view
+     * @param $data
+     * @param $message
+     * @param string $typeMessage
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function viewWithMessage($view, $data, $message = null, string $typeMessage = 'success')
+    {
+        switch ($typeMessage) {
+            case 'error':
+                $color = '#ffb9b9';
+                break;
+            case 'alert':
+                $color = '#fef19b';
+                break;
+            default:
+                $color = '#bcf0da';
+                break;
+        }
+
+        if ($message) {
+            request()->session()->flash(Constants::MESSAGE, $message);
+            request()->session()->flash('colorTypeMessage', $color);
+        }
+
+        return view($view)->with($data);
     }
 
     /**
