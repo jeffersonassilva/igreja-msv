@@ -16,7 +16,7 @@
                 <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
                     <h3 class="text-gray-700 font-medium dark:text-white">{{ $cartao->identificador }}</h3>
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4 dark:text-[#d0d9e6]">
-                        {{ $cartao->numero }}
+                        {{ \App\Helpers\Strings::getCartaoFormatado($cartao->numero) }}
                     </p>
                     @canany(['adm-editar-cartao', 'adm-excluir-cartao'])
                         <div class="text-sm mt-3 text-sm flex gap-2">
