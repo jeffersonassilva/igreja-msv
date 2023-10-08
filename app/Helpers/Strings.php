@@ -50,22 +50,14 @@ class Strings
     }
 
     /**
-     * @param $numero
+     * @param $numeroCartao
      * @return string
      */
-    public static function getCartaoFormatado($numero)
+    public static function getCartaoFormatado($numeroCartao)
     {
-        $numero = preg_replace('/[^0-9]/', '', $numero);
-        $mascarado = '';
+        $ultimosQuatroDigitos = substr($numeroCartao, -4);
 
-        for ($i = 0; $i < strlen($numero); $i++) {
-            if ($i > 0 && $i % 4 === 0) {
-                $mascarado .= '-';
-            }
-            $mascarado .= $numero[$i];
-        }
-
-        return $mascarado;
+        return '**** **** **** ' . $ultimosQuatroDigitos;
     }
 
     /**
