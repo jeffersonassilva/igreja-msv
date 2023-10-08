@@ -25,8 +25,7 @@
                           :observacoes='["Informe o seu código de acesso."]' />
 
             <div class="flex flex-col mb-4 rounded-md">
-                <label for="btn" class="text-gray-600 hidden md:block">&nbsp;</label>
-                <div class="mb-6 flex items-center gap-2">
+                <div class="mt-6 mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"
                             class="outline-0 rounded-md text-white font-normal bg-blue-800
                         hover:bg-blue-900
