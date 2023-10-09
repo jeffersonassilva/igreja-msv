@@ -3,8 +3,8 @@
 @section('titulo')
     <h2 class="text-white text-xl sm:text-3xl">Notas Fiscais</h2>
 @endsection
-@section('content')
 
+@section('content')
     <section class="container mx-auto max-w-[1080px] px-4 pb-4">
         <div class="p-6 sm:p-8 my-4 sm:my-8 text-center text-gray-600 bg-white border border-gray-100 rounded-lg font-thin italic sm:text-lg">
             Informe seus os dados de acesso para enviar as notas fiscais para o financeiro.

@@ -1,11 +1,12 @@
-@extends('layouts.default')
+@extends('layouts.blank')
+
+@section('titulo')
+    <h2 class="text-white text-xl sm:text-3xl">Escalas</h2>
+@endsection
 
 @section('content')
-
     <section class="bg-gray-100">
         <div class="container mx-auto max-w-[1080px] 2xl:max-w-full p-4">
-            <h1 class="titulo-separador" style="margin-bottom: 10px;">Escalas</h1>
-
             <div class="mb-6 flex justify-center items-center rounded-md" role="group">
                 <button type="button" id="btn-filtros"
                         class="py-1 px-4 text-sm text-gray-700 bg-white rounded-l-lg
@@ -245,10 +246,10 @@
             value = encodeURIComponent(value);
 
             // kvp looks like ['key1=value1', 'key2=value2', ...]
-            var kvp = document.location.search.substr(1).split('&');
-            let i=0;
+            let kvp = document.location.search.substr(1).split('&');
+            let i = 0;
 
-            for(; i<kvp.length; i++){
+            for (; i < kvp.length; i++) {
                 if (kvp[i].startsWith(key + '=')) {
                     let pair = kvp[i].split('=');
                     pair[1] = value;
@@ -257,8 +258,8 @@
                 }
             }
 
-            if(i >= kvp.length){
-                kvp[kvp.length] = [key,value].join('=');
+            if (i >= kvp.length) {
+                kvp[kvp.length] = [key, value].join('=');
             }
 
             // can return this or...
