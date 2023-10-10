@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\Strings;
 use App\Models\Cartao;
 
 /**
@@ -30,5 +31,22 @@ class CartaoService extends AbstractService
     public function findByIdentificador($identificador)
     {
         return $this->model->where(['identificador' => $identificador])->first();
+    }
+
+    /**
+     * @param $id
+     * @param $description
+     * @return array|array[]
+     */
+    public function pluck($id, $description)
+    {
+        $lista = array_map(function($n) {
+            return [
+                'id' => $n['id'],
+                'descricao' => Strings::getCartaoFormatado($n['descricao'])
+            ];
+        }, parent::pluck($id, $description));
+
+        return $lista;
     }
 }

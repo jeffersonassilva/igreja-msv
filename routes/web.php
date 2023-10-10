@@ -46,11 +46,11 @@ Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('e
 //Notas Fiscais
 Route::get('/nfs', [NotasFiscaisController::class, 'access'])->name('notas-fiscais.access');
 Route::get('/nfs/check', [NotasFiscaisController::class, 'check'])->name('notas-fiscais.check')->withoutMiddleware([VerifyCsrfToken::class]);
-Route::get('/nfs/adicionar/{date}/{identificador}/{user}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
+Route::get('/nfs/adicionar/{date}/{access_code}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
 
 //Route::get('/email-nfs', function () {
-//    return view('emails.notas', ['content' => ['as' => 'NF-7/20230902-09', 'responsavel' => 'Samuel Novais', 'cartao' => '1234-1234-1234-1234', 'data' => '2023-09-02', 'descricao' => 'Mercado', 'categoria' => '9', 'observacao' => 'Teste de observação']]);
+//    return view('emails.notas', ['content' => ['as' => 'NF-7/20230902-09', 'responsavel' => 'Samuel Novais', 'cartao' => '1234123412341234', 'data' => '2023-09-02', 'valor' => '645.73', 'descricao' => 'Mercado', 'categoria' => '9', 'observacao' => 'Teste de observação']]);
 //});
 
 //Campanha de Daniel

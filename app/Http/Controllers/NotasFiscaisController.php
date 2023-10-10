@@ -7,8 +7,9 @@ use App\Exceptions\MembroSemAcessoAoCartao;
 use App\Helpers\Constants;
 use App\Http\Requests\NotaFiscalRequest;
 use App\Mail\NotaFiscalEmail;
-use App\Services\CartaoMembroService;
 use App\Services\CartaoService;
+use App\Services\CategoriaService;
+use App\Services\MembroService;
 use App\Services\NotaFiscalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -19,37 +20,50 @@ use Illuminate\Support\Facades\Mail;
  */
 class NotasFiscaisController extends Controller
 {
+    const FORMA_PAGAMENTO_DINHEIRO = '99';
+
     /**
      * @var CartaoService
      */
     private $cartaoService;
 
     /**
-     * @var CartaoMembroService
+     * @var MembroService
      */
-    private $cartaoMembroService;
+    private $membroService;
 
     /**
-     * @var CartaoMembroService
+     * @var NotaFiscalService
      */
     private $notaFiscalService;
 
     /**
+     * @var CategoriaService
+     */
+    private $categoriaService;
+
+    /**
      * @param CartaoService $cartaoService
-     * @param CartaoMembroService $cartaoMembroService
+     * @param MembroService $membroService
      * @param NotaFiscalService $notaFiscalService
+     * @param CategoriaService $categoriaService
      */
     public function __construct(
-        CartaoService       $cartaoService,
-        CartaoMembroService $cartaoMembroService,
-        NotaFiscalService   $notaFiscalService
+        CartaoService     $cartaoService,
+        MembroService     $membroService,
+        NotaFiscalService $notaFiscalService,
+        CategoriaService  $categoriaService
     )
     {
         $this->cartaoService = $cartaoService;
-        $this->cartaoMembroService = $cartaoMembroService;
+        $this->membroService = $membroService;
         $this->notaFiscalService = $notaFiscalService;
+        $this->categoriaService = $categoriaService;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $this->checkPermission('adm-listar-notas-fiscais');
@@ -75,52 +89,41 @@ class NotasFiscaisController extends Controller
     public function check(Request $request)
     {
         try {
-            $cartaoValido = $this->verificarCartao($request->get('identificador'));
-            $this->verificarMembro($cartaoValido->id, $request->get('user-permission'));
+            $this->verificarPermissao($request->get('access_code'));
         } catch (\Exception $exception) {
             return $this->redirectWithMessage('notas-fiscais.access', $exception->getMessage(), 'warning');
         }
 
         return redirect()->route('notas-fiscais.create', [
             base64_encode(date('Ymd')),
-            base64_encode($request->get('identificador')),
-            base64_encode($request->get('user-permission'))
+            base64_encode($request->get('access_code'))
         ]);
     }
 
     /**
      * @param $date
-     * @param $id
-     * @param $user
+     * @param $accessCode
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function create($date, $id, $user)
+    public function create($date, $accessCode)
     {
         try {
             $this->verificarDataAcessoCartao(base64_decode($date));
-            $cartaoValido = $this->verificarCartao(base64_decode($id));
-            $membroAutorizado = $this->verificarMembro($cartaoValido->id, base64_decode($user));
+            $this->verificarPermissao(base64_decode($accessCode));
+
         } catch (\Exception $exception) {
             return $this->redirectWithMessage('notas-fiscais.access', $exception->getMessage(), 'warning');
         }
 
-        $categorias = [
-            ['id' => 1, 'descricao' => 'Despesa com Pessoal'],
-            ['id' => 2, 'descricao' => 'Despesa com Impostos'],
-            ['id' => 3, 'descricao' => 'Despesas Administrativas'],
-            ['id' => 4, 'descricao' => 'Despesa com Aquisições'],
-            ['id' => 5, 'descricao' => 'Despesa com Serviços'],
-            ['id' => 6, 'descricao' => 'Despesas com Manutenções'],
-            ['id' => 7, 'descricao' => 'Despesas Financeiras'],
-            ['id' => 8, 'descricao' => 'Despesas com Construção'],
-            ['id' => 9, 'descricao' => 'Despesas com Eventos'],
-            ['id' => 10, 'descricao' => 'Despesas com Tecnologia'],
-        ];
+        $pagamentos = array_merge([
+            ['id' => self::FORMA_PAGAMENTO_DINHEIRO, 'descricao' => 'Dinheiro']],
+            $this->cartaoService->pluck('id', 'numero')
+        );
 
         return view('nfs.create')->with([
-            'membro' => $membroAutorizado,
-            'cartao' => $cartaoValido,
-            'categorias' => $categorias
+            'pagamentos' => $pagamentos,
+            'membros' => $this->membroService->pluck('id', 'nome'),
+            'categorias' => $this->categoriaService->all()
         ]);
     }
 
@@ -130,6 +133,10 @@ class NotasFiscaisController extends Controller
      */
     public function store(NotaFiscalRequest $request)
     {
+        if ($request->get('forma_pagamento') !== self::FORMA_PAGAMENTO_DINHEIRO) {
+            $request->request->add(['cartao_id' => $request->get('forma_pagamento')]);
+        }
+
         $nota = $this->notaFiscalService->store($request);
         $content = array_merge($request->all(), $nota->toArray());
 
@@ -159,35 +166,34 @@ class NotasFiscaisController extends Controller
 
     /**
      * @param $identificador
-     * @return mixed
+     * @return true
      * @throws CartaoInexistente
      */
     private function verificarCartao($identificador)
     {
+        if ($identificador === '9999') {
+            return true;
+        }
+
         $dados = $this->cartaoService->findByIdentificador($identificador);
 
         if (!$dados) {
             throw new CartaoInexistente('Cartão não encontrado!');
         }
 
-        return $dados;
+        return true;
     }
 
     /**
-     * @param $cartaoId
-     * @param $codigoMembro
-     * @return mixed
+     * @param $codigo
+     * @return void
      * @throws MembroSemAcessoAoCartao
      */
-    private function verificarMembro($cartaoId, $codigoMembro)
+    private function verificarPermissao($codigo)
     {
-        $dados = $this->cartaoMembroService->findByCartaoIdECodigo($cartaoId, $codigoMembro);
-
-        if (!$dados) {
-            throw new MembroSemAcessoAoCartao('Você não tem permissão de acesso a este cartão!');
+        if ($codigo !== '1214') {
+            throw new MembroSemAcessoAoCartao('Você não tem permissão de acesso a esta área do sistema!');
         }
-
-        return $dados;
     }
 
     /**

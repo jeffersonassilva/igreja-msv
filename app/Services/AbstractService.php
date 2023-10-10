@@ -81,6 +81,26 @@ abstract class AbstractService
     }
 
     /**
+     * @param $id
+     * @param $description
+     * @return array
+     */
+    public function pluck($id, $description)
+    {
+        $dados = $this->model->pluck($id, $description);
+        $lista = array();
+
+        foreach ($dados as $key => $dado) {
+            $lista[] = [
+                'id' => $dado,
+                'descricao' => $key,
+            ];
+        }
+
+        return $lista;
+    }
+
+    /**
      * @param $request
      * @return mixed
      */

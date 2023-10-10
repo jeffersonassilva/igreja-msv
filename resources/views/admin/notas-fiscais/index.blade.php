@@ -16,13 +16,19 @@
                 <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
                     <img class="rounded-md object-cover h-[200px]" src="{{ asset($nota->arquivo) }}" alt="nota">
                     <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4 dark:text-[#d0d9e6]">
-                        Valor: {{ $nota->valor }}
+                        Valor: {{ \App\Helpers\Strings::getMoedaFormatada($nota->valor) }}
                     </p>
                     <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
                         Descrição: {{ $nota->descricao }}
                     </p>
                     <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        Categoria: {{ $nota->categoria }}
+                        Categoria: {{ \App\Services\CategoriaService::getDescricaoById($nota->categoria) }}
+                    </p>
+                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
+                        {{ $nota->cartao_id ? 'Cartão: ' . \App\Helpers\Strings::getCartaoFormatado($nota->cartao->numero) : 'Pagamento em dinheiro' }}
+                    </p>
+                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
+                        Responsável: {{ $nota->membro->nome_formatado }}
                     </p>
                     <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
                         Observações: {{ $nota->observacao }}

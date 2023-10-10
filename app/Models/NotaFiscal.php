@@ -25,8 +25,26 @@ class NotaFiscal extends AbstractModel
         'categoria',
         'observacao',
         'arquivo',
+        'cartao_id',
+        'membro_id',
         'verificada',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cartao()
+    {
+        return $this->belongsTo(Cartao::class, 'cartao_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function membro()
+    {
+        return $this->belongsTo(Membro::class, 'membro_id', 'id');
+    }
 
     /**
      * @param $value

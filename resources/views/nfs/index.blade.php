@@ -12,17 +12,11 @@
         <form class="form-horizontal" role="form"
               action="{{ route('notas-fiscais.check') }}">
 
-            <x-form.input label="Identificador do Cartão"
-                          name="identificador"
+            <x-form.input label="Código de Acesso"
+                          name="access_code"
                           size="md:max-w-[250px]"
                           :required="true"
-                          :observacoes='["Informe o indentificador do cartão utilizado."]' />
-
-            <x-form.input label="Código de permissão"
-                          name="user-permission"
-                          size="md:max-w-[250px]"
-                          :required="true"
-                          :observacoes='["Informe o seu código de acesso."]' />
+                          :observacoes='["Informe o código de acesso."]' />
 
             <div class="flex flex-col mb-4 rounded-md">
                 <div class="mt-6 mb-6 flex items-center gap-2">

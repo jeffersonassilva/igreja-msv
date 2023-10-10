@@ -29,6 +29,8 @@ class NotaFiscalRequest extends FormRequest
             'descricao' => 'required',
             'categoria' => 'required',
             'arquivo' => 'required|image|mimes:jpg,jpeg,png',
+            'forma_pagamento' => 'required',
+            'membro_id' => 'required',
         ];
     }
 
@@ -43,6 +45,8 @@ class NotaFiscalRequest extends FormRequest
             'descricao' => 'Descrição da compra',
             'categoria' => 'Categoria',
             'arquivo' => 'Arquivo',
+            'forma_pagamento' => 'Forma de Pagamento',
+            'membro_id' => 'Responsável pelo envio',
         ];
     }
 }
