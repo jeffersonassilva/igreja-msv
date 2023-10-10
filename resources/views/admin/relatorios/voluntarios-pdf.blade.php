@@ -117,10 +117,11 @@
             <th style="width: 1px;">#</th>
             <th style="text-align: left;">Nome</th>
             <th>Sexo</th>
-            <th>Professor EBD</th>
+{{--            <th>Professor EBD</th>--}}
             <th>P</th>
             <th>F</th>
             <th>FJ</th>
+            <th>Assinatura</th>
         </tr>
         </thead>
         <tbody>
@@ -129,10 +130,11 @@
                 <td class="text-center">{{ $key + 1 }}</td>
                 <td>{{ $voluntario->nome }}</td>
                 <td class="text-center">{{ $voluntario->sexo == 'M' ? 'Masculino' : 'Feminino' }}</td>
-                <td class="text-center">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</td>
+{{--                <td class="text-center">{{ $voluntario->professor_ebd ? 'Sim' : 'Não' }}</td>--}}
                 <td class="text-center">{{ $voluntario->presenca }}</td>
                 <td class="text-center">{{ $voluntario->falta }}</td>
                 <td class="text-center">{{ $voluntario->falta_justificada }}</td>
+                <td class="text-center">&nbsp;</td>
             </tr>
         @endforeach
         </tbody>
