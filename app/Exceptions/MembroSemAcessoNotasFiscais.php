@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception, Throwable;
 
-class MembroSemAcessoAoCartao extends Exception
+class MembroSemAcessoNotasFiscais extends Exception
 {
     public function __construct(string $message, int $code = 406, Throwable $previous = null)
     {
