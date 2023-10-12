@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CartaoRequest;
 use App\Http\Requests\UsuarioRequest;
 use App\Services\CartaoService;
 use App\Services\PerfilService;
@@ -37,26 +38,26 @@ class CartaoController extends Controller
         ]);
     }
 
-//    /**
-//     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-//     */
-//    public function create()
-//    {
-//        $this->checkPermission('adm-adicionar-usuario');
-//        return view('admin/usuarios/create');
-//    }
-//
-//    /**
-//     * @param UsuarioRequest $request
-//     * @return \Illuminate\Http\RedirectResponse
-//     */
-//    public function store(UsuarioRequest $request)
-//    {
-//        $this->checkPermission('adm-adicionar-usuario');
-//        $this->service->store($request);
-//        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_CREATE));
-//    }
-//
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        $this->checkPermission('adm-adicionar-cartao');
+        return view('admin/cartoes/create');
+    }
+
+    /**
+     * @param CartaoRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(CartaoRequest $request)
+    {
+        $this->checkPermission('adm-adicionar-cartao');
+        $this->service->store($request);
+        return $this->redirectWithMessage('cartoes', __(Constants::SUCCESS_CREATE));
+    }
+
 //    /**
 //     * @param $id
 //     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
