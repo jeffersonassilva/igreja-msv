@@ -13,7 +13,7 @@
         </td>
         <td style="padding: 20px 40px; background-color: #e5eab3; color: #12120f; text-align: right;">
             <span style="font-size: 1.5em; font-weight: bold;">Tesouraria</span><br />
-            <span>{{ $content['as'] }}</span>
+            <span>{{ $nota['as'] }}</span>
         </td>
     </tr>
     <tr>
@@ -24,14 +24,20 @@
                 Confira abaixo os dados cadastrados:
             </p>
             <p style="margin: 40px 0;">
-                <span style="color: black;"><strong>Responsável: </strong>{{ $content['responsavel'] }}</span><br />
-                <span style="color: black;"><strong>Cartão: </strong>{{ \App\Helpers\Strings::getCartaoFormatado($content['cartao']) }}</span><br />
-                <span style="color: black;"><strong>Data: </strong>{{ date('d/m/Y', strtotime($content['data'])) }}</span><br />
-                <span style="color: black;"><strong>Valor: </strong>{{ \App\Helpers\Strings::getMoedaFormatada($content['valor']) }}</span><br />
-                <span style="color: black;"><strong>Descrição: </strong>{{ $content['descricao'] }}</span><br />
-                <span style="color: black;"><strong>Categoria: </strong>{{ \App\Helpers\Strings::getNomeCategoria($content['categoria']) }}</span><br />
-                <span style="color: black;"><strong>Observações: </strong>{{ $content['observacao'] }}</span><br />
-                <span style="color: black;"><strong>Anexo: </strong>{{ $content['as'] . '.jpg' }}</span><br />
+                <span style="color: black;"><strong>Responsável: </strong>{{ $nota['membro']['nomeFormatado'] }}</span><br />
+                <span style="color: black;">
+                    @if($nota['cartao'])
+                    <strong>Cartão Utilizado: </strong>{{ \App\Helpers\Strings::getCartaoFormatado($nota['cartao']['numero']) }}
+                    @else
+                    <strong>Forma de pagamento: </strong>Dinheiro
+                    @endif
+                </span><br />
+                <span style="color: black;"><strong>Data: </strong>{{ date('d/m/Y', strtotime($nota['data'])) }}</span><br />
+                <span style="color: black;"><strong>Valor: </strong>{{ \App\Helpers\Strings::getMoedaFormatada($nota['valor']) }}</span><br />
+                <span style="color: black;"><strong>Descrição: </strong>{{ $nota['descricao'] }}</span><br />
+                <span style="color: black;"><strong>Categoria: </strong>{{ \App\Helpers\Strings::getNomeCategoria($nota['categoria']) }}</span><br />
+                <span style="color: black;"><strong>Observações: </strong>{{ $nota['observacao'] }}</span><br />
+                <span style="color: black;"><strong>Anexo: </strong>{{ $nota['as'] . '.jpg' }}</span><br />
             </p>
             <p style="color: black;">Os dados também estão disponíveis no sistema da igreja.<br/>
             Você pode acessar <a href="{{ url('admin/notas-fiscais') }}" style="color: #4a6ec6; font-weight: bold;">clicando aqui</a>.</p>

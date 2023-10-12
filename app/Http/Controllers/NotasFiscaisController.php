@@ -137,12 +137,12 @@ class NotasFiscaisController extends Controller
             $request->request->add(['cartao_id' => $request->get('forma_pagamento')]);
         }
 
+        $file = $request->file('arquivo');
         $nota = $this->notaFiscalService->store($request);
-        $content = array_merge($request->all(), $nota->toArray());
 
         Mail::to('samucamj@gmail.com')
             ->cc(['jeffersonassilva@gmail.com'])
-            ->send(new NotaFiscalEmail($content));
+            ->send(new NotaFiscalEmail($nota, $file));
 
         return $this->redirectWithMessage(
             ['notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais()],

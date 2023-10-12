@@ -47,6 +47,6 @@ class Membro extends AbstractModel
         $primeiroNome = current($nomes);
         $ultimoNome = end($nomes);
 
-        return $primeiroNome . ' ' . $ultimoNome;
+        return $primeiroNome . (count($nomes) > 1 ? ' ' . $ultimoNome : null);
     }
 }

@@ -49,9 +49,12 @@ Route::get('/nfs/check', [NotasFiscaisController::class, 'check'])->name('notas-
 Route::get('/nfs/adicionar/{date}/{access_code}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
 
-//Route::get('/email-nfs', function () {
-//    return view('emails.notas', ['content' => ['as' => 'NF-7/20230902-09', 'responsavel' => 'Samuel Novais', 'cartao' => '1234123412341234', 'data' => '2023-09-02', 'valor' => '645.73', 'descricao' => 'Mercado', 'categoria' => '9', 'observacao' => 'Teste de observação']]);
-//});
+Route::get('/email-nfs', function () {
+    $nota = \App\Models\NotaFiscal::find(50);
+    $as = 'NF-' . $nota->id . '/' . str_replace('-', '', $nota->data) . '-' . str_pad($nota->categoria, 2, '0', STR_PAD_LEFT);
+    $nota['as'] = $as;
+    return view('emails.notas', ['nota' => $nota]);
+});
 
 //Campanha de Daniel
 Route::get('/campanha-de-daniel', [CampanhaController::class, 'index'])->name('campanha.index');
