@@ -14,6 +14,7 @@ class Permission extends AbstractModel
      */
     protected $fillable = [
         'id',
+        'nome',
         'descricao',
     ];
 

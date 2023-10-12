@@ -35,9 +35,10 @@
 
     @canany(['adm-menu-usuario', 'adm-menu-perfil'])
         <x-adm-menu-group name="Segurança" id="seguranca" icon="key-outline"
-                          :groups='["usuarios", "perfis"]'
+                          :groups='["usuarios", "perfis", "permissoes"]'
                           :submenus='[
                             ["label" => "Usuários", "route" => "usuarios", "permission" => "adm-menu-usuario"],
+                            ["label" => "Permissões", "route" => "permissoes", "permission" => "adm-menu-permissao"],
                             ["label" => "Perfis", "route" => "perfis", "permission" => "adm-menu-perfil"]
                           ]'>
         </x-adm-menu-group>

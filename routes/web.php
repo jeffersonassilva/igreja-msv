@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PastorController;
 use App\Http\Controllers\Admin\PerfilController;
+use App\Http\Controllers\Admin\PermissaoController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\UsuarioController;
@@ -148,6 +149,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/perfis/{perfil}/editar', [PerfilController::class, 'edit'])->name('perfis.edit');
     Route::put('/perfis/{perfil}', [PerfilController::class, 'update'])->name('perfis.update');
     Route::delete('/perfis/{perfil}', [PerfilController::class, 'destroy'])->name('perfis.destroy');
+
+    //Permissões
+    Route::get('/permissoes', [PermissaoController::class, 'index'])->name('permissoes');
+    Route::get('/permissoes/adicionar', [PermissaoController::class, 'create'])->name('permissoes.create');
+    Route::post('/permissoes', [PermissaoController::class, 'store'])->name('permissoes.store');
+    Route::get('/permissoes/{permissao}/editar', [PermissaoController::class, 'edit'])->name('permissoes.edit');
+    Route::put('/permissoes/{permissao}', [PermissaoController::class, 'update'])->name('permissoes.update');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
