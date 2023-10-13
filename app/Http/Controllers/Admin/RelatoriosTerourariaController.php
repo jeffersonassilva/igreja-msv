@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\MesService;
 use App\Services\NotaFiscalService;
+use Illuminate\Http\Request;
 
 class RelatoriosTerourariaController extends Controller
 {
@@ -13,26 +15,43 @@ class RelatoriosTerourariaController extends Controller
     private $notaFiscalService;
 
     /**
-     * @param NotaFiscalService $notaFiscalService
+     * @var MesService
      */
-    public function __construct(NotaFiscalService $notaFiscalService)
+    private $mesService;
+
+    /**
+     * @param NotaFiscalService $notaFiscalService
+     * @param MesService $mesService
+     */
+    public function __construct(NotaFiscalService $notaFiscalService, MesService $mesService)
     {
         $this->notaFiscalService = $notaFiscalService;
+        $this->mesService = $mesService;
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         $this->checkPermission('adm-menu-relatorios-tesouraria');
-        $notas = $this->notaFiscalService->allWithRelantions(['cartao']);
+        if (!$request->all()) {
+            $request->request->add([
+                'mes' => date('m'),
+                'ano' => date('Y'),
+            ]);
+        }
+        $notas = $this->notaFiscalService->relatorioNotasPorCartao($request->all())->get();
         $valorTotal = $this->valorTotal($notas);
         $data = $this->agruparNotasPorCartao($notas->toArray());
 
         return view('admin/relatorios-tesouraria/index')->with([
             'lista' => $data,
             'valorTotal' => $valorTotal,
+            'meses' => $this->mesService->all(),
+            'anos' => $this->getUltimos5Anos(),
+            'filtro' => $request,
         ]);
     }
 
@@ -100,5 +119,21 @@ class RelatoriosTerourariaController extends Controller
         });
 
         return $data;
+    }
+
+    /**
+     * @return array
+     */
+    private function getUltimos5Anos()
+    {
+        $anos = [];
+        $anoAtual = date('Y');
+
+        for ($i = 0; $i < 5; $i++) {
+            $ano = $anoAtual - $i;
+            $anos[] = ['id' => $ano, 'descricao' => $ano];
+        }
+
+        return $anos;
     }
 }

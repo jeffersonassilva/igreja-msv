@@ -1,4 +1,4 @@
-@props(['label', 'name', 'required' => false, 'observacoes' => [], 'options' => [], 'reference' => null, 'size' => null, 'blank' => false, 'spacing' => 'mb-4 p-4'])
+@props(['label', 'name', 'required' => false, 'observacoes' => [], 'options' => [], 'reference' => null, 'size' => null, 'blank' => false, 'blankName' => null, 'spacing' => 'mb-4 p-4'])
 
 <div class="flex flex-col bg-white dark:bg-[#252c47] @if($spacing) {{ $spacing }} @endif">
     <label for="{{ $name }}" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">
@@ -16,7 +16,7 @@
                    @error($name) border-[1px] border-red-500 dark:border-[#642828] @enderror
                    @if($size) {{ $size }} @endif">
 
-        @if($blank)<option value=""></option>@endif
+        @if($blank)<option value="">{{ $blankName }}</option>@endif
         @foreach ($options as $option)
             <option value="{{ $option['id'] }}" @if($reference == $option['id']) selected @endif>{{ $option['descricao'] }}</option>
         @endforeach
