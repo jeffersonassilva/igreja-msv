@@ -97,15 +97,15 @@ class CartaoController extends Controller
 //        $this->service->update($request, $id);
 //        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_UPDATE));
 //    }
-//
-//    /**
-//     * @param $id
-//     * @return \Illuminate\Http\RedirectResponse
-//     */
-//    public function destroy($id)
-//    {
-//        $this->checkPermission('adm-excluir-usuario');
-//        $this->service->destroy($id);
-//        return $this->redirectWithMessage('usuarios', __(Constants::SUCCESS_DESTROY));
-//    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->checkPermission('adm-excluir-cartao');
+        $this->service->destroy($id);
+        return $this->redirectWithMessage('cartoes', __(Constants::SUCCESS_DESTROY));
+    }
 }
