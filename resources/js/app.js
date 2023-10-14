@@ -177,6 +177,8 @@ $(document).ready(function () {
 
     //Máscara nos campos de moeda e telefone
     $('.moeda').mask("#.##0,00", {reverse: true});
+    $('.cep').mask('00000-000');
+    $('.numero').mask('0#');
     $('.telefone').mask('(00) 0000-00009').on('keyup', function (event) {
         if ($(this).val().length === 15) {
             $(this).mask('(00) 00000-0000');
@@ -195,4 +197,24 @@ $(document).ready(function () {
     $('#close-message-btn').click(function () {
         $('#message_alert').hide();
     })
+});
+
+$(window).on('load', function () {
+    /**
+     /* Verifica se tem campo telefone na tela,
+     * se tiver aplica a máscara de acordo com o valor informado.
+     */
+    let telefonesInput = $('.telefone');
+    if (telefonesInput.length) {
+        telefonesInput.each(function (index, element) {
+            let valor = $(element).val();
+            if (valor.length === 14) {
+                telefonesInput.mask('(00) 0000-00000');
+            } else if (valor.length === 15) {
+                telefonesInput.mask('(00) 00000-0000');
+            } else {
+                return false;
+            }
+        });
+    }
 });
