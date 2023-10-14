@@ -29,7 +29,7 @@ class MembroRequest extends FormRequest
             'estado_civil' => 'max:1',
             'dt_nascimento' => 'nullable|date',
             'dt_casamento' => 'nullable|date',
-            'cep' => 'max:8',
+            'cep' => 'max:9',
             'logradouro' => 'max:255',
             'numero' => 'max:10',
             'complemento' => 'max:255',
