@@ -20,9 +20,9 @@
                     </p>
                     @canany(['adm-editar-cartao', 'adm-excluir-cartao'])
                         <div class="text-sm mt-3 text-sm flex gap-2">
-{{--                            @can('adm-editar-cartao')--}}
-{{--                                <x-button.link title="Editar" :route="route('cartoes.edit', $cartao)"></x-button.link>--}}
-{{--                            @endcan--}}
+                            @can('adm-editar-cartao')
+                                <x-button.link title="Editar" :route="route('cartoes.edit', $cartao)"></x-button.link>
+                            @endcan
 
                             @can('adm-excluir-cartao')
                                 <x-button.delete :route="route('cartoes.destroy', $cartao)" formId="form-excluir-cartao-{{ $cartao->id }}"></x-button.delete>
