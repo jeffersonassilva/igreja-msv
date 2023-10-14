@@ -23,8 +23,17 @@
         </x-adm-menu-group>
     @endcan
 
-    @canany(['adm-menu-cartao', 'adm-menu-nota-fiscal'])
-        <x-adm-menu-group name="Tesouraria" id="tesouraria" icon="wallet"
+    @canany(['adm-menu-membro'])
+        <x-adm-menu-group name="Secretaria" id="secretaria" icon="people-outline"
+                          :groups='["membros"]'
+                          :submenus='[
+                            ["label" => "Membros", "route" => "membros", "permission" => "adm-menu-membro"]
+                          ]'>
+        </x-adm-menu-group>
+    @endcan
+
+    @canany(['adm-menu-cartao', 'adm-menu-nota-fiscal', 'adm-menu-relatorios-tesouraria'])
+        <x-adm-menu-group name="Tesouraria" id="tesouraria" icon="wallet-outline"
                           :groups='["cartoes", "notas-fiscais", "relatorios-tesouraria"]'
                           :submenus='[
                             ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
@@ -34,7 +43,7 @@
         </x-adm-menu-group>
     @endcan
 
-    @canany(['adm-menu-usuario', 'adm-menu-perfil'])
+    @canany(['adm-menu-usuario', 'adm-menu-permissao', 'adm-menu-perfil'])
         <x-adm-menu-group name="Segurança" id="seguranca" icon="key-outline"
                           :groups='["usuarios", "perfis", "permissoes"]'
                           :submenus='[
@@ -46,7 +55,6 @@
     @endcan
 
     <x-adm-menu-item group="configuracoes" :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
-    {{--    <x-adm-menu-item :route="'usuarios'" :icon="'lock-open-outline'">Permissões</x-adm-menu-item>--}}
 
     <div class="pb-24 md:pb-4">
         <form method="POST" action="{{ route('logout') }}">

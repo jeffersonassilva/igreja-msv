@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\MembroController;
 use App\Http\Controllers\Admin\PastorController;
 use App\Http\Controllers\Admin\PerfilController;
 use App\Http\Controllers\Admin\PermissaoController;
@@ -134,6 +135,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     //Notas Fiscais
     Route::get('/notas-fiscais', [NotasFiscaisController::class, 'index'])->name('notas-fiscais');
+
+    //Membros
+    Route::get('/membros', [MembroController::class, 'index'])->name('membros');
+    Route::get('/membros/adicionar', [MembroController::class, 'create'])->name('membros.create');
+    Route::post('/membros', [MembroController::class, 'store'])->name('membros.store');
+    Route::get('/membros/{membro}/editar', [MembroController::class, 'edit'])->name('membros.edit');
+    Route::put('/membros/{membro}', [MembroController::class, 'update'])->name('membros.update');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
