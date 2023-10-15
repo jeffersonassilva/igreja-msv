@@ -9,6 +9,8 @@
               method="post">
             @csrf
 
+            <div class="text-lg font-medium uppercase py-4 text-gray-700 dark:text-white">Informações Pessoais</div>
+
             <x-form.input label="Nome"
                           name="nome"
                           maxlength="255"
