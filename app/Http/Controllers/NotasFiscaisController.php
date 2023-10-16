@@ -53,7 +53,7 @@ class NotasFiscaisController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function access()
     {
         return view('nfs.index');
     }
@@ -127,9 +127,10 @@ class NotasFiscaisController extends Controller
             ->cc(['jeffersonassilva@gmail.com'])
             ->send(new NotaFiscalEmail($content));
 
-        return redirect()
-            ->route('notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais())
-            ->with(Constants::MESSAGE, 'Nota fiscal enviada com sucesso!');
+        return $this->redirectWithMessage(
+            ['notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais()],
+            'Nota fiscal enviada com sucesso!'
+        );
     }
 
     /**

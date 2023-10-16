@@ -44,7 +44,7 @@ Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
 Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);
 
 //Notas Fiscais
-Route::get('/nfs', [NotasFiscaisController::class, 'index'])->name('notas-fiscais.index');
+Route::get('/nfs', [NotasFiscaisController::class, 'access'])->name('notas-fiscais.access');
 Route::get('/nfs/check', [NotasFiscaisController::class, 'check'])->name('notas-fiscais.check')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::get('/nfs/adicionar/{date}/{identificador}/{user}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
