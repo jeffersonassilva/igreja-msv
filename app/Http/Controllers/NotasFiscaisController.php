@@ -50,6 +50,16 @@ class NotasFiscaisController extends Controller
         $this->notaFiscalService = $notaFiscalService;
     }
 
+    public function index()
+    {
+        $this->checkPermission('adm-listar-notas-fiscais');
+        $notas = $this->notaFiscalService->all();
+
+        return view('admin/notas-fiscais/index')->with([
+            'notasFiscais' => $notas
+        ]);
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
