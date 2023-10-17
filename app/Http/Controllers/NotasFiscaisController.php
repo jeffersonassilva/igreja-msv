@@ -78,7 +78,7 @@ class NotasFiscaisController extends Controller
             $cartaoValido = $this->verificarCartao($request->get('identificador'));
             $this->verificarMembro($cartaoValido->id, $request->get('user-permission'));
         } catch (\Exception $exception) {
-            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage(), 'warning');
+            return $this->redirectWithMessage('notas-fiscais.access', $exception->getMessage(), 'warning');
         }
 
         return redirect()->route('notas-fiscais.create', [
@@ -101,7 +101,7 @@ class NotasFiscaisController extends Controller
             $cartaoValido = $this->verificarCartao(base64_decode($id));
             $membroAutorizado = $this->verificarMembro($cartaoValido->id, base64_decode($user));
         } catch (\Exception $exception) {
-            return $this->redirectWithMessage('notas-fiscais.index', $exception->getMessage(), 'warning');
+            return $this->redirectWithMessage('notas-fiscais.access', $exception->getMessage(), 'warning');
         }
 
         $categorias = [
