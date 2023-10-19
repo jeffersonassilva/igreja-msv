@@ -25,7 +25,7 @@
             </p>
             <p style="margin: 40px 0;">
                 <span style="color: black;"><strong>Responsável: </strong>{{ $content['responsavel'] }}</span><br />
-                <span style="color: black;"><strong>Cartão: </strong>{{ $content['cartao'] }}</span><br />
+                <span style="color: black;"><strong>Cartão: </strong>{{ \App\Helpers\Strings::getCartaoFormatado($content['cartao']) }}</span><br />
                 <span style="color: black;"><strong>Data: </strong>{{ date('d/m/Y', strtotime($content['data'])) }}</span><br />
                 <span style="color: black;"><strong>Valor: </strong>{{ \App\Helpers\Strings::getMoedaFormatada($content['valor']) }}</span><br />
                 <span style="color: black;"><strong>Descrição: </strong>{{ $content['descricao'] }}</span><br />
