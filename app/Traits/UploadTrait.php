@@ -123,7 +123,8 @@ trait UploadTrait
      */
     private function uploadNotaFiscal($request)
     {
-        $nomeImagem = $this->getDataAtual() . '.jpg';
+        $extension = $request->file('arquivo')->extension();
+        $nomeImagem = $this->getDataAtual() . '.' . $extension;
         return Storage::disk('notas-fiscais')->putFileAs('', $request->file('arquivo'), $nomeImagem);
     }
 
