@@ -15,14 +15,20 @@
               method="post" enctype="multipart/form-data">
             @csrf
 
-            <div class="grid md:grid-cols-3 lg:grid-cols-4 bg-white dark:bg-[#252c47] mb-4 p-4">
-                <div>Responsável pelo envio:</div>
-                <div class="md:col-span-2 lg:col-span-3"><strong class="uppercase">{{ $membro['membro']['nome'] }}</strong></div>
-                <div class="pt-4 md:pt-2">Número Cartão:</div>
-                <div class="md:col-span-2 lg:col-span-3 md:pt-2">
-                    <strong>{{ \App\Helpers\Strings::getCartaoFormatado($cartao['numero']) }}</strong>
-                </div>
-            </div>
+            <x-form.select label="Forma de Pagamento:"
+                           name="forma_pagamento"
+                           size="md:max-w-[300px]"
+                           :blank="true"
+                           :required="true"
+                           :options="$pagamentos"
+            />
+
+            <x-form.select label="Responsável pelo envio:"
+                           name="membro_id"
+                           :blank="true"
+                           :required="true"
+                           :options="$membros"
+            />
 
             <x-form.input label="Data da compra:"
                           name="data"
@@ -66,9 +72,6 @@
                          :observacoes='[
                             "Extensões válidas: jpg, jpeg e png."
                          ]'/>
-
-            <input type="hidden" name="responsavel" value="{{ $membro['membro']['nome'] }}">
-            <input type="hidden" name="cartao" value="{{ \App\Helpers\Strings::getCartaoFormatado($cartao['numero']) }}">
 
             <div class="flex flex-col mb-4 rounded-md">
                 <div class="mt-6 mb-6 flex items-center gap-2">

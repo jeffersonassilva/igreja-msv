@@ -37,4 +37,16 @@ class Membro extends AbstractModel
         'email',
         'matricula',
     ];
+
+    /**
+     * @return string
+     */
+    public function getNomeFormatadoAttribute()
+    {
+        $nomes = explode(' ', $this->nome);
+        $primeiroNome = current($nomes);
+        $ultimoNome = end($nomes);
+
+        return $primeiroNome . ' ' . $ultimoNome;
+    }
 }
