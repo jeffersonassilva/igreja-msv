@@ -14,41 +14,41 @@
         <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($notasFiscais as $nota)
                 <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
-                    <img class="rounded-md object-cover h-[200px]" src="{{ asset($nota->arquivo) }}" alt="nota">
-                    <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin overflow-hidden line-clamp-4 dark:text-[#d0d9e6]">
-                        Valor: {{ \App\Helpers\Strings::getMoedaFormatada($nota->valor) }}
-                    </p>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        Descrição: {{ $nota->descricao }}
-                    </p>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        Categoria: {{ \App\Services\CategoriaService::getDescricaoById($nota->categoria) }}
-                    </p>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        {{ $nota->cartao_id ? 'Cartão: ' . \App\Helpers\Strings::getCartaoFormatado($nota->cartao->numero) : 'Pagamento em dinheiro' }}
-                    </p>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        Responsável: {{ $nota->membro->nome_formatado }}
-                    </p>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
-                        Observações: {{ $nota->observacao }}
-                    </p>
-{{--                    @canany(['adm-editar-cartao', 'adm-excluir-cartao'])--}}
-{{--                        <div class="text-sm mt-3 text-sm flex gap-2">--}}
-{{--                            @can('adm-editar-cartao')--}}
-{{--                                <x-button.link title="Editar" :route="route('cartoes.edit', $nota)"></x-button.link>--}}
-{{--                            @endcan--}}
+                    <div class="mb-3 text-2xl text-gray-700 font-medium dark:text-white">
+                        {{ \App\Helpers\Strings::getMoedaFormatada($nota->valor, 'R$ ') }}
+                    </div>
+                    <div class="mb-3 flex gap-1 items-end text-gray-700 dark:text-[#d0d9e6]">
+                        <div class="text-sm bg-gray-200 dark:bg-[#1c2039] p-2 px-3 rounded-md">{{ \Carbon\Carbon::parse($nota->data)->format('d/m/Y') }}</div>
+                        <div class="text-sm bg-gray-200 dark:bg-[#1c2039] p-2 px-3 rounded-md">{{ $nota->cartao_id ? 'Cartão: ' . $nota->cartao->identificador : 'Dinheiro' }}</div>
+                    </div>
+                    <div class="mb-3 text-lg text-gray-700 dark:text-[#d0d9e6]">
+                        {{ \App\Services\CategoriaService::getDescricaoById($nota->categoria) }}
+                    </div>
+                    <div class="flex-1 mb-2">
+                        <div class="text-sm mb-1 text-gray-700 font-thin dark:text-[#d0d9e6]">
+                            Responsável: {{ $nota->membro->nome_formatado }}
+                        </div>
+                        <div class="text-sm mb-1 text-gray-700 font-thin dark:text-[#d0d9e6]">
+                            Descrição: {{ $nota->descricao }}
+                        </div>
+                        <div class="text-sm text-gray-700 font-thin dark:text-[#d0d9e6]">
+                            Observações: {{ $nota->observacao }}
+                        </div>
+                    </div>
 
-{{--                            @can('adm-excluir-cartao')--}}
-{{--                                <x-button.delete :route="route('cartoes.destroy', $nota)" formId="form-excluir-cartao-{{ $nota->id }}"></x-button.delete>--}}
-{{--                            @endcan--}}
-{{--                        </div>--}}
-{{--                    @endcanany--}}
+                    <div class="text-sm mt-3 flex gap-2">
+                        <x-button.link title="Visualizar Arquivo" target="_blank" :lighter="true" :route="asset($nota->arquivo)"></x-button.link>
+
+                        @can('adm-arquivar-nota-fiscal')
+                            <x-button.delete title="Arquivar Nota" :route="route('notas-fiscais.archive', $nota)"
+                                             formId="form-arquivar-nota-fiscal-{{ $nota->id }}"></x-button.delete>
+                        @endcan
+                    </div>
                 </div>
             @endforeach
         </div>
     </section>
 
-    <x-dialog.confirm></x-dialog.confirm>
+    <x-dialog.confirm message="Você tem certeza que deseja arquivar esta nota fiscal?"></x-dialog.confirm>
 
 </x-app-layout>

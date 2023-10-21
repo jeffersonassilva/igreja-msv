@@ -64,38 +64,28 @@ class NotaFiscalService extends AbstractService
     }
 
     /**
-     * @param $request
-     * @param $dados
+     * @param $id
      * @return mixed
      */
-    public function setImageNameIfExists($request, $dados)
+    public function archive($id)
     {
-        $time = date('YmdHis');
+        $data = $this->model->find($id);
+        $data->fill(['verificada' => true])->save();
+        $this->deletarArquivoNotaFiscal($data->arquivo);
 
-        if ($request->hasFile('arquivo')) {
-            $dados['arquivo'] = 'img/banner/' . $this->upload($time, $request);
-        }
-
-        return $dados;
+        return $data;
     }
 
     /**
-     * @param $time
-     * @param $request
-     * @return false|string
+     * @param $arquivo
+     * @return void
      */
-    private function upload($time, $request)
+    private function deletarArquivoNotaFiscal($arquivo)
     {
-        $extension = $request->file('arquivo')->extension();
-        $nomeImagem = $time . '.jpg';
+        $arquivo = str_replace('img/notas-fiscais/', '', $arquivo);
 
-        Storage::disk('banners')->putFileAs('original', $request->file('arquivo'), $time . '_m.' . $extension);
-        $name = Storage::disk('banners')->putFileAs('mobile', $request->file('arquivo'), $nomeImagem);
-
-        if (Storage::disk('banners')->exists($name)) {
-            $this->optimizarImagem($this->diretorio . $name, $extension, 640, 360);
+        if (Storage::disk('notas-fiscais')->exists($arquivo)) {
+            Storage::disk('notas-fiscais')->delete($arquivo);
         }
-
-        return $name;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\CartaoInexistente;
 use App\Exceptions\MembroSemAcessoNotasFiscais;
+use App\Helpers\Constants;
 use App\Http\Requests\NotaFiscalRequest;
 use App\Mail\NotaFiscalEmail;
 use App\Services\CartaoService;
@@ -66,7 +67,7 @@ class NotasFiscaisController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-notas-fiscais');
-        $notas = $this->notaFiscalService->all();
+        $notas = $this->notaFiscalService->where(['verificada' => 0])->get();
 
         return view('admin/notas-fiscais/index')->with([
             'notasFiscais' => $notas
@@ -147,6 +148,17 @@ class NotasFiscaisController extends Controller
             ['notas-fiscais.create', $this->getDadosDeSegurancaNotasFiscais()],
             'Nota fiscal enviada com sucesso!'
         );
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function archive($id)
+    {
+        $this->checkPermission('adm-arquivar-nota-fiscal');
+        $this->notaFiscalService->archive($id);
+        return $this->redirectWithMessage('notas-fiscais', __(Constants::SUCCESS_ARCHIVE));
     }
 
     /**

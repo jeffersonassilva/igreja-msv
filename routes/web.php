@@ -135,6 +135,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     //Notas Fiscais
     Route::get('/notas-fiscais', [NotasFiscaisController::class, 'index'])->name('notas-fiscais');
+    Route::delete('/notas-fiscais/{cartao}', [NotasFiscaisController::class, 'archive'])->name('notas-fiscais.archive');
 
     //Membros
     Route::get('/membros', [MembroController::class, 'index'])->name('membros');
