@@ -38,7 +38,7 @@
                           :submenus='[
                             ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
                             ["label" => "Notas Fiscais", "route" => "notas-fiscais", "permission" => "adm-menu-nota-fiscal"],
-                            ["label" => "Relatórios", "route" => "relatorios-tesouraria", "permission" => "adm-menu-relatorios-tesouraria"]
+                            ["label" => "Relatório", "route" => "relatorios-tesouraria", "permission" => "adm-menu-relatorios-tesouraria"]
                           ]'>
         </x-adm-menu-group>
     @endcan
