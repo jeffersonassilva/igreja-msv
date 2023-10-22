@@ -12,7 +12,7 @@
     @endforeach
 
     <select name="{{ $name }}" id="{{ $name }}"
-            class="dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
+            class="rounded-sm dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
                    @error($name) border-[1px] border-red-500 dark:border-[#642828] @enderror
                    @if($size) {{ $size }} @endif">
 
