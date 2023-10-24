@@ -87,7 +87,7 @@ abstract class AbstractService
      */
     public function pluck($id, $description)
     {
-        $dados = $this->model->pluck($id, $description);
+        $dados = $this->model->orderBy($description)->pluck($id, $description);
         $lista = array();
 
         foreach ($dados as $key => $dado) {
