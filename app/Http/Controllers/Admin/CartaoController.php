@@ -28,7 +28,7 @@ class CartaoController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-cartao');
-        $cartoes = $this->service->all();
+        $cartoes = $this->service->all(['identificador' => 'asc']);
 
         return view('admin/cartoes/index')->with([
             'cartoes' => $cartoes
