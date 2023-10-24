@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Strings;
 use App\Http\Controllers\Controller;
 use App\Services\CategoriaService;
 use App\Services\MesService;
 use App\Services\NotaFiscalService;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
 
 class RelatoriosTerourariaController extends Controller
@@ -62,6 +64,36 @@ class RelatoriosTerourariaController extends Controller
             'anos' => $this->getUltimos5Anos(),
             'filtro' => $request,
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function relatorioPorCartaoPdf(Request $request)
+    {
+        $this->checkPermission('adm-menu-relatorios-tesouraria');
+        if (!$request->all()) {
+            $request->request->add([
+                'mes' => date('m'),
+                'ano' => date('Y'),
+            ]);
+        }
+        $notas = $this->notaFiscalService->relatorioNotasPorCartao($request->all())->get();
+        $valorTotal = $this->valorTotal($notas);
+        $data = $this->agruparNotasPorCartao($notas->toArray());
+        $periodo = Strings::getPeriodoRelatorio($request);
+
+        $pdf = PDF::loadView('admin/relatorios-tesouraria/por-cartao-pdf', [
+            'title' => 'Relatório - Por Cartão',
+            'periodo' => $periodo,
+            'notas' => $data,
+            'valorTotal' => $valorTotal,
+            'data' => date('d/m/Y - H:i:s'),
+            'filtro' => $request
+        ]);
+
+        return $pdf->stream('relatorio_voluntarios' . ($request->get('periodo') ? '_' . $request->get('periodo') : null) . '.pdf');
     }
 
     /**

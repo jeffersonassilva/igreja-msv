@@ -36,7 +36,7 @@ class Strings
      * @param Request $request
      * @return string
      */
-    public static function getPeriodoRelatorioVoluntario(Request $request)
+    public static function getPeriodoRelatorio(Request $request)
     {
         $mes = $request->get('mes') ? ucfirst(Carbon::parse($request->get('periodo'))->monthName) : null;
         $ano = $request->get('ano') ? $request->get('ano') : null;

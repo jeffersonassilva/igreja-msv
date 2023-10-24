@@ -60,7 +60,7 @@ class RelatorioController extends Controller
     {
         $this->checkPermission('adm-relatorio-mensal-voluntario');
         $this->getFiltroPadrao($request);
-        $periodo = Strings::getPeriodoRelatorioVoluntario($request);
+        $periodo = Strings::getPeriodoRelatorio($request);
         $voluntarios = $this->getVoluntarios($request);
 
         $pdf = PDF::loadView('admin/relatorios/voluntarios-pdf', [

@@ -34,8 +34,20 @@
             />
         </form>
         <div class="p-4 bg-white rounded-md dark:bg-[#252c47]">
-            <div class="py-1 text-center text-gray-500 dark:text-gray-400 uppercase">
-                Total: <span class="px-2 font-medium text-lg text-gray-700 dark:text-[#d0d9e6]">{{ \App\Helpers\Strings::getMoedaFormatada($valorTotal, 'R$ ') }}</span>
+            <div class="flex gap-4 justify-between">
+                <div class="flex-1 py-1 text-center text-gray-500 dark:text-gray-400 uppercase">
+                    Total: <span class="px-2 font-medium text-lg text-gray-700 dark:text-[#d0d9e6]">{{ \App\Helpers\Strings::getMoedaFormatada($valorTotal, 'R$ ') }}</span>
+                </div>
+                <div>
+                    <button id="btn-gerar-relatorio-pdf"
+                            class="outline-0 rounded-md text-2xl sm:text-base text-blue-400 font-normal
+                                            border border-blue-400
+                                            hover:text-white hover:bg-blue-400
+                                            focus:text-white focus:bg-blue-400
+                                            px-3 py-2 inline-flex justify-center items-center">
+                        <ion-icon name="cloud-download-outline"></ion-icon><span class="hidden sm:block ml-2">Baixar Arquivo</span>
+                    </button>
+                </div>
             </div>
         </div>
         @foreach($lista as $key => $data)
@@ -80,6 +92,11 @@
         $(document).ready(function () {
             $('#mes, #ano, #categoria').on('change', function () {
                 $('.form-horizontal').submit();
+            });
+
+            $('#btn-gerar-relatorio-pdf').on('click', function () {
+                const queryString = window.location.search;
+                window.open('{{ route('relatorios-tesouraria.por-cartao') }}' + queryString, '_blank');
             });
         });
     </script>
