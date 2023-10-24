@@ -73,11 +73,20 @@ abstract class AbstractService
     }
 
     /**
+     * @param array $orders
      * @return mixed
      */
-    public function paginate()
+    public function paginate(array $orders = array())
     {
-        return $this->model->paginate();
+        $query = $this->model;
+
+        foreach ($orders as $key => $value) {
+            if (isset($value) && !empty($value)) {
+                $query = $query->orderBy($key, $value);
+            }
+        }
+
+        return $query->paginate();
     }
 
     /**
