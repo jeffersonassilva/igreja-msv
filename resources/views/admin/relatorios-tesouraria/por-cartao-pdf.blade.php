@@ -121,6 +121,7 @@
     @foreach($notas as $tipo => $data)
     <div style="text-align: left; width: 100%; margin-bottom: 8px;">
         {{ $tipo === 'dinheiro' ? 'DINHEIRO' : 'CARTÃO ' . $tipo }}
+        - <span style="font-size: 14px; color: #777;">Total: {{ \App\Helpers\Strings::getMoedaFormatada($data['total'], 'R$ ') }}</span>
     </div>
     <table style="margin-bottom: 40px; font-size: 14px;">
         <thead>
