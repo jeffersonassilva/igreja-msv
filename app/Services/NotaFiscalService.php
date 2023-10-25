@@ -39,6 +39,7 @@ class NotaFiscalService extends AbstractService
 
         $nota = $this->model->fill($dados);
         $nota->save();
+        $nota->refresh();
 
         return $nota;
     }

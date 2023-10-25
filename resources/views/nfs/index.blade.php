@@ -7,7 +7,7 @@
 @section('content')
     <section class="container mx-auto max-w-[1080px] px-4 pb-4">
         <div class="p-6 sm:p-8 my-4 sm:my-8 text-center text-gray-600 bg-white border border-gray-100 rounded-lg font-thin italic sm:text-lg">
-            Informe seus os dados de acesso para enviar as notas fiscais para o financeiro.
+            Informe o código de acesso para enviar as notas fiscais para o financeiro.
         </div>
         <form class="form-horizontal" role="form"
               action="{{ route('notas-fiscais.check') }}">
@@ -15,8 +15,7 @@
             <x-form.input label="Código de Acesso"
                           name="access_code"
                           size="md:max-w-[250px]"
-                          :required="true"
-                          :observacoes='["Informe o código de acesso."]' />
+                          :required="true" />
 
             <div class="flex flex-col mb-4 rounded-md">
                 <div class="mt-6 mb-6 flex items-center gap-2">
