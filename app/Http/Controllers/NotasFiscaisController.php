@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\CartaoInexistente;
-use App\Exceptions\MembroSemAcessoAoCartao;
-use App\Helpers\Constants;
+use App\Exceptions\MembroSemAcessoNotasFiscais;
 use App\Http\Requests\NotaFiscalRequest;
 use App\Mail\NotaFiscalEmail;
 use App\Services\CartaoService;
@@ -153,12 +152,12 @@ class NotasFiscaisController extends Controller
     /**
      * @param $date
      * @return false|string
-     * @throws MembroSemAcessoAoCartao
+     * @throws MembroSemAcessoNotasFiscais
      */
     private function verificarDataAcessoCartao($date)
     {
         if ($date !== date('Ymd')) {
-            throw new MembroSemAcessoAoCartao('Você não tem permissão de acesso a este cartão!');
+            throw new MembroSemAcessoNotasFiscais('Você não tem permissão de acesso a esta área do sistema!');
         }
 
         return $date;
@@ -187,12 +186,12 @@ class NotasFiscaisController extends Controller
     /**
      * @param $codigo
      * @return void
-     * @throws MembroSemAcessoAoCartao
+     * @throws MembroSemAcessoNotasFiscais
      */
     private function verificarPermissao($codigo)
     {
         if ($codigo !== '1214') {
-            throw new MembroSemAcessoAoCartao('Você não tem permissão de acesso a esta área do sistema!');
+            throw new MembroSemAcessoNotasFiscais('Você não tem permissão de acesso a esta área do sistema!');
         }
     }
 
