@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\RelatorioController;
 use App\Http\Controllers\Admin\RelatoriosTerourariaController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\Admin\VisitanteController;
 use App\Http\Controllers\Admin\VoluntarioController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CampanhaController;
@@ -51,13 +52,16 @@ Route::get('/nfs', [NotasFiscaisController::class, 'access'])->name('notas-fisca
 Route::get('/nfs/check', [NotasFiscaisController::class, 'check'])->name('notas-fiscais.check')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::get('/nfs/adicionar/{date}/{access_code}', [NotasFiscaisController::class, 'create'])->name('notas-fiscais.create')->withoutMiddleware([VerifyCsrfToken::class]);
 Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fiscais.store');
+//Route::get('/email-nfs', function () {
+//    $nota = \App\Models\NotaFiscal::find(50);
+//    $as = 'NF-' . $nota->id . '/' . str_replace('-', '', $nota->data) . '-' . str_pad($nota->categoria, 2, '0', STR_PAD_LEFT);
+//    $nota['as'] = $as;
+//    return view('emails.notas', ['nota' => $nota]);
+//});
 
-Route::get('/email-nfs', function () {
-    $nota = \App\Models\NotaFiscal::find(50);
-    $as = 'NF-' . $nota->id . '/' . str_replace('-', '', $nota->data) . '-' . str_pad($nota->categoria, 2, '0', STR_PAD_LEFT);
-    $nota['as'] = $as;
-    return view('emails.notas', ['nota' => $nota]);
-});
+//Visitantes
+Route::get('/visitantes', [VisitanteController::class, 'create'])->name('visitantes.create');
+Route::post('/visitantes', [VisitanteController::class, 'store'])->name('visitantes.store')->withoutMiddleware([VerifyCsrfToken::class]);
 
 //Campanha de Daniel
 Route::get('/campanha-de-daniel', [CampanhaController::class, 'index'])->name('campanha.index');
