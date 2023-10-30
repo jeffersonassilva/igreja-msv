@@ -32,7 +32,7 @@ class EventoController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-evento');
-        $data = $this->service->all();
+        $data = $this->service->all(['descricao' => 'asc']);
         return view('admin/eventos/index')->with('eventos', $data);
     }
 
