@@ -25,11 +25,12 @@
 
     @canany(['adm-menu-cartao', 'adm-menu-nota-fiscal'])
         <x-adm-menu-group name="Tesouraria" id="tesouraria" icon="wallet"
-                          :groups='["cartoes", "notas-fiscais"]'
+                          :groups='["cartoes", "notas-fiscais", "relatorios-tesouraria"]'
                           :submenus='[
-                                ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
-                                ["label" => "Notas Fiscais", "route" => "notas-fiscais", "permission" => "adm-menu-nota-fiscal"],
-                              ]'>
+                            ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
+                            ["label" => "Notas Fiscais", "route" => "notas-fiscais", "permission" => "adm-menu-nota-fiscal"],
+                            ["label" => "Relatórios", "route" => "relatorios-tesouraria", "permission" => "adm-menu-relatorios-tesouraria"]
+                          ]'>
         </x-adm-menu-group>
     @endcan
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PerfilController;
 use App\Http\Controllers\Admin\PermissaoController;
 use App\Http\Controllers\Admin\PropositoController;
 use App\Http\Controllers\Admin\RelatorioController;
+use App\Http\Controllers\Admin\RelatoriosTerourariaController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Admin\VoluntarioController;
 use App\Http\Controllers\AlbumController;
@@ -156,6 +157,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/permissoes', [PermissaoController::class, 'store'])->name('permissoes.store');
     Route::get('/permissoes/{permissao}/editar', [PermissaoController::class, 'edit'])->name('permissoes.edit');
     Route::put('/permissoes/{permissao}', [PermissaoController::class, 'update'])->name('permissoes.update');
+
+    //Relatórios Terouraria
+    Route::get('/relatorios-tesouraria', [RelatoriosTerourariaController::class, 'index'])->name('relatorios-tesouraria');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
