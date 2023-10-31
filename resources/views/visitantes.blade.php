@@ -77,7 +77,7 @@
 
             <div class="flex flex-col mb-4 rounded-md">
                 <div class="mt-6 mb-6 flex items-center gap-2">
-                    <button aria-label="Salvar" type="submit"
+                    <button aria-label="Salvar" type="button" id="btnEnviar" onclick="disableButton()"
                             class="outline-0 rounded-md text-white font-normal bg-blue-800
                             hover:bg-blue-900 focus:bg-blue-900
                             px-4 py-2 md:px-6 inline-flex justify-center items-center">
@@ -87,4 +87,13 @@
             </div>
         </form>
     </section>
+
+    <script>
+        function disableButton() {
+            $('#btnEnviar').attr('disabled', true)
+                .text('enviando ...')
+                .css('background-color', '#5470b6');
+            $('.form-horizontal').submit();
+        }
+    </script>
 @endsection
