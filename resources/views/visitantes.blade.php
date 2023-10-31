@@ -69,6 +69,12 @@
                            :reference="old('batizado')"
             />
 
+            <x-form.textarea label="Observações"
+                             name="observacao"
+                             :observacoes='[
+                                "Utilize esse campo para compartilhar alguma informação importante, sugestões, etc.."
+                             ]'/>
+
             <div class="flex flex-col mb-4 rounded-md">
                 <div class="mt-6 mb-6 flex items-center gap-2">
                     <button aria-label="Salvar" type="submit"
