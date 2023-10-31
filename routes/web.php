@@ -58,6 +58,20 @@ Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fisca
 //    $nota['as'] = $as;
 //    return view('emails.notas', ['nota' => $nota]);
 //});
+//
+//Route::get('/email-visitantes', function () {
+//    return view('emails.visitantes', ['visitante' => [
+//        "dt_visita" => "2023-10-31",
+//        "nome" => "Fulano da Silva",
+//        "sexo" => "M",
+//        "dt_nascimento" => "1975-10-05",
+//        "endereco" => "QC 08 Rua A Casa 01",
+//        "telefone" => "(61) 99239-4758",
+//        "whatsapp" => "1",
+//        "batizado" => "0",
+//        "observacao" => "Teste de cadastro de visitantes"
+//    ]]);
+//});
 
 //Visitantes
 Route::get('/visitantes', [VisitanteController::class, 'create'])->name('visitantes.create');
