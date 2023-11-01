@@ -98,6 +98,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     //Visitantes
     Route::get('/visitantes', [VisitanteController::class, 'index'])->name('visitantes');
+    Route::get('/visitantes/{visitante}/editar', [VisitanteController::class, 'edit'])->name('visitantes.edit');
+    Route::put('/visitantes/{visitante}', [VisitanteController::class, 'update'])->name('visitantes.update');
 
     //Pastor
     Route::get('/pastor/{pastor}/editar', [PastorController::class, 'edit'])->name('pastor.edit');

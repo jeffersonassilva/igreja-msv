@@ -29,7 +29,6 @@ class Visitante extends AbstractModel
         'batizado',
         'responsavel',
         'sem_sucesso',
-        'primeiro_contato',
         'dt_primeiro_contato',
         'dt_segunda_visita',
         'congregando',

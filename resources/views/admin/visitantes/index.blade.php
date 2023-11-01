@@ -31,6 +31,11 @@
                                 </p>
                             </div>
                         </div>
+                        @can('adm-editar-visitante')
+                            <div class="text-sm flex gap-2 border-t border-t-gray-100 dark:border-t-[#34384e] mt-2 pt-2">
+                                <x-button.link title="Acompanhar" :route="route('visitantes.edit', $visitante)"></x-button.link>
+                            </div>
+                        @endcan
                     </div>
                 @endforeach
             </div>
