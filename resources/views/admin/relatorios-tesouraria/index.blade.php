@@ -4,11 +4,28 @@
     </x-slot>
 
     <section>
+        <form class="form-horizontal" role="form"
+              action="{{ route('relatorios-tesouraria') }}"
+              method="get">
+
+            <x-form.select label="Mês"
+                           name="mes"
+                           size="md:max-w-[250px]"
+                           :blank="true"
+                           blankName="Todos"
+                           :reference="$filtro->mes"
+                           :options="$meses"
+            />
+
+            <x-form.select label="Ano"
+                           name="ano"
+                           size="md:max-w-[250px]"
+                           :reference="$filtro->ano"
+                           :options="$anos"
+            />
+        </form>
         <div class="p-4 bg-white rounded-md dark:bg-[#252c47]">
-            <div class="py-1 text-gray-500 dark:text-gray-400 uppercase">
-                Mês: <span class="px-2 font-medium text-lg text-gray-700 dark:text-[#d0d9e6]">10/2003</span>
-            </div>
-            <div class="py-1 text-gray-500 dark:text-gray-400 uppercase">
+            <div class="py-1 text-center text-gray-500 dark:text-gray-400 uppercase">
                 Total: <span class="px-2 font-medium text-lg text-gray-700 dark:text-[#d0d9e6]">{{ \App\Helpers\Strings::getMoedaFormatada($valorTotal, 'R$ ') }}</span>
             </div>
         </div>
@@ -45,19 +62,16 @@
                         </div>
                     </div>
                 @endforeach
-{{--                <div class="bg-gray-50 odd:bg-white py-4 px-2 sm:p-4 sm:px-6 border-b border-x border-gray-200--}}
-{{--                        flex gap-1 justify-between rounded-b-xl--}}
-{{--                        dark:bg-[#2e3552] dark:odd:bg-[#2e3552] dark:border-[#454b54]">--}}
-{{--                    <div></div>--}}
-{{--                    <div></div>--}}
-{{--                    <div class="w-1/4 text-center text-gray-500 dark:text-[#d0d9e6] font-bold text-lg">--}}
-{{--                        {{ \App\Helpers\Strings::getMoedaFormatada($data['total'], 'R$ ') }}--}}
-{{--                    </div>--}}
-{{--                    <div></div>--}}
-{{--                </div>--}}
             </section>
         </div>
         @endforeach
     </section>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#mes, #ano').on('change', function () {
+                $('.form-horizontal').submit();
+            });
+        });
+    </script>
 </x-app-layout>

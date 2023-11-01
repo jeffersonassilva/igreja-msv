@@ -29,6 +29,25 @@ class NotaFiscalService extends AbstractService
     }
 
     /**
+     * @param $where
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function relatorioNotasPorCartao($where)
+    {
+        $query = $this->model;
+
+        if (isset($where['mes']) && !empty($where['mes'])) {
+            $query = $query->whereRaw('month(data) = ' . $where['mes']);
+        }
+
+        if (isset($where['ano']) && !empty($where['ano'])) {
+            $query = $query->whereRaw('year(data) = ' . $where['ano']);
+        }
+
+        return $query->with(['cartao']);
+    }
+
+    /**
      * @param $request
      * @return NotaFiscal|mixed
      */

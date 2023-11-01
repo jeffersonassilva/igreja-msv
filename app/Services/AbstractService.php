@@ -49,15 +49,6 @@ abstract class AbstractService
     }
 
     /**
-     * @param array $relations
-     * @return mixed
-     */
-    public function allWithRelantions(array $relations)
-    {
-        return $this->model->with($relations)->get();
-    }
-
-    /**
      * @param array $where
      * @param array $orders
      * @return mixed
