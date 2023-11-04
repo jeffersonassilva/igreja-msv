@@ -73,7 +73,6 @@
                           name="dt_primeiro_contato"
                           type="date"
                           size="md:max-w-[250px]"
-                          :required="true"
                           value="{{ old('dt_primeiro_contato') ?? $data->dt_primeiro_contato ? \Carbon\Carbon::parse($data->dt_primeiro_contato)->format('Y-m-d') : null }}"
                           :observacoes='["Informe a data que foi realizado o primeiro contato com o visitante."]'
             />
