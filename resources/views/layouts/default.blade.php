@@ -53,7 +53,7 @@
         <!-- Scripts -->
 {{--        <script src="{{ asset('js/flickity.pkgd.min.js') }}" defer></script>--}}
 {{--        <script src="{{ asset('js/flickity-fade.js') }}" defer></script>--}}
-        <script src="{{ asset('js/app.js') }}?v=11" defer></script>
+        <script src="{{ asset('js/app.js') }}?v=12" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
 {{--        <script src="{{ asset('js/maskmoney/dist/jquery.maskMoney.min.js') }}"></script>--}}
