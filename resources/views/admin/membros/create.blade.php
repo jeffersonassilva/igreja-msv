@@ -66,8 +66,8 @@
 
             <x-form.input label="CEP"
                           name="cep"
-                          maxlength="8"
-                          mask="numero"
+                          maxlength="9"
+                          mask="cep"
                           size="md:max-w-[250px]"
                           :observacoes='["Informe o CEP do domicílio."]'
             />
