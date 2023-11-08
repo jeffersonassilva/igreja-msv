@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MembroRequest;
 use App\Services\EstadoCivilService;
 use App\Services\MembroService;
+use App\Services\UfService;
 
 /**
  * Class MembroController
@@ -25,13 +26,24 @@ class MembroController extends Controller
     private $estadoCivilService;
 
     /**
+     * @var UfService
+     */
+    private $ufService;
+
+    /**
      * @param MembroService $service
      * @param EstadoCivilService $estadoCivilService
+     * @param UfService $ufService
      */
-    public function __construct(MembroService $service, EstadoCivilService $estadoCivilService)
+    public function __construct(
+        MembroService      $service,
+        EstadoCivilService $estadoCivilService,
+        UfService          $ufService
+    )
     {
         $this->service = $service;
         $this->estadoCivilService = $estadoCivilService;
+        $this->ufService = $ufService;
     }
 
     /**
@@ -51,7 +63,12 @@ class MembroController extends Controller
     {
         $this->checkPermission('adm-adicionar-membro');
         $estadosCivis = $this->estadoCivilService->all();
-        return view('admin/membros/create')->with(['estadosCivis' => $estadosCivis]);
+        $ufs = $this->ufService->all();
+
+        return view('admin/membros/create')->with([
+            'estadosCivis' => $estadosCivis,
+            'ufs' => $ufs
+        ]);
     }
 
     /**
@@ -74,7 +91,13 @@ class MembroController extends Controller
         $this->checkPermission('adm-editar-membro');
         $data = $this->service->edit($id);
         $estadosCivis = $this->estadoCivilService->all();
-        return view('admin/membros/edit')->with(['data' => $data, 'estadosCivis' => $estadosCivis]);
+        $ufs = $this->ufService->all();
+
+        return view('admin/membros/edit')->with([
+            'data' => $data,
+            'estadosCivis' => $estadosCivis,
+            'ufs' => $ufs
+        ]);
     }
 
     /**

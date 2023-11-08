@@ -107,10 +107,12 @@
                           :observacoes='["Máximo de 255 caracteres."]'
             />
 
-            <x-form.input label="UF"
-                          name="uf"
-                          maxlength="2"
-                          :observacoes='["Selecione a Unidade Federativa do domicílio."]'
+            <x-form.select label="UF"
+                           name="uf"
+                           size="md:max-w-[150px]"
+                           :blank="true"
+                           :options="$ufs"
+                           :observacoes='["Selecione uma das opções."]'
             />
 
             <x-form.input label="País"
