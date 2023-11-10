@@ -10,7 +10,7 @@
             @method('PUT')
             @csrf
 
-            <div class="text-lg font-medium uppercase pt-8 pb-4 text-gray-700 dark:text-white">Informações Pessoais</div>
+            <div class="text-lg font-medium uppercase py-4 text-gray-700 dark:text-white">Informações Pessoais</div>
 
             <x-form.input label="Nome"
                           name="nome"
