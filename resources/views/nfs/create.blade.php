@@ -20,6 +20,7 @@
                            size="md:max-w-[300px]"
                            :blank="true"
                            :required="true"
+                           :reference="old('forma_pagamento')"
                            :options="$pagamentos"
             />
 
@@ -27,6 +28,7 @@
                            name="membro_id"
                            :blank="true"
                            :required="true"
+                           :reference="old('membro_id')"
                            :options="$membros"
             />
 
@@ -55,6 +57,7 @@
                            size="md:max-w-[300px]"
                            :blank="true"
                            :required="true"
+                           :reference="old('categoria')"
                            :options="$categorias"
             />
 
@@ -67,10 +70,10 @@
 
             <x-form.file label="Arquivo"
                          name="arquivo"
-                         accept=".png, .jpg, .jpeg"
+                         accept=".png, .jpg, .jpeg, .pdf"
                          :required="true"
                          :observacoes='[
-                            "Extensões válidas: jpg, jpeg e png."
+                            "Extensões válidas: png, jpg, jpeg ou pdf"
                          ]'/>
 
             <div class="flex flex-col mb-4 rounded-md">
