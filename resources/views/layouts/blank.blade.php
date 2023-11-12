@@ -45,6 +45,7 @@
         </nav>
         <section class="container mx-auto max-w-[1080px] px-4 pt-4">
             <x-alert />
+            <x-required-fields />
         </section>
 
         <div class="flex-1">
