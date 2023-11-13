@@ -17,9 +17,9 @@
                     <div class="mb-3 text-2xl text-gray-700 font-medium dark:text-white">
                         {{ \App\Helpers\Strings::getMoedaFormatada($nota->valor, 'R$ ') }}
                     </div>
-                    <div class="mb-3 flex gap-1 items-end text-gray-700 dark:text-[#d0d9e6]">
-                        <div class="text-sm bg-gray-200 dark:bg-[#1c2039] p-2 px-3 rounded-md">{{ \Carbon\Carbon::parse($nota->data)->format('d/m/Y') }}</div>
-                        <div class="text-sm bg-gray-200 dark:bg-[#1c2039] p-2 px-3 rounded-md">{{ $nota->cartao_id ? 'Cartão: ' . $nota->cartao->identificador : 'Dinheiro' }}</div>
+                    <div class="mb-3 flex gap-2 items-end text-gray-700 dark:text-[#d0d9e6]">
+                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b] dark:bg-transparent p-2 px-3 rounded-md">{{ \Carbon\Carbon::parse($nota->data)->format('d/m/Y') }}</div>
+                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b] dark:bg-transparent p-2 px-3 rounded-md">{{ $nota->cartao_id ? 'Cartão: ' . $nota->cartao->identificador : 'Dinheiro' }}</div>
                     </div>
                     <div class="mb-3 text-lg text-gray-700 dark:text-[#d0d9e6]">
                         {{ \App\Services\CategoriaService::getDescricaoById($nota->categoria) }}
@@ -41,6 +41,8 @@
 
                         @can('adm-arquivar-nota-fiscal')
                             <x-button.delete title="Arquivar Nota" :route="route('notas-fiscais.archive', $nota)"
+                                             bg="text-white bg-primary hover:bg-primary-dark focus:bg-primary-dark
+                                             dark:text-gray-900 dark:bg-yellow-400 dark:hover:bg-yellow-300"
                                              formId="form-arquivar-nota-fiscal-{{ $nota->id }}"></x-button.delete>
                         @endcan
                     </div>
