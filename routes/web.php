@@ -23,6 +23,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotasFiscaisController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\TestemunhoController;
+use App\Http\Controllers\PoliticaPrivacidadeController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/app-escala-msv/politica-privacidade', [PoliticaPrivacidadeController::class, 'index'])->name('index');
 Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/seminario', [OfertaController::class, 'seminario'])->name('seminario');
