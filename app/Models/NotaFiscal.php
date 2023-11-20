@@ -35,7 +35,7 @@ class NotaFiscal extends AbstractModel
      */
     public function cartao()
     {
-        return $this->belongsTo(Cartao::class, 'cartao_id', 'id');
+        return $this->belongsTo(Cartao::class, 'cartao_id', 'id')->withTrashed();
     }
 
     /**
