@@ -43,7 +43,10 @@ class VisitanteController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-visitante');
-        $data = $this->service->where(['sem_sucesso' => null, 'membro_ativo' => null], ['dt_visita' => 'desc'])->paginate();
+        $data = $this->service->where(
+            ['sem_sucesso' => null, 'membro_ativo' => null],
+            ['responsavel' => 'IS NULL', 'dt_visita' => 'desc']
+        )->paginate();
         return view('admin/visitantes/index')->with('visitantes', $data);
     }
 
