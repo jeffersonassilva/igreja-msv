@@ -80,6 +80,11 @@
                           :observacoes='["Informe a data caso o visitante tenha realizado a segunda visita."]'
             />
 
+            <x-form.checkbox label="Encaminhar para lista de oração?"
+                             name="oracao"
+                             value="{{ old('oracao') ?? $data->oracao }}"
+                             :observacoes='["Marque esta opção para que o nome do visitante seja adicionado na lista de orações."]' />
+
             <x-form.checkbox label="Congregando?"
                              name="congregando"
                              value="{{ old('congregando') ?? $data->congregando }}"

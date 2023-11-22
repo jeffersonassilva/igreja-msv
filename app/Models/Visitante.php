@@ -32,6 +32,7 @@ class Visitante extends AbstractModel
         'sem_sucesso',
         'dt_primeiro_contato',
         'dt_segunda_visita',
+        'oracao',
         'congregando',
         'deseja_batismo',
         'membro_ativo',

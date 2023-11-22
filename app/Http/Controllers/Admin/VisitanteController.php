@@ -93,6 +93,7 @@ class VisitanteController extends Controller
     {
         $request->merge([
             'sem_sucesso' => $request->input('sem_sucesso', null),
+            'oracao' => $request->input('oracao', null),
             'congregando' => $request->input('congregando', null),
             'deseja_batismo' => $request->input('deseja_batismo', null),
             'membro_ativo' => $request->input('membro_ativo', null),
