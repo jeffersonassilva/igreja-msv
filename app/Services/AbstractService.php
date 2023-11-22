@@ -74,9 +74,10 @@ abstract class AbstractService
 
     /**
      * @param array $orders
+     * @param $perPage
      * @return mixed
      */
-    public function paginate(array $orders = array())
+    public function paginate(array $orders = array(), $perPage = null)
     {
         $query = $this->model;
 
@@ -86,7 +87,7 @@ abstract class AbstractService
             }
         }
 
-        return $query->paginate();
+        return $perPage ? $query->paginate($perPage) : $query->paginate();
     }
 
     /**
