@@ -22,7 +22,7 @@
             <x-form.select label="Sexo"
                            name="sexo"
                            size="md:max-w-[250px]"
-                           :reference="$data->situacao"
+                           :reference="$data->sexo"
                            :required="true"
                            :options='[["id" => "M", "descricao" => "Masculino"], ["id" => "F", "descricao" => "Feminino" ]]'
                            :observacoes='["Selecione uma das opções."]'
