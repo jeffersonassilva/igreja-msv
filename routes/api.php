@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/escalas', [EscalaController::class, 'index'])->name('api.escalas');
+Route::post('/escalas/voluntario', [EscalaController::class, 'store'])->name('api.escalas.store');
+
 Route::put('/escala-voluntario', [EscalaVoluntarioController::class, 'updateApi'])->name('api.escala.voluntario');

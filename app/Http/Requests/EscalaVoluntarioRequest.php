@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class EscalaVoluntarioRequest
@@ -60,5 +62,19 @@ class EscalaVoluntarioRequest extends FormRequest
         return [
             'voluntario_id.unique' => 'Este voluntário já está adicionado nesta escala.',
         ];
+    }
+
+    /**
+     * @param Validator $validator
+     * @return void
+     * @throws ValidationException
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        if ($this->expectsJson()) {
+            throw new ValidationException($validator, response()->json(['error' => $validator->errors()], 422));
+        }
+
+        parent::failedValidation($validator);
     }
 }
