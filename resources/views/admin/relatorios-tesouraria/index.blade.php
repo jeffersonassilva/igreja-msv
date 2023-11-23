@@ -8,6 +8,15 @@
               action="{{ route('relatorios-tesouraria') }}"
               method="get">
 
+            <x-form.select label="Categoria"
+                           name="categoria"
+                           size="md:max-w-[300px]"
+                           :blank="true"
+                           blankName="Todos"
+                           :reference="$filtro->categoria"
+                           :options="$categorias"
+            />
+
             <x-form.select label="Mês"
                            name="mes"
                            size="md:max-w-[250px]"
@@ -69,7 +78,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#mes, #ano').on('change', function () {
+            $('#mes, #ano, #categoria').on('change', function () {
                 $('.form-horizontal').submit();
             });
         });

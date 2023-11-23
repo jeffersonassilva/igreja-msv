@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\CategoriaService;
 use App\Services\MesService;
 use App\Services\NotaFiscalService;
 use Illuminate\Http\Request;
@@ -15,17 +16,24 @@ class RelatoriosTerourariaController extends Controller
     private $notaFiscalService;
 
     /**
+     * @var CategoriaService
+     */
+    private $categoriaService;
+
+    /**
      * @var MesService
      */
     private $mesService;
 
     /**
      * @param NotaFiscalService $notaFiscalService
+     * @param CategoriaService $categoriaService
      * @param MesService $mesService
      */
-    public function __construct(NotaFiscalService $notaFiscalService, MesService $mesService)
+    public function __construct(NotaFiscalService $notaFiscalService, CategoriaService $categoriaService, MesService $mesService)
     {
         $this->notaFiscalService = $notaFiscalService;
+        $this->categoriaService = $categoriaService;
         $this->mesService = $mesService;
     }
 
@@ -50,6 +58,7 @@ class RelatoriosTerourariaController extends Controller
             'lista' => $data,
             'valorTotal' => $valorTotal,
             'meses' => $this->mesService->all(),
+            'categorias' => $this->categoriaService->all(),
             'anos' => $this->getUltimos5Anos(),
             'filtro' => $request,
         ]);

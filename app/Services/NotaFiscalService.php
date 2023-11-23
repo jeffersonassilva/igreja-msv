@@ -44,6 +44,10 @@ class NotaFiscalService extends AbstractService
             $query = $query->whereRaw('year(data) = ' . $where['ano']);
         }
 
+        if (isset($where['categoria']) && !empty($where['categoria'])) {
+            $query = $query->where('categoria', $where['categoria']);
+        }
+
         return $query->with(['cartao']);
     }
 
