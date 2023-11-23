@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/app-escala-msv/politica-privacidade', [PoliticaPrivacidadeController::class, 'index'])->name('index');
+Route::get('/app-escala-msv/politica-privacidade', [PoliticaPrivacidadeController::class, 'index'])->name('politica-privacidade');
 Route::get('/album/{url}', [AlbumController::class, 'show'])->name('album');
 Route::get('/ofertas', [OfertaController::class, 'index'])->name('ofertas');
 Route::get('/seminario', [OfertaController::class, 'seminario'])->name('seminario');
