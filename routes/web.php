@@ -169,6 +169,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     //Relatórios Terouraria
     Route::get('/relatorios-tesouraria', [RelatoriosTerourariaController::class, 'index'])->name('relatorios-tesouraria');
+    Route::get('/relatorio-tesouraria/por-cartao', [RelatoriosTerourariaController::class, 'relatorioPorCartaoPdf'])->name('relatorios-tesouraria.por-cartao');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
