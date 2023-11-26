@@ -80,6 +80,26 @@ class EscalaService extends AbstractService
     }
 
     /**
+     * @param $escalaId
+     * @return void
+     */
+    public function regraQntdVoluntariosAtingida($escalaId)
+    {
+        $escala = $this->find($escalaId);
+        $qntdVoluntariosAtual = $escala->voluntarios()->count();
+        $qntdVoluntariosPossiveis = $escala->evento->qntd_voluntarios;
+
+        if (
+            !empty($qntdVoluntariosAtual) &&
+            !empty($qntdVoluntariosPossiveis) &&
+            ($qntdVoluntariosAtual >= $qntdVoluntariosPossiveis)
+        ) {
+            $escala->fechada = Constants::TRUE;
+            $escala->save();
+        }
+    }
+
+    /**
      * @return int
      */
     public function qntdVoluntariadoNecessarioNoMes()
