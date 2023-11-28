@@ -140,7 +140,7 @@ class NotasFiscaisController extends Controller
         $file = $request->file('arquivo');
         $nota = $this->notaFiscalService->store($request);
 
-        Mail::to('samucamj@gmail.com')
+        Mail::to(['samucamj@gmail.com', 'jezaias.damacena@igrejamsv.org', 'paulo.martins@igrejamsv.org'])
             ->cc(['jeffersonassilva@gmail.com'])
             ->send(new NotaFiscalEmail($nota, $file));
 
