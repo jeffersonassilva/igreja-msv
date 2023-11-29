@@ -158,6 +158,7 @@
                         @if(!$escala->fechada)
                         <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
                             <div class="flex items-center gap-2 px-3 pb-3 sm:px-4 sm:pb-4">
+                                <input type="hidden" name="dispositivo_os" value="Web">
                                 <input type="hidden" name="escala_id" value="{{ $escala->id }}">
                                 <div class="flex-1">
                                     <select name="voluntario_id"

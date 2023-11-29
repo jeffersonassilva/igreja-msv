@@ -143,6 +143,7 @@
         <div class="mb-4 p-4 bg-white flex flex-col sm:flex-row sm:items-center dark:bg-[#252c47]">
             <form class="form-horizontal w-full" role="form" method="post" action="{{ route('escalaVoluntario.store') }}">
                 @csrf
+                <input type="hidden" name="dispositivo_os" value="Web">
                 <input type="hidden" name="escala_id" value="{{ $data->id }}">
                 <label for="nome" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">Novo voluntário</label><br />
                 <span class="text-sm font-thin text-gray-500 dark:text-gray-400">- Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
