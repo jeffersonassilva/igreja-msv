@@ -6,7 +6,21 @@
 
 @section('content')
     <section class="bg-gray-100">
-        <div class="container mx-auto max-w-[1080px] 2xl:max-w-full p-4">
+        <div class="container mx-auto max-w-[1080px] 2xl:max-w-[1600px] p-4">
+
+            <div class="text-justify text-gray-500 text-xs px-4 mb-4 md:text-base md:text-center md:w-4/5 md:mx-auto md:font-thin">
+                <p class="indent-2 sm:indent-0">Queridos obreiros, que a essência do seu serviço seja permeada pelo amor e dedicação,
+                    refletindo o exemplo sublime de Cristo. Como nos lembra Colossenses 3:23-24,</p>
+
+                <p class="italic block p-4 text-gray-700 sm:px-2 md:font-normal">"Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,
+                sabendo que receberão do Senhor a recompensa da herança. É a Cristo, o Senhor, que vocês estão servindo."</p>
+
+                <p class="indent-2 sm:indent-0">Que cada ato de serviço seja impulsionado pela compaixão e pela entrega sincera,
+                    contribuindo para o crescimento espiritual da nossa igreja.
+                    O trabalho do diácono é uma manifestação tangível do amor divino; portanto, exerçam seus papéis
+                    com alegria e generosidade, inspirando a todos ao redor.</p>
+            </div>
+
             <div class="mb-6 flex justify-center items-center rounded-md" role="group">
                 <button type="button" id="btn-filtros"
                         class="py-1 px-4 text-sm text-gray-700 bg-white rounded-l-lg
@@ -133,26 +147,8 @@
                 </p>
             </div>
 
-            @if($voluntarios->count())
-            <div class="my-4 sm:my-0">
-                <div class="flex justify-center items-center text-xs text-[#b0627c] p-2">
-                    <div class="italic px-3 text-center">Quantidade<br />preenchida</div>
-                    <div class="flex items-center gap-2">
-                        <div class="text-4xl">{{$qntdVoluntariadoPreenchido}}</div>
-                        <div class="text-xs">x</div>
-                        <div class="text-4xl">{{$qntdVoluntariadoNecessario}}</div>
-                    </div>
-                    <div class="px-3 italic text-center">Quantidade<br />necessária</div>
-                </div>
-                <hr class="max-w-xs mx-auto">
-                <div class="text-center text-gray-600 text-xs p-4 mb-4">
-                    {!! \App\Helpers\Strings::getMsgQntdServicoPorVoluntario($qntdVoluntariadoNecessario, $voluntarios->count()) !!}
-                </div>
-            </div>
-            @endif
-
             @if($escalas->count())
-            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:gap-8 2xl:grid-cols-5 mb-8">
+            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:mx-auto md:max-w-3xl lg:max-w-full lg:grid-cols-3 xl:gap-8 2xl:grid-cols-4 mb-8">
                 @foreach($escalas as $escala)
                     <x-card.escala-publica :escala="$escala" :funcoes="$funcoes">
                         @if(!$escala->fechada)
