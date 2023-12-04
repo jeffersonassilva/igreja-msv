@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VisitanteRequest;
+use App\Mail\VisitanteEmail;
 use App\Services\VisitanteService;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class VisitanteController
@@ -40,7 +41,12 @@ class VisitanteController extends Controller
      */
     public function store(VisitanteRequest $request)
     {
-        $this->service->store($request);
-        return $this->redirectWithMessage('visitantes.create', __(Constants::SUCCESS_CREATE));
+        $visitante = $this->service->store($request);
+
+        Mail::to(['samucamj@gmail.com'])
+            ->cc(['jeffersonassilva@gmail.com'])
+            ->send(new VisitanteEmail($visitante));
+
+        return $this->redirectWithMessage('visitantes.create', 'Visitante cadastrado com sucesso!');
     }
 }
