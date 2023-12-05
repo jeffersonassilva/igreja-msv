@@ -90,6 +90,7 @@
                 </section>
                 <section class="mt-16 lg:mt-0 p-4 lg:p-0">
                     <x-alert class="mb-4" />
+                    <x-required-fields />
                     {{ $slot }}
                 </section>
             </main>
