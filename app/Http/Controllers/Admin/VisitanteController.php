@@ -30,6 +30,16 @@ class VisitanteController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+    public function index()
+    {
+        $this->checkPermission('adm-listar-visitante');
+        $data = $this->service->paginate(['dt_visita' => 'desc']);
+        return view('admin/visitantes/index')->with('visitantes', $data);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('visitantes');

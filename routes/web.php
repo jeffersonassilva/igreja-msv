@@ -96,6 +96,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banners.update');
     Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banners.destroy');
 
+    //Visitantes
+    Route::get('/visitantes', [VisitanteController::class, 'index'])->name('visitantes');
+
     //Pastor
     Route::get('/pastor/{pastor}/editar', [PastorController::class, 'edit'])->name('pastor.edit');
     Route::put('/pastor/{pastor}', [PastorController::class, 'update'])->name('pastor.update');

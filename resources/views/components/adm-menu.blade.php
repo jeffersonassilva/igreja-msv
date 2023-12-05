@@ -43,6 +43,15 @@
         </x-adm-menu-group>
     @endcan
 
+    @canany(['adm-menu-visitante'])
+        <x-adm-menu-group name="Visitantes" id="visitante" icon="cafe-outline"
+                          :groups='["visitantes"]'
+                          :submenus='[
+                            ["label" => "Acompanhamento", "route" => "visitantes", "permission" => "adm-menu-visitante"]
+                          ]'>
+        </x-adm-menu-group>
+    @endcan
+
     @canany(['adm-menu-usuario', 'adm-menu-permissao', 'adm-menu-perfil'])
         <x-adm-menu-group name="Segurança" id="seguranca" icon="key-outline"
                           :groups='["usuarios", "perfis", "permissoes"]'
