@@ -24,8 +24,8 @@ class VisitanteRequest extends FormRequest
     public function rules()
     {
         return [
-            'dt_visita' => 'required|date',
-            'nome' => 'required|max:255',
+            'dt_visita' => $this->isMethod('put') ? 'date' : 'required|date',
+            'nome' => $this->isMethod('put') ? 'max:255' : 'required|max:255',
             'dt_nascimento' => 'nullable|date',
             'endereco' => 'max:255',
             'telefone' => 'max:15',
