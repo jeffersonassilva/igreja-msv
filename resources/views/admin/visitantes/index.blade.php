@@ -27,7 +27,14 @@
                                     Visitou em: {{ \Carbon\Carbon::parse($visitante->dt_visita)->format('d/m/Y') }}
                                 </p>
                                 <p class="text-sm mt-1 font-thin text-gray-500 dark:text-[#d0d9e6]">
-                                    Telefone: {{ $visitante->telefone }} @if($visitante->telefone && $visitante->whatsapp)<span class="ml-1 text-green-500"><ion-icon name="logo-whatsapp"></ion-icon></span>@endif
+                                    Telefone: <a href="https://wa.me/55{{ preg_replace('/\D/', '', $visitante->telefone) }}" target="_blank">{{ $visitante->telefone }}</a>
+                                    @if($visitante->telefone && $visitante->whatsapp)
+                                        <a href="https://wa.me/55{{ preg_replace('/\D/', '', $visitante->telefone) }}" target="_blank">
+                                            <span class="ml-1 text-green-500">
+                                                <ion-icon name="logo-whatsapp"></ion-icon>
+                                            </span>
+                                        </a>
+                                    @endif
                                 </p>
                             </div>
                         </div>
