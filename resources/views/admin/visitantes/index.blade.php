@@ -4,14 +4,14 @@
     </x-slot>
 
     <section>
-        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
+        <div class="hidden md:block h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
             <div class="text-sm">&nbsp;</div>
         </div>
         @if(count($visitantes))
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:py-3 gap-4">
                 @foreach($visitantes as $visitante)
                     <div class="bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
-                        <div class="flex gap-2 items-center">
+                        <div class="grid grid-cols-[68px,1fr] items-center">
                             <div>
                                 @if($visitante->sexo == 'M')
                                     <img src="{{ asset('img/icon_profile_man.jpg') }}"
@@ -22,7 +22,7 @@
                                 @endif
                             </div>
                             <div>
-                                <h3 class="text-gray-700 font-medium dark:text-white">{{ $visitante->nome }}</h3>
+                                <h3 class="text-gray-700 font-medium dark:text-white line-clamp-1">{{ $visitante->nome }}</h3>
                                 <p class="text-sm mt-1 font-thin text-gray-500 dark:text-[#d0d9e6]">
                                     Visitou em: {{ \Carbon\Carbon::parse($visitante->dt_visita)->format('d/m/Y') }}
                                 </p>
