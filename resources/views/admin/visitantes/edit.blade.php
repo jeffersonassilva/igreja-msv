@@ -52,7 +52,7 @@
     </section>
 
     <section>
-        <form class="form-horizontal" role="form"
+        <form class="form-horizontal" id="submit-form-edit-visitante" role="form"
               action="{{ route('visitantes.update', $data) }}"
               method="post">
             @method('PUT')
@@ -63,11 +63,6 @@
                           maxlength="255"
                           value="{{ old('responsavel') ?? $data->responsavel }}"
                           :observacoes='["Digite o nome da pessoa que será responsável por realizar o acompanhamento deste visitante."]' />
-
-            <x-form.checkbox label="Sem sucesso"
-                          name="sem_sucesso"
-                          value="{{ old('sem_sucesso') ?? $data->sem_sucesso }}"
-                          :observacoes='["Marque esta opção se não foi possível fazer contato com este visitante."]' />
 
             <x-form.input label="Data do primeiro contato"
                           name="dt_primeiro_contato"
@@ -95,11 +90,6 @@
                              value="{{ old('deseja_batismo') ?? $data->deseja_batismo }}"
                              :observacoes='["Marque esta opção se o visitante deseja ser batizado."]' />
 
-            <x-form.checkbox label="Tornou-se membro?"
-                             name="membro_ativo"
-                             value="{{ old('membro_ativo') ?? $data->membro_ativo }}"
-                             :observacoes='["Marque esta opção se o visitante tornou-se membro ativo da igreja."]' />
-
             <x-form.textarea label="Observações"
                              name="observacao"
                              value="{{ old('observacao') ?? $data->observacao }}"
@@ -108,9 +98,66 @@
                                 "Máximo de 1000 caracteres."
                              ]' />
 
+            <x-form.checkbox label="Tornou-se membro?"
+                             name="membro_ativo"
+                             value="{{ old('membro_ativo') ?? $data->membro_ativo }}"
+                             :observacoes='["Marque esta opção se o visitante tornou-se membro ativo da igreja. Ao marcar essa opção, o visitante sairá da lista!"]' />
+
+            <x-form.checkbox label="Sem sucesso"
+                             name="sem_sucesso"
+                             value="{{ old('sem_sucesso') ?? $data->sem_sucesso }}"
+                             :observacoes='["Marque esta opção somente se não foi possível fazer contato com este visitante. Ao marcar essa opção, o visitante sairá da lista!"]' />
+
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('visitantes')"
                             :infoRequired="true" />
         </form>
     </section>
+
+    <x-dialog.generic-confirm
+        id="modal_tornou_se_membro"
+        message="Este visitante realmente tornou-se membro da Igreja MSV?<br /><br />Ao confirmar esta ação, o visitante será transferido para a lista de membros."
+        confirmButtonTitle="Pode transferir"
+        cancelButtonTitle="Cancelar"
+    ></x-dialog.generic-confirm>
+
+    <x-dialog.generic-confirm
+        id="modal_sem_sucesso"
+        message="Você realmente não conseguiu realizar nenhum contato com este visitante?<br /><br />Ao confirmar esta ação, o visitante será removido da lista."
+        confirmButtonTitle="Pode remover"
+        cancelButtonTitle="Cancelar"
+    ></x-dialog.generic-confirm>
+
+    <script type="text/javascript">
+        function modalConfirmAction(modalId) {
+            $('#' + modalId).hide();
+            $('#submit-form-edit-visitante').submit();
+        }
+
+        function modalCancelAction(modalId) {
+            $('#membro_ativo').prop('checked', false);
+            $('#sem_sucesso').prop('checked', false);
+            $('#' + modalId).hide();
+        }
+
+        function modalCloseAction(modalId) {
+            $('#membro_ativo').prop('checked', false);
+            $('#sem_sucesso').prop('checked', false);
+            $('#' + modalId).hide();
+        }
+
+        $(document).ready(function () {
+            $('#membro_ativo').on('change', function () {
+                if ($(this).is(':checked')) {
+                    $('#modal_tornou_se_membro').show();
+                }
+            });
+
+            $('#sem_sucesso').on('change', function () {
+                if ($(this).is(':checked')) {
+                    $('#modal_sem_sucesso').show();
+                }
+            });
+        });
+    </script>
 </x-app-layout>

@@ -6,7 +6,9 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VisitanteRequest;
 use App\Mail\VisitanteEmail;
+use App\Services\MembroService;
 use App\Services\VisitanteService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -21,11 +23,18 @@ class VisitanteController extends Controller
     private $service;
 
     /**
-     * @param VisitanteService $service
+     * @var MembroService
      */
-    public function __construct(VisitanteService $service)
+    private $membroService;
+
+    /**
+     * @param VisitanteService $service
+     * @param MembroService $membroService
+     */
+    public function __construct(VisitanteService $service, MembroService $membroService)
     {
         $this->service = $service;
+        $this->membroService = $membroService;
     }
 
     /**
@@ -34,7 +43,7 @@ class VisitanteController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-visitante');
-        $data = $this->service->paginate(['dt_visita' => 'desc']);
+        $data = $this->service->where(['sem_sucesso' => null, 'membro_ativo' => null], ['dt_visita' => 'desc'])->paginate();
         return view('admin/visitantes/index')->with('visitantes', $data);
     }
 
@@ -86,8 +95,23 @@ class VisitanteController extends Controller
             'membro_ativo' => $request->input('membro_ativo', null),
         ]);
 
+        if ($request->get('membro_ativo')) {
+            $this->transformarVisitanteEmMembro($request, $id);
+        }
+
         $this->checkPermission('adm-editar-visitante');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('visitantes', __(Constants::SUCCESS_UPDATE));
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \App\Models\Membro
+     */
+    private function transformarVisitanteEmMembro(Request $request, $id)
+    {
+        $data = $this->service->find($id);
+        return $this->membroService->transformarVisitanteEmMembro($data);
     }
 }
