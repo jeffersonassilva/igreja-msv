@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EscalaController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/escalas', [EscalaController::class, 'index'])->name('api.escalas');
 Route::put('/escala-voluntario', [EscalaVoluntarioController::class, 'updateApi'])->name('api.escala.voluntario');
