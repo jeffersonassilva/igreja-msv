@@ -24,6 +24,9 @@
                 Confira abaixo os dados cadastrados:
             </p>
             <p style="margin: 40px 0;">
+                @if(isset($visitante['recomendacao']) && $visitante['recomendacao'])
+                <span style="color: black;"><strong>Avaliação: </strong><span style="color: #ffa115;">{{ \App\Helpers\Strings::renderizarEstrelas($visitante['recomendacao']) }}</span></span><br />
+                @endif
                 <span style="color: black;"><strong>Data da visita: </strong>{{ $visitante['dt_visita'] ? date('d/m/Y', strtotime($visitante['dt_visita'])) : null }}</span><br />
                 <span style="color: black;"><strong>Nome: </strong>{{ $visitante['nome'] }}</span><br />
                 <span style="color: black;"><strong>Sexo: </strong>{{ $visitante['sexo'] ? $visitante['sexo'] === 'M' ? 'Masculino' : 'Feminino' : null }}</span><br />

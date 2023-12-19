@@ -69,6 +69,7 @@ Route::post('/nfs', [NotasFiscaisController::class, 'store'])->name('notas-fisca
 //        "telefone" => "(61) 99239-4758",
 //        "whatsapp" => "1",
 //        "batizado" => "0",
+//        "recomendacao" => 4,
 //        "observacao" => "Teste de cadastro de visitantes"
 //    ]]);
 //});

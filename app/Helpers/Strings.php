@@ -91,4 +91,19 @@ class Strings
 
         return $categorias[$codigo];
     }
+
+    /**
+     * @param $pontuacao
+     * @return string
+     */
+    public static function renderizarEstrelas($pontuacao)
+    {
+        $estrelas = '';
+
+        for ($i = 1; $i <= 5; $i++) {
+            $estrelas .= ($i <= $pontuacao) ? '★' : '☆';
+        }
+
+        return $estrelas;
+    }
 }

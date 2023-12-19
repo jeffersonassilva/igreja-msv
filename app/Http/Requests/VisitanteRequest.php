@@ -24,6 +24,7 @@ class VisitanteRequest extends FormRequest
     public function rules()
     {
         return [
+            'recomendacao' => 'nullable',
             'dt_visita' => $this->isMethod('put') ? 'date' : 'required|date',
             'nome' => $this->isMethod('put') ? 'max:255' : 'required|max:255',
             'dt_nascimento' => 'nullable|date',
@@ -39,6 +40,7 @@ class VisitanteRequest extends FormRequest
     public function attributes()
     {
         return [
+            'recomendacao' => 'Recomendação',
             'dt_visita' => 'Data da visita',
             'nome' => 'Nome',
             'dt_nascimento' => 'Data de Nascimento',

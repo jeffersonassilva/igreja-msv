@@ -27,6 +27,7 @@ class Visitante extends AbstractModel
         'telefone',
         'whatsapp',
         'batizado',
+        'recomendacao',
         'responsavel',
         'sem_sucesso',
         'dt_primeiro_contato',
