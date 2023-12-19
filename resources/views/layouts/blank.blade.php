@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=78">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=79">
 
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/apple-icon-57x57.png') }}">
         <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/icons/apple-icon-60x60.png') }}">
@@ -36,7 +36,7 @@
         <nav id="menu" class="menu bg-black">
             <header class="grid grid-cols-5 p-3 md:p-4 lg:p-6 lg:pl-10">
                 <a href="{{ route('index') }}">
-                    <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="w-[70px] sm:w-[90px] md:w-[110px] md:w-[130px]">
+                    <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="w-[70px] sm:w-[90px] md:w-[110px]">
                 </a>
                 <div class="flex-1 flex justify-center items-center col-span-3">
                     @yield('titulo')
