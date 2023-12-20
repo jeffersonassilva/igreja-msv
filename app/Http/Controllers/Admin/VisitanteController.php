@@ -63,7 +63,7 @@ class VisitanteController extends Controller
     {
         $visitante = $this->service->store($request);
 
-        Mail::to(['samucamj@gmail.com'])
+        Mail::to(['samucamj@gmail.com', 'nraniely@gmail.com'])
             ->cc(['jeffersonassilva@gmail.com'])
             ->send(new VisitanteEmail($visitante));
 
