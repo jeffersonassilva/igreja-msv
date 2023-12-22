@@ -52,7 +52,7 @@ class MembroController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-membro');
-        $data = $this->service->paginate(['nome' => 'asc']);
+        $data = $this->service->paginate(['nome' => 'asc'], 15);
         return view('admin/membros/index')->with('membros', $data);
     }
 
