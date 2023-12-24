@@ -36,6 +36,11 @@
                                         </a>
                                     @endif
                                 </p>
+                                <p class="text-sm mt-1 font-thin text-gray-500 dark:text-[#d0d9e6] line-clamp-1">
+                                    <span class="@if($visitante->responsavel) font-normal text-blue-600 @endif">
+                                        Responsável: {{ $visitante->responsavel }}
+                                    </span>
+                                </p>
                             </div>
                         </div>
                         @can('adm-editar-visitante')

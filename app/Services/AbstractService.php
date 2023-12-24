@@ -66,7 +66,11 @@ abstract class AbstractService
         }
 
         foreach ($orders as $key => $value) {
-            $query = $query->orderBy($key, $value);
+            if ($value === 'IS NULL') {
+                $query = $query->orderByRaw("{$key} {$value}");
+            } else {
+                $query = $query->orderBy($key, $value);
+            }
         }
 
         return $query;
