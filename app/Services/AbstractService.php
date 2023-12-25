@@ -124,6 +124,15 @@ abstract class AbstractService
     }
 
     /**
+     * @param $dados
+     * @return mixed
+     */
+    public function storeWithArray($dados)
+    {
+        return $this->model->fill($dados)->save();
+    }
+
+    /**
      * @param $id
      * @return mixed
      */

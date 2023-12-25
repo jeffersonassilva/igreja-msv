@@ -25,6 +25,7 @@ class Voluntario extends AbstractModel
         'professor_ebd',
         'observacao',
         'situacao',
+        'codigo',
     ];
 
     /**
