@@ -31,6 +31,7 @@ class VoluntarioRequest extends FormRequest
             'professor_ebd' => ['required', Rule::in(['0', '1'])],
             'observacao' => 'max:1000',
             'disponibilidades' => 'required|min:1',
+            'codigo' => 'nullable|unique:voluntarios,codigo',
         ];
     }
 
@@ -46,6 +47,7 @@ class VoluntarioRequest extends FormRequest
             'professor_ebd' => 'Professor EBD',
             'observacao' => 'Observações',
             'disponibilidades' => 'Disponibilidade',
+            'codigo' => 'Código',
         ];
     }
 
@@ -56,6 +58,7 @@ class VoluntarioRequest extends FormRequest
     {
         return [
             'foto.dimensions' => 'A imagem deve ter o tamanho mínimo de 200x200.',
+            'codigo.unique' => 'O Código informado já está sendo utilizado por outro voluntário.',
         ];
     }
 }
