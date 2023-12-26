@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Services\EscalaService;
+use App\Services\VoluntarioService;
 
 /**
  * Class EscalaController
@@ -17,11 +19,18 @@ class EscalaController extends Controller
     private $service;
 
     /**
-     * @param EscalaService $service
+     * @var VoluntarioService
      */
-    public function __construct(EscalaService $service)
+    private $voluntarioService;
+
+    /**
+     * @param EscalaService $service
+     * @param VoluntarioService $voluntarioService
+     */
+    public function __construct(EscalaService $service, VoluntarioService $voluntarioService)
     {
         $this->service = $service;
+        $this->voluntarioService = $voluntarioService;
     }
 
     /**
@@ -30,6 +39,16 @@ class EscalaController extends Controller
     public function index()
     {
         $data = $this->service->list();
-        return response()->json($data);
+        $qntdVoluntariadoNecessario = $this->service->qntdVoluntariadoNecessarioNoMes();
+        $qntdVoluntariadoPreenchido = $this->service->qntdVoluntariadoPreenchidoNoMes();
+        $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
+
+        return response()->json([
+            'escalas' => $data,
+            'voluntarios' => $voluntarios,
+            'qntdNecessaria' => $qntdVoluntariadoNecessario,
+            'qntdPreenchida' => $qntdVoluntariadoPreenchido,
+            'qntdReferencia' => ceil($qntdVoluntariadoNecessario / $voluntarios->count()),
+        ]);
     }
 }
