@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EscalaVoluntarioRequest;
 use App\Services\EscalaService;
+use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 
 /**
@@ -19,6 +21,11 @@ class EscalaController extends Controller
     private $service;
 
     /**
+     * @var EscalaVoluntarioService
+     */
+    private $escalaVoluntarioService;
+
+    /**
      * @var VoluntarioService
      */
     private $voluntarioService;
@@ -26,11 +33,17 @@ class EscalaController extends Controller
     /**
      * @param EscalaService $service
      * @param VoluntarioService $voluntarioService
+     * @param EscalaVoluntarioService $escalaVoluntarioService
      */
-    public function __construct(EscalaService $service, VoluntarioService $voluntarioService)
+    public function __construct(
+        EscalaService           $service,
+        VoluntarioService       $voluntarioService,
+        EscalaVoluntarioService $escalaVoluntarioService
+    )
     {
         $this->service = $service;
         $this->voluntarioService = $voluntarioService;
+        $this->escalaVoluntarioService = $escalaVoluntarioService;
     }
 
     /**
@@ -50,5 +63,17 @@ class EscalaController extends Controller
             'qntdPreenchida' => $qntdVoluntariadoPreenchido,
             'qntdReferencia' => ceil($qntdVoluntariadoNecessario / $voluntarios->count()),
         ]);
+    }
+
+    /**
+     * @param EscalaVoluntarioRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(EscalaVoluntarioRequest $request)
+    {
+        $this->escalaVoluntarioService->store($request);
+//        $this->regraQntdVoluntariosAtingida($request);
+
+        return response()->json($request->all());
     }
 }
