@@ -42,7 +42,7 @@ class EscalaVoluntarioController extends Controller
     public function new(EscalaVoluntarioRequest $request)
     {
         $this->service->store($request);
-        $this->regraQntdVoluntariosAtingida($request);
+        $this->escalaService->regraQntdVoluntariosAtingida($request->get('escala_id'));
         return redirect('escalas/#' . $request->get('escala_id'));
     }
 
@@ -55,7 +55,7 @@ class EscalaVoluntarioController extends Controller
         $this->checkPermission('adm-editar-escala');
         $request->request->add(['user_id' => Auth::id()]);
         $this->service->store($request);
-        $this->regraQntdVoluntariosAtingida($request);
+        $this->escalaService->regraQntdVoluntariosAtingida($request->get('escala_id'));
         return $this->redirectWithMessage(['escalas.edit', $request->get('escala_id')], __(Constants::SUCCESS_UPDATE));
     }
 
@@ -89,26 +89,5 @@ class EscalaVoluntarioController extends Controller
     {
         $data = $this->service->update($request, $request->get('id'));
         return response()->json(['data' => $data, 'retorno' => true]);
-    }
-
-    /**
-     * @param $request
-     * @return void
-     */
-    private function regraQntdVoluntariosAtingida($request)
-    {
-        $escalaId = $request->get('escala_id');
-        $escala = $this->escalaService->find($escalaId);
-        $qntdVoluntariosAtual = $escala->voluntarios()->count();
-        $qntdVoluntariosPossiveis = $escala->evento->qntd_voluntarios;
-
-        if (
-            !empty($qntdVoluntariosAtual) &&
-            !empty($qntdVoluntariosPossiveis) &&
-            ($qntdVoluntariosAtual >= $qntdVoluntariosPossiveis)
-        ) {
-            $escala->fechada = Constants::TRUE;
-            $escala->save();
-        }
     }
 }

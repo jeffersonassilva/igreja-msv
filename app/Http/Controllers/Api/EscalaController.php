@@ -72,7 +72,7 @@ class EscalaController extends Controller
     public function store(EscalaVoluntarioRequest $request)
     {
         $this->escalaVoluntarioService->store($request);
-//        $this->regraQntdVoluntariosAtingida($request);
+        $this->service->regraQntdVoluntariosAtingida($request->get('escala_id'));
 
         return response()->json($request->all());
     }
