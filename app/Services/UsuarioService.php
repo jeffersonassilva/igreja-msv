@@ -45,9 +45,7 @@ class UsuarioService extends AbstractService
     {
         $data = $this->model->find($id);
         $data->fill($request->all())->save();
-        if ($request->roles) {
-            $data->roles()->sync($request->roles);
-        }
+        $data->roles()->sync($request->roles ?? []);
 
         return $data;
     }
