@@ -29,6 +29,11 @@ class EscalaVoluntario extends AbstractModel
         'user_id',
         'comparecimento',
         'justificativa',
+        'dispositivo_os',
+        'dispositivo_versao',
+        'dispositivo_nome',
+        'dispositivo_modelo',
+        'app_versao',
     ];
 
     /**
