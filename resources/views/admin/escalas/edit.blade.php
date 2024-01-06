@@ -13,7 +13,7 @@
             <x-form.input label="Data"
                           name="dt_escala"
                           type="date"
-                          min="{{ \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}"
+                          min="{{ date('Y-m') . '-01' }}"
                           max="{{ date('Y-m-d', strtotime('+2 month')) }}"
                           size="md:max-w-[250px]"
                           value="{{ old('dt_escala') ?? \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}"
