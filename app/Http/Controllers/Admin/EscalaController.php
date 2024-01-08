@@ -63,8 +63,6 @@ class EscalaController extends Controller
     public function list(Request $request)
     {
         $data = $this->service->list($request->all());
-        $qntdVoluntariadoNecessario = $this->service->qntdVoluntariadoNecessarioNoMes();
-        $qntdVoluntariadoPreenchido = $this->service->qntdVoluntariadoPreenchidoNoMes();
         $funcoes = $this->escalaFuncaoService->list();
         $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
         $eventos = $this->eventoService->all();
@@ -74,8 +72,6 @@ class EscalaController extends Controller
             'funcoes' => $funcoes,
             'voluntarios' => $voluntarios,
             'eventos' => $eventos,
-            'qntdVoluntariadoNecessario' => $qntdVoluntariadoNecessario,
-            'qntdVoluntariadoPreenchido' => $qntdVoluntariadoPreenchido,
         ]);
     }
 
