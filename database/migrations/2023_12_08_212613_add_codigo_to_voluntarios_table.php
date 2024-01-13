@@ -14,7 +14,10 @@ class AddCodigoToVoluntariosTable extends Migration
     public function up()
     {
         Schema::table('voluntarios', function (Blueprint $table) {
-            $table->string('codigo', 10)->nullable()->after('situacao');
+            $table->string('codigo', 10)
+                ->nullable()
+                ->unique()
+                ->after('situacao');
         });
     }
 
