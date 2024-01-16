@@ -69,6 +69,16 @@
                                 "Se a situação for <span class=\"text-blue-400\">Inativo</span>, o nome não aparecerá como opção na lista de voluntários."
                            ]' />
 
+            <x-form.input label="Código App"
+                          name="codigo"
+                          maxlength="10"
+                          value="{{ old('codigo') ?? $data->codigo }}"
+                          size="md:max-w-[150px]"
+                          :observacoes='[
+                                "Máximo de 10 caracteres.",
+                                "Este código é utilizado para inserir o voluntário na escala via App Mobile."
+                          ]' />
+
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('voluntarios')"
                             :infoRequired="true" />
