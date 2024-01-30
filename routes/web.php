@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CartaoController;
+use App\Http\Controllers\Admin\ClasseController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
@@ -196,6 +197,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Relatórios Terouraria
     Route::get('/relatorios-tesouraria', [RelatoriosTerourariaController::class, 'index'])->name('relatorios-tesouraria');
     Route::get('/relatorio-tesouraria/por-cartao', [RelatoriosTerourariaController::class, 'relatorioPorCartaoPdf'])->name('relatorios-tesouraria.por-cartao');
+
+    //EBD - Classes
+    Route::get('/classes', [ClasseController::class, 'index'])->name('classes');
+    Route::get('/classes/adicionar', [ClasseController::class, 'create'])->name('classes.create');
+    Route::post('/classes', [ClasseController::class, 'store'])->name('classes.store');
+    Route::get('/classes/{classe}/editar', [ClasseController::class, 'edit'])->name('classes.edit');
+    Route::put('/classes/{classe}', [ClasseController::class, 'update'])->name('classes.update');
+    Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('classes.destroy');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
