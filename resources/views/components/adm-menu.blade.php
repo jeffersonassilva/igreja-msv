@@ -52,6 +52,15 @@
         </x-adm-menu-group>
     @endcan
 
+    @canany(['adm-menu-classes'])
+        <x-adm-menu-group name="EBD" id="ebd" icon="school-outline"
+                          :groups='["classes"]'
+                          :submenus='[
+                            ["label" => "Classes", "route" => "classes", "permission" => "adm-menu-classes"]
+                          ]'>
+        </x-adm-menu-group>
+    @endcan
+
     @canany(['adm-menu-usuario', 'adm-menu-permissao', 'adm-menu-perfil'])
         <x-adm-menu-group name="Segurança" id="seguranca" icon="key-outline"
                           :groups='["usuarios", "perfis", "permissoes"]'
