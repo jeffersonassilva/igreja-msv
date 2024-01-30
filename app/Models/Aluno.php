@@ -22,4 +22,16 @@ class Aluno extends AbstractModel
         'nome',
         'situacao',
     ];
+
+    protected $with = [
+        'classes'
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function classes()
+    {
+        return $this->belongsToMany(Classe::class, AlunoClasse::class);
+    }
 }

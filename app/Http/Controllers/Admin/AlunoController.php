@@ -6,6 +6,7 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlunoRequest;
 use App\Services\AlunoService;
+use App\Services\ClasseService;
 
 /**
  * Class AlunoController
@@ -19,11 +20,18 @@ class AlunoController extends Controller
     private $service;
 
     /**
-     * @param AlunoService $service
+     * @var ClasseService
      */
-    public function __construct(AlunoService $service)
+    private $classeService;
+
+    /**
+     * @param AlunoService $service
+     * @param ClasseService $classeService
+     */
+    public function __construct(AlunoService $service, ClasseService $classeService)
     {
         $this->service = $service;
+        $this->classeService = $classeService;
     }
 
     /**
@@ -42,8 +50,16 @@ class AlunoController extends Controller
     public function create()
     {
         $this->checkPermission('adm-adicionar-aluno');
+        $classes = $this->classeService->all();
+        $arrayClasses = [];
 
-        return view('admin/alunos/create');
+        foreach ($classes as $key => $classe) {
+            $arrayClasses[$key]['id'] = $classe->id;
+            $arrayClasses[$key]['descricao'] = $classe->nome;
+            $arrayClasses[$key]['checked'] = false;
+        }
+
+        return view('admin/alunos/create')->with(['classes' => $arrayClasses]);
     }
 
     /**
@@ -65,7 +81,24 @@ class AlunoController extends Controller
     {
         $this->checkPermission('adm-editar-aluno');
         $data = $this->service->edit($id);
-        return view('admin/alunos/edit')->with(['data' => $data]);
+        $classes = $this->classeService->all();
+        $arrayClasses = [];
+        $arrayClassesCadastradas = [];
+
+        foreach ($data->classes as $classeCadastrada) {
+            $arrayClassesCadastradas[] = $classeCadastrada->id;
+        }
+
+        foreach ($classes as $key => $classe) {
+            $arrayClasses[$key]['id'] = $classe->id;
+            $arrayClasses[$key]['descricao'] = $classe->nome;
+            $arrayClasses[$key]['checked'] = in_array($classe->id, $arrayClassesCadastradas);
+        }
+
+        return view('admin/alunos/edit')->with([
+            'data' => $data,
+            'classes' => $arrayClasses
+        ]);
     }
 
     /**
