@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AlunoController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CartaoController;
 use App\Http\Controllers\Admin\ClasseController;
@@ -194,7 +195,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/permissoes/{permissao}/editar', [PermissaoController::class, 'edit'])->name('permissoes.edit');
     Route::put('/permissoes/{permissao}', [PermissaoController::class, 'update'])->name('permissoes.update');
 
-    //Relatórios Terouraria
+    //Relatórios Tesouraria
     Route::get('/relatorios-tesouraria', [RelatoriosTerourariaController::class, 'index'])->name('relatorios-tesouraria');
     Route::get('/relatorio-tesouraria/por-cartao', [RelatoriosTerourariaController::class, 'relatorioPorCartaoPdf'])->name('relatorios-tesouraria.por-cartao');
 
@@ -205,6 +206,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/classes/{classe}/editar', [ClasseController::class, 'edit'])->name('classes.edit');
     Route::put('/classes/{classe}', [ClasseController::class, 'update'])->name('classes.update');
     Route::delete('/classes/{classe}', [ClasseController::class, 'destroy'])->name('classes.destroy');
+
+    //EBD - Alunos
+    Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos');
+    Route::get('/alunos/adicionar', [AlunoController::class, 'create'])->name('alunos.create');
+    Route::post('/alunos', [AlunoController::class, 'store'])->name('alunos.store');
+    Route::get('/alunos/{aluno}/editar', [AlunoController::class, 'edit'])->name('alunos.edit');
+    Route::put('/alunos/{aluno}', [AlunoController::class, 'update'])->name('alunos.update');
+    Route::delete('/alunos/{aluno}', [AlunoController::class, 'destroy'])->name('alunos.destroy');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
