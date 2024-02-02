@@ -28,6 +28,11 @@
                                 "Se a situação for <span class=\"text-blue-400\">Inativo</span>, o aluno não aparecerá na lista de chamada."
                            ]' />
 
+            <x-form.checkboxes label="Classes"
+                               name="classes[]"
+                               :items="$classes"
+                               :observacoes='["Selecione as classes que o aluno participa."]' />
+
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('alunos')"
                             :infoRequired="true" />
