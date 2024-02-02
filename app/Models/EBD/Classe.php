@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\EBD;
+
+use App\Models\AbstractModel;
 
 class Classe extends AbstractModel
 {
     /**
      * @var string
      */
-    protected $table = 'classes';
+    protected $table = 'ebd_classes';
 
     /**
      * @var string

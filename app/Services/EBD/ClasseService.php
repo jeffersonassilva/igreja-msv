@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\EBD;
 
-use App\Models\Classe;
+use App\Models\EBD\Classe;
+use App\Services\AbstractService;
 
 /**
  * Class ClasseService

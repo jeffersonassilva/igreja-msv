@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\EBD;
+
+use App\Models\AbstractModel;
 
 class Aluno extends AbstractModel
 {
     /**
      * @var string
      */
-    protected $table = 'alunos';
+    protected $table = 'ebd_alunos';
 
     /**
      * @var string

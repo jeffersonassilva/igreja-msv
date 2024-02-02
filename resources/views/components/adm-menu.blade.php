@@ -52,12 +52,13 @@
         </x-adm-menu-group>
     @endcan
 
-    @canany(['adm-menu-classes'])
+    @canany(['adm-menu-ebd-classes'])
         <x-adm-menu-group name="EBD" id="ebd" icon="school-outline"
-                          :groups='["classes", "alunos"]'
+                          :groups='["classes", "alunos", "calendario"]'
                           :submenus='[
-                            ["label" => "Alunos", "route" => "alunos", "permission" => "adm-menu-alunos"],
-                            ["label" => "Classes", "route" => "classes", "permission" => "adm-menu-classes"],
+                            ["label" => "Alunos", "route" => "alunos", "permission" => "adm-menu-ebd-alunos"],
+                            ["label" => "Calendário", "route" => "calendario", "permission" => "adm-menu-ebd-calendario"],
+                            ["label" => "Classes", "route" => "classes", "permission" => "adm-menu-ebd-classes"],
                           ]'>
         </x-adm-menu-group>
     @endcan
