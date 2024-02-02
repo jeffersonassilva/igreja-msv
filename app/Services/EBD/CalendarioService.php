@@ -2,26 +2,26 @@
 
 namespace App\Services\EBD;
 
-use App\Models\EBD\ClasseCalendario;
+use App\Models\EBD\Calendario;
 use App\Services\AbstractService;
 
 /**
- * Class ClasseCalendarioService
+ * Class CalendarioService
  * @package App\Services
  */
-class ClasseCalendarioService extends AbstractService
+class CalendarioService extends AbstractService
 {
     /**
-     * @var ClasseCalendario
+     * @var Calendario
      */
     protected $model;
 
     /**
-     * ClasseCalendarioService constructor.
+     * CalendarioService constructor.
      */
     public function __construct()
     {
-        $this->model = new ClasseCalendario();
+        $this->model = new Calendario();
     }
 
     /**

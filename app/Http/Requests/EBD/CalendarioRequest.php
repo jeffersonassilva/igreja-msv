@@ -5,10 +5,10 @@ namespace App\Http\Requests\EBD;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class ClasseCalendarioRequest
+ * Class CalendarioRequest
  * @package App\Http\Requests
  */
-class ClasseCalendarioRequest extends FormRequest
+class CalendarioRequest extends FormRequest
 {
     /**
      * @return bool
@@ -25,7 +25,7 @@ class ClasseCalendarioRequest extends FormRequest
     {
         $rules = [
             'data' => 'date',
-            'professor' => 'nullable|max:255',
+            'professor_id' => 'nullable',
         ];
 
         if ($this->_method === 'PUT') {
@@ -44,7 +44,7 @@ class ClasseCalendarioRequest extends FormRequest
     {
         return [
             'data' => 'Data',
-            'professor' => 'Professor',
+            'professor_id' => 'Professor',
             'classe_id' => 'Classe',
             'classes' => 'Classes',
         ];

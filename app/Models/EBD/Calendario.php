@@ -4,7 +4,7 @@ namespace App\Models\EBD;
 
 use App\Models\AbstractModel;
 
-class ClasseCalendario extends AbstractModel
+class Calendario extends AbstractModel
 {
     /**
      * @var string
@@ -21,12 +21,13 @@ class ClasseCalendario extends AbstractModel
      */
     protected $fillable = [
         'data',
-        'professor',
+        'professor_id',
         'classe_id',
     ];
 
     protected $with = [
-        'classe'
+        'classe',
+        'professor'
     ];
 
     /**
@@ -35,5 +36,13 @@ class ClasseCalendario extends AbstractModel
     public function classe()
     {
         return $this->belongsTo(Classe::class, 'classe_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function professor()
+    {
+        return $this->belongsTo(Professor::class, 'professor_id', 'id');
     }
 }
