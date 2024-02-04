@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex items-center text-zinc-400">
                     <div class="text-lg pt-1"><ion-icon name="mail"></ion-icon></div>
-                    <span class="px-2 font-thin">contato@igrejamsv.org</span>
+                    <span class="px-2 font-thin">comunicacao@igrejamsv.org</span>
                 </div>
             </div>
         </div>
