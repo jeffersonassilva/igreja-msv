@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateClassesTable extends Migration
+class CreateEbdClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('ebd_classes', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
             $table->timestamps();
@@ -31,7 +31,7 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('ebd_classes');
     }
 
     /**
@@ -39,7 +39,7 @@ class CreateClassesTable extends Migration
      */
     private function seed()
     {
-        DB::table('classes')->insert([
+        DB::table('ebd_classes')->insert([
             ['nome' => 'Adolescentes'],
             ['nome' => 'Homens'],
             ['nome' => 'Infantil I'],

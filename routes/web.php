@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\AlunoController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CartaoController;
-use App\Http\Controllers\Admin\ClasseController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
+use App\Http\Controllers\Admin\EBD\AlunoController;
+use App\Http\Controllers\Admin\EBD\ClasseCalendarioController;
+use App\Http\Controllers\Admin\EBD\ClasseController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
@@ -24,8 +25,8 @@ use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotasFiscaisController;
 use App\Http\Controllers\OfertaController;
-use App\Http\Controllers\TestemunhoController;
 use App\Http\Controllers\PoliticaPrivacidadeController;
+use App\Http\Controllers\TestemunhoController;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
@@ -214,6 +215,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/alunos/{aluno}/editar', [AlunoController::class, 'edit'])->name('alunos.edit');
     Route::put('/alunos/{aluno}', [AlunoController::class, 'update'])->name('alunos.update');
     Route::delete('/alunos/{aluno}', [AlunoController::class, 'destroy'])->name('alunos.destroy');
+
+    //EBD - Classe Calendário
+    Route::get('/calendario', [ClasseCalendarioController::class, 'index'])->name('calendario');
+    Route::get('/calendario/adicionar', [ClasseCalendarioController::class, 'create'])->name('calendario.create');
+    Route::post('/calendario', [ClasseCalendarioController::class, 'store'])->name('calendario.store');
+    Route::get('/calendario/{data}/editar', [ClasseCalendarioController::class, 'edit'])->name('calendario.edit');
+    Route::put('/calendario/{data}', [ClasseCalendarioController::class, 'update'])->name('calendario.update');
+    Route::delete('/calendario/{aluno}', [ClasseCalendarioController::class, 'destroy'])->name('calendario.destroy');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');

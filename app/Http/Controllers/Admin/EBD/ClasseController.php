@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\EBD;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClasseRequest;
-use App\Services\ClasseService;
+use App\Http\Requests\EBD\ClasseRequest;
+use App\Services\EBD\ClasseService;
 
 /**
  * Class ClasseController
@@ -31,9 +31,9 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $this->checkPermission('adm-listar-classes');
+        $this->checkPermission('adm-listar-ebd-classes');
         $data = $this->service->paginate(['nome' => 'asc']);
-        return view('admin/classes/index')->with('classes', $data);
+        return view('admin/ebd/classes/index')->with('classes', $data);
     }
 
     /**
@@ -41,9 +41,9 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        $this->checkPermission('adm-adicionar-classe');
+        $this->checkPermission('adm-adicionar-ebd-classe');
 
-        return view('admin/classes/create');
+        return view('admin/ebd/classes/create');
     }
 
     /**
@@ -52,7 +52,7 @@ class ClasseController extends Controller
      */
     public function store(ClasseRequest $request)
     {
-        $this->checkPermission('adm-adicionar-classe');
+        $this->checkPermission('adm-adicionar-ebd-classe');
         $this->service->store($request);
         return $this->redirectWithMessage('classes', __(Constants::SUCCESS_CREATE));
     }
@@ -63,9 +63,9 @@ class ClasseController extends Controller
      */
     public function edit($id)
     {
-        $this->checkPermission('adm-editar-classe');
+        $this->checkPermission('adm-editar-ebd-classe');
         $data = $this->service->edit($id);
-        return view('admin/classes/edit')->with(['data' => $data]);
+        return view('admin/ebd/classes/edit')->with(['data' => $data]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ClasseController extends Controller
      */
     public function update(ClasseRequest $request, $id)
     {
-        $this->checkPermission('adm-editar-classe');
+        $this->checkPermission('adm-editar-ebd-classe');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('classes', __(Constants::SUCCESS_UPDATE));
     }
@@ -86,7 +86,7 @@ class ClasseController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkPermission('adm-excluir-classe');
+        $this->checkPermission('adm-excluir-ebd-classe');
         $this->service->destroy($id);
         return $this->redirectWithMessage('classes', __(Constants::SUCCESS_DESTROY));
     }

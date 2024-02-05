@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\EBD;
 
-use App\Models\Aluno;
+use App\Models\EBD\Aluno;
+use App\Services\AbstractService;
 
 /**
  * Class AlunoService

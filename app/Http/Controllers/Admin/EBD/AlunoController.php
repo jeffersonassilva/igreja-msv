@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\EBD;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AlunoRequest;
-use App\Services\AlunoService;
-use App\Services\ClasseService;
+use App\Http\Requests\EBD\AlunoRequest;
+use App\Services\EBD\AlunoService;
+use App\Services\EBD\ClasseService;
 
 /**
  * Class AlunoController
@@ -39,9 +39,9 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $this->checkPermission('adm-listar-alunos');
+        $this->checkPermission('adm-listar-ebd-alunos');
         $data = $this->service->paginate(['nome' => 'asc']);
-        return view('admin/alunos/index')->with('alunos', $data);
+        return view('admin/ebd/alunos/index')->with('alunos', $data);
     }
 
     /**
@@ -49,7 +49,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        $this->checkPermission('adm-adicionar-aluno');
+        $this->checkPermission('adm-adicionar-ebd-aluno');
         $classes = $this->classeService->all();
         $arrayClasses = [];
 
@@ -59,7 +59,7 @@ class AlunoController extends Controller
             $arrayClasses[$key]['checked'] = false;
         }
 
-        return view('admin/alunos/create')->with(['classes' => $arrayClasses]);
+        return view('admin/ebd/alunos/create')->with(['classes' => $arrayClasses]);
     }
 
     /**
@@ -68,7 +68,7 @@ class AlunoController extends Controller
      */
     public function store(AlunoRequest $request)
     {
-        $this->checkPermission('adm-adicionar-aluno');
+        $this->checkPermission('adm-adicionar-ebd-aluno');
         $this->service->store($request);
         return $this->redirectWithMessage('alunos', __(Constants::SUCCESS_CREATE));
     }
@@ -79,7 +79,7 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        $this->checkPermission('adm-editar-aluno');
+        $this->checkPermission('adm-editar-ebd-aluno');
         $data = $this->service->edit($id);
         $classes = $this->classeService->all();
         $arrayClasses = [];
@@ -95,7 +95,7 @@ class AlunoController extends Controller
             $arrayClasses[$key]['checked'] = in_array($classe->id, $arrayClassesCadastradas);
         }
 
-        return view('admin/alunos/edit')->with([
+        return view('admin/ebd/alunos/edit')->with([
             'data' => $data,
             'classes' => $arrayClasses
         ]);
@@ -108,7 +108,7 @@ class AlunoController extends Controller
      */
     public function update(AlunoRequest $request, $id)
     {
-        $this->checkPermission('adm-editar-aluno');
+        $this->checkPermission('adm-editar-ebd-aluno');
         $this->service->update($request, $id);
         return $this->redirectWithMessage('alunos', __(Constants::SUCCESS_UPDATE));
     }
@@ -119,7 +119,7 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkPermission('adm-excluir-aluno');
+        $this->checkPermission('adm-excluir-ebd-aluno');
         $this->service->destroy($id);
         return $this->redirectWithMessage('alunos', __(Constants::SUCCESS_DESTROY));
     }
