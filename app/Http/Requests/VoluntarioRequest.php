@@ -31,7 +31,7 @@ class VoluntarioRequest extends FormRequest
             'professor_ebd' => ['required', Rule::in(['0', '1'])],
             'observacao' => 'max:1000',
             'disponibilidades' => 'required|min:1',
-            'codigo' => 'nullable|unique:voluntarios,codigo',
+            'codigo' => ['nullable', Rule::unique('voluntarios', 'codigo')->ignore($this->voluntario)],
         ];
     }
 
