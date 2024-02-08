@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EBD\AlunoController;
 use App\Http\Controllers\Admin\EBD\ClasseCalendarioController;
 use App\Http\Controllers\Admin\EBD\ClasseController;
+use App\Http\Controllers\Admin\EBD\ProfessorController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
@@ -223,6 +224,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/calendario/{data}/editar', [ClasseCalendarioController::class, 'edit'])->name('calendario.edit');
     Route::put('/calendario/{data}', [ClasseCalendarioController::class, 'update'])->name('calendario.update');
     Route::delete('/calendario/{aluno}', [ClasseCalendarioController::class, 'destroy'])->name('calendario.destroy');
+
+    //EBD - Professores
+    Route::get('/professores', [ProfessorController::class, 'index'])->name('professores');
+    Route::get('/professores/adicionar', [ProfessorController::class, 'create'])->name('professores.create');
+    Route::post('/professores', [ProfessorController::class, 'store'])->name('professores.store');
+    Route::get('/professores/{professor}/editar', [ProfessorController::class, 'edit'])->name('professores.edit');
+    Route::put('/professores/{professor}', [ProfessorController::class, 'update'])->name('professores.update');
+    Route::delete('/professores/{professor}', [ProfessorController::class, 'destroy'])->name('professores.destroy');
 
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
