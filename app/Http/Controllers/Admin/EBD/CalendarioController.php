@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Admin\EBD;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EBD\ClasseCalendarioRequest;
-use App\Services\EBD\ClasseCalendarioService;
+use App\Http\Requests\EBD\CalendarioRequest;
+use App\Services\EBD\CalendarioService;
 use App\Services\EBD\ClasseService;
+use App\Services\EBD\ProfessorService;
 
 /**
- * Class ClasseCalendarioController
+ * Class CalendarioController
  * @package App\Http\Controllers
  */
-class ClasseCalendarioController extends Controller
+class CalendarioController extends Controller
 {
     /**
-     * @var ClasseCalendarioService
+     * @var CalendarioService
      */
     private $service;
 
@@ -25,13 +26,20 @@ class ClasseCalendarioController extends Controller
     private $classeService;
 
     /**
-     * @param ClasseCalendarioService $service
-     * @param ClasseService $classeService
+     * @var ProfessorService
      */
-    public function __construct(ClasseCalendarioService $service, ClasseService $classeService)
+    private $professorService;
+
+    /**
+     * @param CalendarioService $service
+     * @param ClasseService $classeService
+     * @param ProfessorService $professorService
+     */
+    public function __construct(CalendarioService $service, ClasseService $classeService, ProfessorService $professorService)
     {
         $this->service = $service;
         $this->classeService = $classeService;
+        $this->professorService = $professorService;
     }
 
     /**
@@ -63,10 +71,10 @@ class ClasseCalendarioController extends Controller
     }
 
     /**
-     * @param ClasseCalendarioRequest $request
+     * @param CalendarioRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(ClasseCalendarioRequest $request)
+    public function store(CalendarioRequest $request)
     {
         $this->checkPermission('adm-adicionar-ebd-calendario');
         $this->service->storeMany($request);
@@ -82,19 +90,21 @@ class ClasseCalendarioController extends Controller
         $this->checkPermission('adm-editar-ebd-calendario');
         $data = $this->service->edit($id);
         $classes = $this->classeService->pluck('id', 'nome');
+        $professores = $this->professorService->pluck('id', 'nome');
 
         return view('admin/ebd/calendario/edit')->with([
             'data' => $data,
-            'classes' => $classes
+            'classes' => $classes,
+            'professores' => $professores
         ]);
     }
 
     /**
-     * @param ClasseCalendarioRequest $request
+     * @param CalendarioRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ClasseCalendarioRequest $request, $id)
+    public function update(CalendarioRequest $request, $id)
     {
         $this->checkPermission('adm-editar-ebd-calendario');
         $this->service->update($request, $id);

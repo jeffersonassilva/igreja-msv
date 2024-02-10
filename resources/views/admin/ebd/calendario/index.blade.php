@@ -23,7 +23,7 @@
                             Classe: {{ $data->classe->nome }}
                         </p>
                         <p class="text-sm mt-1 font-thin text-gray-500 dark:text-[#d0d9e6]">
-                            Professor: {{ $data->professor }}
+                            Professor: {{ $data->professor ? $data->professor->nome : null }}
                         </p>
                         @canany(['adm-editar-ebd-aluno', 'adm-excluir-ebd-aluno'])
                             <div class="text-sm mt-3 flex gap-2">
