@@ -25,6 +25,7 @@ class ClasseRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:50',
+            'revista' => 'nullable|image|mimes:jpg,jpeg,png',
         ];
     }
 
@@ -35,6 +36,7 @@ class ClasseRequest extends FormRequest
     {
         return [
             'nome' => 'Nome',
+            'revista' => 'Revista',
         ];
     }
 }

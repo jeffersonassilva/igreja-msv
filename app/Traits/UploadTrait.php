@@ -61,6 +61,20 @@ trait UploadTrait
     }
 
     /**
+     * @param $request
+     * @param $dados
+     * @return mixed
+     */
+    public function definirNomeDaImagemRevista($request, $dados)
+    {
+        if ($request->hasFile('revista')) {
+            $dados['revista'] = $this->diretorio . $this->uploadRevistaEBD($request);
+        }
+
+        return $dados;
+    }
+
+    /**
      * @param $time
      * @param $request
      * @return false|string
@@ -129,6 +143,17 @@ trait UploadTrait
     }
 
     /**
+     * @param $request
+     * @return false|string
+     */
+    private function uploadRevistaEBD($request)
+    {
+        $extension = $request->file('revista')->extension();
+        $nomeImagem = $this->getDataAtual() . '.' . $extension;
+        return Storage::disk('revistas')->putFileAs('', $request->file('revista'), $nomeImagem);
+    }
+
+    /**
      * @param $fileName
      * @param $extension
      * @param $width
@@ -187,6 +212,18 @@ trait UploadTrait
     {
         if (isset($alteracoes['foto'])) {
             Storage::disk('voluntarios')->delete(str_replace($this->diretorio, '', $data['foto']));
+        }
+    }
+
+    /**
+     * @param $data
+     * @param $alteracoes
+     * @return void
+     */
+    private function removerFotoAntigaRevista($data, $alteracoes)
+    {
+        if (isset($alteracoes['revista'])) {
+            Storage::disk('revistas')->delete(str_replace($this->diretorio, '', $data['revista']));
         }
     }
 }

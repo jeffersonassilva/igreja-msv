@@ -22,5 +22,6 @@ class Classe extends AbstractModel
     protected $fillable = [
         'id',
         'nome',
+        'revista',
     ];
 }

@@ -50,6 +50,11 @@ return [
             'root' => 'img/notas-fiscais',
         ],
 
+        'revistas' => [
+            'driver' => 'local',
+            'root' => 'img/ebd/revistas',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
