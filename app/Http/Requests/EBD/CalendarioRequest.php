@@ -26,6 +26,7 @@ class CalendarioRequest extends FormRequest
         $rules = [
             'data' => 'date',
             'professor_id' => 'nullable',
+            'tema' => 'nullable|max:255',
         ];
 
         if ($this->_method === 'PUT') {
@@ -44,6 +45,7 @@ class CalendarioRequest extends FormRequest
     {
         return [
             'data' => 'Data',
+            'tema' => 'Tema',
             'professor_id' => 'Professor',
             'classe_id' => 'Classe',
             'classes' => 'Classes',

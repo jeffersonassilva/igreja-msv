@@ -37,6 +37,7 @@ class CalendarioService extends AbstractService
             $this->model->updateOrCreate(
                 [
                     'data' => $request->get('data'),
+                    'tema' => $request->get('tema'),
                     'classe_id' => $item
                 ]
             );

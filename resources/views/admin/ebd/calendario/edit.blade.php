@@ -22,6 +22,13 @@
                           :required="true"
                           :observacoes='["Informe a data da aula."]' />
 
+            <x-form.input label="Tema"
+                          name="tema"
+                          maxlength="255"
+                          :required="false"
+                          value="{{ old('tema') ?? $data->tema }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.select label="Professor"
                            name="professor_id"
                            size="md:max-w-[250px]"
