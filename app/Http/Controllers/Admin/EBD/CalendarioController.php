@@ -8,6 +8,7 @@ use App\Http\Requests\EBD\CalendarioRequest;
 use App\Services\EBD\CalendarioService;
 use App\Services\EBD\ClasseService;
 use App\Services\EBD\ProfessorService;
+use Illuminate\Http\Request;
 
 /**
  * Class CalendarioController
@@ -40,6 +41,19 @@ class CalendarioController extends Controller
         $this->service = $service;
         $this->classeService = $classeService;
         $this->professorService = $professorService;
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function list(Request $request)
+    {
+        $data = $this->service->list($request->all());
+
+        return view('escalas-ebd')->with([
+            'escalas' => $data,
+        ]);
     }
 
     /**
