@@ -4,8 +4,10 @@
     </x-slot>
 
     <section>
-        <div class="hidden md:block h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
-            <div class="text-sm">&nbsp;</div>
+        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
+            <div class="text-sm">
+                <x-button.link title="Adicionar Visitante" target="_blank" :route="route('visitantes.create')"></x-button.link>
+            </div>
         </div>
         @if(count($visitantes))
             <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:py-3 gap-4">
