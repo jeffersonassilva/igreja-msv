@@ -26,6 +26,13 @@
                         </div>
                         <div>
                             <h3 class="text-gray-700 font-medium dark:text-white line-clamp-1">{{ $classe->nome }}</h3>
+                            @if($classe->link)
+                                <p class="text-sm font-thin text-gray-500 dark:text-[#d0d9e6]">
+                                    <a href="{{ $classe->link }}" target="_blank"
+                                       class="font-thin text-sm underline underline-offset-2 text-blue-500">Link da revista
+                                    </a>
+                                </p>
+                            @endif
                             @canany(['adm-editar-ebd-classe', 'adm-excluir-ebd-classe'])
                                 <div class="text-sm mt-3 flex gap-2">
                                     @can('adm-editar-ebd-classe')

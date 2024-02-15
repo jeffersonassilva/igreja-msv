@@ -15,6 +15,12 @@
                           :required="true"
                           :observacoes='["Máximo de 50 caracteres."]' />
 
+            <x-form.input label="Faixa Etária"
+                          name="faixa_etaria"
+                          maxlength="255"
+                          :required="true"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('classes')"
                             :infoRequired="true" />

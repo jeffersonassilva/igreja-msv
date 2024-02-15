@@ -22,6 +22,7 @@ class Classe extends AbstractModel
     protected $fillable = [
         'id',
         'nome',
+        'faixa_etaria',
         'revista',
         'link',
     ];
