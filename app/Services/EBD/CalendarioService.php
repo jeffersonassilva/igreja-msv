@@ -51,7 +51,8 @@ class CalendarioService extends AbstractService
      */
     public function list($filter = array())
     {
-        $query = $this->model->withAggregate('classe', 'nome');
+        $query = $this->model->with('classe.alunos')
+            ->withAggregate('classe', 'nome');
 
         if (isset($filter['dt_escala'])) {
             $query->whereDate('data', '=', $filter['dt_escala']);

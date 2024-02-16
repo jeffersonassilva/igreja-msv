@@ -26,4 +26,12 @@ class Classe extends AbstractModel
         'revista',
         'link',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function alunos()
+    {
+        return $this->belongsToMany(Aluno::class, AlunoClasse::class, 'classe_id', 'aluno_id');
+    }
 }
