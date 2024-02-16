@@ -1,6 +1,6 @@
 @props(['classe'])
 
-<div class="flex items-center mt-3">
+<div class="flex items-center mt-2 md:mt-3">
 {{--    @if(count($classe->alunos) > 0)--}}
 {{--        @foreach($classe->alunos as $aluno)--}}
 {{--        <div class="ml-[-10px]">--}}
