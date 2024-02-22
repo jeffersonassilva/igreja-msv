@@ -31,9 +31,9 @@
         @foreach ($submenus as $submenu)
             @can($submenu['permission'])
                 <li>
-                    <a class="@if(preg_match('/^admin\/' . $submenu['route'] . '($|\/|\?)/', request()->path())) text-blue-500 dark:text-yellow-400 @endif
-                       px-5 lg:px-4 lg:w-full h-12 relative text-gray-500
-                       flex gap-1 items-center lg:hover:pl-5 dark:text-[#d0d9e6]
+                    <a class="@if(preg_match('/^admin\/' . $submenu['route'] . '($|\/|\?)/', request()->path())) text-blue-500 dark:text-yellow-400 @else text-gray-500 dark:text-[#d0d9e6] @endif
+                       px-5 lg:px-4 lg:w-full h-12 relative
+                       flex gap-1 items-center lg:hover:pl-5
                        transition-[padding] duration-300 ease-in-out"
                        href="@if($submenu['route'] === '#') # @else {{ route($submenu['route']) }} @endif">
                         <div class="lg:w-[22px] text-gray-300 dark:text-[#40465f]">└</div>
