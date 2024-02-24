@@ -17,15 +17,46 @@
                 <span class="text-sm text-gray-800">
                     {{ \Carbon\Carbon::parse($escala->data)->dayName }}
                 </span>
-                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
-                    {{ \Carbon\Carbon::parse($escala->data)->monthName }}, {{ \Carbon\Carbon::parse($escala->data)->format('Y') }}
+                <span class="text-sm font-thin
+                      @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
+                    {{ \Carbon\Carbon::parse($escala->data)->monthName }} de
+                    {{ \Carbon\Carbon::parse($escala->data)->format('Y') }}
                 </span>
-                <span class="text-sm font-thin @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
+                <span class="text-sm font-thin
+                      @if($escala->fechada) text-gray-600 @else text-gray-500 @endif">
                     às {{ \Carbon\Carbon::parse($escala->data)->format('H:i') }}h
                 </span>
             </div>
         </div>
     </div>
+    @if($escala->evento_id != 1)
+    <section class="px-6 py-2">
+        @if($escala->dirigente)
+        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
+            <div class="font-normal">Dirigente:</div>
+            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
+                {{ $escala->dirigente }}
+            </div>
+        </div>
+        @endif
+        @if($escala->pregador)
+        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
+            <div class="font-normal">Pregador:</div>
+            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
+                {{ $escala->pregador }}
+            </div>
+        </div>
+        @endif
+        @if($escala->tema)
+        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
+            <div class="font-normal">Tema:</div>
+            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
+                {{ $escala->tema }}
+            </div>
+        </div>
+        @endif
+    </section>
+    @endif
     <div class="p-4 py-6 sm:px-6 flex-1">
         @if($escala->evento_id == 1)
             <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
