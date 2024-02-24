@@ -42,7 +42,7 @@
                                         {{ $data->tema }}
                                     </p>
                                 @endif
-                                @canany(['adm-editar-ebd-aluno', 'adm-excluir-ebd-aluno'])
+                                @canany(['adm-editar-ebd-calendario', 'adm-excluir-ebd-calendario'])
                                     <div class="text-sm mt-3 flex flex-1 gap-2">
                                         @can('adm-editar-ebd-calendario')
                                             <x-button.link title="Editar"
