@@ -65,7 +65,7 @@
                         <span class="font-semibold">19:00h</span> - Culto Público
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">19:00h</span> - Culto Público (1&ordm; domigo do mês na direção dos jovens)
+                        <span class="font-semibold">19:00h</span> - Culto Público (1&ordm; domingo do mês na direção dos jovens)
                     </div>
                 </div>
             </div>
