@@ -29,34 +29,6 @@
             </div>
         </div>
     </div>
-    @if($escala->evento_id != 1)
-    <section class="px-6 py-2">
-        @if($escala->dirigente)
-        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
-            <div class="font-normal">Dirigente:</div>
-            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
-                {{ $escala->dirigente }}
-            </div>
-        </div>
-        @endif
-        @if($escala->pregador)
-        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
-            <div class="font-normal">Pregador:</div>
-            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
-                {{ $escala->pregador }}
-            </div>
-        </div>
-        @endif
-        @if($escala->tema)
-        <div class="mt-2 sm:mt-3 md:mt-4 text-sm">
-            <div class="font-normal">Tema:</div>
-            <div class="text-gray-500 font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
-                {{ $escala->tema }}
-            </div>
-        </div>
-        @endif
-    </section>
-    @endif
     <div class="p-4 py-6 sm:px-6 flex-1">
         @if($escala->evento_id == 1)
             <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
@@ -106,8 +78,16 @@
 
         @if($escala->evento_id != 1)
             <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+                <x-card.escalas.info-adicional
+                    :dirigente="$escala->dirigente"
+                    :pregador="$escala->pregador"
+                    :tema="$escala->tema"
+                    :ministro="$escala->ministro"
+                    :escalaFechada="$escala->fechada"
+                />
+
                 @foreach($escala->voluntarios as $voluntario)
-                    <li class="line-clamp-1">
+                    <li class="line-clamp-1 @if($loop->first) mt-4 @endif">
                         <div class="flex items-center">
                             <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200' : 'border border-dashed border-gray-400' }}
                                     font-normal rounded-sm px-1 h-[25px] mr-1 {{ $escala->evento_id == '10' ? 'w-[35px]' : 'w-[25px]' }}
