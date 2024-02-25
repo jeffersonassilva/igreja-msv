@@ -25,6 +25,7 @@ class Escala extends AbstractModel
         'dirigente',
         'pregador',
         'tema',
+        'ministro',
     ];
 
     /**
