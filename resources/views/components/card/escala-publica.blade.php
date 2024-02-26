@@ -30,54 +30,8 @@
         </div>
     </div>
     <div class="p-4 py-6 sm:px-6 flex-1">
-        @if($escala->evento_id == 1)
-            <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
-                @foreach($escala->voluntarios as $voluntario)
-                    <li class="line-clamp-1">
-                        <div class="flex items-center">
-                            <div class="mx-1">
-                                @if($voluntario->voluntario->foto)
-                                    <img src="{{ asset($voluntario->voluntario->foto) }}"
-                                         alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                             object-cover aspect-square p-[1px] border-2
-                                             @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                @else
-                                    @if($voluntario->voluntario->sexo == 'M')
-                                        <img src="{{ asset('img/icon_profile_man.jpg') }}"
-                                             alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                                 object-cover aspect-square p-[1px] border-2
-                                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                    @else
-                                        <img src="{{ asset('img/icon_profile_woman.jpg') }}"
-                                             alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                                 object-cover aspect-square p-[1px] border-2
-                                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                    @endif
-                                @endif
-                            </div>
-                            {{ $voluntario->voluntario->nome }}
-                            @if($voluntario->user_id)
-                                <button type="button" class="ml-1"
-                                        data-popover-target="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}"
-                                        data-popover-trigger="click">
-                                    <ion-icon name="create-outline"></ion-icon>
-                                </button>
-                                <div data-popover id="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}" role="tooltip"
-                                     class="inline-block absolute invisible z-10 text-sm font-light text-gray-600
-                                             bg-amber-100 rounded-lg border border-gray-200 shadow-md opacity-0
-                                             transition-opacity duration-300 p-2">
-                                    Adicionado pelo administrador
-                                    <div data-popper-arrow></div>
-                                </div>
-                            @endif
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-
-        @if($escala->evento_id != 1)
-            <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+        <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+            @if($escala->evento_id != 1)
                 <x-card.escalas.info-adicional
                     :dirigente="$escala->dirigente"
                     :pregador="$escala->pregador"
@@ -85,67 +39,17 @@
                     :ministro="$escala->ministro"
                     :escalaFechada="$escala->fechada"
                 />
+            @endif
 
-                @foreach($escala->voluntarios as $voluntario)
-                    <li class="line-clamp-1 @if($loop->first) mt-4 @endif">
-                        <div class="flex items-center">
-                            <button class="{{ $voluntario->funcao ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200' : 'border border-dashed border-gray-400' }}
-                                    font-normal rounded-sm px-1 h-[25px] mr-1 {{ $escala->evento_id == '10' ? 'w-[35px]' : 'w-[25px]' }}
-                                    inline-flex items-center justify-center cursor-help select-none"
-                                    data-popover-target="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}"
-                                    data-popover-trigger="click" type="button">
-                                {!! $voluntario->funcao ?? '&nbsp;' !!}
-                            </button>
-                            <div class="flex items-center">
-                                <div class="mx-1">
-                                    @if($voluntario->voluntario->foto)
-                                        <img src="{{ asset($voluntario->voluntario->foto) }}"
-                                             alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                             object-cover aspect-square p-[1px] border-2
-                                             @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                    @else
-                                        @if($voluntario->voluntario->sexo == 'M')
-                                            <img src="{{ asset('img/icon_profile_man.jpg') }}"
-                                                 alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                                 object-cover aspect-square p-[1px] border-2
-                                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                        @else
-                                            <img src="{{ asset('img/icon_profile_woman.jpg') }}"
-                                                 alt="avatar" class="w-[30px] h-[30px] rounded-full
-                                                 object-cover aspect-square p-[1px] border-2
-                                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
-                                        @endif
-                                    @endif
-                                </div>
-                                {{ $voluntario->voluntario->nome }}
-                                @if($voluntario->user_id)
-                                    <button type="button" class="ml-1"
-                                            data-popover-target="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}"
-                                            data-popover-trigger="click">
-                                        <ion-icon name="create-outline"></ion-icon>
-                                    </button>
-                                    <div data-popover id="popover-created-by-{{ $escala->evento_id . '-' . $voluntario->id }}" role="tooltip"
-                                         class="inline-block absolute invisible z-10 text-sm font-light text-gray-600
-                                         bg-amber-100 rounded-lg border border-gray-200 shadow-md opacity-0
-                                         transition-opacity duration-300 p-2">
-                                        Adicionado pelo administrador
-                                        <div data-popper-arrow></div>
-                                    </div>
-                                @endif
-                            </div>
-                            <div data-popover id="popover-click-{{ $escala->evento_id . '-' . $voluntario->id }}" role="tooltip"
-                                 class="inline-block absolute invisible z-10 text-sm font-light text-gray-600 bg-amber-100
-                                 rounded-lg border border-gray-200 shadow-md opacity-0 transition-opacity duration-300">
-                                <div class="p-2">
-                                    {{ $voluntario->funcao ? $funcoes[$voluntario->funcao] : 'Função não definida' }}
-                                </div>
-                                <div data-popper-arrow></div>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
+            @foreach($escala->voluntarios as $voluntario)
+                <x-card.escalas.voluntarios-nomes
+                    :loop="$loop"
+                    :voluntario="$voluntario"
+                    :escala="$escala"
+                    :funcoes="$funcoes"
+                />
+            @endforeach
+        </ul>
 
         @if(!count($escala->voluntarios))
             <div class="flex flex-col justify-center items-center text-gray-400 font-thin text-sm">
