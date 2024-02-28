@@ -19,6 +19,12 @@
                           :required="true"
                           :observacoes='["Informe a data da aula."]' />
 
+            <x-form.input label="Tema"
+                          name="tema"
+                          maxlength="255"
+                          :required="false"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.checkboxes label="Classes"
                                name="classes[]"
                                :items="$classes"

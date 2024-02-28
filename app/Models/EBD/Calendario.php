@@ -21,6 +21,7 @@ class Calendario extends AbstractModel
      */
     protected $fillable = [
         'data',
+        'tema',
         'professor_id',
         'classe_id',
     ];
