@@ -4,6 +4,7 @@ namespace App\Services\EBD;
 
 use App\Models\EBD\Calendario;
 use App\Services\AbstractService;
+use Carbon\Carbon;
 
 /**
  * Class CalendarioService
@@ -42,5 +43,25 @@ class CalendarioService extends AbstractService
                 ]
             );
         }
+    }
+
+    /**
+     * @param $filter
+     * @return mixed
+     */
+    public function list($filter = array())
+    {
+        $query = $this->model->withAggregate('classe', 'nome');
+
+        if (isset($filter['dt_escala'])) {
+            $query->whereDate('data', '=', $filter['dt_escala']);
+        } else {
+            $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
+        }
+
+        $query->orderBy('data', 'asc');
+        $query->orderBy('classe_nome', 'asc');
+
+        return $query->get();
     }
 }
