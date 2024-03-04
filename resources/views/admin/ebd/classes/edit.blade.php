@@ -17,7 +17,12 @@
                           value="{{ old('nome') ?? $data->nome }}"
                           :observacoes='["Máximo de 50 caracteres."]' />
 
-            <x-form.file label="Revista"
+            <x-form.input label="Link da revista"
+                          name="link"
+                          value="{{ old('link') ?? $data->link }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
+            <x-form.file label="Capa da revista"
                          name="revista"
                          value="{{ old('revista') ?? $data->revista }}"
                          accept=".png, .jpg, .jpeg"

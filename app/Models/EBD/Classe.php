@@ -23,5 +23,6 @@ class Classe extends AbstractModel
         'id',
         'nome',
         'revista',
+        'link',
     ];
 }
