@@ -1,46 +1,57 @@
 @props(['escala'])
 
-<section id="{{ $escala->id }}"
-         class="text-gray-600 border-2 rounded-lg flex flex-col relative bg-white border-[#efefef]">
-    <div class="px-4 sm:px-6 my-6 relative">
-        <div class="absolute left-[-3px] top-[50px] h-[120px] w-[3px] bg-gray-300"></div>
-        <div class="mb-3 text-lg">{{ $escala->classe->nome }}</div>
-        <div class="flex">
-            <div class="text-6xl font-thin tracking-tighter">
-                @if($escala->classe && $escala->classe->revista)
-                    <img src="{{ asset($escala->classe->revista) }}" alt="avatar"
-                         class="w-[100px] h-[140px] border-2 border-gray-100 p-[2px] dark:border-[#454b54]">
-                @else
-                    <div class="w-[100px] h-[140px] bg-gray-200"></div>
-                @endif
+<div class="flex flex-col bg-white rounded-sm my-3 sm:my-4 px-4 pb-4 md:my-4 md:px-6 shadow-md shadow-gray-200">
+    <div class="flex relative border-b border-b-gray-200">
+        @if($escala->classe && $escala->classe->revista)
+            <img src="{{ asset($escala->classe->revista) }}" alt="capa da revista"
+                 class="w-[105px] h-[150px] mt-[-10px] cursor-pointer
+                        sm:w-[120px] sm:h-[175px]
+                        md:w-[145px] md:h-[210px] md:mt-[-20px] md:mb-4 rounded-sm md:object-cover
+                        transition-all ease-in-out duration-300 hover:scale-105 shadow-md shadow-gray-300">
+        @else
+            <img src="{{ asset('img/capa-revista-em-branco.jpg') }}" alt="capa da revista"
+                 class="w-[105px] h-[150px] mt-4 cursor-pointer
+                        sm:w-[120px] sm:h-[175px]
+                        md:w-[145px] md:h-[210px] md:mt-[-20px] md:mb-4 rounded-sm md:object-cover
+                        transition-all ease-in-out duration-300 hover:scale-105 shadow-md shadow-gray-300">
+        @endif
+
+        <div class="relative p-3 sm:p-6 md:p-6 md:py-4 w-full">
+            <div class="font-medium tracking-tighter sm:text-lg md:text-2xl flex items-center gap-2">
+                {{ $escala->classe->nome }}
+                <span class="font-thin text-sm sm:text-base md:text-lg">
+                    ({{ \Carbon\Carbon::parse($escala->data)->format('d/m') }})
+                </span>
             </div>
-            <div class="flex flex-col pl-4 flex-1">
-                <span class="text-sm text-gray-800">
-                    {{ \Carbon\Carbon::parse($escala->data)->format('d/m/Y') }}
-                </span>
-                <span class="text-sm font-thin">
-                    às 09:00h
-                </span>
-                <div class="mt-4">
-                    <div class="text-sm font-normal">
-                        Professor:
-                    </div>
-                    <div class="text-sm font-thin text-gray-500">
-                        {{ $escala->professor ? $escala->professor->nome : null }}
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="text-sm font-normal">
-                        Tema:
-                    </div>
-                    <div class="text-sm font-thin text-gray-500">
-                        {{ $escala->tema }}
-                    </div>
-                </div>
+            <div class="mt-[-4px] text-gray-500 text-sm font-thin tracking-tighter">11 a 16 anos</div>
+
+            <div class="mt-2 md:mt-4">
+                <div class="text-sm font-normal">Professor:</div>
+                <div class="text-gray-500 text-sm font-thin">{{ $escala->professor->nome }}</div>
+            </div>
+
+            <div class="mt-2 md:mt-4">
+                <div class="text-sm font-normal">Tema:</div>
+                <div class="text-gray-500 text-sm font-thin">{{ $escala->tema }}</div>
             </div>
         </div>
     </div>
-
-    {{ $slot }}
-
-</section>
+    <div class="flex items-center mt-3">
+        <div>
+            <img src="https://randomuser.me/api/portraits/women/{{ rand(1, 50) }}.jpg" alt=""
+                 class="rounded-full w-7 border border-white object-cover">
+        </div>
+        <div class="ml-[-10px]">
+            <img src="https://randomuser.me/api/portraits/men/{{ rand(1, 50) }}.jpg" alt=""
+                 class="rounded-full w-7 border border-white object-cover">
+        </div>
+        <div class="ml-[-10px]">
+            <img src="https://randomuser.me/api/portraits/women/{{ rand(1, 50) }}.jpg" alt=""
+                 class="rounded-full w-7 border border-white object-cover">
+        </div>
+        <div class="text-sm ml-4 font-thin">
+            <span class="font-normal">{{ rand(10, 50) }} alunos</span>
+            <span class="text-gray-500">matriculados.</span>
+        </div>
+    </div>
+</div>
