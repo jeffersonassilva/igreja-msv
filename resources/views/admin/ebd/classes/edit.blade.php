@@ -17,6 +17,12 @@
                           value="{{ old('nome') ?? $data->nome }}"
                           :observacoes='["Máximo de 50 caracteres."]' />
 
+            <x-form.input label="Faixa Etária"
+                          name="faixa_etaria"
+                          :required="true"
+                          value="{{ old('faixa_etaria') ?? $data->faixa_etaria }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.input label="Link da revista"
                           name="link"
                           value="{{ old('link') ?? $data->link }}"

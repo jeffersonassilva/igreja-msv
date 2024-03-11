@@ -23,8 +23,8 @@
                     ({{ \Carbon\Carbon::parse($escala->data)->format('d/m') }})
                 </div>
             </div>
-            <div class="text-gray-500 text-sm font-thin tracking-tighter mt-[-5px] sm:mt-[-4px] md:mt-[-2px]">
-                11 a 16 anos
+            <div class="text-gray-500 text-sm font-thin mt-[-5px] sm:mt-[-4px] md:mt-[-2px]">
+                {{ $escala->classe->faixa_etaria }}&nbsp;
             </div>
 
             <div class="mt-2 md:mt-4">
