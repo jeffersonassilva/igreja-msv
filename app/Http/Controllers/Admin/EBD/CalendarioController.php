@@ -49,10 +49,12 @@ class CalendarioController extends Controller
      */
     public function list(Request $request)
     {
-        $data = $this->service->list($request->all());
+        $aulasDinamicas = $this->service->aulasDinamicas($request->all());
+        $aulasPermanentes = $this->service->aulasPermanentes($request->all());
 
         return view('escalas-ebd')->with([
-            'escalas' => $data,
+            'aulasDinamicas' => $aulasDinamicas,
+            'aulasPermanentes' => $aulasPermanentes,
         ]);
     }
 
