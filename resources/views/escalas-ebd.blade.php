@@ -15,25 +15,24 @@
                     @foreach($aulasPermanentes as $aulaPermanente)
                         <x-card.escala-publica-ebd-fixa
                             :classe="$aulaPermanente->classe->nome"
-                            :subtitulo="$aulaPermanente->classe->faixa_etaria"
                             :professor="$aulaPermanente->professor->nome"
                             :tema="$aulaPermanente->tema"
                             :data="$aulaPermanente->titulo"
                         >
-                            @if($aulaPermanente->link)
-                                <div class="mt-2 sm:mt-3 md:mt-4">
-                                    <div class="text-sm font-normal">Link:</div>
-                                    <div class="text-gray-500 text-sm font-thin">
-                                        <a href="#" class="text-blue-600">{{ $aulaPermanente->link }}</a>
-                                    </div>
-                                </div>
-                            @endif
-
                             @if($aulaPermanente->local)
                                 <div class="mt-2 sm:mt-3 md:mt-4">
                                     <div class="text-sm font-normal">Local:</div>
                                     <div class="text-gray-500 text-sm font-thin">
                                         {{ $aulaPermanente->local }}
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($aulaPermanente->link)
+                                <div class="mt-2 sm:mt-3 md:mt-4">
+                                    <div class="text-sm font-normal">Link:</div>
+                                    <div class="text-gray-500 text-sm font-thin">
+                                        <a href="#" class="text-blue-600">{{ $aulaPermanente->link }}</a>
                                     </div>
                                 </div>
                             @endif

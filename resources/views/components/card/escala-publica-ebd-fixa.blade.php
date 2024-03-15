@@ -8,9 +8,6 @@
         <div class="font-medium tracking-tighter sm:text-lg md:text-2xl flex items-center gap-2">
             {{ $classe }}
         </div>
-        <div class="text-gray-500 text-sm font-thin mt-[-3px] text-ellipsis overflow-hidden line-clamp-1">
-            {{ $subtitulo }}
-        </div>
 
         <div class="mt-2 sm:mt-3 md:mt-4">
             <div class="text-sm font-normal">Professor(a):</div>
