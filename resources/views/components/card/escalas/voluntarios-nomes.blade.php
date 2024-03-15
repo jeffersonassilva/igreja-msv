@@ -11,7 +11,7 @@
         : 'border border-dashed border-gray-400'
 @endphp
 
-<li class="line-clamp-1 @if($loop->first) mt-4 @endif">
+<li class="line-clamp-1">
     <div class="flex items-center">
         @if($escala->evento_id != 1)
             <button class="{{ $classBgAndBorder }}

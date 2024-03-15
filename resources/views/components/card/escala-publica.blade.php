@@ -5,7 +5,9 @@
          @if($escala->fechada) bg-[#dae8dc] border-[#dae8dd] @else bg-white border-[#efefef] @endif"
     >
     <div class="px-4 sm:px-6 mt-6 relative">
-        <div class="absolute left-[-3px] h-full w-[3px]" style="background: {{ $escala->fechada ? '#0D9488' : $escala->evento->cor ?? '#777' }}"></div>
+        <div class="absolute left-[-3px] h-full w-[3px]"
+             style="background: {{ $escala->fechada ? '#0D9488' : $escala->evento->cor ?? '#777' }}">
+        </div>
         <div class="mb-3 text-lg" style="color: {{ $escala->fechada ? '#0D9488' : $escala->evento->cor ?? '#777' }}">
             {{ $escala->evento->descricao }}
         </div>
@@ -40,7 +42,15 @@
                     :escalaFechada="$escala->fechada"
                 />
             @endif
+        </ul>
 
+        @if($escala->dirigente || $escala->pregador || $escala->tema || $escala->ministro)
+            <div class="w-8/12 mx-auto my-4">
+                <hr class="@if($escala->fechada) border-b border-b-[#add7b3] @else border-b-gray-100 @endif">
+            </div>
+        @endif
+
+        <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
             @foreach($escala->voluntarios as $voluntario)
                 <x-card.escalas.voluntarios-nomes
                     :loop="$loop"
