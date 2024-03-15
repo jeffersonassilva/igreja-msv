@@ -25,10 +25,6 @@ class Aluno extends AbstractModel
         'situacao',
     ];
 
-    protected $with = [
-        'classes'
-    ];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

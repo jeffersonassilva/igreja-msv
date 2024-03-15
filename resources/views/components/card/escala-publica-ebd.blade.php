@@ -38,22 +38,5 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center mt-3">
-        <div>
-            <img src="https://randomuser.me/api/portraits/women/{{ rand(1, 50) }}.jpg" alt=""
-                 class="rounded-full w-7 border border-white object-cover">
-        </div>
-        <div class="ml-[-10px]">
-            <img src="https://randomuser.me/api/portraits/men/{{ rand(1, 50) }}.jpg" alt=""
-                 class="rounded-full w-7 border border-white object-cover">
-        </div>
-        <div class="ml-[-10px]">
-            <img src="https://randomuser.me/api/portraits/women/{{ rand(1, 50) }}.jpg" alt=""
-                 class="rounded-full w-7 border border-white object-cover">
-        </div>
-        <div class="text-sm ml-4 font-thin">
-            <span class="font-normal">{{ rand(10, 50) }} alunos</span>
-            <span class="text-gray-500">matriculados.</span>
-        </div>
-    </div>
+    <x-tres-alunos :classe="$escala->classe"></x-tres-alunos>
 </div>
