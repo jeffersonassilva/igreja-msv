@@ -62,7 +62,7 @@ class CalendarioController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-ebd-calendario');
-        $data = $this->service->paginate(['data' => 'asc']);
+        $data = $this->service->paginate(['data' => 'desc']);
         return view('admin/ebd/calendario/index')->with('datas', $data);
     }
 
