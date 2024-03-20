@@ -28,9 +28,9 @@
             </div>
 
             <div class="mt-2 sm:mt-3 md:mt-4">
-                <div class="text-sm font-normal">Professor:</div>
+                <div class="text-sm font-normal">Professor(a):</div>
                 <div class="text-gray-500 text-sm font-thin md:text-ellipsis md:overflow-hidden md:line-clamp-1">
-                    {{ $escala->professor->nome }}
+                    {{ $escala->professor ? $escala->professor->nome : null }}
                 </div>
             </div>
 
