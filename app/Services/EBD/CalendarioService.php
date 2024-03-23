@@ -5,6 +5,8 @@ namespace App\Services\EBD;
 use App\Models\EBD\Calendario;
 use App\Services\AbstractService;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CalendarioService
@@ -47,7 +49,7 @@ class CalendarioService extends AbstractService
 
     /**
      * @param $filter
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return Builder[]|Collection
      */
     public function aulasDinamicas($filter = array())
     {
@@ -57,7 +59,7 @@ class CalendarioService extends AbstractService
         if (isset($filter['dt_escala'])) {
             $query->whereDate('data', '=', $filter['dt_escala']);
         } else {
-            $query->where('data', '>=', Carbon::now()->format('Y-m-d'));
+            $query->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d'));
         }
 
         $query->where('permanente', '=', false);
@@ -69,7 +71,7 @@ class CalendarioService extends AbstractService
 
     /**
      * @param $filter
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return Builder[]|Collection
      */
     public function aulasPermanentes($filter = array())
     {
