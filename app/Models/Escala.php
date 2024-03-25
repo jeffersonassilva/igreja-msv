@@ -22,6 +22,9 @@ class Escala extends AbstractModel
         'data',
         'fechada',
         'evento_id',
+        'dirigente',
+        'pregador',
+        'tema',
     ];
 
     /**

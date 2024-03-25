@@ -135,6 +135,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/escalas/{escala}/editar', [EscalaController::class, 'edit'])->name('escalas.edit');
     Route::put('/escalas/{escala}', [EscalaController::class, 'update'])->name('escalas.update');
     Route::delete('/escalas/{escala}', [EscalaController::class, 'destroy'])->name('escalas.destroy');
+    Route::get('/escalas/{escala}/info', [EscalaController::class, 'editInfo'])->name('escalas.edit.info');
+    Route::put('/escalas/{escala}/info', [EscalaController::class, 'updateInfo'])->name('escalas.update.info');
 
     //Escala-Voluntário
     Route::post('/escala-voluntario', [EscalaVoluntarioController::class, 'store'])->name('escalaVoluntario.store');

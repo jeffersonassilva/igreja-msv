@@ -44,10 +44,10 @@ class EscalaController extends Controller
      * @param VoluntarioService $voluntarioService
      */
     public function __construct(
-        EscalaService $service,
+        EscalaService       $service,
         EscalaFuncaoService $escalaFuncaoService,
-        EventoService $eventoService,
-        VoluntarioService $voluntarioService
+        EventoService       $eventoService,
+        VoluntarioService   $voluntarioService
     )
     {
         $this->service = $service;
@@ -155,6 +155,29 @@ class EscalaController extends Controller
         $this->checkPermission('adm-excluir-escala');
         $this->service->destroy($id);
         return $this->redirectWithMessage('escalas', __(Constants::SUCCESS_DESTROY));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function editInfo($id)
+    {
+        $this->checkPermission('adm-editar-escala');
+        $data = $this->service->edit($id);
+        return view('admin/escalas/info')->with(['data' => $data]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateInfo(Request $request, $id)
+    {
+        $this->checkPermission('adm-editar-escala');
+        $this->service->update($request, $id);
+        return $this->redirectWithMessage('escalas', __(Constants::SUCCESS_UPDATE));
     }
 
     /**
