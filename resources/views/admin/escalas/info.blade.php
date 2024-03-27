@@ -28,6 +28,12 @@
                           value="{{ old('tema') ?? $data->tema }}"
                           :observacoes='["Máximo de 255 caracteres."]' />
 
+            <x-form.input label="Ministrio de Louvor"
+                          name="ministro"
+                          maxlength="255"
+                          value="{{ old('ministro') ?? $data->ministro }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('escalas')"
                             :infoRequired="true" />

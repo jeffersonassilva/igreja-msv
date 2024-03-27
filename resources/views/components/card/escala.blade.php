@@ -26,18 +26,23 @@
         </div>
         <section class="flex gap-1 mt-3 justify-centers">
             @if($escala->dirigente)
-                <div class="border border-blue-200 text-gray-500 px-2 py-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
                     Dirigente <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->pregador)
-                <div class="border border-blue-200 text-gray-500 px-2 py-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
                     Pregador <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->tema)
-                <div class="border border-blue-200 text-gray-500 px-2 py-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
                     Tema <ion-icon name="checkmark"></ion-icon>
+                </div>
+            @endif
+            @if($escala->ministro)
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
+                    Louvor <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
         </section>
