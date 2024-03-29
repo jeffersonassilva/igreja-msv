@@ -197,3 +197,15 @@ html {
         height: calc((100vw/24)*5);
     }
 }
+
+.hover\:w-\[50px\]:hover {
+    width: 50px;
+}
+
+.hover\:w-\[59px\]:hover {
+    width: 59px;
+}
+
+.hover\:w-\[74px\]:hover {
+    width: 74px;
+}
