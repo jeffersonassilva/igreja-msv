@@ -57,7 +57,7 @@ class CalendarioService extends AbstractService
         if (isset($filter['dt_escala'])) {
             $query->whereDate('data', '=', $filter['dt_escala']);
         } else {
-            $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
+            $query->where('data', '>=', Carbon::now()->format('Y-m-d'));
         }
 
         $query->orderBy('data', 'asc');
