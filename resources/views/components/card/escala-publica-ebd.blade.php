@@ -21,9 +21,6 @@
         <div class="relative p-3 sm:p-6 md:p-6 md:py-4 w-full">
             <div class="font-medium tracking-tighter sm:text-lg md:text-2xl flex items-center gap-2">
                 {{ $escala->classe->nome }}
-                <div class="font-thin text-sm sm:text-base md:text-lg">
-                    ({{ \Carbon\Carbon::parse($escala->data)->format('d/m') }})
-                </div>
             </div>
             <div class="text-gray-500 text-sm font-thin mt-[-3px] text-ellipsis overflow-hidden line-clamp-1">
                 {{ $escala->classe->faixa_etaria }}&nbsp;
