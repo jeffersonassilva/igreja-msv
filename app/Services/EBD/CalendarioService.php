@@ -47,9 +47,9 @@ class CalendarioService extends AbstractService
 
     /**
      * @param $filter
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function list($filter = array())
+    public function aulasDinamicas($filter = array())
     {
         $query = $this->model->with('classe.alunos')
             ->withAggregate('classe', 'nome');
@@ -60,8 +60,24 @@ class CalendarioService extends AbstractService
             $query->where('data', '>=', Carbon::now()->format('Y-m-d'));
         }
 
+        $query->where('permanente', '=', false);
         $query->orderBy('data', 'asc');
         $query->orderBy('classe_nome', 'asc');
+
+        return $query->get();
+    }
+
+    /**
+     * @param $filter
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function aulasPermanentes($filter = array())
+    {
+        $query = $this->model->with('classe')
+            ->withAggregate('classe', 'nome');
+
+        $query->where('permanente', '=', true);
+        $query->orderBy('data', 'asc');
 
         return $query->get();
     }
