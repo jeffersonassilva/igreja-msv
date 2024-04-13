@@ -226,7 +226,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/calendario', [CalendarioController::class, 'store'])->name('calendario.store');
     Route::get('/calendario/{data}/editar', [CalendarioController::class, 'edit'])->name('calendario.edit');
     Route::put('/calendario/{data}', [CalendarioController::class, 'update'])->name('calendario.update');
-    Route::delete('/calendario/{aluno}', [CalendarioController::class, 'destroy'])->name('calendario.destroy');
+    Route::delete('/calendario/{data}', [CalendarioController::class, 'destroy'])->name('calendario.destroy');
+
+    //EBD - Classe Calendário Fixo
+    Route::get('/calendario-fixo', [CalendarioController::class, 'indexFixo'])->name('calendario-fixo');
+    Route::get('/calendario-fixo/adicionar', [CalendarioController::class, 'createFixo'])->name('calendario-fixo.create');
+    Route::post('/calendario-fixo', [CalendarioController::class, 'storeFixo'])->name('calendario-fixo.store');
+    Route::get('/calendario-fixo/{data}/editar', [CalendarioController::class, 'editFixo'])->name('calendario-fixo.edit');
+    Route::put('/calendario-fixo/{data}', [CalendarioController::class, 'updateFixo'])->name('calendario-fixo.update');
+    Route::delete('/calendario-fixo/{data}', [CalendarioController::class, 'destroyFixo'])->name('calendario-fixo.destroy');
 
     //EBD - Professores
     Route::get('/professores', [ProfessorController::class, 'index'])->name('professores');

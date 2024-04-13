@@ -24,6 +24,10 @@ class Calendario extends AbstractModel
         'tema',
         'professor_id',
         'classe_id',
+        'titulo',
+        'local',
+        'link',
+        'permanente',
     ];
 
     protected $with = [

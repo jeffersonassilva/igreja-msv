@@ -54,10 +54,11 @@
 
     @canany(['adm-menu-ebd-classes'])
         <x-adm-menu-group name="EBD" id="ebd" icon="school-outline"
-                          :groups='["classes", "alunos", "calendario", "professores"]'
+                          :groups='["classes", "alunos", "calendario", "calendario-fixo", "professores"]'
                           :submenus='[
                             ["label" => "Alunos", "route" => "alunos", "permission" => "adm-menu-ebd-alunos"],
                             ["label" => "Calendário", "route" => "calendario", "permission" => "adm-menu-ebd-calendario"],
+                            ["label" => "Calendário Fixo", "route" => "calendario-fixo", "permission" => "adm-menu-ebd-calendario"],
                             ["label" => "Classes", "route" => "classes", "permission" => "adm-menu-ebd-classes"],
                             ["label" => "Professores", "route" => "professores", "permission" => "adm-menu-ebd-professores"],
                           ]'>
