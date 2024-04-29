@@ -6,6 +6,8 @@ use App\Helpers\Calculos;
 use App\Helpers\Constants;
 use App\Models\Escala;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class EscalaService
@@ -28,7 +30,7 @@ class EscalaService extends AbstractService
 
     /**
      * @param $filter
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return Builder[]|Collection
      */
     public function list($filter = array())
     {
@@ -71,7 +73,7 @@ class EscalaService extends AbstractService
         if (isset($filter['dt_escala'])) {
             $query->whereDate('data', '=', $filter['dt_escala']);
         } else {
-            $query->where('data', '>=', Carbon::now()->format('Y-m-d H:i'));
+            $query->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d H:i'));
         }
 
         $query->orderBy('data');
@@ -118,7 +120,7 @@ class EscalaService extends AbstractService
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return Builder[]|Collection
      */
     private function escalasDoMesAtual()
     {

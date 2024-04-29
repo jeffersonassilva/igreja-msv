@@ -9,6 +9,10 @@ use App\Services\EscalaFuncaoService;
 use App\Services\EscalaService;
 use App\Services\EventoService;
 use App\Services\VoluntarioService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -58,14 +62,17 @@ class EscalaController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function list(Request $request)
     {
         $data = $this->service->list($request->all());
         $funcoes = $this->escalaFuncaoService->list();
-        $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
         $eventos = $this->eventoService->all();
+        $voluntarios = $this->voluntarioService->where(
+            array('situacao' => true),
+            array('nome' => Constants::CRESCENTE)
+        )->get();
 
         return view('escalas')->with([
             'escalas' => $data,
@@ -77,7 +84,7 @@ class EscalaController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
@@ -88,18 +95,20 @@ class EscalaController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
         $this->checkPermission('adm-adicionar-escala');
-        $eventos = $this->eventoService->where(['situacao' => Constants::TRUE], ['descricao' => Constants::CRESCENTE])->get();
+        $eventos = $this->eventoService->where(
+            ['situacao' => Constants::TRUE], ['descricao' => Constants::CRESCENTE]
+        )->get();
         return view('admin/escalas/create', array('eventos' => $eventos));
     }
 
     /**
      * @param EscalaRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(EscalaRequest $request)
     {
@@ -111,7 +120,7 @@ class EscalaController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -136,7 +145,7 @@ class EscalaController extends Controller
     /**
      * @param EscalaRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(EscalaRequest $request, $id)
     {
@@ -148,7 +157,7 @@ class EscalaController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
@@ -159,7 +168,7 @@ class EscalaController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function editInfo($id)
     {
@@ -171,7 +180,7 @@ class EscalaController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function updateInfo(Request $request, $id)
     {
