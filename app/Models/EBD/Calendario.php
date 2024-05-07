@@ -3,6 +3,7 @@
 namespace App\Models\EBD;
 
 use App\Models\AbstractModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Calendario extends AbstractModel
 {
@@ -36,7 +37,7 @@ class Calendario extends AbstractModel
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function classe()
     {
@@ -44,7 +45,7 @@ class Calendario extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function professor()
     {
