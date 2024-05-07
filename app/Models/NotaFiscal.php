@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class NotaFiscal extends AbstractModel
 {
     /**
@@ -31,7 +33,7 @@ class NotaFiscal extends AbstractModel
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return mixed
      */
     public function cartao()
     {
@@ -39,7 +41,7 @@ class NotaFiscal extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function membro()
     {

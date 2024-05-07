@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Voluntario extends AbstractModel
 {
     /**
@@ -29,7 +31,7 @@ class Voluntario extends AbstractModel
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function disponibilidades()
     {
