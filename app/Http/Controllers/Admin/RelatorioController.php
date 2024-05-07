@@ -10,6 +10,10 @@ use App\Services\RelatorioService;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 
 class RelatorioController extends Controller
 {
@@ -35,7 +39,7 @@ class RelatorioController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function mensalVoluntarios(Request $request)
     {
@@ -54,7 +58,7 @@ class RelatorioController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function mensalVoluntariosDownload(Request $request)
     {
@@ -70,7 +74,11 @@ class RelatorioController extends Controller
             'data' => date('d/m/Y - H:i:s')
         ]);
 
-        return $pdf->stream('relatorio_voluntarios' . ($request->get('periodo') ? '_' . $request->get('periodo') : null) . '.pdf');
+        return $pdf->stream(
+            'relatorio_voluntarios' . ($request->get('periodo')
+                ? '_' . $request->get('periodo')
+                : null) . '.pdf'
+        );
     }
 
     /**
@@ -83,7 +91,9 @@ class RelatorioController extends Controller
         $where = $filter->getFilters($request->all());
         $order = $filter->getOrder($request);
 
-        return $this->relatorioService->voluntarios($where, $order ?: array('presenca' => 'desc', 'nome' => 'asc'));
+        return $this->relatorioService->voluntarios(
+            $where, $order ?: array('presenca' => 'desc', 'nome' => 'asc')
+        );
     }
 
     /**
@@ -96,10 +106,13 @@ class RelatorioController extends Controller
 
         foreach ($escalas as $escala) {
             $meses[Carbon::parse($escala['data'])->format('Y') . '-' . Carbon::parse($escala['data'])->format('m')] =
-                Carbon::parse($escala['data'])->format('Y') . ' - ' . ucfirst(Carbon::parse($escala['data'])->monthName);
+                Carbon::parse($escala['data'])
+                    ->format('Y') . ' - ' . ucfirst(Carbon::parse($escala['data'])->monthName);
         }
 
-        $meses[date('Y-m')] = Carbon::parse(date('Y-m-d'))->format('Y') . ' - ' . ucfirst(Carbon::parse(date('Y-m-d'))->monthName);
+        $meses[date('Y-m')] = Carbon::parse(
+                date('Y-m-d'))->format('Y') . ' - ' . ucfirst(Carbon::parse(date('Y-m-d'))->monthName
+            );
         krsort($meses);
 
         return $meses;
@@ -132,7 +145,11 @@ class RelatorioController extends Controller
         ]);
 
         if (!$request->has('periodo')) {
-            $request->request->add(['periodo' => date('Y-m'), 'ano' => date('Y'), 'mes' => date('m')]);
+            $request->request->add([
+                'periodo' => date('Y-m'),
+                'ano' => date('Y'),
+                'mes' => date('m')
+            ]);
         }
 
         return $request;
