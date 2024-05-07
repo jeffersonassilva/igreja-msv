@@ -15,10 +15,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-/**
- * Class EscalaController
- * @package App\Http\Controllers
- */
 class EscalaController extends Controller
 {
     /**

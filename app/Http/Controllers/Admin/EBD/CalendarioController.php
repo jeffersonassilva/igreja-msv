@@ -15,10 +15,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-/**
- * Class CalendarioController
- * @package App\Http\Controllers
- */
 class CalendarioController extends Controller
 {
     /**

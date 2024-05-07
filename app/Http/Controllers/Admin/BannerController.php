@@ -19,7 +19,6 @@ class BannerController extends Controller
     private $service;
 
     /**
-     * BannerController constructor.
      * @param BannerService $service
      */
     public function __construct(BannerService $service)
