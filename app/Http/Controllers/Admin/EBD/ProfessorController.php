@@ -7,11 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EBD\ProfessorRequest;
 use App\Services\EBD\ProfessorService;
 use App\Services\EBD\ClasseService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class ProfessorController
- * @package App\Http\Controllers
- */
 class ProfessorController extends Controller
 {
     /**
@@ -35,7 +35,7 @@ class ProfessorController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -45,7 +45,7 @@ class ProfessorController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -64,7 +64,7 @@ class ProfessorController extends Controller
 
     /**
      * @param ProfessorRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(ProfessorRequest $request)
     {
@@ -75,7 +75,7 @@ class ProfessorController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -104,7 +104,7 @@ class ProfessorController extends Controller
     /**
      * @param ProfessorRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(ProfessorRequest $request, $id)
     {
@@ -115,7 +115,7 @@ class ProfessorController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
