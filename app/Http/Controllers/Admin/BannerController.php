@@ -6,6 +6,10 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BannerRequest;
 use App\Services\BannerService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class BannerController extends Controller
 {
@@ -24,7 +28,7 @@ class BannerController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -34,7 +38,7 @@ class BannerController extends Controller
 
     /**
      * @param BannerRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(BannerRequest $request)
     {
@@ -45,7 +49,7 @@ class BannerController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -57,7 +61,7 @@ class BannerController extends Controller
     /**
      * @param BannerRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(BannerRequest $request, $id)
     {
@@ -68,7 +72,7 @@ class BannerController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
