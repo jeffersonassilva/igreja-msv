@@ -8,11 +8,11 @@ use App\Http\Requests\MembroRequest;
 use App\Services\EstadoCivilService;
 use App\Services\MembroService;
 use App\Services\UfService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class MembroController
- * @package App\Http\Controllers
- */
 class MembroController extends Controller
 {
     /**
@@ -47,7 +47,7 @@ class MembroController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -57,7 +57,7 @@ class MembroController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -73,7 +73,7 @@ class MembroController extends Controller
 
     /**
      * @param MembroRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(MembroRequest $request)
     {
@@ -84,7 +84,7 @@ class MembroController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -103,7 +103,7 @@ class MembroController extends Controller
     /**
      * @param MembroRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(MembroRequest $request, $id)
     {
@@ -111,15 +111,4 @@ class MembroController extends Controller
         $this->service->update($request, $id);
         return $this->redirectWithMessage('membros', __(Constants::SUCCESS_UPDATE));
     }
-
-//    /**
-//     * @param $id
-//     * @return \Illuminate\Http\RedirectResponse
-//     */
-//    public function destroy($id)
-//    {
-//        $this->checkPermission('adm-excluir-membro');
-//        $this->service->destroy($id);
-//        return $this->redirectWithMessage('membros', __(Constants::SUCCESS_DESTROY));
-//    }
 }
