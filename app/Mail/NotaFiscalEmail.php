@@ -38,7 +38,9 @@ class NotaFiscalEmail extends Mailable
     public function build()
     {
         $extension = $this->arquivo->extension();
-        $as = 'NF-' . $this->nota->id . '/' . str_replace('-', '', $this->nota->data) . '-' . str_pad($this->nota->categoria, 2, '0', STR_PAD_LEFT);
+        $as = 'NF-' . $this->nota->id . '/' . str_replace('-', '', $this->nota->data) . '-' . str_pad(
+                $this->nota->categoria, 2, '0', STR_PAD_LEFT
+            );
         $this->nota['as'] = $as;
 
         return $this->subject('Nota Fiscal Cadastrada')
