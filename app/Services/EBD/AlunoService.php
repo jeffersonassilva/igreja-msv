@@ -5,10 +5,6 @@ namespace App\Services\EBD;
 use App\Models\EBD\Aluno;
 use App\Services\AbstractService;
 
-/**
- * Class AlunoService
- * @package App\Services
- */
 class AlunoService extends AbstractService
 {
     /**
