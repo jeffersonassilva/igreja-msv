@@ -8,11 +8,11 @@ use App\Services\EscalaService;
 use App\Services\EscalaVoluntarioService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Redirector;
 
-/**
- * Class EscalaVoluntarioController
- * @package App\Http\Controllers
- */
 class EscalaVoluntarioController extends Controller
 {
     /**
@@ -37,7 +37,7 @@ class EscalaVoluntarioController extends Controller
 
     /**
      * @param EscalaVoluntarioRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Redirector
      */
     public function new(EscalaVoluntarioRequest $request)
     {
@@ -48,7 +48,7 @@ class EscalaVoluntarioController extends Controller
 
     /**
      * @param EscalaVoluntarioRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(EscalaVoluntarioRequest $request)
     {
@@ -56,13 +56,16 @@ class EscalaVoluntarioController extends Controller
         $request->request->add(['user_id' => Auth::id()]);
         $this->service->store($request);
         $this->escalaService->regraQntdVoluntariosAtingida($request->get('escala_id'));
-        return $this->redirectWithMessage(['escalas.edit', $request->get('escala_id')], __(Constants::SUCCESS_UPDATE));
+        return $this->redirectWithMessage(
+            ['escalas.edit', $request->get('escala_id')],
+            __(Constants::SUCCESS_UPDATE)
+        );
     }
 
     /**
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -73,7 +76,7 @@ class EscalaVoluntarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
@@ -83,7 +86,7 @@ class EscalaVoluntarioController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function updateApi(Request $request)
     {
