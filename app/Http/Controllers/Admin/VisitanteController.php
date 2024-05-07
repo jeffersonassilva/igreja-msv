@@ -6,15 +6,16 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VisitanteRequest;
 use App\Mail\VisitanteEmail;
+use App\Models\Membro;
 use App\Services\MembroService;
 use App\Services\VisitanteService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class VisitanteController
- * @package App\Http\Controllers
- */
 class VisitanteController extends Controller
 {
     /**
@@ -38,7 +39,7 @@ class VisitanteController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -51,7 +52,7 @@ class VisitanteController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -60,7 +61,7 @@ class VisitanteController extends Controller
 
     /**
      * @param VisitanteRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(VisitanteRequest $request)
     {
@@ -75,7 +76,7 @@ class VisitanteController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -87,7 +88,7 @@ class VisitanteController extends Controller
     /**
      * @param VisitanteRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(VisitanteRequest $request, $id)
     {
@@ -111,7 +112,7 @@ class VisitanteController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \App\Models\Membro
+     * @return Membro
      */
     private function transformarVisitanteEmMembro(Request $request, $id)
     {
