@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Helpers\Constants;
 use App\Http\Requests\TestemunhoRequest;
 use App\Services\TestemunhoService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class TestemunhoController
- * @package App\Http\Controllers
- */
 class TestemunhoController extends Controller
 {
     /**
@@ -18,7 +18,6 @@ class TestemunhoController extends Controller
     private $service;
 
     /**
-     * BannerController constructor.
      * @param TestemunhoService $service
      */
     public function __construct(TestemunhoService $service)
@@ -27,16 +26,19 @@ class TestemunhoController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function list()
     {
-        $data = $this->service->where(['situacao' => Constants::TRUE], ['created_at' => Constants::DECRESCENTE])->paginate();
+        $data = $this->service->where(
+            ['situacao' => Constants::TRUE],
+            ['created_at' => Constants::DECRESCENTE]
+        )->paginate();
         return view('testemunhos')->with('testemunhos', $data);
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -47,7 +49,7 @@ class TestemunhoController extends Controller
 
     /**
      * @param TestemunhoRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(TestemunhoRequest $request)
     {
@@ -59,7 +61,7 @@ class TestemunhoController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -71,7 +73,7 @@ class TestemunhoController extends Controller
     /**
      * @param TestemunhoRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(TestemunhoRequest $request, $id)
     {
@@ -82,7 +84,7 @@ class TestemunhoController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function enable($id)
     {
@@ -93,7 +95,7 @@ class TestemunhoController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function disable($id)
     {
