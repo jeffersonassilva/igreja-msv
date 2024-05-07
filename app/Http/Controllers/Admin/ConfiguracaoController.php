@@ -8,6 +8,10 @@ use App\Http\Requests\ConfiguracaoRequest;
 use App\Services\UsuarioService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ConfiguracaoController extends Controller
 {
@@ -25,7 +29,7 @@ class ConfiguracaoController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -35,7 +39,7 @@ class ConfiguracaoController extends Controller
 
     /**
      * @param ConfiguracaoRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(ConfiguracaoRequest $request)
     {
