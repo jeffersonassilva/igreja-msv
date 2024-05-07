@@ -4,10 +4,6 @@ namespace App\Http\Requests\EBD;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class CalendarioRequest
- * @package App\Http\Requests
- */
 class CalendarioRequest extends FormRequest
 {
     /**

@@ -7,10 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
-/**
- * Class EscalaVoluntarioRequest
- * @package App\Http\Requests
- */
 class EscalaVoluntarioRequest extends FormRequest
 {
     /**

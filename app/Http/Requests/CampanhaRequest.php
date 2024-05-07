@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class CampanhaRequest
- * @package App\Http\Requests
- */
 class CampanhaRequest extends FormRequest
 {
     /**

@@ -4,10 +4,6 @@ namespace App\Http\Requests\EBD;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class ClasseRequest
- * @package App\Http\Requests
- */
 class ClasseRequest extends FormRequest
 {
     /**

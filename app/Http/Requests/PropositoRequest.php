@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class PropositoRequest
- * @package App\Http\Requests
- */
 class PropositoRequest extends FormRequest
 {
     /**

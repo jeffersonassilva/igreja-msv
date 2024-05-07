@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class EventoRequest
- * @package App\Http\Requests
- */
 class EventoRequest extends FormRequest
 {
     /**

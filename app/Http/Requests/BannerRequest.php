@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class BannerRequest
- * @package App\Http\Requests
- */
 class BannerRequest extends FormRequest
 {
     /**
@@ -23,10 +19,13 @@ class BannerRequest extends FormRequest
      */
     public function rules()
     {
+        $ruleImgMobile = '|image|mimes:jpg,jpeg,png|dimensions:ratio=16/9|dimensions:min_width=640,min_height=360';
+        $ruleImgWeb = '|image|mimes:jpg,jpeg,png|dimensions:ratio=24/5|dimensions:width=1920,height=400';
+
         return [
             'descricao' => 'required|max:100',
-            'img_mobile' => (request()->isMethod('put') ? 'nullable' : 'required') . '|image|mimes:jpg,jpeg,png|dimensions:ratio=16/9|dimensions:min_width=640,min_height=360',
-            'img_web' => (request()->isMethod('put') ? 'nullable' : 'required') . '|image|mimes:jpg,jpeg,png|dimensions:ratio=24/5|dimensions:width=1920,height=400',
+            'img_mobile' => (request()->isMethod('put') ? 'nullable' : 'required') . $ruleImgMobile,
+            'img_web' => (request()->isMethod('put') ? 'nullable' : 'required') . $ruleImgWeb,
             'ordem' => 'nullable|numeric',
         ];
     }
@@ -49,8 +48,10 @@ class BannerRequest extends FormRequest
      */
     public function messages()
     {
+        $msgImgMobileDimensions = 'A imagem deve respeitar a proporção de 16/9. Exs.: 640x360, 1280x720 e 1920x1080.';
+
         return [
-            'img_mobile.dimensions' => 'A imagem deve respeitar a proporção de 16/9. Exs.: 640x360, 1280x720 e 1920x1080.',
+            'img_mobile.dimensions' => $msgImgMobileDimensions,
             'img_web.dimensions' => 'A imagem deve ter o tamanho de 1920x400.',
         ];
     }

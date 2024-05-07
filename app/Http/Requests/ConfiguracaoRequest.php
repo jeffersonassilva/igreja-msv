@@ -5,10 +5,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-/**
- * Class ConfiguracaoRequest
- * @package App\Http\Requests
- */
 class ConfiguracaoRequest extends FormRequest
 {
     /**

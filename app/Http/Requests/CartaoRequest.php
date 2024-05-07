@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class CartaoRequest
- * @package App\Http\Requests
- */
 class CartaoRequest extends FormRequest
 {
     /**

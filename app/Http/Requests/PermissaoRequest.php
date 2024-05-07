@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class PerfilRequest
- * @package App\Http\Requests
- */
 class PermissaoRequest extends FormRequest
 {
     /**
