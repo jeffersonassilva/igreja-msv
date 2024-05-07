@@ -2,10 +2,6 @@
 
 namespace App\Services;
 
-/**
- * Class UfService
- * @package App\Services
- */
 class UfService
 {
     const LISTA = [
@@ -48,9 +44,9 @@ class UfService
 
     /**
      * @param $id
-     * @return mixed|null
+     * @return string|null
      */
-    static public function getDescricaoById($id)
+    public static function getDescricaoById($id)
     {
         foreach (self::LISTA as $item) {
             if ($item['id'] == $id) {

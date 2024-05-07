@@ -4,10 +4,6 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
 
-/**
- * Class AbstractService
- * @package App\Services
- */
 abstract class AbstractService
 {
     /**

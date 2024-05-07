@@ -5,10 +5,6 @@ namespace App\Services;
 use App\Helpers\Strings;
 use App\Models\Cartao;
 
-/**
- * Class CartaoService
- * @package App\Services
- */
 class CartaoService extends AbstractService
 {
     /**
@@ -40,13 +36,11 @@ class CartaoService extends AbstractService
      */
     public function pluck($id, $description)
     {
-        $lista = array_map(function($n) {
+        return array_map(function($n) {
             return [
                 'id' => $n['id'],
                 'descricao' => Strings::getCartaoFormatado($n['descricao'])
             ];
         }, parent::pluck($id, $description));
-
-        return $lista;
     }
 }

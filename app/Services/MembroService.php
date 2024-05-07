@@ -5,10 +5,6 @@ namespace App\Services;
 use App\Models\Membro;
 use App\Models\Visitante;
 
-/**
- * Class MembroService
- * @package App\Services
- */
 class MembroService extends AbstractService
 {
     /**
