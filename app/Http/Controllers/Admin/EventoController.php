@@ -6,11 +6,11 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventoRequest;
 use App\Services\EventoService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class EventoController
- * @package App\Http\Controllers
- */
 class EventoController extends Controller
 {
     /**
@@ -27,7 +27,7 @@ class EventoController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class EventoController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -47,7 +47,7 @@ class EventoController extends Controller
 
     /**
      * @param EventoRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(EventoRequest $request)
     {
@@ -58,7 +58,7 @@ class EventoController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -70,7 +70,7 @@ class EventoController extends Controller
     /**
      * @param EventoRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(EventoRequest $request, $id)
     {
@@ -81,7 +81,7 @@ class EventoController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
