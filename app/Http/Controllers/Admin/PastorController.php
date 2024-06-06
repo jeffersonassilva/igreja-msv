@@ -6,6 +6,10 @@ use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PastorRequest;
 use App\Services\PastorService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PastorController extends Controller
 {
@@ -25,7 +29,7 @@ class PastorController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -37,7 +41,7 @@ class PastorController extends Controller
     /**
      * @param PastorRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(PastorRequest $request, $id)
     {
