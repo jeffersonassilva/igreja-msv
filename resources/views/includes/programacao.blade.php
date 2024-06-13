@@ -9,11 +9,16 @@
                 <div class="flex flex-col gap-1 md:gap-2">
                     <div class="font-medium mb-1 md:text-xl">Terça-feira</div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">20:00h</span> - Reunião de Mulheres (quinzenal)
+                        <span class="font-semibold">20:00h</span> - Reunião de Mulheres
+                        <span class="text-gray-500 font-thin text-xs">*</span>
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">20:00h</span> - Reunião de Homens (quinzenal)
+                        <span class="font-semibold">20:00h</span> - Reunião de Homens
+                        <span class="text-gray-500 font-thin text-xs">*</span>
                     </div>
+                    <span class="text-gray-500 font-thin text-xs">
+                        * cultos nos lares intercalados quinzenalmente
+                    </span>
                 </div>
             </div>
             <div class="flex gap-4 py-4 md:basis-1/2 lg:basis-1/3">
@@ -48,7 +53,10 @@
                         <span class="font-semibold">08:00h</span> - Consagração
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">19:30h</span> - Santa Ceia (1&ordm; sábado do mês)
+                        <span class="font-semibold">19:30h</span> - Santa Ceia
+                        <span class="text-gray-500 font-thin text-xs">
+                        (1&ordm; sábado do mês)
+                    </span>
                     </div>
                 </div>
             </div>
@@ -63,10 +71,11 @@
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">19:00h</span> - Culto Público
+                        <span class="text-gray-500 font-thin text-xs">*</span>
                     </div>
-                    <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">19:00h</span> - Culto Público (1&ordm; domingo do mês na direção dos jovens)
-                    </div>
+                    <span class="text-gray-500 font-thin text-xs">
+                        * No 1&ordm; domingo do mês a rede de jovens é responsável pela direção do culto público
+                    </span>
                 </div>
             </div>
         </div>
