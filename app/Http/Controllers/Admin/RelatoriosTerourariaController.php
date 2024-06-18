@@ -9,6 +9,10 @@ use App\Services\MesService;
 use App\Services\NotaFiscalService;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 
 class RelatoriosTerourariaController extends Controller
 {
@@ -32,7 +36,11 @@ class RelatoriosTerourariaController extends Controller
      * @param CategoriaService $categoriaService
      * @param MesService $mesService
      */
-    public function __construct(NotaFiscalService $notaFiscalService, CategoriaService $categoriaService, MesService $mesService)
+    public function __construct(
+        NotaFiscalService $notaFiscalService,
+        CategoriaService  $categoriaService,
+        MesService        $mesService
+    )
     {
         $this->notaFiscalService = $notaFiscalService;
         $this->categoriaService = $categoriaService;
@@ -41,7 +49,7 @@ class RelatoriosTerourariaController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
@@ -68,7 +76,7 @@ class RelatoriosTerourariaController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Response
      */
     public function relatorioPorCartaoPdf(Request $request)
     {
@@ -93,7 +101,11 @@ class RelatoriosTerourariaController extends Controller
             'filtro' => $request
         ]);
 
-        return $pdf->stream('relatorio_voluntarios' . ($request->get('periodo') ? '_' . $request->get('periodo') : null) . '.pdf');
+        return $pdf->stream(
+            'relatorio_voluntarios' . ($request->get('periodo')
+                ? '_' . $request->get('periodo')
+                : null) . '.pdf'
+        );
     }
 
     /**
@@ -112,7 +124,7 @@ class RelatoriosTerourariaController extends Controller
 
     /**
      * @param $data
-     * @return array
+     * @return mixed
      */
     private function agruparNotasPorCartao($data)
     {
@@ -139,7 +151,7 @@ class RelatoriosTerourariaController extends Controller
      */
     private function calculaValoresTotaisPorCartao($lista)
     {
-        foreach ($lista as $key => &$grupo) {
+        foreach ($lista as &$grupo) {
             $grupo['total'] = 0;
             foreach ($grupo['itens'] as $item) {
                 $grupo['total'] += $item['valor'];
