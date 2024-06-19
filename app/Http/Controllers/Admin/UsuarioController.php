@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
 use App\Services\PerfilService;
 use App\Services\UsuarioService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class UsuarioController extends Controller
 {
@@ -31,7 +35,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -44,7 +48,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -54,7 +58,7 @@ class UsuarioController extends Controller
 
     /**
      * @param UsuarioRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(UsuarioRequest $request)
     {
@@ -65,7 +69,7 @@ class UsuarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -94,7 +98,7 @@ class UsuarioController extends Controller
     /**
      * @param UsuarioRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(UsuarioRequest $request, $id)
     {
@@ -105,7 +109,7 @@ class UsuarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
