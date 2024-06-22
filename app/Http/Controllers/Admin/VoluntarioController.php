@@ -8,11 +8,11 @@ use App\Http\Requests\VoluntarioRequest;
 use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class VoluntarioController
- * @package App\Http\Controllers
- */
 class VoluntarioController extends Controller
 {
     /**
@@ -37,7 +37,7 @@ class VoluntarioController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
@@ -47,7 +47,7 @@ class VoluntarioController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -67,7 +67,7 @@ class VoluntarioController extends Controller
 
     /**
      * @param VoluntarioRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(VoluntarioRequest $request)
     {
@@ -78,7 +78,7 @@ class VoluntarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -104,7 +104,7 @@ class VoluntarioController extends Controller
     /**
      * @param VoluntarioRequest $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(VoluntarioRequest $request, $id)
     {
@@ -115,7 +115,7 @@ class VoluntarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function show($id)
     {
@@ -146,7 +146,7 @@ class VoluntarioController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
