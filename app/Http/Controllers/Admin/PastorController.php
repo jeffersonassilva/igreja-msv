@@ -19,7 +19,6 @@ class PastorController extends Controller
     private $service;
 
     /**
-     * IndexController constructor.
      * @param PastorService $service
      */
     public function __construct(PastorService $service)
