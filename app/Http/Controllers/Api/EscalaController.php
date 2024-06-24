@@ -8,11 +8,8 @@ use App\Http\Requests\EscalaVoluntarioRequest;
 use App\Services\EscalaService;
 use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
+use Illuminate\Http\JsonResponse;
 
-/**
- * Class EscalaController
- * @package App\Http\Controllers
- */
 class EscalaController extends Controller
 {
     /**
@@ -47,14 +44,17 @@ class EscalaController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
         $data = $this->service->list();
         $qntdVoluntariadoNecessario = $this->service->qntdVoluntariadoNecessarioNoMes();
         $qntdVoluntariadoPreenchido = $this->service->qntdVoluntariadoPreenchidoNoMes();
-        $voluntarios = $this->voluntarioService->where(array('situacao' => true), array('nome' => Constants::CRESCENTE))->get();
+        $voluntarios = $this->voluntarioService->where(
+            array('situacao' => true),
+            array('nome' => Constants::CRESCENTE)
+        )->get();
 
         return response()->json([
             'escalas' => $data,
@@ -67,7 +67,7 @@ class EscalaController extends Controller
 
     /**
      * @param EscalaVoluntarioRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(EscalaVoluntarioRequest $request)
     {

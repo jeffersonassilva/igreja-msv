@@ -8,11 +8,8 @@ use App\Services\EscalaService;
 use App\Services\EscalaVoluntarioService;
 use App\Services\VoluntarioService;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
-/**
- * Class EscalaController
- * @package App\Http\Controllers
- */
 class EscalaController extends Controller
 {
     /**
@@ -47,7 +44,7 @@ class EscalaController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -59,7 +56,7 @@ class EscalaController extends Controller
 
     /**
      * @param EscalaVoluntarioRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(EscalaVoluntarioRequest $request)
     {
