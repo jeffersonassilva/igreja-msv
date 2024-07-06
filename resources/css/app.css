@@ -30,7 +30,7 @@ html {
 }
 
 .navigation {
-    @apply bg-black z-30 flex flex-col lg:flex-row justify-center items-center absolute lg:relative w-full lg:w-auto h-full lg:h-auto;
+    @apply bg-black z-30 flex flex-col lg:flex-row justify-center items-center absolute lg:relative w-full lg:w-auto min-h-full lg:h-auto;
     top: calc(100% - 200%);
     left: 0;
     -webkit-transition: all .25s ease-in-out;

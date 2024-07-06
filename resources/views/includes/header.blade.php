@@ -5,7 +5,7 @@
         <img src="{{ asset('/img/logo-branca.png') }}" alt="logo" class="w-[70px] sm:w-[90px] md:w-[110px]">
     </a>
     <div class="toggle lg:hidden"></div>
-    <ul class="navigation hidden lg:flex">
+    <ul class="navigation hidden lg:flex overflow-y-auto">
         <li class="link text-white"><a accesskey="h" href="{{ route('index') }}">Home</a></li>
         <li class="link text-white"><a accesskey="p" href="/#propositos">Propósitos</a></li>
         <li class="link text-white"><a accesskey="s" href="/#pastores">Pastores</a></li>
@@ -32,7 +32,7 @@
         <li class="link text-white"><a accesskey="c" href="/#contato">Contato</a></li>
         {{-- <li><a href="{{ route('login') }}">Login</a></li>--}}
 
-        <li class="link text-white lg:hidden mt-8">
+        <li class="link text-white lg:hidden">
             <a accesskey="e"
                href="https://d1fdloi71mui9q.cloudfront.net/cTsmSxshRLGrYj2OCY24_Estatudo%20MSV%202018.pdf"
                target="_blank"
