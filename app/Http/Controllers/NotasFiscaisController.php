@@ -13,11 +13,11 @@ use App\Services\MembroService;
 use App\Services\NotaFiscalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class NotasFiscaisController
- * @package App\Http\Controllers
- */
 class NotasFiscaisController extends Controller
 {
     const FORMA_PAGAMENTO_DINHEIRO = '99';
@@ -62,7 +62,7 @@ class NotasFiscaisController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -75,7 +75,7 @@ class NotasFiscaisController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function access()
     {
@@ -84,7 +84,7 @@ class NotasFiscaisController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function check(Request $request)
     {
@@ -103,7 +103,7 @@ class NotasFiscaisController extends Controller
     /**
      * @param $date
      * @param $accessCode
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     * @return Application|Factory|View|RedirectResponse
      */
     public function create($date, $accessCode)
     {
@@ -129,7 +129,7 @@ class NotasFiscaisController extends Controller
 
     /**
      * @param NotaFiscalRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(NotaFiscalRequest $request)
     {
@@ -152,7 +152,7 @@ class NotasFiscaisController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function archive($id)
     {
