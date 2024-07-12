@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Helpers\Constants;
 use App\Http\Requests\CampanhaRequest;
 use App\Services\CampanhaService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Class CampanhaController
- * @package App\Http\Controllers
- */
 class CampanhaController extends Controller
 {
     /**
@@ -26,7 +26,7 @@ class CampanhaController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -36,7 +36,7 @@ class CampanhaController extends Controller
 
     /**
      * @param CampanhaRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(CampanhaRequest $request)
     {
