@@ -9,6 +9,10 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class Controller extends BaseController
 {
@@ -18,9 +22,9 @@ class Controller extends BaseController
      * @param $route
      * @param $mensagem
      * @param string $typeMessage
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function redirectWithMessage($route, $mensagem, string $typeMessage = 'success'): \Illuminate\Http\RedirectResponse
+    public function redirectWithMessage($route, $mensagem, string $typeMessage = 'success'): RedirectResponse
     {
         switch ($typeMessage) {
             case 'error':
@@ -57,7 +61,7 @@ class Controller extends BaseController
      * @param $data
      * @param $message
      * @param string $typeMessage
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function viewWithMessage($view, $data, $message = null, string $typeMessage = 'success')
     {
