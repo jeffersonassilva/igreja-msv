@@ -4,12 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class MembroRequest
- * @package App\Http\Requests
- */
 class MembroRequest extends FormRequest
 {
+    const MAX_255 = 'max:255';
+
     /**
      * @return bool
      */
@@ -30,13 +28,13 @@ class MembroRequest extends FormRequest
             'dt_nascimento' => 'nullable|date',
             'dt_casamento' => 'nullable|date',
             'cep' => 'max:9',
-            'logradouro' => 'max:255',
+            'logradouro' => self::MAX_255,
             'numero' => 'max:10',
-            'complemento' => 'max:255',
-            'bairro' => 'max:255',
-            'cidade' => 'max:255',
+            'complemento' => self::MAX_255,
+            'bairro' => self::MAX_255,
+            'cidade' => self::MAX_255,
             'uf' => 'max:2',
-            'pais' => 'max:255',
+            'pais' => self::MAX_255,
             'telefone' => 'max:15',
             'email' => 'nullable|email|max:255',
         ];

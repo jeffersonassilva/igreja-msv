@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class PastorRequest
- * @package App\Http\Requests
- */
 class PastorRequest extends FormRequest
 {
     /**

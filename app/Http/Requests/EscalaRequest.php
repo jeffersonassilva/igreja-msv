@@ -4,10 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class EscalaRequest
- * @package App\Http\Requests
- */
 class EscalaRequest extends FormRequest
 {
     /**

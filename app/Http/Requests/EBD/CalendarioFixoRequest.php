@@ -4,10 +4,6 @@ namespace App\Http\Requests\EBD;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class CalendarioFixoRequest
- * @package App\Http\Requests
- */
 class CalendarioFixoRequest extends FormRequest
 {
     const NULLABLE_MAX_255 = 'nullable|max:255';

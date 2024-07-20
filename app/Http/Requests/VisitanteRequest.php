@@ -4,12 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class VisitanteRequest
- * @package App\Http\Requests
- */
 class VisitanteRequest extends FormRequest
 {
+    const MAX_255 = 'max:255';
+
     /**
      * @return bool
      */
@@ -26,11 +24,11 @@ class VisitanteRequest extends FormRequest
         return [
             'recomendacao' => 'nullable',
             'dt_visita' => $this->isMethod('put') ? 'date' : 'required|date',
-            'nome' => $this->isMethod('put') ? 'max:255' : 'required|max:255',
+            'nome' => $this->isMethod('put') ? self::MAX_255 : 'required|max:255',
             'dt_nascimento' => 'nullable|date',
-            'endereco' => 'max:255',
+            'endereco' => self::MAX_255,
             'telefone' => 'max:15',
-            'responsavel' => 'max:255',
+            'responsavel' => self::MAX_255,
         ];
     }
 

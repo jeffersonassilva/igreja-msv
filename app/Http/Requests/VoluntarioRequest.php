@@ -5,10 +5,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-/**
- * Class VoluntarioRequest
- * @package App\Http\Requests
- */
 class VoluntarioRequest extends FormRequest
 {
     /**
