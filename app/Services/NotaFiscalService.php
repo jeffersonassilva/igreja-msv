@@ -5,11 +5,8 @@ namespace App\Services;
 use App\Models\NotaFiscal;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
-/**
- * Class NotaFiscalService
- * @package App\Services
- */
 class NotaFiscalService extends AbstractService
 {
     use UploadTrait;
@@ -30,7 +27,7 @@ class NotaFiscalService extends AbstractService
 
     /**
      * @param $where
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function relatorioNotasPorCartao($where)
     {

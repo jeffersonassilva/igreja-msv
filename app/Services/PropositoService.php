@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Proposito;
 
-/**
- * Class PropositoService
- * @package App\Services
- */
 class PropositoService extends AbstractService
 {
     /**

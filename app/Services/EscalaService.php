@@ -9,10 +9,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
 
-/**
- * Class EscalaService
- * @package App\Services
- */
 class EscalaService extends AbstractService
 {
     /**

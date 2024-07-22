@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Pastor;
 
-/**
- * Class PastorService
- * @package App\Services
- */
 class PastorService extends AbstractService
 {
     /**

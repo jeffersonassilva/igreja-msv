@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Evento;
 
-/**
- * Class EventoService
- * @package App\Services
- */
 class EventoService extends AbstractService
 {
     /**

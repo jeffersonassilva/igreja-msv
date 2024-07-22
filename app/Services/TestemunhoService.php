@@ -5,10 +5,6 @@ namespace App\Services;
 use App\Helpers\Constants;
 use App\Models\Testemunho;
 
-/**
- * Class TestemunhoService
- * @package App\Services
- */
 class TestemunhoService extends AbstractService
 {
     /**

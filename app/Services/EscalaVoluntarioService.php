@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\EscalaVoluntario;
 
-/**
- * Class EscalaVoluntarioService
- * @package App\Services
- */
 class EscalaVoluntarioService extends AbstractService
 {
     /**

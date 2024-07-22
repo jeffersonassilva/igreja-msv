@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Role;
 
-/**
- * Class PerfilService
- * @package App\Services
- */
 class PerfilService extends AbstractService
 {
     /**

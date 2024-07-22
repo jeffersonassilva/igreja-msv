@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\Permission;
 
-/**
- * Class PermissaoService
- * @package App\Services
- */
 class PermissaoService extends AbstractService
 {
     /**

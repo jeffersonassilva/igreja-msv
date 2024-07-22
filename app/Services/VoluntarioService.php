@@ -7,11 +7,10 @@ use App\Models\Voluntario;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class VoluntarioService
- * @package App\Services
- */
 class VoluntarioService extends AbstractService
 {
     use UploadTrait;
@@ -77,7 +76,7 @@ class VoluntarioService extends AbstractService
 
     /**
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed|null
+     * @return Builder|Builder[]|Collection|Model|mixed|null
      */
     public function edit($id)
     {
@@ -87,7 +86,7 @@ class VoluntarioService extends AbstractService
     /**
      * @param $request
      * @param $id
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed|null
+     * @return Builder|Builder[]|Collection|Model|mixed|null
      */
     public function update($request, $id)
     {

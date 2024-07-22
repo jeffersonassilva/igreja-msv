@@ -4,10 +4,6 @@ namespace App\Services;
 
 use App\Models\CartaoMembro;
 
-/**
- * Class CartaoMembroService
- * @package App\Services
- */
 class CartaoMembroService extends AbstractService
 {
     /**

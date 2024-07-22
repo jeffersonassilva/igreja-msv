@@ -6,10 +6,6 @@ use App\Models\EscalaVoluntario;
 use App\Models\Voluntario;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Class RelatorioService
- * @package App\Services
- */
 class RelatorioService extends AbstractService
 {
     const VOLUNTARIO_ID = 'voluntarios.id';

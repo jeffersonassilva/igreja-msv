@@ -2,10 +2,6 @@
 
 namespace App\Services;
 
-/**
- * Class MesService
- * @package App\Services
- */
 class MesService
 {
     const LISTA = [
@@ -35,7 +31,7 @@ class MesService
      * @param $id
      * @return mixed|null
      */
-    static public function getDescricaoById($id)
+    public static function getDescricaoById($id)
     {
         foreach (self::LISTA as $item) {
             if ($item['id'] == $id) {

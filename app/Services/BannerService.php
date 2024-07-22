@@ -7,10 +7,6 @@ use App\Traits\UploadBannerTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
-/**
- * Class BannerService
- * @package App\Services
- */
 class BannerService extends AbstractService
 {
     use UploadBannerTrait;

@@ -5,10 +5,6 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * Class UsuarioService
- * @package App\Services
- */
 class UsuarioService extends AbstractService
 {
     /**
