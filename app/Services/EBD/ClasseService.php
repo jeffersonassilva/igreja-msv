@@ -8,10 +8,6 @@ use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
-/**
- * Class ClasseService
- * @package App\Services
- */
 class ClasseService extends AbstractService
 {
     use UploadTrait;

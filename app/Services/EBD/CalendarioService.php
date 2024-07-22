@@ -8,10 +8,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-/**
- * Class CalendarioService
- * @package App\Services
- */
 class CalendarioService extends AbstractService
 {
     /**

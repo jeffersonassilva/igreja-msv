@@ -5,10 +5,6 @@ namespace App\Services\EBD;
 use App\Models\EBD\Professor;
 use App\Services\AbstractService;
 
-/**
- * Class ProfessorService
- * @package App\Services
- */
 class ProfessorService extends AbstractService
 {
     /**
