@@ -5,10 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class AbstractModel
- * @package App\Models
- */
 abstract class AbstractModel extends Model
 {
     use SoftDeletes;
@@ -18,23 +14,17 @@ abstract class AbstractModel extends Model
     const DELETED_AT = 'deleted_at';
 
     /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
+     * @var string[]
      */
     protected $guarded = [self::UPDATED_AT];
 
     /**
-     * The nested's (relations)
-     *
      * @var array
      */
     public $nested = [];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
+     * @var string[]
      */
     protected $hidden = [
         self::CREATED_AT,

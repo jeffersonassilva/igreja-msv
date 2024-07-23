@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class EscalaVoluntario extends AbstractModel
 {
     const COMPARECIMENTO_PRESENTE = 'P';
@@ -37,7 +39,7 @@ class EscalaVoluntario extends AbstractModel
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function voluntario()
     {
@@ -45,7 +47,7 @@ class EscalaVoluntario extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function usuario()
     {
