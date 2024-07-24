@@ -3,6 +3,7 @@
 namespace App\Models\EBD;
 
 use App\Models\AbstractModel;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Professor extends AbstractModel
 {
@@ -26,7 +27,7 @@ class Professor extends AbstractModel
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function classes()
     {
