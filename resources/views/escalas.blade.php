@@ -102,55 +102,34 @@
                 </p>
                 <p class="font-thin mb-4">
                     Após sua inclusão como voluntário na escala, o responsável pelas escalas da igreja atribuirá sua
-                    função de acordo com a necessidade, mas você pode solicitar a troca posteriormente. Segue a lista de funções abaixo.
+                    função de acordo com a necessidade, mas você pode solicitar a troca posteriormente.
+                    Segue a lista de funções abaixo.
                 </p>
                 <ul class="font-thin text-sm mb-4 md:text-base grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                    @foreach($funcoes as $funcao)
                     <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Coordenador Geral">CG
-                        </span>- Coordenador Geral</li>
-                    <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Recepção">R
-                        </span>- Recepção
+                        <span class="bg-gray-200 font-normal rounded-sm w-[35px] h-[25px] mr-1 inline-flex
+                        items-center justify-center select-none">
+                            {{ $funcao->abreviacao }}</span>- {{ $funcao->descricao }}
                     </li>
+                    @endforeach
                     <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Apoio">A
-                        </span>- Apoio
-                    </li>
-                    <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Higienização">H
-                        </span>- Higienização
-                    </li>
-                    <li class="lg:row-start-1 lg:col-start-3">
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Segurança Interna">SI
-                        </span>- Segurança Interna
-                    </li>
-                    <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[25px] h-[20px] mr-1 inline-flex
-                        items-center justify-center cursor-help select-none" title="Segurança Externa">SE
-                        </span>- Segurança Externa
-                    </li>
-                    <li>
-                        <span class="border border-dashed border-gray-300 font-normal rounded-sm w-[25px] h-[20px] mr-1
-                             inline-flex items-center justify-center cursor-help select-none"
-                              title="Função não definida">&nbsp;
+                        <span class="border border-dashed border-gray-400 font-normal rounded-sm w-[35px] h-[25px] mr-1
+                             inline-flex items-center justify-center select-none">&nbsp;
                         </span>- Função não definida
                     </li>
                 </ul>
                 <p class="font-normal text-red-700 mb-4">
-                    <span class="font-medium">IMPORTANTE</span>: Caso ocorra algum imprevisto e você não possa comparecer,
-                    é necessário avisar o quanto antes para que possamos te substituir por outro voluntário.
+                    <span class="font-medium">IMPORTANTE</span>: Caso ocorra algum imprevisto e você não possa
+                    comparecer, é necessário avisar o quanto antes para que possamos te substituir por outro voluntário.
                 </p>
             </div>
 
             @if($escalas->count())
-            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:mx-auto md:max-w-3xl lg:max-w-full lg:grid-cols-3 xl:gap-8 2xl:grid-cols-4 mb-8">
+            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:mx-auto md:max-w-3xl
+                        lg:max-w-full lg:grid-cols-3 xl:gap-8 2xl:grid-cols-4 mb-8">
                 @foreach($escalas as $escala)
-                    <x-card.escala-publica :escala="$escala" :funcoes="$funcoes">
+                    <x-card.escala-publica :escala="$escala">
                         @if(!$escala->fechada)
                         <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
                             <div class="flex items-center gap-2 px-3 pb-3 sm:px-4 sm:pb-4">

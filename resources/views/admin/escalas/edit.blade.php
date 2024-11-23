@@ -71,30 +71,12 @@
                                  dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
                                  @error('funcao') border-[1px] border-red-500 dark:border-[#642828] @enderror">
                             <option value=""></option>
-                            @if($data->evento_id == \App\Models\Evento::EBD)
-                            <optgroup label="Geral">
-                            @endif
-                                <option value="CG" @if('CG' === $voluntario->funcao) selected @endif>CG - Coordenador Geral</option>
-                                <option value="R" @if('R' === $voluntario->funcao) selected @endif>R - Recepção</option>
-                                <option value="A" @if('A' === $voluntario->funcao) selected @endif>A - Apoio</option>
-                                <option value="H" @if('H' === $voluntario->funcao) selected @endif>H - Higienização</option>
-                                <option value="SI" @if('SI' === $voluntario->funcao) selected @endif>SI - Segurança Interna</option>
-                                <option value="SE" @if('SE' === $voluntario->funcao) selected @endif>SE - Segurança Externa</option>
-                            @if($data->evento_id == \App\Models\Evento::EBD)
-                            </optgroup>
-                            <optgroup label="Professores">
-                                <option value="DIR" @if('DIR' === $voluntario->funcao) selected @endif>DIR - Direção EBD</option>
-                                <option value="PHM" @if('PHM' === $voluntario->funcao) selected @endif>PHM - Prof. Classe Homens</option>
-                                <option value="PML" @if('PML' === $voluntario->funcao) selected @endif>PML - Prof. Classe Mulheres</option>
-                                <option value="PJV" @if('PJV' === $voluntario->funcao) selected @endif>PJV - Prof. Classe Jovens</option>
-                                <option value="PAD" @if('PAD' === $voluntario->funcao) selected @endif>PAD - Prof. Classe Adolescentes</option>
-                                <option value="PIN" @if('PIN' === $voluntario->funcao) selected @endif>PIN - Prof. Classe Infantil</option>
-                                <option value="PJR" @if('PJR' === $voluntario->funcao) selected @endif>PJR - Prof. Classe Júnior</option>
-                                <option value="PNM" @if('PNM' === $voluntario->funcao) selected @endif>PNM - Prof. Classe Novos Membros</option>
-                                <option value="PLO" @if('PLO' === $voluntario->funcao) selected @endif>PLO - Prof. Classe Líderes e Obreiros</option>
-                                <option value="PCA" @if('PCA' === $voluntario->funcao) selected @endif>PCA - Prof. Classe Casais</option>
-                            </optgroup>
-                            @endif
+                            @foreach($funcoes as $funcao)
+                            <option
+                                value="{{ $funcao->abreviacao }}"
+                                @if($funcao->abreviacao === $voluntario->funcao)
+                                selected @endif>{{ $funcao->abreviacao }} - {{ $funcao->descricao }}</option>
+                            @endforeach
                         </select>
                     </div>
 

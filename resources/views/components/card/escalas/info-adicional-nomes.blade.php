@@ -10,7 +10,7 @@
     <div class="flex items-center">
         <button class="{{ $escalaFechada ? 'bg-[#bbd1bb]' : 'bg-gray-200' }} w-[32px]
                                 group transition-all hover:w-[{{ $width }}] ease-out
-                                text-base rounded-sm h-[25px] mr-1
+                                text-base rounded-sm h-[24px] mr-2 my-1
                                 inline-flex items-center justify-center select-none">
             <ion-icon class="block group-hover:hidden" name="{{ $icon }}"></ion-icon>
             <div class="hidden group-hover:block text-sm">{{ $label }}</div>

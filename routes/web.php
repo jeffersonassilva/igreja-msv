@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EBD\CalendarioController;
 use App\Http\Controllers\Admin\EBD\ClasseController;
 use App\Http\Controllers\Admin\EBD\ProfessorController;
 use App\Http\Controllers\Admin\EscalaController;
+use App\Http\Controllers\Admin\EscalaFuncaoController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\MembroController;
@@ -162,6 +163,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Relatorios
     Route::get('/relatorio/voluntarios', [RelatorioController::class, 'mensalVoluntarios'])->name('relatorio.mensal.voluntarios');
     Route::get('/relatorio/voluntarios/download', [RelatorioController::class, 'mensalVoluntariosDownload'])->name('relatorio.voluntarios.download');
+
+    //Funções na escala
+    Route::get('/funcoes', [EscalaFuncaoController::class, 'index'])->name('funcoes');
+    Route::get('/funcoes/adicionar', [EscalaFuncaoController::class, 'create'])->name('funcoes.create');
+    Route::post('/funcoes', [EscalaFuncaoController::class, 'store'])->name('funcoes.store');
+    Route::get('/funcoes/{funcao}/editar', [EscalaFuncaoController::class, 'edit'])->name('funcoes.edit');
+    Route::put('/funcoes/{funcao}', [EscalaFuncaoController::class, 'update'])->name('funcoes.update');
+    Route::delete('/funcoes/{funcao}', [EscalaFuncaoController::class, 'destroy'])->name('funcoes.destroy');
 
     //Cartões
     Route::get('/cartoes', [CartaoController::class, 'index'])->name('cartoes');

@@ -1,7 +1,6 @@
 @props([
     'voluntario',
     'escala',
-    'funcoes',
     'loop',
     ])
 
@@ -13,32 +12,31 @@
 
 <li class="line-clamp-1">
     <div class="flex items-center">
-        @if($escala->evento_id != 1)
-            <button class="{{ $classBgAndBorder }}
-             {{ $escala->evento_id == '10' ? 'w-[35px]' : 'w-[25px]' }}
-                                    group transition-all hover:w-fit ease-out
-                                    font-normal rounded-sm h-[25px] px-2 mr-1
-                                    inline-flex items-center justify-center select-none">
-                <span class="block group-hover:hidden">{!! $voluntario->funcao ?? '&nbsp;' !!}</span>
-                <div class="hidden group-hover:block text-sm whitespace-nowrap">
-                    {{ $voluntario->funcao ? $funcoes[$voluntario->funcao] : 'Função não definida' }}
-                </div>
-            </button>
-        @endif
+        <button class="{{ $classBgAndBorder }} w-[32px]
+                                group transition-all hover:w-fit ease-out
+                                font-normal rounded-sm h-[24px] px-2 mr-1
+                                inline-flex items-center justify-center select-none">
+            <span class="block group-hover:hidden">
+                {!! $voluntario->funcao ? $voluntario->funcao_rel->abreviacao : '&nbsp;' !!}
+            </span>
+            <div class="hidden group-hover:block text-sm whitespace-nowrap">
+                {{ $voluntario->funcao ? $voluntario->funcao_rel->descricao : 'Função não definida' }}
+            </div>
+        </button>
         <div class="flex-1 flex items-center">
             <div class="mx-1 flex-shrink-0">
                 @if($voluntario->voluntario->foto)
                     <img src="{{ asset($voluntario->voluntario->foto) }}" alt="avatar"
-                         class="w-[30px] h-[30px] rounded-full object-cover aspect-square p-[1px] border-2
+                         class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                 @else
                     @if($voluntario->voluntario->sexo == 'M')
                         <img src="{{ asset('img/icon_profile_man.jpg') }}" alt="avatar"
-                             class="w-[30px] h-[30px] rounded-full object-cover aspect-square p-[1px] border-2
+                             class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
                                     @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                     @else
                         <img src="{{ asset('img/icon_profile_woman.jpg') }}" alt="avatar"
-                             class="w-[30px] h-[30px] rounded-full object-cover aspect-square p-[1px] border-2
+                             class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
                                     @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                     @endif
                 @endif
