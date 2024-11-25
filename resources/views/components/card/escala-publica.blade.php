@@ -65,51 +65,50 @@
                 />
             @endforeach
 
-{{--            <div class="w-8/12 mx-auto my-4">--}}
-{{--                <hr class="@if($escala->fechada) border-b border-b-[#add7b3] @else border-b-gray-100 @endif">--}}
-{{--            </div>--}}
+            @if($escala->evento_id === \App\Models\Evento::SANTA_CEIA)
+                <div class="w-8/12 mx-auto my-4">
+                    <hr class="@if($escala->fechada) border-b border-b-[#add7b3] @else border-b-gray-100 @endif">
+                </div>
 
-{{--            @if($escala->evento_id === \App\Models\Evento::SANTA_CEIA)--}}
+                @php
+                    $classBgAndBorder = $voluntario->funcao
+                        ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200'
+                        : 'border border-dashed border-gray-400'
+                @endphp
 
-{{--                @php--}}
-{{--                    $classBgAndBorder = $voluntario->funcao--}}
-{{--                        ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200'--}}
-{{--                        : 'border border-dashed border-gray-400'--}}
-{{--                @endphp--}}
+                <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Pão</div>
+                @foreach($escala->voluntarios->filter(function ($voluntario) {
+                    return in_array($voluntario->funcao, ['OP']);
+                }) as $voluntario)
+                    <x-card.escalas.voluntarios-santa-ceia-nomes
+                        :loop="$loop"
+                        :voluntario="$voluntario"
+                        :escala="$escala"
+                    />
+                @endforeach
 
-{{--                <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Pão</div>--}}
-{{--                @foreach($escala->voluntarios->filter(function ($voluntario) {--}}
-{{--                    return in_array($voluntario->funcao, ['OP']);--}}
-{{--                }) as $voluntario)--}}
-{{--                    <x-card.escalas.voluntarios-santa-ceia-nomes--}}
-{{--                        :loop="$loop"--}}
-{{--                        :voluntario="$voluntario"--}}
-{{--                        :escala="$escala"--}}
-{{--                    />--}}
-{{--                @endforeach--}}
+                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Orar pelo Suco</div>
+                @foreach($escala->voluntarios->filter(function ($voluntario) {
+                    return in_array($voluntario->funcao, ['OS']);
+                }) as $voluntario)
+                    <x-card.escalas.voluntarios-santa-ceia-nomes
+                        :loop="$loop"
+                        :voluntario="$voluntario"
+                        :escala="$escala"
+                    />
+                @endforeach
 
-{{--                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Orar pelo Suco</div>--}}
-{{--                @foreach($escala->voluntarios->filter(function ($voluntario) {--}}
-{{--                    return in_array($voluntario->funcao, ['OS']);--}}
-{{--                }) as $voluntario)--}}
-{{--                    <x-card.escalas.voluntarios-santa-ceia-nomes--}}
-{{--                        :loop="$loop"--}}
-{{--                        :voluntario="$voluntario"--}}
-{{--                        :escala="$escala"--}}
-{{--                    />--}}
-{{--                @endforeach--}}
-
-{{--                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Servir Pão/Suco</div>--}}
-{{--                @foreach($escala->voluntarios->filter(function ($voluntario) {--}}
-{{--                    return in_array($voluntario->funcao, ['SPS']);--}}
-{{--                })->sortBy('voluntario.nome') as $voluntario)--}}
-{{--                    <x-card.escalas.voluntarios-santa-ceia-nomes--}}
-{{--                        :loop="$loop"--}}
-{{--                        :voluntario="$voluntario"--}}
-{{--                        :escala="$escala"--}}
-{{--                    />--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
+                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Servir Pão/Suco</div>
+                @foreach($escala->voluntarios->filter(function ($voluntario) {
+                    return in_array($voluntario->funcao, ['SPS']);
+                })->sortBy('voluntario.nome') as $voluntario)
+                    <x-card.escalas.voluntarios-santa-ceia-nomes
+                        :loop="$loop"
+                        :voluntario="$voluntario"
+                        :escala="$escala"
+                    />
+                @endforeach
+            @endif
         </ul>
 
         @if(!count($escala->voluntarios))
