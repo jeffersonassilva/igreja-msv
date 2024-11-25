@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-class Evento extends AbstractModel
+class Funcao extends AbstractModel
 {
-    const SANTA_CEIA = 7;
-
     /**
      * @var string
      */
-    protected $table = 'eventos';
+    protected $table = 'escala_funcao';
 
     /**
      * @var string
@@ -21,8 +19,8 @@ class Evento extends AbstractModel
      */
     protected $fillable = [
         'id',
+        'abreviacao',
         'descricao',
         'situacao',
-        'qntd_voluntarios',
     ];
 }

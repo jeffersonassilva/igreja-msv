@@ -13,12 +13,17 @@
 
     @canany(['adm-menu-evento', 'adm-menu-escala', 'adm-menu-voluntario', 'adm-menu-relatorios'])
         <x-adm-menu-group name="Gestão de Escalas" id="gestao_escalas" icon="shirt-outline"
-                          :groups='["eventos", "escalas", "voluntarios", "relatorio"]'
+                          :groups='["eventos", "escalas", "voluntarios", "relatorio", "funcoes"]'
                           :submenus='[
                             ["label" => "Eventos", "route" => "eventos", "permission" => "adm-menu-evento"],
                             ["label" => "Escalas", "route" => "escalas", "permission" => "adm-menu-escala"],
+                            ["label" => "Funções", "route" => "funcoes", "permission" => "adm-menu-escala-funcao"],
                             ["label" => "Voluntários", "route" => "voluntarios", "permission" => "adm-menu-voluntario"],
-                            ["label" => "Relatório", "route" => "relatorio.mensal.voluntarios", "permission" => "adm-menu-relatorios"]
+                            [
+                                "label" => "Relatório",
+                                "route" => "relatorio.mensal.voluntarios",
+                                "permission" => "adm-menu-relatorios"
+                            ]
                           ]'>
         </x-adm-menu-group>
     @endcan
@@ -37,8 +42,16 @@
                           :groups='["cartoes", "notas-fiscais", "relatorios-tesouraria"]'
                           :submenus='[
                             ["label" => "Cartões", "route" => "cartoes", "permission" => "adm-menu-cartao"],
-                            ["label" => "Notas Fiscais", "route" => "notas-fiscais", "permission" => "adm-menu-nota-fiscal"],
-                            ["label" => "Relatório", "route" => "relatorios-tesouraria", "permission" => "adm-menu-relatorios-tesouraria"]
+                            [
+                                "label" => "Notas Fiscais",
+                                "route" => "notas-fiscais",
+                                "permission" => "adm-menu-nota-fiscal"
+                            ],
+                            [
+                                "label" => "Relatório",
+                                "route" => "relatorios-tesouraria",
+                                "permission" => "adm-menu-relatorios-tesouraria"
+                            ]
                           ]'>
         </x-adm-menu-group>
     @endcan
@@ -57,10 +70,22 @@
                           :groups='["classes", "alunos", "calendario", "calendario-fixo", "professores"]'
                           :submenus='[
                             ["label" => "Alunos", "route" => "alunos", "permission" => "adm-menu-ebd-alunos"],
-                            ["label" => "Calendário", "route" => "calendario", "permission" => "adm-menu-ebd-calendario"],
-                            ["label" => "Calendário Fixo", "route" => "calendario-fixo", "permission" => "adm-menu-ebd-calendario"],
+                            [
+                                "label" => "Calendário",
+                                "route" => "calendario",
+                                "permission" => "adm-menu-ebd-calendario"
+                            ],
+                            [
+                                "label" => "Calendário Fixo",
+                                "route" => "calendario-fixo",
+                                "permission" => "adm-menu-ebd-calendario"
+                            ],
                             ["label" => "Classes", "route" => "classes", "permission" => "adm-menu-ebd-classes"],
-                            ["label" => "Professores", "route" => "professores", "permission" => "adm-menu-ebd-professores"],
+                            [
+                                "label" => "Professores",
+                                "route" => "professores",
+                                "permission" => "adm-menu-ebd-professores"
+                            ],
                           ]'>
         </x-adm-menu-group>
     @endcan
@@ -76,7 +101,9 @@
         </x-adm-menu-group>
     @endcan
 
-    <x-adm-menu-item group="configuracoes" :route="'configuracoes'" :icon="'settings-outline'">Configurações</x-adm-menu-item>
+    <x-adm-menu-item group="configuracoes" :route="'configuracoes'" :icon="'settings-outline'">
+        Configurações
+    </x-adm-menu-item>
 
     <div class="pb-24 md:pb-4">
         <form method="POST" action="{{ route('logout') }}">

@@ -14,7 +14,7 @@
         <div class="flex flex-col">
             <div class="font-thin text-xs md:text-sm text-gray-500">Função</div>
             <div class="text-gray-800 dark:text-[#d0d9e6] text-sm">
-                {{ $escala->funcao ? \App\Helpers\Constants::FUNCOES_LISTA[$escala->funcao] : 'Serviços Gerais' }}
+                {{ $escala->funcao ? $escala->funcao_rel->descricao : 'Não definida' }}
             </div>
         </div>
         <div class="flex flex-col items-end">

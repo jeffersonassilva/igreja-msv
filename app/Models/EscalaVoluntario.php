@@ -38,6 +38,18 @@ class EscalaVoluntario extends AbstractModel
         'app_versao',
     ];
 
+    protected $with = [
+        'funcao_rel'
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function funcao_rel()
+    {
+        return $this->belongsTo(Funcao::class, 'funcao', 'abreviacao');
+    }
+
     /**
      * @return BelongsTo
      */

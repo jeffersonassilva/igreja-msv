@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EscalaRequest;
-use App\Services\EscalaFuncaoService;
 use App\Services\EscalaService;
 use App\Services\EventoService;
+use App\Services\FuncaoService;
 use App\Services\VoluntarioService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,9 +23,9 @@ class EscalaController extends Controller
     private $service;
 
     /**
-     * @var EscalaFuncaoService
+     * @var FuncaoService
      */
-    private $escalaFuncaoService;
+    private $funcaoService;
 
     /**
      * @var EventoService
@@ -39,19 +39,19 @@ class EscalaController extends Controller
 
     /**
      * @param EscalaService $service
-     * @param EscalaFuncaoService $escalaFuncaoService
+     * @param FuncaoService $funcaoService
      * @param EventoService $eventoService
      * @param VoluntarioService $voluntarioService
      */
     public function __construct(
         EscalaService       $service,
-        EscalaFuncaoService $escalaFuncaoService,
+        FuncaoService       $funcaoService,
         EventoService       $eventoService,
         VoluntarioService   $voluntarioService
     )
     {
         $this->service = $service;
-        $this->escalaFuncaoService = $escalaFuncaoService;
+        $this->funcaoService = $funcaoService;
         $this->eventoService = $eventoService;
         $this->voluntarioService = $voluntarioService;
     }
@@ -63,7 +63,7 @@ class EscalaController extends Controller
     public function list(Request $request)
     {
         $data = $this->service->list($request->all());
-        $funcoes = $this->escalaFuncaoService->list();
+        $funcoes = $this->funcaoService->all();
         $eventos = $this->eventoService->all();
         $voluntarios = $this->voluntarioService->where(
             array('situacao' => true),
@@ -130,11 +130,14 @@ class EscalaController extends Controller
                 ];
             });
         $eventos = $this->eventoService->all(['descricao' => Constants::CRESCENTE]);
+        $funcoes = $this->funcaoService->all(['descricao' => Constants::CRESCENTE]);
         $data = $this->service->edit($id);
+
         return view('admin/escalas/edit')->with([
             'data' => $data,
             'eventos' => $eventos,
-            'voluntarios' => $voluntarios
+            'voluntarios' => $voluntarios,
+            'funcoes' => $funcoes
         ]);
     }
 
