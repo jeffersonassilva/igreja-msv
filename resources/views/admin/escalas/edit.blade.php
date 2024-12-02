@@ -6,7 +6,9 @@
     <section>
         <form class="form-horizontal" role="form"
               action="{{ route('escalas.update', $data) }}"
-              method="post" enctype="multipart/form-data">
+              method="post"
+              aria-label="formulário de edição da escala"
+              enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -18,7 +20,7 @@
                           size="md:max-w-[250px]"
                           value="{{ old('dt_escala') ?? \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}"
                           :required="true"
-                          :observacoes='["Informe a data da escala."]' />
+                          :observacoes='["Informe a data da escala."]'/>
 
             <x-form.input label="Hora"
                           name="hr_escala"
@@ -26,7 +28,7 @@
                           size="md:max-w-[250px]"
                           value="{{ old('hr_escala') ?? \Carbon\Carbon::parse($data->data)->format('H:i') }}"
                           :required="true"
-                          :observacoes='["Informe o horário de início da escala."]' />
+                          :observacoes='["Informe o horário de início da escala."]'/>
 
             <x-form.select label="Evento"
                            name="evento_id"
@@ -34,7 +36,7 @@
                            :required="true"
                            :options="$eventos"
                            :reference="$data->evento_id"
-                           :observacoes='["Selecione o evento a qual a escala se refere."]' />
+                           :observacoes='["Selecione o evento a qual a escala se refere."]'/>
 
             <x-form.select label="Status"
                            name="fechada"
@@ -43,96 +45,134 @@
                            :options='[["id" => "1", "descricao" => "Fechada"], ["id" => "0", "descricao" => "Aberta" ]]'
                            :observacoes='[
                               "Por padrão, toda escala é cadastrada como <span class=\"text-blue-400\">Aberta</span>.",
-                              "Se o status for <span class=\"text-blue-400\">Fechada</span>, os voluntários não terão mais acesso a esta escala."
-                           ]' />
+                              "Se o status for <span class=\"text-blue-400\">Fechada</span>,
+                              os voluntários não terão mais acesso a esta escala."
+                           ]'/>
 
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('escalas')"
-                            :infoRequired="true" />
+                            :infoRequired="true"/>
         </form>
     </section>
 
     @if(count($data->voluntarios))
-    <section class="py-6">
-        <h3 class="text-gray-500 pb-4">
-            Lista de Voluntários
-        </h3>
-        @foreach($data->voluntarios as $key => $voluntario)
-            <div>
-                <div class="flex flex-col mb-4 px-4 pt-4 bg-white dark:bg-[#252c47]">
-                    <p class="text-gray-500 font-normal mb-2 dark:text-[#d0d9e6]">
-                        <span class="inline-flex justify-center items-center w-6 h-6 bg-gray-400 rounded-full text-white">{{ ++$key }}</span>
-                        {{ $voluntario->voluntario->nome }}
-                    </p>
-                    <div class="flex flex-col">
-                        <label for="funcao-{{ $voluntario->id }}" class="text-sm font-thin text-gray-500 mb-1">Selecione a função do voluntário.</label>
-                        <select name="funcao" id="funcao-{{ $voluntario->id }}"
-                                class="border border-gray-400 w-full md:max-w-[250px]
+        <section class="py-6">
+            <h3 class="text-gray-500 pb-4">
+                Lista de Voluntários
+            </h3>
+            @foreach($data->voluntarios as $key => $voluntario)
+                <div>
+                    <div class="flex flex-col mb-4 px-4 pt-4 bg-white dark:bg-[#252c47]">
+                        <p class="text-gray-500 font-normal mb-2 dark:text-[#d0d9e6]">
+                            <span
+                                class="inline-flex justify-center items-center w-6 h-6
+                                bg-gray-400 rounded-full text-white">{{ ++$key }}</span>
+                            {{ $voluntario->voluntario->nome }}
+                        </p>
+                        <div class="flex flex-col">
+                            <label for="funcao-{{ $voluntario->id }}"
+                                   class="text-sm font-thin text-gray-500 mb-1">Selecione a função do voluntário.
+                            </label>
+                            <select name="funcao" id="funcao-{{ $voluntario->id }}"
+                                    class="border border-gray-400 w-full md:max-w-[250px]
                                  dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
                                  @error('funcao') border-[1px] border-red-500 dark:border-[#642828] @enderror">
-                            <option value=""></option>
-                            @foreach($funcoes as $funcao)
-                            <option
-                                value="{{ $funcao->abreviacao }}"
-                                @if($funcao->abreviacao === $voluntario->funcao)
-                                selected @endif>{{ $funcao->abreviacao }} - {{ $funcao->descricao }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                                <option value=""></option>
 
-                    <div class="flex flex-col mt-4">
-                        <label for="date" class="text-sm font-thin text-gray-500 mb-1">Indicador de presença do voluntário.</label>
-                        <select name="comparecimento" id="comparecimento-{{ $voluntario->id }}" data-comparecimento-id="{{ $voluntario->id }}"
-                                class="border border-gray-400 w-full md:max-w-[250px] selectComparecimento
+                                @foreach(
+                                        $data->evento_id !== \App\Models\Evento::SANTA_CEIA
+                                            ? $funcoes->filter(function ($funcao) {
+                                                return !in_array($funcao->abreviacao, ['OP', 'OS', 'SPS']);
+                                            })
+                                            : $funcoes
+                                        as $funcao
+                                    )
+                                    <option
+                                        value="{{ $funcao->abreviacao }}"
+                                        @if($funcao->abreviacao === $voluntario->funcao)
+                                            selected
+                                        @endif
+                                    >
+                                        {{ $funcao->abreviacao }} - {{ $funcao->descricao }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col mt-4">
+                            <label for="date" class="text-sm font-thin text-gray-500 mb-1">
+                                Indicador de presença do voluntário.
+                            </label>
+                            <select name="comparecimento" id="comparecimento-{{ $voluntario->id }}"
+                                    data-comparecimento-id="{{ $voluntario->id }}"
+                                    class="border border-gray-400 w-full md:max-w-[250px] selectComparecimento
                                 dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
                                 @error('comparecimento') border-[1px] border-red-500 dark:border-[#642828] @enderror">
-                            @foreach(\App\Helpers\Constants::COMPARECIMENTO_LISTA as $key => $comparecimento)
-                            <option value="{{ $key }}" @if($key === $voluntario->comparecimento) selected @endif>{{ $comparecimento }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                                @foreach(\App\Helpers\Constants::COMPARECIMENTO_LISTA as $key => $comparecimento)
+                                    <option value="{{ $key }}"
+                                            @if($key === $voluntario->comparecimento) selected @endif>
+                                        {{ $comparecimento }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <div class="flex flex-col mt-4 @if($voluntario->comparecimento !== 'FJ') hidden @endif">
-                        <label for="date" class="text-sm font-thin text-gray-500 mb-1">Descreva a justificativa da ausência do voluntário.</label>
-                        <textarea name="justificativa" id="justificativa-{{ $voluntario->id }}"
-                                  class="border-gray-400 rounded-sm text-gray-700 w-full
+                        <div class="flex flex-col mt-4 @if($voluntario->comparecimento !== 'FJ') hidden @endif">
+                            <label for="date" class="text-sm font-thin text-gray-500 mb-1">
+                                Descreva a justificativa da ausência do voluntário.
+                            </label>
+                            <textarea name="justificativa" id="justificativa-{{ $voluntario->id }}"
+                                      class="border-gray-400 rounded-sm text-gray-700 w-full
                                   dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6] dark-autofill
-                                  @error('justificativa') border-[1px] border-red-500 @enderror">{{ $voluntario->justificativa }}</textarea>
-                    </div>
+                                  @error('justificativa') border-[1px] border-red-500 @enderror
+                                  ">{{ $voluntario->justificativa }}</textarea>
+                        </div>
 
-                    <div class="mt-3">
-                        <button aria-label="Atualizar" type="button"
-                                data-voluntario-id="{{ $voluntario->id }}"
-                                class="btn-atualizar outline-0 rounded-md px-3 py-1 inline-flex justify-center items-center
-                                text-white bg-primary hover:bg-primary-dark focus:bg-primary-dark
-                                dark:text-gray-900 dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:border-yellow-400">
-                            Atualizar
-                        </button>
+                        <div class="mt-3">
+                            <button aria-label="Atualizar" type="button"
+                                    data-voluntario-id="{{ $voluntario->id }}"
+                                    class="btn-atualizar outline-0 rounded-md px-3 py-1 inline-flex
+                                    justify-center items-center text-white bg-primary
+                                    hover:bg-primary-dark focus:bg-primary-dark dark:text-gray-900
+                                    dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:border-yellow-400">
+                                Atualizar
+                            </button>
 
-                        <x-button.delete :route="route('escalaVoluntario.destroy', $voluntario)"
-                                         formId="form-excluir-voluntario-{{ $voluntario->id }}">
-                        </x-button.delete>
+                            <x-button.delete :route="route('escalaVoluntario.destroy', $voluntario)"
+                                             formId="form-excluir-voluntario-{{ $voluntario->id }}">
+                            </x-button.delete>
+                        </div>
+                        <div id="message-api-{{ $voluntario->id }}"
+                             class="text-sm p-1 transition duration-1000 ease-in-out opacity-0">Atualizado com sucesso!
+                        </div>
                     </div>
-                    <div id="message-api-{{ $voluntario->id }}" class="text-sm p-1 transition duration-1000 ease-in-out opacity-0">Atualizado com sucesso!</div>
                 </div>
-            </div>
-        @endforeach
-        <x-dialog.confirm></x-dialog.confirm>
-    </section>
+            @endforeach
+            <x-dialog.confirm></x-dialog.confirm>
+        </section>
     @endif
 
     <section>
         <div class="mb-4 p-4 bg-white flex flex-col sm:flex-row sm:items-center dark:bg-[#252c47]">
-            <form class="form-horizontal w-full" role="form" method="post" action="{{ route('escalaVoluntario.store') }}">
+            <form class="form-horizontal w-full" role="form" method="post"
+                  action="{{ route('escalaVoluntario.store') }}"
+                  aria-label="formulário de inserção de novo voluntário na escala">
                 @csrf
                 <input type="hidden" name="dispositivo_os" value="Web">
                 <input type="hidden" name="escala_id" value="{{ $data->id }}">
-                <label for="nome" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">Novo voluntário</label><br />
-                <span class="text-sm font-thin text-gray-500 dark:text-gray-400">- Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.</span><br />
-                <span class="text-sm font-thin text-gray-500 dark:text-gray-400">- Voluntários com situação <span class="text-blue-400">Inativo</span> não aparecem nessa lista.</span><br />
-{{--                <span class="text-sm font-thin text-gray-500">- Máximo de 100 caracteres caso o nome ainda não esteja na lista.</span>--}}
+                <label for="nome" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">Novo voluntário</label><br/>
+                <span class="text-sm font-thin text-gray-500 dark:text-gray-400">
+                    - Esse campo abaixo pode ser utilizado para adicionar um novo voluntário a esta escala.
+                </span><br/>
+                <span class="text-sm font-thin text-gray-500 dark:text-gray-400">
+                    - Voluntários com situação <span
+                        class="text-blue-400">Inativo</span> não aparecem nessa lista.</span><br/>
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center md:w-full mt-2">
-                    <select name="voluntario_id" class="border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px] @error('voluntario_id') border-[1px] border-red-500 @enderror dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]">
+                    <select name="voluntario_id"
+                            class="border-gray-400 rounded-sm text-gray-700 w-full md:max-w-[250px]
+                            @error('voluntario_id') border-[1px] border-red-500 @enderror
+                            dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]">
                         <option value=""></option>
                         @foreach($voluntarios as $voluntarioItem)
                             <option value="{{ $voluntarioItem['id'] }}">{{ $voluntarioItem['descricao'] }}</option>
@@ -141,12 +181,12 @@
 
                     <button aria-label="Salvar" type="submit"
                             class="outline-0 rounded-md text-white font-normal border border-blue-400 bg-blue-400
-                                        hover:bg-blue-500
-                                        focus:bg-blue-500
+                                        hover:bg-blue-500 focus:bg-blue-500
                                         px-3 py-1 mt-3 md:mt-0 inline-flex justify-center items-center w-fit
-                                        md:text-right
-                                        dark:text-gray-900 dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:border-yellow-400">
-                        <ion-icon name="add-circle-outline"></ion-icon><span class="ml-2">Adicionar</span>
+                                        md:text-right dark:text-gray-900 dark:bg-yellow-400
+                                        dark:hover:bg-yellow-300 dark:border-yellow-400">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                        <span class="ml-2">Adicionar</span>
                     </button>
                 </div>
                 @error('voluntario_id')
