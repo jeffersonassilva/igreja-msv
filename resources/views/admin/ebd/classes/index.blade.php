@@ -4,14 +4,14 @@
     </x-slot>
 
     <section>
-        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
-            <div class="text-rights text-sm">
+        <div class="h-16 mb-4 bg-white rounded-md flex items-center justify-center dark:bg-[#252c47]">
+            <div class="text-sm">
                 @can('adm-adicionar-ebd-classe')
                     <x-button.link title="Adicionar Classe" :route="route('classes.create')"></x-button.link>
                 @endcan
             </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
             @foreach($classes as $classe)
                 <div class="bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200
                             dark:bg-[#252c47] dark:border-[#252c47]">

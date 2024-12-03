@@ -4,22 +4,22 @@
     </x-slot>
 
     <section>
-        <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
-            <div class="text-sm">
-{{--                @can('adm-adicionar-nota-fiscal')--}}
-{{--                    <x-button.link title="Adicionar Cartão" :route="route('notas-fiscais.create')"></x-button.link>--}}
-{{--                @endcan--}}
-            </div>
-        </div>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($notasFiscais as $nota)
-                <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
+                <div class="relative flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px]
+                            border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
                     <div class="mb-3 text-2xl text-gray-700 font-medium dark:text-white">
                         {{ \App\Helpers\Strings::getMoedaFormatada($nota->valor, 'R$ ') }}
                     </div>
                     <div class="mb-3 flex gap-2 items-end text-gray-700 dark:text-[#d0d9e6]">
-                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b] dark:bg-transparent p-2 px-3 rounded-md">{{ \Carbon\Carbon::parse($nota->data)->format('d/m/Y') }}</div>
-                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b] dark:bg-transparent p-2 px-3 rounded-md">{{ $nota->cartao_id ? 'Cartão: ' . $nota->cartao->identificador : 'Dinheiro' }}</div>
+                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b]
+                                    dark:bg-transparent p-2 px-3 rounded-md">
+                            {{ \Carbon\Carbon::parse($nota->data)->format('d/m/Y') }}
+                        </div>
+                        <div class="text-sm bg-gray-100 dark:border dark:border-[#52596b]
+                                    dark:bg-transparent p-2 px-3 rounded-md">
+                            {{ $nota->cartao_id ? 'Cartão: ' . $nota->cartao->identificador : 'Dinheiro' }}
+                        </div>
                     </div>
                     <div class="mb-3 text-lg text-gray-700 dark:text-[#d0d9e6]">
                         {{ \App\Services\CategoriaService::getDescricaoById($nota->categoria) }}
@@ -37,7 +37,11 @@
                     </div>
 
                     <div class="text-sm mt-3 flex gap-2">
-                        <x-button.link title="Visualizar Arquivo" target="_blank" :lighter="true" :route="asset($nota->arquivo)"></x-button.link>
+                        <x-button.link title="Visualizar Arquivo"
+                                       target="_blank"
+                                       :lighter="true"
+                                       :route="asset($nota->arquivo)">
+                        </x-button.link>
 
                         @can('adm-arquivar-nota-fiscal')
                             <x-button.delete title="Arquivar Nota" :route="route('notas-fiscais.archive', $nota)"

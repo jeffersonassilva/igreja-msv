@@ -4,7 +4,7 @@
     </x-slot>
 
     <section>
-        <div class="mb-4 p-4 flex items-center justify-center dark:bg-[#252c47] rounded-md bg-white" role="group">
+        <div class="h-16 mb-4 bg-white rounded-md flex items-center justify-center dark:bg-[#252c47]" role="group">
             <button type="button" id="btn-filtros"
                     class="py-1 px-4 text-sm text-white bg-blue-400
                     dark:text-gray-900 dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:border-[#263141]
