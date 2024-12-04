@@ -4,7 +4,7 @@
     'loop',
     ])
 
-<li class="line-clamp-1">
+<div class="line-clamp-1 mb-6">
     <div class="flex items-center">
         <div class="flex-shrink-0">
             @if($voluntario->voluntario->foto)
@@ -27,4 +27,4 @@
             {{ $voluntario->voluntario->nome }}
         </div>
     </div>
-</li>
+</div>

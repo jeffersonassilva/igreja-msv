@@ -50,7 +50,7 @@
             </div>
         @endif
 
-        <ul class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
+        <div class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
 
             @foreach($escala->voluntarios->filter(function ($voluntario) {
                     return !in_array($voluntario->funcao, ['OP', 'OS', 'SPS']);
@@ -65,51 +65,68 @@
                 />
             @endforeach
 
-            @if($escala->evento_id === \App\Models\Evento::SANTA_CEIA)
-                <div class="w-8/12 mx-auto my-4">
-                    <hr class="@if($escala->fechada) border-b border-b-[#add7b3] @else border-b-gray-100 @endif">
-                </div>
+            @if($escala->evento_id === \App\Models\Evento::SANTA_CEIA && count($escala->voluntarios) > 0)
+
+                @if($escala->voluntarios->contains(function ($voluntario) {
+                    return in_array($voluntario->funcao, ['OP', 'OS', 'SPS']);
+                }))
+                    <div class="w-8/12 mx-auto my-4 pb-1">
+                        <hr class="@if($escala->fechada) border-b border-b-[#add7b3] @else border-b-gray-100 @endif">
+                    </div>
+                @endif
 
                 @php
-                    $classBgAndBorder = $voluntario->funcao
+                    $classBgAndBorder = isset($voluntario) && $voluntario->funcao
                         ? $escala->fechada ? 'bg-[#bbd1bb]' : 'bg-gray-200'
                         : 'border border-dashed border-gray-400'
                 @endphp
 
-                <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Pão</div>
-                @foreach($escala->voluntarios->filter(function ($voluntario) {
-                    return in_array($voluntario->funcao, ['OP']);
-                }) as $voluntario)
-                    <x-card.escalas.voluntarios-santa-ceia-nomes
-                        :loop="$loop"
-                        :voluntario="$voluntario"
-                        :escala="$escala"
-                    />
-                @endforeach
+                @if($escala->voluntarios->contains(function ($voluntario) {
+                    return $voluntario->funcao === 'OP';
+                }))
+                    <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Pão</div>
+                    @foreach($escala->voluntarios->filter(function ($voluntario) {
+                        return in_array($voluntario->funcao, ['OP']);
+                    }) as $voluntario)
+                        <x-card.escalas.voluntarios-santa-ceia-nomes
+                            :loop="$loop"
+                            :voluntario="$voluntario"
+                            :escala="$escala"
+                        />
+                    @endforeach
+                @endif
 
-                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Orar pelo Suco</div>
-                @foreach($escala->voluntarios->filter(function ($voluntario) {
-                    return in_array($voluntario->funcao, ['OS']);
-                }) as $voluntario)
-                    <x-card.escalas.voluntarios-santa-ceia-nomes
-                        :loop="$loop"
-                        :voluntario="$voluntario"
-                        :escala="$escala"
-                    />
-                @endforeach
+                @if($escala->voluntarios->contains(function ($voluntario) {
+                    return $voluntario->funcao === 'OS';
+                }))
+                    <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Suco</div>
+                    @foreach($escala->voluntarios->filter(function ($voluntario) {
+                        return in_array($voluntario->funcao, ['OS']);
+                    }) as $voluntario)
+                        <x-card.escalas.voluntarios-santa-ceia-nomes
+                            :loop="$loop"
+                            :voluntario="$voluntario"
+                            :escala="$escala"
+                        />
+                    @endforeach
+                @endif
 
-                <div class="font-medium text-gray-700 leading-none pb-1 mt-6">Servir Pão/Suco</div>
-                @foreach($escala->voluntarios->filter(function ($voluntario) {
-                    return in_array($voluntario->funcao, ['SPS']);
-                })->sortBy('voluntario.nome') as $voluntario)
-                    <x-card.escalas.voluntarios-santa-ceia-nomes
-                        :loop="$loop"
-                        :voluntario="$voluntario"
-                        :escala="$escala"
-                    />
-                @endforeach
+                @if($escala->voluntarios->contains(function ($voluntario) {
+                    return $voluntario->funcao === 'SPS';
+                }))
+                    <div class="font-medium text-gray-700 leading-none pb-1">Servir Pão/Suco</div>
+                    @foreach($escala->voluntarios->filter(function ($voluntario) {
+                        return in_array($voluntario->funcao, ['SPS']);
+                    })->sortBy('voluntario.nome') as $voluntario)
+                        <x-card.escalas.voluntarios-santa-ceia-nomes
+                            :loop="$loop"
+                            :voluntario="$voluntario"
+                            :escala="$escala"
+                        />
+                    @endforeach
+                @endif
             @endif
-        </ul>
+        </div>
 
         @if(!count($escala->voluntarios))
             <div class="flex flex-col justify-center items-center text-gray-400 font-thin text-sm">
