@@ -1,7 +1,6 @@
 @props(['escala'])
 
-<div class="flex flex-col bg-white text-gray-600 shadow-sm rounded-md border-[1px]
-            border-gray-200 relative dark:text-[#d0d9e6] dark:bg-[#252c47] dark:border-[#252c47]">
+<div class="flex flex-col bg-white rounded-md relative dark:text-[#d0d9e6] dark:bg-[#252c47]">
     <div class="absolute top-4 left-[-3px] h-[30px] w-[3px]"
          style="background: {{ $escala->evento->cor ?? '#777' }}">
     </div>

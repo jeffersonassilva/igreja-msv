@@ -11,23 +11,33 @@
                 @endcan
             </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-4">
             @foreach($cartoes as $cartao)
-                <div class="flex flex-col bg-white p-3 shadow-sm rounded-md border-[1px]
-                            border-gray-200 dark:bg-[#252c47] dark:border-[#252c47]">
-                    <h3 class="text-gray-700 font-medium dark:text-white">{{ $cartao->identificador }}</h3>
-                    <p class="flex-1 mt-2 text-sm text-gray-700 text-ellipsis font-thin
-                              overflow-hidden line-clamp-4 dark:text-[#d0d9e6]">
-                        {{ \App\Helpers\Strings::getCartaoFormatado($cartao->numero) }}
-                    </p>
+                <div class="flex flex-row gap-2 items-center bg-white p-3 rounded-sm dark:bg-[#252c47]">
+                    <div class="flex-1">
+                        <h3 class="text-gray-700 dark:text-white">
+                            {{ $cartao->identificador }}
+                        </h3>
+                        <p class="text-sm font-thin text-gray-500 dark:text-[#d0d9e6]">
+                            {{ \App\Helpers\Strings::getCartaoFormatado($cartao->numero) }}
+                        </p>
+                    </div>
                     @canany(['adm-editar-cartao', 'adm-excluir-cartao'])
-                        <div class="text-sm mt-3 flex gap-2">
+                        <div class="text-sm flex gap-2 md:gap-2">
                             @can('adm-editar-cartao')
-                                <x-button.link title="Editar" :route="route('cartoes.edit', $cartao)"></x-button.link>
+                                <x-button.link title=""
+                                               class="text-lg py-3"
+                                               icon="create-outline"
+                                               :lighter="true"
+                                               :route="route('cartoes.edit', $cartao)">
+                                </x-button.link>
                             @endcan
 
                             @can('adm-excluir-cartao')
-                                <x-button.delete :route="route('cartoes.destroy', $cartao)"
+                                <x-button.delete title=""
+                                                 icon="trash-outline"
+                                                 class="text-lg text-red-500 py-3"
+                                                 :route="route('cartoes.destroy', $cartao)"
                                                  formId="form-excluir-cartao-{{ $cartao->id }}">
                                 </x-button.delete>
                             @endcan

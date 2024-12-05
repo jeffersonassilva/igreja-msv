@@ -40,7 +40,7 @@ class ProfessorController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-ebd-professores');
-        $data = $this->service->paginate(['nome' => 'asc']);
+        $data = $this->service->paginate(['nome' => 'asc'], null, 'classes');
         return view('admin/ebd/professores/index')->with('professores', $data);
     }
 

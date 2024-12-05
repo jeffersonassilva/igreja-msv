@@ -75,11 +75,16 @@ abstract class AbstractService
     /**
      * @param array $orders
      * @param $perPage
+     * @param $relations
      * @return mixed
      */
-    public function paginate(array $orders = array(), $perPage = null)
+    public function paginate(array $orders = array(), $perPage = null, $relations = null)
     {
         $query = $this->model;
+
+        if ($relations) {
+            $query = $query->with($relations);
+        }
 
         foreach ($orders as $key => $value) {
             if (isset($value) && !empty($value)) {
