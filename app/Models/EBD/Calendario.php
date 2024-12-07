@@ -24,6 +24,7 @@ class Calendario extends AbstractModel
         'data',
         'tema',
         'professor_id',
+        'monitor',
         'classe_id',
         'titulo',
         'local',
