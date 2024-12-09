@@ -42,7 +42,7 @@ class VoluntarioController extends Controller
     public function index(Request $request)
     {
         $this->checkPermission('adm-listar-voluntario');
-        $data = $this->service->where($request->all(), array('nome' => Constants::CRESCENTE))->get();
+        $data = $this->service->paginate(array('nome' => Constants::CRESCENTE), 21);
         return view('admin/voluntarios/index')->with('voluntarios', $data);
     }
 
