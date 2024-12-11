@@ -85,45 +85,51 @@
                     return $voluntario->funcao === 'OP';
                 }))
                     <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Pão</div>
-                    @foreach($escala->voluntarios->filter(function ($voluntario) {
-                        return in_array($voluntario->funcao, ['OP']);
-                    }) as $voluntario)
-                        <x-card.escalas.voluntarios-santa-ceia-nomes
-                            :loop="$loop"
-                            :voluntario="$voluntario"
-                            :escala="$escala"
-                        />
-                    @endforeach
+                    <div class="mb-6">
+                        @foreach($escala->voluntarios->filter(function ($voluntario) {
+                            return in_array($voluntario->funcao, ['OP']);
+                        }) as $voluntario)
+                            <x-card.escalas.voluntarios-santa-ceia-nomes
+                                :loop="$loop"
+                                :voluntario="$voluntario"
+                                :escala="$escala"
+                            />
+                        @endforeach
+                    </div>
                 @endif
 
                 @if($escala->voluntarios->contains(function ($voluntario) {
                     return $voluntario->funcao === 'OS';
                 }))
                     <div class="font-medium text-gray-700 leading-none pb-1">Orar pelo Suco</div>
-                    @foreach($escala->voluntarios->filter(function ($voluntario) {
-                        return in_array($voluntario->funcao, ['OS']);
-                    }) as $voluntario)
-                        <x-card.escalas.voluntarios-santa-ceia-nomes
-                            :loop="$loop"
-                            :voluntario="$voluntario"
-                            :escala="$escala"
-                        />
-                    @endforeach
+                    <div class="mb-6">
+                        @foreach($escala->voluntarios->filter(function ($voluntario) {
+                            return in_array($voluntario->funcao, ['OS']);
+                        }) as $voluntario)
+                            <x-card.escalas.voluntarios-santa-ceia-nomes
+                                :loop="$loop"
+                                :voluntario="$voluntario"
+                                :escala="$escala"
+                            />
+                        @endforeach
+                    </div>
                 @endif
 
                 @if($escala->voluntarios->contains(function ($voluntario) {
                     return $voluntario->funcao === 'SPS';
                 }))
                     <div class="font-medium text-gray-700 leading-none pb-1">Servir Pão/Suco</div>
-                    @foreach($escala->voluntarios->filter(function ($voluntario) {
-                        return in_array($voluntario->funcao, ['SPS']);
-                    })->sortBy('voluntario.nome') as $voluntario)
-                        <x-card.escalas.voluntarios-santa-ceia-nomes
-                            :loop="$loop"
-                            :voluntario="$voluntario"
-                            :escala="$escala"
-                        />
-                    @endforeach
+                    <div>
+                        @foreach($escala->voluntarios->filter(function ($voluntario) {
+                            return in_array($voluntario->funcao, ['SPS']);
+                        })->sortBy('voluntario.nome') as $voluntario)
+                            <x-card.escalas.voluntarios-santa-ceia-nomes
+                                :loop="$loop"
+                                :voluntario="$voluntario"
+                                :escala="$escala"
+                            />
+                        @endforeach
+                    </div>
                 @endif
             @endif
         </div>

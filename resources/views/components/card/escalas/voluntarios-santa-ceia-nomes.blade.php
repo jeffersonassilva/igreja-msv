@@ -4,7 +4,7 @@
     'loop',
     ])
 
-<div class="line-clamp-1 mb-6">
+<div class="line-clamp-1">
     <div class="flex items-center">
         <div class="flex-shrink-0">
             @if($voluntario->voluntario->foto)
