@@ -12,7 +12,7 @@
 
 <li class="line-clamp-1">
     <div class="flex items-center">
-        <button class="{{ $classBgAndBorder }} w-[32px]
+        <button class="{{ $classBgAndBorder }} w-8
                                 group transition-all hover:w-fit ease-out
                                 font-normal rounded-sm h-[24px] px-2 mr-1
                                 inline-flex items-center justify-center select-none">
@@ -27,16 +27,16 @@
             <div class="mx-1 flex-shrink-0">
                 @if($voluntario->voluntario->foto)
                     <img src="{{ asset($voluntario->voluntario->foto) }}" alt="avatar"
-                         class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
+                         class="w-8 h-8 rounded-full object-cover aspect-square p-[1px] border-2
                                 @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                 @else
                     @if($voluntario->voluntario->sexo == 'M')
                         <img src="{{ asset('img/icon_profile_man.jpg') }}" alt="avatar"
-                             class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
+                             class="w-8 h-8 rounded-full object-cover aspect-square p-[1px] border-2
                                     @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                     @else
                         <img src="{{ asset('img/icon_profile_woman.jpg') }}" alt="avatar"
-                             class="w-[32px] h-[32px] rounded-full object-cover aspect-square p-[1px] border-2
+                             class="w-8 h-8 rounded-full object-cover aspect-square p-[1px] border-2
                                     @if($escala->fechada) border-[#cddccd] @else border-gray-100 @endif">
                     @endif
                 @endif
