@@ -17,7 +17,7 @@ class CertificadoController extends Controller
      */
     public function index()
     {
-        return view('admin/certificado/create');
+        return view('admin/certificados/create');
     }
 
     /**
@@ -32,7 +32,7 @@ class CertificadoController extends Controller
         $cargo_assinatura = $request['cargo_assinatura'];
         $nome_assinatura = $request['nome_assinatura'];
 
-        $pdf = PDF::loadView('admin/certificado/certificado-pdf', compact(
+        $pdf = PDF::loadView('admin/certificados/certificado-pdf', compact(
             'titulo',
             'nome',
             'mensagem',

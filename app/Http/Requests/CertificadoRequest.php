@@ -20,8 +20,8 @@ class CertificadoRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|string|max:255',
-            'nome' => 'required|string|max:255',
+            'titulo' => 'required|string|max:30',
+            'nome' => 'required|string|max:40',
             'mensagem' => 'required|string|max:200',
         ];
     }

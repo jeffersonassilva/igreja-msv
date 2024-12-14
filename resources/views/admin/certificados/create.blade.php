@@ -18,17 +18,17 @@
 
                     <x-form.input label="Título"
                                   name="titulo"
-                                  maxlength="255"
+                                  maxlength="30"
                                   :value="old('titulo', 'Certificado de Batismo')"
                                   :required="true"
-                                  :observacoes='["Máximo de 255 caracteres."]'/>
+                                  :observacoes='["Máximo de 30 caracteres."]'/>
 
                     <x-form.input label="Nome"
                                   name="nome"
-                                  maxlength="255"
+                                  maxlength="40"
                                   :value="old('nome', 'Jefferson Alessandro Santos da Silva')"
                                   :required="true"
-                                  :observacoes='["Máximo de 255 caracteres."]'/>
+                                  :observacoes='["Máximo de 40 caracteres."]'/>
 
                     <x-form.textarea label="Mensagem"
                                      name="mensagem"
@@ -40,13 +40,13 @@
                     <div class="grid xl:grid-cols-2 gap-0 p-0 m-0">
                         <x-form.input label="Cargo na Assinatura"
                                       name="cargo_assinatura"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('cargo_assinatura', 'Pastor Presidente')"
                                       :observacoes='["Máximo de 255 caracteres."]'/>
 
                         <x-form.input label="Nome na Assinatura"
                                       name="nome_assinatura"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('nome_assinatura', 'Samuel Novais')"
                                       :observacoes='["Máximo de 255 caracteres."]'/>
                     </div>
@@ -54,11 +54,14 @@
                     <div class="flex justify-between items-center sm:items-start flex-col sm:flex-row">
                         <div class="mb-6 flex items-center gap-2">
                             <button aria-label="Salvar" type="submit"
-                                    class="outline-0 rounded-md text-white font-normal bg-blue-800
-                                    hover:bg-blue-900
-                                    focus:bg-blue-900
-                                    px-4 py-2 md:px-6 inline-flex justify-center items-center">
-                                Gerar Certificado
+                                    class="outline-0 rounded-md text-white font-normal
+                                            border border-blue-400 bg-blue-400
+                                            hover:bg-blue-500 focus:bg-blue-500
+                                            px-3 py-1 inline-flex justify-center items-center
+                                            dark:text-gray-900 dark:bg-yellow-400
+                                            dark:hover:bg-yellow-300 dark:border-yellow-400">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                                <span class="ml-2">Gerar Certificado</span>
                             </button>
                         </div>
 
@@ -70,7 +73,7 @@
             </section>
 
             <div class="hidden md:flex items-center">
-                <div class="w-[280px] md:w-[450px] pt-6 flex justify-center certificado relative">
+                <div class="w-[280px] md:w-[450px] flex justify-center certificado relative">
                     <img class="w-[280px] md:w-[450px] max-w-[550px]" src="{{ asset('img/diploma-fundo.png') }}"
                          alt="logo">
                     <div class="w-[280px] md:w-[450px] max-w-[550px] absolute p-4 md:p-6">
