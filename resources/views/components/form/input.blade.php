@@ -11,7 +11,7 @@
 
 <div class="flex flex-col bg-white dark:bg-[#252c47] @if($spacing) {{ $spacing }} @endif">
     <label for="{{ $name }}" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">
-        {{ $label }} @if($required)<span class="text-red-500 font-bold">*</span>@endif
+        {!! $label !!} @if($required)<span class="text-red-500 font-bold">*</span>@endif
     </label>
 
     @foreach ($observacoes as $obs)
