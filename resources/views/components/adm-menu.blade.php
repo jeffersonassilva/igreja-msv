@@ -28,12 +28,17 @@
         </x-adm-menu-group>
     @endcan
 
-    @canany(['adm-menu-membro'])
+    @canany(['adm-menu-membro', 'adm-menu-carta', 'adm-menu-certificado'])
         <x-adm-menu-group name="Secretaria" id="secretaria" icon="people-outline"
-                          :groups='["membros", "cartas"]'
+                          :groups='["membros", "cartas", "certificados"]'
                           :submenus='[
                             ["label" => "Membros", "route" => "membros", "permission" => "adm-menu-membro"],
-                            ["label" => "Cartas", "route" => "cartas", "permission" => "adm-menu-carta"]
+                            ["label" => "Cartas", "route" => "cartas", "permission" => "adm-menu-carta"],
+                            [
+                                "label" => "Certificados",
+                                "route" => "certificados",
+                                "permission" => "adm-menu-certificado"
+                            ]
                           ]'>
         </x-adm-menu-group>
     @endcan

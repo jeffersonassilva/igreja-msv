@@ -65,7 +65,7 @@
         }
 
         h1, h2 {
-            line-height: 0.9em;
+            line-height: 0.8em;
             font-size: 58px;
             font-style: italic;
             font-family: "Times New Roman", serif;
@@ -78,6 +78,20 @@
 
         p {
             font-size: 24px;
+        }
+
+        .assinatura {
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            /*letter-spacing: -1px;*/
+        }
+
+        .cargo {
+            font-size: 14px;
+            line-height: normal;
+            font-style: italic;
         }
     </style>
 </head>
@@ -93,10 +107,13 @@
         <p>Certificamos que</p>
         <h2>{{ $nome }}</h2>
         <p style="width: 80%; margin: 0 auto;">{{ $mensagem }}</p>
-        <div style="margin-top: 30px;">
-            <div>_______________________________________</div>
-            <div>{{ $assinatura }}</div>
-        </div>
+        @if($nome_assinatura)
+            <div style="margin-top: 40px; text-align: center;">
+                <div>_______________________________________</div>
+                <div class="assinatura">{{ $nome_assinatura }}</div>
+                <div class="cargo">{{ $cargo_assinatura }}</div>
+            </div>
+        @endif
     </div>
 </div>
 </body>

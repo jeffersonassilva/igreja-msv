@@ -9,8 +9,7 @@
                 <form class="form-horizontal"
                       role="form"
                       method="post"
-                      action="{{ route('cartas.store') }}"
-                >
+                      action="{{ route('cartas.store') }}">
                     @csrf
 
                     <x-form.input label="Título"
