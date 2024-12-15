@@ -12,7 +12,7 @@
             </div>
         </div>
         @if(count($datas))
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:py-3 gap-4">
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
                 @foreach($datas as $data)
                     <div class="bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200
                             dark:bg-[#252c47] dark:border-[#252c47]">
@@ -20,7 +20,8 @@
                             <div>
                                 @if($data->classe && $data->classe->revista)
                                     <img src="{{ asset($data->classe->revista) }}" alt="avatar"
-                                         class="w-[100px] h-[140px] border-2 border-gray-100 p-[2px] dark:border-[#454b54]">
+                                         class="w-[100px] h-[140px] border-2 border-gray-100
+                                                p-[2px] dark:border-[#454b54]">
                                 @else
                                     <div class="w-[100px] h-[140px]"></div>
                                 @endif
@@ -51,7 +52,8 @@
 
                                         @can('adm-excluir-ebd-calendario')
                                             <x-button.delete :route="route('calendario.destroy', $data)"
-                                                             formId="form-excluir-calendario-{{ $data->id }}"></x-button.delete>
+                                                             formId="form-excluir-calendario-{{ $data->id }}">
+                                            </x-button.delete>
                                         @endcan
                                     </div>
                                 @endcanany

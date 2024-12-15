@@ -12,7 +12,7 @@
             </div>
         </div>
         @if(count($datas))
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:py-3 gap-4">
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
                 @foreach($datas as $data)
                     <div class="bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200
                             dark:bg-[#252c47] dark:border-[#252c47]">

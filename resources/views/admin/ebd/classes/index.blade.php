@@ -11,7 +11,7 @@
                 @endcan
             </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:py-3 gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-3 gap-4">
             @foreach($classes as $classe)
                 <div class="bg-white p-3 shadow-sm rounded-md border-[1px] border-gray-200
                             dark:bg-[#252c47] dark:border-[#252c47]">
@@ -29,7 +29,8 @@
                             @if($classe->link)
                                 <p class="text-sm font-thin text-gray-500 dark:text-[#d0d9e6]">
                                     <a href="{{ $classe->link }}" target="_blank"
-                                       class="font-thin text-sm underline underline-offset-2 text-blue-500">Link da revista
+                                       class="font-thin text-sm underline underline-offset-2 text-blue-500">
+                                        Link da revista
                                     </a>
                                 </p>
                             @endif
