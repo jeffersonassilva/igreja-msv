@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=94">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=95">
 
         <!-- Scripts -->
         <script>
@@ -48,14 +48,17 @@
     <body class="bg-gray-100 dark:bg-[#1c2039]">
         <div id="container" class="w-full grid mx-auto md:h-[100vh] lg:grid-cols-[17rem,1fr]">
 
-            <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%]
-                    max-w-[280px] lg:max-w-full lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto
-                    dark:bg-[#252c47]">
+            <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%] max-w-[280px]
+                    lg:max-w-full lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto dark:bg-[#252c47]">
                 <div class="flex justify-between items-center bg-gray-100 lg:bg-white dark:bg-[#252c47]">
                     <div class="flex justify-center py-6">
-                        <img class="w-2/3 lg:w-3/6" src="{{ asset('img/logo-branca.png') }}" alt="logo" id="sidenav-logo">
+                        <img class="w-2/3 lg:w-3/6"
+                             src="{{ asset('img/logo-branca.png') }}"
+                             alt="logo"
+                             id="sidenav-logo">
                     </div>
-                    <button class="lg:hidden cursor-pointer text-3xl flex justify-center items-center p-3 text-gray-800 dark:text-[#d0d9e6]" id="aside__close-btn">
+                    <button class="lg:hidden cursor-pointer text-3xl flex justify-center items-center
+                                   p-3 text-gray-800 dark:text-[#d0d9e6]" id="aside__close-btn">
                         <ion-icon name="close-outline"></ion-icon>
                     </button>
                 </div>
@@ -64,32 +67,36 @@
             </aside>
 
             <main class="lg:overflow-y-auto lg:px-6 lg:py-2">
-                <section class="fixed w-full h-[65px] z-20 lg:relative flex justify-between items-center bg-white
+                <section class="fixed w-full h-16 z-20 lg:relative flex justify-between items-center bg-white
                         lg:bg-transparent shadow-sm lg:shadow-none mb-4 px-4 lg:px-0 border-b
                         dark:border-[#263141] dark:bg-[#252c47] lg:dark:bg-[#1c2039]">
-                    <button id="adm__menu-btn" class="text-3xl flex items-center lg:hidden text-gray-800 dark:text-[#d0d9e6]">
+                    <button id="adm__menu-btn"
+                            class="text-3xl flex items-center lg:hidden text-gray-800 dark:text-[#d0d9e6]">
                         <ion-icon name="menu-outline"></ion-icon>
                     </button>
-                    <h2 class="font-thin text-xl md:text-2xl text-gray-500 dark:text-[#d0d9e6]">
+                    <h2 class="font-thin text-base sm:text-xl md:text-2xl text-gray-500 dark:text-[#d0d9e6]">
                         {{ $header ?? '' }}
                     </h2>
                     <div class="adm__profile flex items-center gap-1 md:gap-2 lg:gap-4">
                         <div class="info hidden lg:block dark:text-[#d0d9e6]">
                             <span class="font-thin">Olá, <b>{{ Auth::user()->name }}</b></span>!
                         </div>
-                        <div class="lg:hidden text-sm text-white block bg-blue-400 dark:bg-[#51596b] w-8 h-8 flex justify-center items-center rounded-full">
+                        <div class="lg:hidden text-sm text-white bg-blue-400 dark:bg-[#51596b]
+                                    w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 flex justify-center items-center rounded-full">
                             {{ strstr(Auth::user()->name, ' ', true)[0] . trim(strstr(Auth::user()->name, ' ')[1]) }}
                         </div>
                         <div class="hidden lg:block text-gray-800 dark:text-[#d0d9e6]">|</div>
                         <div>
-                            <button onclick="toggleTheme()" class="w-8 h-8 lg:w-6 lg:h-6 flex justify-center items-center text-4xl text-gray-800 dark:text-[#d0d9e6]">
+                            <button onclick="toggleTheme()"
+                                    class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-6 lg:h-6
+                                           flex justify-center items-center text-4xl text-gray-800 dark:text-[#d0d9e6]">
                                 <ion-icon name="contrast-outline"></ion-icon>
                             </button>
                         </div>
                     </div>
                 </section>
-                <section class="mt-16 lg:mt-0 p-4 lg:p-0">
-                    <x-alert class="mb-4" />
+                <section class="mt-12 lg:mt-0 p-4 lg:p-0">
+                    <x-alert class="my-4" />
                     <x-required-fields />
                     {{ $slot }}
                 </section>
