@@ -42,13 +42,13 @@
                                       name="cargo_assinatura"
                                       maxlength="30"
                                       :value="old('cargo_assinatura', 'Pastor Presidente')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
 
                         <x-form.input label="Nome na Assinatura"
                                       name="nome_assinatura"
                                       maxlength="30"
                                       :value="old('nome_assinatura', 'Samuel Novais')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
                     </div>
 
                     <div class="flex justify-between items-center sm:items-start flex-col sm:flex-row">
