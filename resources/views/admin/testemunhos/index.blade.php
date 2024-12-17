@@ -24,7 +24,7 @@
                         <br />
                         Situação: {{ $testemunho->situacao ? 'Ativo' : 'Pendente' }}
                     </p>
-                    <div class="text-rights text-sm mt-3">
+                    <div class="text-sm mt-3">
                         @can('adm-editar-testemunho')
                             <x-button.link title="Editar" :route="route('testemunhos.edit', $testemunho)"></x-button.link>
                         @endcan

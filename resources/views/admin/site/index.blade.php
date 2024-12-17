@@ -5,7 +5,7 @@
 
     <section class="pb-6">
         <div class="h-[60px] bg-white p-3 rounded-md flex items-center justify-center dark:bg-[#252c47]">
-            <div class="text-rights text-sm">
+            <div class="text-sm">
                 @can('adm-adicionar-banner')
                     <x-button.link title="Adicionar Banner" :route="route('banners.create')"></x-button.link>
                 @endcan
@@ -20,7 +20,7 @@
                         {{ $banner->descricao }}
                     </p>
                     @canany(['adm-editar-banner', 'adm-excluir-banner'])
-                        <div class="text-rights text-sm mt-3">
+                        <div class="text-sm mt-3">
                             @can('adm-editar-banner')
                                 <x-button.link title="Editar" :route="route('banners.edit', $banner)"></x-button.link>
                             @endcan
