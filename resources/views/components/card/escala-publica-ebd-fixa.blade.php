@@ -1,6 +1,6 @@
 @props(['classe', 'subtitulo', 'professor', 'tema', 'data'])
 
-<div class="flex flex-col bg-white rounded-sm shadow-md shadow-gray-200 my-1 sm:my-4 md:my-4 md:pb-4">
+<div class="flex flex-col bg-white rounded-sm shadow-md shadow-gray-200">
     <div class="flex justify-center items-center bg-red-100 px-4 py-2 tracking-tighter sm:text-lg md:text-xl">
         <ion-icon name="calendar-outline" class="mr-2"></ion-icon> {{ $data }}
     </div>

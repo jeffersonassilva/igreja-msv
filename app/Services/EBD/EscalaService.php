@@ -6,6 +6,7 @@ use App\Models\EBD\Escala;
 use App\Services\AbstractService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class EscalaService extends AbstractService
 {
@@ -32,5 +33,17 @@ class EscalaService extends AbstractService
             ->where('permanente', '=', true);
 
         return $query->get();
+    }
+
+    /**
+     * @param $id
+     * @return Builder|Model|object|null
+     */
+    public function alunos($id)
+    {
+        return $this->model
+            ->with('classe.alunos')
+            ->where('id', '=', $id)
+            ->first();
     }
 }
