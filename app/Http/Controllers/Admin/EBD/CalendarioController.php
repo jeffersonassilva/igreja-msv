@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\EBD;
 
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EBD\CalendarioFixoRequest;
 use App\Http\Requests\EBD\CalendarioRequest;
 use App\Services\EBD\CalendarioService;
 use App\Services\EBD\ClasseService;
+use App\Services\EBD\EscalaService;
 use App\Services\EBD\ProfessorService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -28,6 +28,11 @@ class CalendarioController extends Controller
     private $classeService;
 
     /**
+     * @var EscalaService
+     */
+    private $escalaService;
+
+    /**
      * @var ProfessorService
      */
     private $professorService;
@@ -35,16 +40,19 @@ class CalendarioController extends Controller
     /**
      * @param CalendarioService $service
      * @param ClasseService $classeService
+     * @param EscalaService $escalaService
      * @param ProfessorService $professorService
      */
     public function __construct(
         CalendarioService $service,
         ClasseService     $classeService,
+        EscalaService     $escalaService,
         ProfessorService  $professorService
     )
     {
         $this->service = $service;
         $this->classeService = $classeService;
+        $this->escalaService = $escalaService;
         $this->professorService = $professorService;
     }
 
@@ -54,8 +62,8 @@ class CalendarioController extends Controller
      */
     public function list(Request $request)
     {
-        $aulasDinamicas = $this->service->aulasDinamicas($request->all());
-        $aulasPermanentes = $this->service->aulasPermanentes($request->all());
+        $aulasDinamicas = $this->service->aulasDinamicas();
+        $aulasPermanentes = $this->escalaService->aulasPermanentes();
 
         return view('escalas-ebd')->with([
             'aulasDinamicas' => $aulasDinamicas,
@@ -69,7 +77,7 @@ class CalendarioController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-ebd-calendario');
-        $data = $this->service->paginate(['data' => 'desc']);
+        $data = $this->service->aulasDinamicas();
         return view('admin/ebd/calendario/index')->with('datas', $data);
     }
 
@@ -98,7 +106,7 @@ class CalendarioController extends Controller
     public function store(CalendarioRequest $request)
     {
         $this->checkPermission('adm-adicionar-ebd-calendario');
-        $this->service->storeMany($request);
+        $this->service->store($request);
         return $this->redirectWithMessage('calendario', __(Constants::SUCCESS_CREATE));
     }
 
@@ -110,13 +118,23 @@ class CalendarioController extends Controller
     {
         $this->checkPermission('adm-editar-ebd-calendario');
         $data = $this->service->edit($id);
-        $classes = $this->classeService->pluck('id', 'nome');
-        $professores = $this->professorService->pluck('id', 'nome');
+        $classes = $this->classeService->all();
+        $arrayClasses = [];
+        $arrayClassesCadastradas = [];
+
+        foreach ($data->escalas as $escala) {
+            $arrayClassesCadastradas[] = $escala->classe->id;
+        }
+
+        foreach ($classes as $key => $classe) {
+            $arrayClasses[$key]['id'] = $classe->id;
+            $arrayClasses[$key]['descricao'] = $classe->nome;
+            $arrayClasses[$key]['checked'] = in_array($classe->id, $arrayClassesCadastradas);
+        }
 
         return view('admin/ebd/calendario/edit')->with([
             'data' => $data,
-            'classes' => $classes,
-            'professores' => $professores
+            'classes' => $arrayClasses
         ]);
     }
 
@@ -141,83 +159,5 @@ class CalendarioController extends Controller
         $this->checkPermission('adm-excluir-ebd-calendario');
         $this->service->destroy($id);
         return $this->redirectWithMessage('calendario', __(Constants::SUCCESS_DESTROY));
-    }
-
-    /**
-     * @return Application|Factory|View
-     */
-    public function indexFixo()
-    {
-        $this->checkPermission('adm-listar-ebd-calendario');
-        $data = $this->service->where(['permanente' => '1'], ['data' => 'desc'])->paginate();
-        return view('admin/ebd/calendario-fixo/index')->with('datas', $data);
-    }
-
-    /**
-     * @return Application|Factory|View
-     */
-    public function createFixo()
-    {
-        $this->checkPermission('adm-adicionar-ebd-calendario');
-        $classes = $this->classeService->pluck('id', 'nome');
-        $professores = $this->professorService->pluck('id', 'nome');
-
-        return view('admin/ebd/calendario-fixo/create')->with([
-            'classes' => $classes,
-            'professores' => $professores
-        ]);
-    }
-
-    /**
-     * @param CalendarioFixoRequest $request
-     * @return RedirectResponse
-     */
-    public function storeFixo(CalendarioFixoRequest $request)
-    {
-        $this->checkPermission('adm-adicionar-ebd-calendario');
-        $request->request->add(['permanente' => '1']);
-        $this->service->store($request);
-        return $this->redirectWithMessage('calendario-fixo', __(Constants::SUCCESS_CREATE));
-    }
-
-    /**
-     * @param $id
-     * @return Application|Factory|View
-     */
-    public function editFixo($id)
-    {
-        $this->checkPermission('adm-editar-ebd-calendario');
-        $data = $this->service->edit($id);
-        $classes = $this->classeService->pluck('id', 'nome');
-        $professores = $this->professorService->pluck('id', 'nome');
-
-        return view('admin/ebd/calendario-fixo/edit')->with([
-            'data' => $data,
-            'classes' => $classes,
-            'professores' => $professores
-        ]);
-    }
-
-    /**
-     * @param CalendarioFixoRequest $request
-     * @param $id
-     * @return RedirectResponse
-     */
-    public function updateFixo(CalendarioFixoRequest $request, $id)
-    {
-        $this->checkPermission('adm-editar-ebd-calendario');
-        $this->service->update($request, $id);
-        return $this->redirectWithMessage('calendario-fixo', __(Constants::SUCCESS_UPDATE));
-    }
-
-    /**
-     * @param $id
-     * @return RedirectResponse
-     */
-    public function destroyFixo($id)
-    {
-        $this->checkPermission('adm-excluir-ebd-calendario');
-        $this->service->destroy($id);
-        return $this->redirectWithMessage('calendario-fixo', __(Constants::SUCCESS_DESTROY));
     }
 }

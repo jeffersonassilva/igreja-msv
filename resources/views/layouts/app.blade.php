@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=101">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=102">
 
         <!-- Scripts -->
         <script>
@@ -46,7 +46,7 @@
     </head>
 
     <body class="bg-gray-100 dark:bg-[#1c2039]">
-        <div id="container" class="w-full grid mx-auto md:h-[100vh] lg:grid-cols-[17rem,1fr]">
+        <div id="container" class="w-full sm:grid mx-auto md:h-[100vh] lg:grid-cols-[17rem,1fr]">
 
             <aside id="adm__aside" class="hidden lg:block fixed left-[-100%] lg:relative bg-white w-[70%] max-w-[280px]
                     lg:max-w-full lg:w-auto min-h-full h-[100vh] z-30 shadow-md overflow-y-auto dark:bg-[#252c47]">
@@ -67,7 +67,8 @@
             </aside>
 
             <main class="lg:overflow-y-auto lg:px-6 lg:py-2">
-                <section class="fixed w-full h-16 z-20 lg:relative flex justify-between items-center bg-white
+                <section class="fixed top-0 w-full h-16 z-20 lg:relative flex justify-between items-center
+                        bg-white
                         lg:bg-transparent shadow-sm lg:shadow-none mb-4 px-4 lg:px-0 border-b
                         dark:border-[#263141] dark:bg-[#252c47] lg:dark:bg-[#1c2039]">
                     <button id="adm__menu-btn"

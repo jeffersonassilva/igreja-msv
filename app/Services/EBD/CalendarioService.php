@@ -5,8 +5,6 @@ namespace App\Services\EBD;
 use App\Models\EBD\Calendario;
 use App\Services\AbstractService;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 class CalendarioService extends AbstractService
 {
@@ -27,55 +25,66 @@ class CalendarioService extends AbstractService
      * @param $request
      * @return void
      */
-    public function storeMany($request)
+    public function store($request)
     {
+        $data = $this->model->fill($request->all());
+        $data->save();
+
+        $id = $data->id;
         $arrayClasses = $request->get('classes');
 
-        foreach ($arrayClasses as $item) {
-
-            $this->model->updateOrCreate(
+        foreach ($arrayClasses as $classe) {
+            $this->model->escalas()->create(
                 [
-                    'data' => $request->get('data'),
-                    'tema' => $request->get('tema'),
-                    'classe_id' => $item
+                    'calendario' => $id,
+                    'classe_id' => $classe
                 ]
             );
         }
+
     }
 
     /**
-     * @param $filter
-     * @return Builder[]|Collection
+     * @param $request
+     * @param $id
+     * @return mixed
      */
-    public function aulasDinamicas($filter = array())
+    public function update($request, $id)
     {
-        $query = $this->model->with('classe.alunos')
-            ->withAggregate('classe', 'nome');
+        $data = $this->model->find($id);
+        $data->fill($request->all())->save();
 
-        if (isset($filter['dt_escala'])) {
-            $query->whereDate('data', '=', $filter['dt_escala']);
-        } else {
-            $query->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d'));
+        $listaClasses = array();
+        foreach ($request->classes as $key => $classe) {
+            $listaClasses[$key]['calendario_id'] = $id;
+            $listaClasses[$key]['classe_id'] = $classe;
         }
 
-        $query->where('permanente', '=', false);
-        $query->orderBy('data', 'asc');
-        $query->orderBy('classe_nome', 'asc');
+        $existingIds = $data->escalas()->pluck('classe_id')->toArray();
+        $newIds = $request->classes;
+        $toDelete = array_diff($existingIds, $newIds);
+        $data->escalas()->where('calendario_id', $id)->whereIn('classe_id', $toDelete)->delete();
 
-        return $query->get();
+        foreach ($listaClasses as $escala) {
+            $data->escalas()->updateOrCreate(
+                ['classe_id' => $escala['classe_id'] ?? null], $escala
+            );
+        }
+
+        return $data;
     }
 
     /**
-     * @param $filter
-     * @return Builder[]|Collection
+     * @return mixed
      */
-    public function aulasPermanentes($filter = array())
+    public function aulasDinamicas()
     {
-        $query = $this->model->with('classe')
-            ->withAggregate('classe', 'nome');
-
-        $query->where('permanente', '=', true);
-        $query->orderBy('data', 'asc');
+        $query = $this->model
+            ->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d'))
+            ->whereHas('escalas', function ($query) {
+                return $query->where('permanente', '=', false);
+            })
+            ->orderBy('data');
 
         return $query->get();
     }

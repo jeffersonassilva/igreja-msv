@@ -19,20 +19,12 @@ class CalendarioRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'data' => 'date',
-            'professor_id' => 'nullable',
-            'tema' => 'nullable|max:255',
-            'monitor' => 'nullable|max:255',
+            'responsavel' => 'required|max:255',
+            'secretario' => 'required|max:255',
+            'classes' => 'required|array',
         ];
-
-        if ($this->_method === 'PUT') {
-            $rules['classe_id'] = 'required';
-        } else {
-            $rules['classes'] = 'required|array';
-        }
-
-        return $rules;
     }
 
     /**
@@ -42,11 +34,18 @@ class CalendarioRequest extends FormRequest
     {
         return [
             'data' => 'Data',
-            'tema' => 'Tema',
-            'professor_id' => 'Professor',
-            'monitor' => 'Monitor(a)',
-            'classe_id' => 'Classe',
-            'classes' => 'Classes',
+            'responsavel' => 'Responsável pela EBD',
+            'secretario' => 'Responsável pela Secretaria',
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages()
+    {
+        return [
+            'classes.required' => 'É necessário marcar quais são as classes que terão aula nesse dia.',
         ];
     }
 }
