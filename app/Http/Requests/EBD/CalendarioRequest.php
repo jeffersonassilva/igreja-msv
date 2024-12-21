@@ -23,6 +23,7 @@ class CalendarioRequest extends FormRequest
             'data' => 'date',
             'professor_id' => 'nullable',
             'tema' => 'nullable|max:255',
+            'monitor' => 'nullable|max:255',
         ];
 
         if ($this->_method === 'PUT') {
@@ -43,6 +44,7 @@ class CalendarioRequest extends FormRequest
             'data' => 'Data',
             'tema' => 'Tema',
             'professor_id' => 'Professor',
+            'monitor' => 'Monitor(a)',
             'classe_id' => 'Classe',
             'classes' => 'Classes',
         ];
