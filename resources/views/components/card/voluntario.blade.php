@@ -1,6 +1,6 @@
 @props(['voluntario'])
 
-<div class="flex flex-row gap-2 items-center bg-white p-3 rounded-sm dark:bg-[#252c47] dark:border-[#252c47]">
+<div class="flex flex-row gap-2 items-center bg-white p-3 rounded-sm dark:bg-[#252c47]">
     <div class="shrink-0">
         @if($voluntario->foto)
             <img src="{{ asset($voluntario->foto) }}"
@@ -43,6 +43,7 @@
         <!-- Dropdown -->
         <div
             x-show="open"
+            x-transition
             @click.away="open = false"
             class="absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg z-10
                    border border-gray-200 dark:border-gray-500 dark:text-[#d0d9e6] dark:bg-[#51596b]">

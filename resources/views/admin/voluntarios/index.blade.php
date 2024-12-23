@@ -117,11 +117,16 @@
             </div>
         </form>
 
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-4">
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-4 mb-4">
             @foreach($voluntarios as $voluntario)
                 <x-card.voluntario :voluntario="$voluntario"></x-card.voluntario>
             @endforeach
         </div>
+        @if(count($voluntarios))
+            <div class="mb-4">
+                {{ $voluntarios->links() }}
+            </div>
+        @endif
     </section>
 
     <x-dialog.confirm></x-dialog.confirm>
