@@ -22,42 +22,15 @@
             line-height: 1.5em;
         }
 
-        /*body {*/
-        /*    font-family: 'Arial', sans-serif;*/
-        /*    color: #111827;*/
-        /*    background-color: #f5f5a4;*/
-        /*    !*color: #111111;*!*/
-        /*    !*margin: 0cm;*!*/
-        /*    !*line-height: 1.3rem;*!*/
-        /*}*/
-
-        /*html, body {*/
-        /*margin: 0;*/
-        /*padding: 0;*/
-        /*height: 100%;*/
-        /*width: 100%;*/
-        /*background-color: #e5eab3;*/
-        /*}*/
-
-        /*body {*/
-        /*    font-family: 'Arial', sans-serif;*/
-        /*    text-align: center;*/
-        /*    color: #333;*/
-        /*    !*background-color: #f6f6f6;*!*/
-        /*}*/
-
         .container {
-            padding: 75px 50px;
+            padding: 48px;
             text-align: center;
-            /*box-sizing: content-box;*/
-            /*position: relative;*/
-            /*height: 100%;*/
-            /*text-align: center;*/
         }
 
         .igreja-titulo {
             font-size: 28px;
             text-align: center;
+            line-height: 18px;
         }
 
         .igreja-subtitulo {
@@ -65,8 +38,8 @@
         }
 
         h1, h2 {
-            line-height: 0.8em;
-            font-size: 58px;
+            line-height: 0.7em;
+            font-size: 56px;
             font-style: italic;
             font-family: "Times New Roman", serif;
             letter-spacing: -1px;
@@ -77,7 +50,7 @@
         }
 
         p {
-            font-size: 24px;
+            font-size: 18px;
         }
 
         .assinatura {
@@ -98,7 +71,7 @@
 <body>
 <div id="wrapper">
     <div class="container">
-        <div><img width="35" src="{{ public_path('img/logo-vazada.png') }}" alt="logo"></div>
+        <div><img width="36" src="{{ public_path('img/logo-vazada.png') }}" alt="logo" style="padding: 20px;"></div>
         <div class="igreja-titulo">Igreja Evangélica Ministério Semeando a Verdade</div>
         <div class="igreja-subtitulo">
             PA 03 Lote 02 - Jardins Mangueiral - DF &nbsp;&nbsp;&nbsp;&nbsp; CNPJ: 23.244.224/0001-44
@@ -106,9 +79,9 @@
         <h1>{{ $titulo }}</h1>
         <p>Certificamos que</p>
         <h2>{{ $nome }}</h2>
-        <p style="width: 80%; margin: 0 auto;">{{ $mensagem }}</p>
+        <p style="width: 80%; margin: 0 auto;">{!! $mensagem !!}</p>
         @if($nome_assinatura)
-            <div style="margin-top: 40px; text-align: center;">
+            <div style="position: absolute; bottom: 66px; margin-right: auto; left: 0; right: 0; text-align: center;">
                 <div>_______________________________________</div>
                 <div class="assinatura">{{ $nome_assinatura }}</div>
                 <div class="cargo">{{ $cargo_assinatura }}</div>

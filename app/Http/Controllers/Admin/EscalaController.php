@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Constants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EscalaRequest;
+use App\Services\EBD\CalendarioService;
 use App\Services\EscalaService;
 use App\Services\EventoService;
 use App\Services\FuncaoService;
@@ -38,22 +39,44 @@ class EscalaController extends Controller
     private $voluntarioService;
 
     /**
+     * @var CalendarioService
+     */
+    private $calendarioService;
+
+    /**
      * @param EscalaService $service
      * @param FuncaoService $funcaoService
      * @param EventoService $eventoService
      * @param VoluntarioService $voluntarioService
+     * @param CalendarioService $calendarioService
      */
     public function __construct(
-        EscalaService       $service,
-        FuncaoService       $funcaoService,
-        EventoService       $eventoService,
-        VoluntarioService   $voluntarioService
+        EscalaService     $service,
+        FuncaoService     $funcaoService,
+        EventoService     $eventoService,
+        VoluntarioService $voluntarioService,
+        CalendarioService $calendarioService
     )
     {
         $this->service = $service;
         $this->funcaoService = $funcaoService;
         $this->eventoService = $eventoService;
         $this->voluntarioService = $voluntarioService;
+        $this->calendarioService = $calendarioService;
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function geral()
+    {
+        $escalasObreiros = $this->service->list();
+        $escalasEBD = $this->calendarioService->aulasDinamicas();
+
+        return view('escalas')->with([
+            'escalasObreiros' => $escalasObreiros,
+            'escalasEBD' => $escalasEBD,
+        ]);
     }
 
     /**
@@ -70,7 +93,7 @@ class EscalaController extends Controller
             array('nome' => Constants::CRESCENTE)
         )->get();
 
-        return view('escalas')->with([
+        return view('escalas-obreiros')->with([
             'escalas' => $data,
             'funcoes' => $funcoes,
             'voluntarios' => $voluntarios,

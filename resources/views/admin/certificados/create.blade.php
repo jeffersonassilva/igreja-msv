@@ -1,5 +1,5 @@
 @php
-    $texto = 'foi batizado em nome do Pai, Filho e do Espírito Santo, conforme mandamento do Senhor Jesus Cristo em Mateus 28:19 no dia 15/09/2024.';
+    $texto = 'em testemunho de sua fé em nosso Senhor Jesus Cristo, foi batizado em nome do Pai, do Filho e do Espírito Santo, cumprindo o mandamento do Senhor, conforme Mateus 28:19: <em>"Portanto, ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo."</em><br><br>Brasília-DF, 15 de setembro de 2024.';
 @endphp
 
 <x-app-layout>
@@ -16,6 +16,19 @@
                       action="{{ route('certificados.store') }}">
                     @csrf
 
+                    <x-form.select label="Tipo de Certificado"
+                                   name="tipo"
+                                   size="md:max-w-[250px]"
+                                   :required="true"
+                                   :options='[
+                                        ["id" => 1, "descricao" => "Certificado de Batismo"],
+                                        ["id" => 2, "descricao" => "Consagração de Obreiros" ]
+                                    ]'
+                                   :observacoes='[
+                                        "Ao alterar o tipo, o título também é alterado.
+                                        Mas você pode renomear o título como desejar."
+                                    ]'/>
+
                     <x-form.input label="Título"
                                   name="titulo"
                                   maxlength="30"
@@ -26,13 +39,13 @@
                     <x-form.input label="Nome"
                                   name="nome"
                                   maxlength="40"
-                                  :value="old('nome', 'Jefferson Alessandro Santos da Silva')"
+                                  :value="old('nome', 'Paulo Guilherme Dias Soares')"
                                   :required="true"
                                   :observacoes='["Máximo de 40 caracteres."]'/>
 
                     <x-form.textarea label="Mensagem"
                                      name="mensagem"
-                                     value="{{ old('mensagem', $texto) }}"
+                                     value="{!! old('mensagem', $texto) !!}"
                                      rows="5"
                                      :required="true"
                                      :observacoes='["Máximo de 200 caracteres."]'/>
@@ -92,17 +105,17 @@
                                  font-bold italic uppercase tracking-tight text-center">
                                 {{ old('titulo', 'Certificado de Batismo') }}
                             </div>
-                            <div class="text-[7px] md:text-[10px]">Certificamos que</div>
+                            <div class="text-[7px] md:text-[8px]">Certificamos que</div>
                             <div id="text-nome" style="font-family: 'Times New Roman', serif;"
-                                 class="m-1 md:m-3 text-[13px] md:text-[20px]
+                                 class="m-1 md:m-2 text-[13px] md:text-[20px]
                                  font-bold italic tracking-tight text-center">
-                                {{ old('nome', 'Jefferson Alessandro Santos da Silva') }}
+                                {{ old('nome', 'Paulo Guilherme Dias Soares') }}
                             </div>
-                            <div id="text-mensagem" class="text-[7px] md:text-[10px] text-center w-10/12">
-                                {{ old('mensagem', $texto) }}
+                            <div id="text-mensagem" class="text-[7px] text-center w-10/12">
+                                {!! old('mensagem', $texto) !!}
                             </div>
-                            <div id="box-assinatura" class="text-center text-[5px] md:text-[10px] mt-3">
-                                <div>_______________________________________</div>
+                            <div id="box-assinatura" class="text-center text-[5px] md:text-[10px] mt-2">
+                                <div>___________________________</div>
                                 <div id="text-nome-assinatura" class="font-bold italic leading-tight">
                                     {{ old('nome_assinatura', 'Samuel Novais') }}
                                 </div>
@@ -118,7 +131,22 @@
     </section>
 
     <script type="text/javascript">
+
+        let exemploTextos = {
+            1: 'em testemunho de sua fé em nosso Senhor Jesus Cristo, foi batizado em nome do Pai, do Filho e do Espírito Santo, cumprindo o mandamento do Senhor, conforme Mateus 28:19: <em>"Portanto, ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo."</em><br><br>Brasília-DF, 15 de setembro de 2024.',
+            2: 'foi consagrado a <strong>Diácono</strong> pelo trabalho e compromisso em servir ao Reino de Deus com dedicação e fidelidade, conforme a palavra: <em>"Procure apresentar-se a Deus como obreiro aprovado, que não tem do que se envergonhar e que maneja corretamente a palavra da verdade." (2 Timóteo 2:15)</em>. <br>Que esta consagração fortaleça sua missão no serviço ao Senhor. <br>Brasília-DF, 31 de dezembro de 2024.',
+        };
+
         $(document).ready(function () {
+            let tipo = $('#tipo');
+            tipo.change(function () {
+                let texto = $("#tipo option:selected").text();
+                $('#text-titulo').text(texto);
+                $('#titulo').val(texto);
+                $('#mensagem').val(exemploTextos[tipo.val()]);
+                $('#mensagem').keyup();
+            });
+
             let titulo = $('#titulo');
             titulo.keyup(function () {
                 $('#text-titulo').text(titulo.val());
@@ -131,7 +159,7 @@
 
             let mensagem = $('#mensagem');
             mensagem.keyup(function () {
-                $('#text-mensagem').text(mensagem.val());
+                $('#text-mensagem').html(mensagem.val());
             });
 
             let nome_assinatura = $('#nome_assinatura');

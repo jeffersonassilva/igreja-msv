@@ -1,248 +1,239 @@
-@extends('layouts.blank')
+@extends('layouts.escalas')
 
 @section('titulo')
     <h2 class="text-white text-xl sm:text-3xl">Escalas</h2>
 @endsection
 
 @section('content')
-    <section class="bg-gray-100">
-        <div class="container mx-auto max-w-[1080px] 2xl:max-w-[1600px] p-4">
-
-            <div class="text-justify text-gray-500 text-xs px-4 mb-4 md:text-base md:text-center md:w-4/5 md:mx-auto md:font-thin">
-                <p class="indent-2 sm:indent-0">Queridos obreiros, que a essência do seu serviço seja permeada pelo amor e dedicação,
-                    refletindo o exemplo sublime de Cristo. Como nos lembra Colossenses 3:23-24,</p>
-
-                <p class="italic block p-4 text-gray-700 sm:px-2 md:font-normal">"Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,
-                sabendo que receberão do Senhor a recompensa da herança. É a Cristo, o Senhor, que vocês estão servindo."</p>
-
-                <p class="indent-2 sm:indent-0">Que cada ato de serviço seja impulsionado pela compaixão e pela entrega sincera,
-                    contribuindo para o crescimento espiritual da nossa igreja.
-                    O trabalho do diácono é uma manifestação tangível do amor divino; portanto, exerçam seus papéis
-                    com alegria e generosidade, inspirando a todos ao redor.</p>
-            </div>
-
-            <div class="mb-6 flex justify-center items-center rounded-md" role="group">
-                <button type="button" id="btn-filtros"
-                        class="py-1 px-4 text-sm text-gray-700 bg-white rounded-l-lg
-                        border border-gray-300 hover:bg-gray-200 @if(request()->query()) bg-gray-200 @endif">
-                    Filtros
-                </button>
-                <button type="button" id="btn-instrucoes"
-                        class="py-1 px-4 text-sm text-gray-700 bg-white rounded-r-md
-                        border-y border-r border-gray-300 hover:bg-gray-200">
-                    Instruções
-                </button>
-            </div>
-
-            <div id="filtros" class="p-4 md:p-6 mb-6 bg-white rounded-lg @if(!request()->query()) hidden @endif">
-                <div class="mb-6 md:flex lg:block gap-6">
-                    <div class="w-full md:w-2/5 mb-4">
-                        <h3 class="mt-4 mb-1 font-thin text-sm text-gray-400">Por Período</h3>
-                        <ul class="mb-3 md:mb-0 items-center lg:w-min text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 lg:flex">
-                            <li class="w-full border-b border-gray-300 lg:border-b-0 lg:border-r">
-                                <div class="flex items-center pl-3">
-                                    <input id="meses" type="radio" checked value="" name="lista-meses" class="input-periodo w-3 h-3 text-gray-500 bg-gray-100 border-gray-300 focus:ring-gray-300 focus:ring-1">
-                                    <label for="meses" class="py-2 ml-2 mr-3 w-full font-thin text-sm text-gray-600">
-                                        Todos
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-300 lg:border-b-0 lg:border-r">
-                                <div class="flex items-center pl-3">
-                                    <input @if(request()->query('periodo') == 'manha') checked @endif
-                                    id="periodo-1" type="radio" value="manha" name="lista-meses" class="input-periodo w-3 h-3 text-gray-500 bg-gray-100 border-gray-300 focus:ring-gray-300 focus:ring-1">
-                                    <label for="periodo-1" class="py-2 ml-2 mr-3 w-full font-thin text-sm text-gray-600">
-                                        Manhã
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="w-full border-b border-gray-300 lg:border-b-0 lg:border-r">
-                                <div class="flex items-center pl-3">
-                                    <input @if(request()->query('periodo') == 'tarde') checked @endif
-                                    id="periodo-2" type="radio" value="tarde" name="lista-meses" class="input-periodo w-3 h-3 text-gray-500 bg-gray-100 border-gray-300 focus:ring-gray-300 focus:ring-1">
-                                    <label for="periodo-2" class="py-2 ml-2 mr-3 w-full font-thin text-sm text-gray-600">
-                                        Tarde
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="w-full">
-                                <div class="flex items-center pl-3">
-                                    <input @if(request()->query('periodo') == 'noite') checked @endif
-                                    id="periodo-3" type="radio" value="noite" name="lista-meses" class="input-periodo w-3 h-3 text-gray-500 bg-gray-100 border-gray-300 focus:ring-gray-300 focus:ring-1">
-                                    <label for="periodo-3" class="py-2 ml-2 mr-3 w-full font-thin text-sm text-gray-600">
-                                        Noite
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="w-full md:max-w-[250px] mb-4">
-                        <h3 class="mt-4 mb-1 font-thin text-sm text-gray-400">Por Evento</h3>
-                        <select id="lista-eventos" class="mb-1 bg-white border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
-                            <option value="" selected>Todos</option>
-                            @foreach($eventos as $evento)
-                            <option value="{{ $evento->id }}" @if(request()->query('evento_id') && request()->query('evento_id') == $evento->id) selected @endif>
-                                {{ $evento['descricao'] }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
+    <div class="flex flex-col h-full w-full overflow-hidden md:justify-center lg:container lg:mx-auto">
+        <div class="w-full">
+            <section class="p-4">
+                <div class="flex-1 flex justify-between items-center md:mb-1">
+                    <p class="text-sm xs:text-base sm:text-lg text-gray-600 dark:text-[#d0d9e6]
+                          tracking-tighter md:text-xl md:font-medium">
+                        Próximas escalas de obreiros
+                    </p>
+                    <p class="text-sm xs:text-base font-thin text-gray-500 dark:text-[#d0d9e6]">
+                        <a href="{{ route('escalas.obreiros.list') }}"
+                           class="p-2 text-blue-500 flex items-center gap-[2px] tracking-tighter">
+                            Ver todas
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </a>
+                    </p>
                 </div>
-            </div>
 
-            <div id="instrucoes" class="hidden p-4 md:p-6 mb-6 bg-amber-50 text-gray-800 rounded-lg">
-                <p class="font-thin mb-4">
-                    Para se voluntariar, basta selecionar o seu nome no local indicado
-                    referente ao evento em questão, e clicar no botão
-                    <span class="text-sm font-normal bg-gray-200 text-gray-900 shadow-sm
-                                 border border-gray-300 rounded-md px-2 py-1 select-none">
-                        Incluir
-                    </span>.
-                </p>
-                <p class="font-thin mb-4">
-                    Após sua inclusão como voluntário na escala, o responsável pelas escalas da igreja atribuirá sua
-                    função de acordo com a necessidade, mas você pode solicitar a troca posteriormente.
-                    Segue a lista de funções abaixo.
-                </p>
-                <ul class="font-thin text-sm mb-4 md:text-base grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-                    @foreach($funcoes as $funcao)
-                    <li>
-                        <span class="bg-gray-200 font-normal rounded-sm w-[35px] h-[25px] mr-1 inline-flex
-                        items-center justify-center select-none">
-                            {{ $funcao->abreviacao }}</span>- {{ $funcao->descricao }}
-                    </li>
-                    @endforeach
-                    <li>
-                        <span class="border border-dashed border-gray-400 font-normal rounded-sm w-[35px] h-[25px] mr-1
-                             inline-flex items-center justify-center select-none">&nbsp;
-                        </span>- Função não definida
-                    </li>
-                </ul>
-                <p class="font-normal text-red-700 mb-4">
-                    <span class="font-medium">IMPORTANTE</span>: Caso ocorra algum imprevisto e você não possa
-                    comparecer, é necessário avisar o quanto antes para que possamos te substituir por outro voluntário.
-                </p>
-            </div>
-
-            @if($escalas->count())
-            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 md:mx-auto md:max-w-3xl
-                        lg:max-w-full lg:grid-cols-3 xl:gap-8 2xl:grid-cols-4 mb-8">
-                @foreach($escalas as $escala)
-                    <x-card.escala-publica :escala="$escala">
-                        @if(!$escala->fechada)
-                        <form role="form" action="{{ route('escalaVoluntario.new') }}" method="post">
-                            <div class="flex items-center gap-2 px-3 pb-3 sm:px-4 sm:pb-4">
-                                <input type="hidden" name="dispositivo_os" value="Web">
-                                <input type="hidden" name="escala_id" value="{{ $escala->id }}">
-                                <div class="flex-1">
-                                    <select name="voluntario_id"
-                                            class="py-1 leading-0 border border-gray-200
-                                            shadow-sm rounded-md w-full text-sm font-thin">
-                                        <option value="">- Selecione seu nome -</option>
-                                        @foreach($voluntarios as $voluntarioItem)
-                                            <option value="{{ $voluntarioItem->id }}">{{ $voluntarioItem->nome }}</option>
-                                        @endforeach
-                                    </select>
+                @php
+                    $count = 0;
+                @endphp
+                <div class="bg-gradient-to-r from-slate-200 via-gray-200 to-slate-200
+                        rounded-md p-4 md:p-6 flex overflow-x-auto snap-x snap-mandatory w-full gap-4">
+                    @forelse($escalasObreiros as $escalaObreiro)
+                        <section
+                            onclick="window.location.href =
+                                '{{ route('escalas.obreiros.list') . '/#' . $escalaObreiro->id }}'"
+                            class="flex flex-col text-gray-600 bg-white rounded-md
+                                    border border-gray-300 snap-always snap-center cursor-pointer">
+                            <div class="relative p-3 md:p-4 w-52 h-full sm:w-64 flex flex-col">
+                                <div class="absolute left-[-3px] h-[30px] w-[3px]"
+                                     style="background: {{ $escalaObreiro->evento->cor ?? '#777' }}">
                                 </div>
-                                <div class="text-2xl flex items-center">
-                                    <button aria-label="Salvar" type="submit"
-                                            class="text-sm bg-gray-200 text-gray-900 shadow-sm
-                                            border border-gray-300 rounded-md px-2 py-1">
-                                        Incluir
-                                    </button>
+                                <div class="mb-3 line-clamp-1"
+                                     style="color: {{ $escalaObreiro->evento->cor ?? '#777' }}">
+                                    {{ $escalaObreiro->evento->descricao }}
+                                </div>
+                                <div class="flex items-center flex-1">
+                                    <div class="text-4xl sm:text-5xl md:text-6xl font-thin tracking-tighter">
+                                        {{ \Carbon\Carbon::parse($escalaObreiro->data)->format('d') }}
+                                    </div>
+                                    <div class="flex flex-col pl-4 flex-1">
+                                        <div class="text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($escalaObreiro->data)->dayName }}
+                                        </div>
+                                        <div class="text-sm font-thin text-gray-500">
+                                            {{ \Carbon\Carbon::parse($escalaObreiro->data)->monthName }} de
+                                            {{ \Carbon\Carbon::parse($escalaObreiro->data)->format('Y') }}
+                                        </div>
+                                        <div class="text-sm font-thin text-gray-500">
+                                            às {{ \Carbon\Carbon::parse($escalaObreiro->data)->format('H:i') }}h
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end mt-4">
+                                    @php
+                                        $voluntariosMaxParaExibir = 5;
+                                        $contadorVoluntarios = 0;
+                                    @endphp
+                                    @if(count($escalaObreiro->voluntarios) > 0)
+                                        @foreach($escalaObreiro->voluntarios as $voluntario)
+                                            <div class="-ml-1 ring-1 md:ring-2 ring-white rounded-full">
+                                                @if($voluntario->voluntario->foto)
+                                                    <img src="{{ asset($voluntario->voluntario->foto) }}"
+                                                         alt="avatar"
+                                                         class="rounded-full w-6 md:w-8 object-cover">
+                                                @else
+                                                    @if($voluntario->voluntario->sexo == 'M')
+                                                        <img src="{{ asset('img/icon_profile_man.jpg') }}"
+                                                             alt="avatar"
+                                                             class="rounded-full w-6 md:w-8 object-cover">
+                                                    @else
+                                                        <img src="{{ asset('img/icon_profile_woman.jpg') }}"
+                                                             alt="avatar"
+                                                             class="rounded-full w-6 md:w-8 object-cover">
+                                                    @endif
+                                                @endif
+                                            </div>
+                                            @php
+                                                $contadorVoluntarios++;
+                                            @endphp
+
+                                            @if($contadorVoluntarios >= $voluntariosMaxParaExibir)
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if(count($escalaObreiro->voluntarios) > $voluntariosMaxParaExibir)
+                                            <div class="flex justify-center items-center text-xs md:text-sm
+                                                        -ml-1 w-6 md:w-8 ring-1 md:ring-2 ring-amber-100 rounded-full
+                                                        tracking-tighter text-amber-800
+                                                        bg-amber-100 object-cover">
+                                                +{{ count($escalaObreiro->voluntarios) - $voluntariosMaxParaExibir }}
+                                            </div>
+                                        @endif
+                                    @else
+                                        <div class="text-xs text-gray-500 bg-red-50 py-1 rounded-md
+                                                    min-w-full text-center">
+                                            Aguardando trabalhadores
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                        </form>
+                        </section>
+                        @php
+                            $count++;
+                        @endphp
+
+                        @if($count >= 5)
+                            <section class="md:hidden">&nbsp;</section>
+                            @break
                         @endif
-                    </x-card.escala-publica>
-                @endforeach
-            </div>
-            @endif
+                    @empty
+                        <div class="flex justify-center items-center h-36 w-full rounded-md p-4
+                                bg-gradient-to-r from-red-100 via-red-50 to-amber-50">
+                            <div class="text-center font-thin tracking-tighter text-gray-700 text-sm sm:text-lg
+                                    flex items-center gap-3 xs:gap-4">
+                                <div class="text-4xl xs:text-5xl md:text-6xl text-red-300">
+                                    <ion-icon name="alert-circle-outline"></ion-icon>
+                                </div>
+                                <p>Oops, a lista está vazia.<br>Mas já estamos correndo para preenchê-la!</p>
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
+            </section>
         </div>
 
-        @if(!$escalas->count())
-            <div class="container mx-auto max-w-[1080px] pt-4 flex flex-col justify-center items-center">
-                <div>
-                    <img
-                        class="w-[200px] md:w-[300px]"
-                        src="{{ asset('/img/results-not-found.png') }}"
-                        alt="sem registros">
-                </div>
-                <div class="md:text-xl text-neutral-500 py-4 mb-10 md:mb-20">
-                    Nenhum registro encontrado!
-                </div>
-            </div>
-        @endif
+        <div class="w-full">
+            @forelse($escalasEBD as $escalaEBD)
+                <section class="p-4">
+                    <div class="flex-1 flex justify-between items-center md:mb-1">
+                        <p class="text-sm xs:text-base sm:text-lg text-gray-600 dark:text-[#d0d9e6]
+                              tracking-tighter md:text-xl md:font-medium">
+                            Próxima EBD dia {{ \Carbon\Carbon::parse($escalaEBD->data)->format('d/m/Y') }}
+                        </p>
+                        <p class="text-sm xs:text-base font-thin text-gray-500 dark:text-[#d0d9e6]">
+                            <a href="{{ route('escalas.ebd.list') }}"
+                               class="p-2 text-blue-500 flex items-center gap-[2px] tracking-tighter">
+                                Ver todas
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </p>
+                    </div>
 
-    </section>
-@endsection
+                    <div class="bg-gradient-to-r from-slate-200 via-gray-200 to-slate-200
+                            rounded-md p-4 md:p-6 flex overflow-x-auto snap-x snap-mandatory w-full gap-4">
+                        @foreach($escalaEBD->escalasOrdenadas as $escala)
+                            <div class="bg-white rounded-md shadow-md shadow-gray-200
+                                    border border-gray-300 snap-always snap-center">
+                                <div class="flex p-3 md:p-4 w-52 sm:w-64">
+                                    <div class="w-full">
+                                        <div class="">
+                                            <div class="font-medium sm:text-lg tracking-tighter line-clamp-1
+                                            leading-5 sm:leading-5">
+                                                {{ $escala->classe->nome }}
+                                            </div>
+                                            <div class="text-gray-500 text-sm font-thin line-clamp-1">
+                                                {{ $escala->classe->faixa_etaria }}&nbsp;
+                                            </div>
+                                        </div>
 
-@section('add-scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#btn-filtros').on('click', function () {
-                $('#instrucoes').hide();
-                $('#btn-instrucoes').removeClass('bg-gray-200');
+                                        <div class="block sm:flex sm:gap-12 md:gap-16 lg:gap-0 lg:justify-between">
+                                            <div class="mt-2 sm:mt-3 md:mt-4">
+                                                <div class="text-sm font-normal">Professor(a):</div>
+                                                <div class="text-gray-500 text-sm font-thin line-clamp-1">
+                                                    {{ $escala->professor ? $escala->professor->nome : null }}&nbsp;
+                                                </div>
+                                            </div>
+                                        </div>
 
-                $('#filtros').toggle();
-                if ($(this).hasClass('bg-gray-200')) {
-                    $(this).removeClass('bg-gray-200');
-                } else {
-                    $(this).addClass('bg-gray-200');
-                }
-            });
+                                        <div class="mt-2 sm:mt-3 md:mt-4">
+                                            <div class="text-sm font-normal">Tema:</div>
+                                            <div class="text-gray-500 text-sm font-thin line-clamp-1">
+                                                {{ $escala->tema }}&nbsp;
+                                            </div>
+                                        </div>
+                                    </div>
 
-            $('#btn-instrucoes').on('click', function () {
-                $('#filtros').hide();
-                $('#btn-filtros').removeClass('bg-gray-200');
+                                    @if($escala->classe && $escala->classe->revista)
+                                        <img src="{{ asset($escala->classe->revista) }}" alt="capa da revista"
+                                             class="w-[36px] h-[52px]
+                                            sm:w-[50px] sm:h-[72px]
+                                            md:w-[58px] md:h-[84px]
+                                            shadow-md shadow-gray-300">
+                                    @else
+                                        <img src="{{ asset('img/capa-revista-em-branco.jpg') }}" alt="capa da revista"
+                                             class="w-[36px] h-[52px]
+                                            sm:w-[50px] sm:h-[72px]
+                                            md:w-[58px] md:h-[84px]
+                                            shadow-md shadow-gray-300">
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                        <section class="md:hidden">&nbsp;</section>
+                    </div>
+                </section>
+                @break
+            @empty
+                <section class="p-4">
+                    <div class="flex-1 flex justify-between items-center md:mb-1">
+                        <p class="text-sm xs:text-base sm:text-lg text-gray-600 dark:text-[#d0d9e6]
+                              tracking-tighter md:text-xl md:font-medium">
+                            Próxima EBD
+                        </p>
+                        <p class="text-sm xs:text-base font-thin text-gray-500 dark:text-[#d0d9e6]">
+                            <a href="{{ route('escalas.ebd.list') }}"
+                               class="p-2 text-blue-500 flex items-center gap-[2px]">
+                                Ver todas
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </p>
+                    </div>
 
-                $('#instrucoes').toggle();
-                if ($(this).hasClass('bg-gray-200')) {
-                    $(this).removeClass('bg-gray-200');
-                } else {
-                    $(this).addClass('bg-gray-200');
-                }
-            });
-
-            $('#lista-eventos').on('change', function () {
-                let id = $(this).val();
-                insertParam('evento_id', id);
-            });
-
-            $('.input-periodo').on('change', function () {
-                let text = $(this).val();
-                insertParam('periodo', text);
-            });
-
-        });
-
-        function insertParam(key, value) {
-            key = encodeURIComponent(key);
-            value = encodeURIComponent(value);
-
-            // kvp looks like ['key1=value1', 'key2=value2', ...]
-            let kvp = document.location.search.substr(1).split('&');
-            let i = 0;
-
-            for (; i < kvp.length; i++) {
-                if (kvp[i].startsWith(key + '=')) {
-                    let pair = kvp[i].split('=');
-                    pair[1] = value;
-                    kvp[i] = pair.join('=');
-                    break;
-                }
-            }
-
-            if (i >= kvp.length) {
-                kvp[kvp.length] = [key, value].join('=');
-            }
-
-            // can return this or...
-            let params = kvp.join('&');
-
-            // reload page with new params
-            document.location.search = params;
-        }
-    </script>
+                    <div class="bg-gray-200 rounded-md p-4 md:p-6 flex overflow-x-auto w-full gap-4">
+                        <div class="flex justify-center items-center h-36 w-full rounded-md p-4
+                                bg-gradient-to-r from-red-100 via-red-50 to-amber-50">
+                            <div class="text-center font-thin tracking-tighter text-gray-700 text-sm sm:text-lg
+                                    flex items-center gap-3 xs:gap-4">
+                                <div class="text-4xl xs:text-5xl md:text-6xl text-red-300">
+                                    <ion-icon name="alert-circle-outline"></ion-icon>
+                                </div>
+                                <p>A diretoria está em reunião com os professores!
+                                    <br>Aguarde só mais um pouquinho.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endforelse
+        </div>
+    </div>
 @endsection

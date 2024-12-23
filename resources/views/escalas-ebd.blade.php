@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.escalas')
 
 @section('titulo')
     <h2 class="text-white text-xl sm:text-3xl">Escalas EBD</h2>

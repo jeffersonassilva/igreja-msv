@@ -43,7 +43,7 @@ class EscalaVoluntarioController extends Controller
     {
         $this->service->store($request);
         $this->escalaService->regraQntdVoluntariosAtingida($request->get('escala_id'));
-        return redirect('escalas/#' . $request->get('escala_id'));
+        return redirect('escalas/obreiros/#' . $request->get('escala_id'));
     }
 
     /**

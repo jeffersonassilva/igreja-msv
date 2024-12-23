@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=105">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=106">
 
         <!-- Scripts -->
         <script>
