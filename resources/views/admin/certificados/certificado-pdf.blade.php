@@ -79,7 +79,7 @@
         <h1>{{ $titulo }}</h1>
         <p>Certificamos que</p>
         <h2>{{ $nome }}</h2>
-        <p style="width: 80%; margin: 0 auto;">{!! $mensagem !!}</p>
+        <p style="width: 82%; margin: 0 auto;">{!! $mensagem !!}</p>
         @if($nome_assinatura)
             <div style="position: absolute; bottom: 66px; margin-right: auto; left: 0; right: 0; text-align: center;">
                 <div>_______________________________________</div>
