@@ -30,9 +30,10 @@
 
     @canany(['adm-menu-membro'])
         <x-adm-menu-group name="Secretaria" id="secretaria" icon="people-outline"
-                          :groups='["membros"]'
+                          :groups='["membros", "cartas"]'
                           :submenus='[
-                            ["label" => "Membros", "route" => "membros", "permission" => "adm-menu-membro"]
+                            ["label" => "Membros", "route" => "membros", "permission" => "adm-menu-membro"],
+                            ["label" => "Cartas", "route" => "cartas", "permission" => "adm-menu-carta"]
                           ]'>
         </x-adm-menu-group>
     @endcan

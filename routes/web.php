@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CartaController;
 use App\Http\Controllers\Admin\CartaoController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EBD\AlunoController;
@@ -190,6 +191,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/membros', [MembroController::class, 'store'])->name('membros.store');
     Route::get('/membros/{membro}/editar', [MembroController::class, 'edit'])->name('membros.edit');
     Route::put('/membros/{membro}', [MembroController::class, 'update'])->name('membros.update');
+
+    //Cartas
+    Route::get('/cartas', [CartaController::class, 'index'])->name('cartas');
+    Route::post('/cartas', [CartaController::class, 'store'])->name('cartas.store');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
