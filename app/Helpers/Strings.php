@@ -54,7 +54,7 @@ class Strings
      */
     public static function getMoedaFormatada($valor, $prefix = null)
     {
-        return $prefix . number_format($valor,2,',','.');
+        return $prefix . number_format($valor, 2, ',', '.');
     }
 
     /**
@@ -95,10 +95,11 @@ class Strings
     }
 
     /**
-     * @param $data
+     * @param string $data Data no formato 'Y-m-d'.
      * @return string
      */
-    public static function dataPorExtenso($data) {
+    public static function dataPorExtenso(string $data): string
+    {
         $partesData = explode('-', $data);
 
         $meses = array(
