@@ -27,17 +27,19 @@ class CertificadoController extends Controller
     public function store(CertificadoRequest $request)
     {
         $titulo = $request['titulo'];
+        $fraseInicial = $request['frase_inicial'];
         $nome = $request['nome'];
         $mensagem = $request['mensagem'];
-        $cargo_assinatura = $request['cargo_assinatura'];
-        $nome_assinatura = $request['nome_assinatura'];
+        $cargoAssinatura = $request['cargo_assinatura'];
+        $nomeAssinatura = $request['nome_assinatura'];
 
         $pdf = PDF::loadView('admin/certificados/certificado-pdf', compact(
             'titulo',
+            'fraseInicial',
             'nome',
             'mensagem',
-            'cargo_assinatura',
-            'nome_assinatura'
+            'cargoAssinatura',
+            'nomeAssinatura'
         ))->setPaper('a4', 'landscape');
 
         // Baixar o PDF com um nome de arquivo dinâmico

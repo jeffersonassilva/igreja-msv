@@ -22,6 +22,7 @@ class CertificadoRequest extends FormRequest
         return [
             'tipo' => 'required',
             'titulo' => 'required|string|max:30',
+            'frase_inicial' => 'required|string|max:60',
             'nome' => 'required|string|max:40',
             'mensagem' => 'required|string|max:1000',
             'cargo_assinatura' => 'nullable|string|max:30',
@@ -37,6 +38,7 @@ class CertificadoRequest extends FormRequest
         return [
             'tipo' => 'Tipo do Certificado',
             'titulo' => 'Título',
+            'frase_inicial' => 'Frase Inicial',
             'nome' => 'Nome',
             'mensagem' => 'Mensagem',
             'cargo_assinatura' => 'Cargo 1ª Assinatura',

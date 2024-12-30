@@ -77,14 +77,14 @@
             PA 03 Lote 02 - Jardins Mangueiral - DF &nbsp;&nbsp;&nbsp;&nbsp; CNPJ: 23.244.224/0001-44
         </div>
         <h1>{{ $titulo }}</h1>
-        <p>Certificamos que</p>
+        <p>{{ $fraseInicial }}</p>
         <h2>{{ $nome }}</h2>
         <p style="width: 82%; margin: 0 auto;">{!! $mensagem !!}</p>
-        @if($nome_assinatura)
+        @if($nomeAssinatura)
             <div style="position: absolute; bottom: 66px; margin-right: auto; left: 0; right: 0; text-align: center;">
                 <div>_______________________________________</div>
-                <div class="assinatura">{{ $nome_assinatura }}</div>
-                <div class="cargo">{{ $cargo_assinatura }}</div>
+                <div class="assinatura">{{ $nomeAssinatura }}</div>
+                <div class="cargo">{{ $cargoAssinatura }}</div>
             </div>
         @endif
     </div>
