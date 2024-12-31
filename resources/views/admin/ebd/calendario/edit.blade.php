@@ -16,7 +16,7 @@
                           min="{{ date('Y-m-d', strtotime('-2 week')) }}"
                           max="{{ date('Y-m-d', strtotime('+2 month')) }}"
                           size="md:max-w-[250px]"
-                          value="{{ old('data') ?? $data->data }}"
+                          value="{{ old('data') ?? \Carbon\Carbon::parse($data->data)->format('Y-m-d') }}"
                           :required="true"
                           :observacoes='["Informe a data da aula."]'/>
 

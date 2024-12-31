@@ -116,6 +116,9 @@ class CalendarioController extends Controller
     public function store(CalendarioRequest $request)
     {
         $this->checkPermission('adm-adicionar-ebd-calendario');
+        $request->merge([
+            'data' => $request->get('data') . ' 09:00:00',
+        ]);
         $this->service->store($request);
         return $this->redirectWithMessage('calendario', __(Constants::SUCCESS_CREATE));
     }
