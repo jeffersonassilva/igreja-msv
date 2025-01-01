@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CartaController;
 use App\Http\Controllers\Admin\CartaoController;
+use App\Http\Controllers\Admin\CertificadoController;
 use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EBD\AlunoController;
 use App\Http\Controllers\Admin\EBD\CalendarioController;
@@ -24,7 +25,6 @@ use App\Http\Controllers\Admin\VisitanteController;
 use App\Http\Controllers\Admin\VoluntarioController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CampanhaController;
-use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\EscalaVoluntarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotasFiscaisController;
@@ -56,10 +56,6 @@ Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('teste
 Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
 Route::get('/escalas/ebd', [CalendarioController::class, 'list'])->name('escalas.list');
 Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);
-
-//Certificado
-Route::get('/certificado', [CertificadoController::class, 'index'])->name('certificado.index');
-Route::post('/certificado', [CertificadoController::class, 'store'])->name('certificado.store');
 
 //Notas Fiscais
 Route::get('/nfs', [NotasFiscaisController::class, 'access'])->name('notas-fiscais.access');
@@ -195,6 +191,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Cartas
     Route::get('/cartas', [CartaController::class, 'index'])->name('cartas');
     Route::post('/cartas', [CartaController::class, 'store'])->name('cartas.store');
+
+    //Certificados
+    Route::get('/certificados', [CertificadoController::class, 'index'])->name('certificados');
+    Route::post('/certificados', [CertificadoController::class, 'store'])->name('certificados.store');
 
     //Usuários
     Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
