@@ -14,10 +14,10 @@
 
                     <x-form.input label="Título"
                                   name="titulo"
-                                  maxlength="255"
+                                  maxlength="40"
                                   :value="old('titulo', 'Carta de Recomendação')"
                                   :required="true"
-                                  :observacoes='["Máximo de 255 caracteres."]'/>
+                                  :observacoes='["Máximo de 40 caracteres."]'/>
 
                     <x-form.input label="Nome"
                                   name="nome"
@@ -28,36 +28,36 @@
 
                     <x-form.input label="Forma de Tratamento"
                                   name="cargo"
-                                  maxlength="255"
+                                  maxlength="30"
                                   :value="old('cargo', 'a diaconiza')"
-                                  :observacoes='["Máximo de 255 caracteres."]'/>
+                                  :observacoes='["Máximo de 30 caracteres."]'/>
 
                     <div class="grid xl:grid-cols-2 gap-0 p-0 m-0">
                         <x-form.input label="Cargo 1&ordf; Assinatura"
                                       name="cargo_assinatura1"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('cargo_assinatura1', 'Pastor Presidente')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
 
                         <x-form.input label="Nome 1&ordf; Assinatura"
                                       name="nome_assinatura1"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('nome_assinatura1', 'Samuel Novais')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
                     </div>
 
                     <div class="grid xl:grid-cols-2 gap-0 p-0 m-0">
                         <x-form.input label="Cargo 2&ordf; Assinatura"
                                       name="cargo_assinatura2"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('cargo_assinatura2', 'Secretária')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
 
                         <x-form.input label="Nome 2&ordf; Assinatura"
                                       name="nome_assinatura2"
-                                      maxlength="255"
+                                      maxlength="30"
                                       :value="old('nome_assinatura2', 'Raniely Nunes')"
-                                      :observacoes='["Máximo de 255 caracteres."]'/>
+                                      :observacoes='["Máximo de 30 caracteres."]'/>
                     </div>
 
 

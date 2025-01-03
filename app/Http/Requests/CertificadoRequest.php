@@ -23,6 +23,8 @@ class CertificadoRequest extends FormRequest
             'titulo' => 'required|string|max:30',
             'nome' => 'required|string|max:40',
             'mensagem' => 'required|string|max:200',
+            'cargo_assinatura' => 'nullable|string|max:30',
+            'nome_assinatura' => 'nullable|string|max:30',
         ];
     }
 
@@ -35,6 +37,8 @@ class CertificadoRequest extends FormRequest
             'titulo' => 'Título',
             'nome' => 'Nome',
             'mensagem' => 'Mensagem',
+            'cargo_assinatura' => 'Cargo 1ª Assinatura',
+            'nome_assinatura' => 'Nome 1ª Assinatura',
         ];
     }
 }
