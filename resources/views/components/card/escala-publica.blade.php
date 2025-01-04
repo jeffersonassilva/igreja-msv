@@ -144,11 +144,12 @@
     {{ $slot }}
 
     @if($escala->fechada)
-        <div class="p-4 sm:px-6 text-sm text-gray-700">
+        <div class="p-4 sm:px-6 text-sm text-teal-700">
             Todos deverão estar a postos às {{ \Carbon\Carbon::parse($escala->data)->subMinutes(30)->format('H:i') }}h.
         </div>
-        <div class="absolute right-2 top-2">
-            <span class="font-thin text-xs p-1 uppercase border border-teal-600 rounded-[4px] text-white bg-teal-600">
+        <div class="absolute right-2 -top-2">
+            <span class="text-xs px-2 py-1 uppercase rounded-[4px] text-white border
+                     border-[#34857d] bg-[#34857d]">
                 fechada
             </span>
         </div>
