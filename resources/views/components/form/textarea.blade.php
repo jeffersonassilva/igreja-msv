@@ -1,4 +1,12 @@
-@props(['label', 'name', 'required' => false, 'observacoes' => [], 'value' => null, 'rows' => 4])
+@props([
+    'label',
+    'name',
+    'required' => false,
+    'disabled' => false,
+    'observacoes' => [],
+    'value' => null,
+    'rows' => 4
+])
 
 <div class="flex flex-col mb-4 p-4 bg-white dark:bg-[#252c47]">
     <label for="{{ $name }}" class="text-gray-900 mb-2 dark:text-[#d0d9e6]">
@@ -11,10 +19,16 @@
         </span>
     @endforeach
 
-    <textarea {{ $attributes->merge(['name' => $name, 'id' => $name, 'rows' => $rows]) }}
+    <textarea {{ $attributes->merge([
+                'name' => $name,
+                'id' => $name,
+                'rows' => $rows,
+                'disabled' => $disabled
+            ]) }}
               class="border-gray-400 rounded-sm text-gray-700 w-full
               dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6] dark-autofill
               dark:focus:border-[#7380b3] dark:focus:ring-[#7380b3]
+              disabled:border-gray-300 disabled:opacity-60 disabled:bg-gray-100
               @error($name) border-[1px] border-red-500 @enderror">{{ $value ?: old($name) }}</textarea>
 
     @error($name)
