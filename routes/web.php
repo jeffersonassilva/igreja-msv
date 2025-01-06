@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ConfiguracaoController;
 use App\Http\Controllers\Admin\EBD\AlunoController;
 use App\Http\Controllers\Admin\EBD\CalendarioController;
 use App\Http\Controllers\Admin\EBD\ClasseController;
+use App\Http\Controllers\Admin\EBD\EscalaController as EBDEscalaController;
 use App\Http\Controllers\Admin\EBD\ProfessorController;
 use App\Http\Controllers\Admin\EscalaController;
 use App\Http\Controllers\Admin\EscalaFuncaoController;
@@ -248,12 +249,18 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::delete('/calendario/{data}', [CalendarioController::class, 'destroy'])->name('calendario.destroy');
 
     //EBD - Classe Calendário Fixo
-    Route::get('/calendario-fixo', [CalendarioController::class, 'indexFixo'])->name('calendario-fixo');
-    Route::get('/calendario-fixo/adicionar', [CalendarioController::class, 'createFixo'])->name('calendario-fixo.create');
-    Route::post('/calendario-fixo', [CalendarioController::class, 'storeFixo'])->name('calendario-fixo.store');
-    Route::get('/calendario-fixo/{data}/editar', [CalendarioController::class, 'editFixo'])->name('calendario-fixo.edit');
-    Route::put('/calendario-fixo/{data}', [CalendarioController::class, 'updateFixo'])->name('calendario-fixo.update');
-    Route::delete('/calendario-fixo/{data}', [CalendarioController::class, 'destroyFixo'])->name('calendario-fixo.destroy');
+    Route::get('/calendario-fixo', [EBDEscalaController::class, 'indexFixo'])->name('calendario-fixo');
+    Route::get('/calendario-fixo/adicionar', [EBDEscalaController::class, 'createFixo'])->name('calendario-fixo.create');
+    Route::post('/calendario-fixo', [EBDEscalaController::class, 'storeFixo'])->name('calendario-fixo.store');
+    Route::get('/calendario-fixo/{data}/editar', [EBDEscalaController::class, 'editFixo'])->name('calendario-fixo.edit');
+    Route::put('/calendario-fixo/{data}', [EBDEscalaController::class, 'updateFixo'])->name('calendario-fixo.update');
+    Route::delete('/calendario-fixo/{data}', [EBDEscalaController::class, 'destroyFixo'])->name('calendario-fixo.destroy');
+
+    //EBD - Escala
+    Route::get('/calendario/{data}/escala/{id}/editar', [EBDEscalaController::class, 'edit'])
+        ->name('calendario.escala.edit');
+    Route::put('/calendario/{data}/escala/{id}', [EBDEscalaController::class, 'update'])
+        ->name('calendario.escala.update');
 
     //EBD - Professores
     Route::get('/professores', [ProfessorController::class, 'index'])->name('professores');

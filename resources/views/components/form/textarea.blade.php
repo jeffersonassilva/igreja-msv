@@ -14,6 +14,7 @@
     <textarea {{ $attributes->merge(['name' => $name, 'id' => $name, 'rows' => $rows]) }}
               class="border-gray-400 rounded-sm text-gray-700 w-full
               dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6] dark-autofill
+              dark:focus:border-[#7380b3] dark:focus:ring-[#7380b3]
               @error($name) border-[1px] border-red-500 @enderror">{{ $value ?: old($name) }}</textarea>
 
     @error($name)

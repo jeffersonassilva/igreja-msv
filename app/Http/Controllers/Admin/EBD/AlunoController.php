@@ -40,7 +40,7 @@ class AlunoController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-ebd-alunos');
-        $data = $this->service->paginate(['nome' => 'asc'], null, 'classes');
+        $data = $this->service->paginate(['nome' => Constants::CRESCENTE], null, ['classes']);
         return view('admin/ebd/alunos/index')->with('alunos', $data);
     }
 

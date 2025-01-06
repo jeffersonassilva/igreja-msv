@@ -32,7 +32,7 @@ class ClasseController extends Controller
     public function index()
     {
         $this->checkPermission('adm-listar-ebd-classes');
-        $data = $this->service->paginate(['nome' => 'asc']);
+        $data = $this->service->paginate(['nome' => Constants::CRESCENTE]);
         return view('admin/ebd/classes/index')->with('classes', $data);
     }
 

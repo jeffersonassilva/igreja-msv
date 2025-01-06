@@ -70,9 +70,6 @@
                     </div>
                 @endforeach
             </div>
-            <div class="mb-4">
-                {{ $datas->links() }}
-            </div>
         @endif
     </section>
 

@@ -19,10 +19,23 @@
                           :required="true"
                           :observacoes='["Informe a data da aula."]' />
 
+            <x-form.input label="Responsável pela EBD"
+                          name="responsavel"
+                          maxlength="255"
+                          :required="true"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
+            <x-form.input label="Responsável pela Secretaria"
+                          name="secretario"
+                          maxlength="255"
+                          :required="true"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
             <x-form.checkboxes label="Classes"
                                name="classes[]"
+                               errorName="classes"
                                :items="$classes"
-                               :observacoes='["Selecione as classes que terão aulas no dia selecionado acima."]' />
+                               :observacoes='["Selecione as classes que terão aulas no dia."]' />
 
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('calendario')"

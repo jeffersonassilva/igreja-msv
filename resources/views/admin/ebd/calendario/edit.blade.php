@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Editar Item
+        Editar Calendário
     </x-slot>
 
     <section>
@@ -20,36 +20,24 @@
                           :required="true"
                           :observacoes='["Informe a data da aula."]'/>
 
-            <x-form.input label="Tema"
-                          name="tema"
+            <x-form.input label="Responsável pela EBD"
+                          name="responsavel"
                           maxlength="255"
-                          :required="false"
-                          value="{{ old('tema') ?? $data->tema }}"
-                          :observacoes='["Máximo de 255 caracteres."]'/>
+                          :required="true"
+                          value="{{ old('responsavel') ?? $data->responsavel }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
 
-            <x-form.select label="Professor"
-                           name="professor_id"
-                           size="md:max-w-[250px]"
-                           :blank="true"
-                           :reference="$data->professor_id"
-                           :options="$professores"
-                           :required="true"
-                           :observacoes='["Selecione uma das opções."]'/>
-
-            <x-form.input label="Monitor(a)"
-                          name="monitor"
+            <x-form.input label="Responsável pela Secretaria"
+                          name="secretario"
                           maxlength="255"
-                          :required="false"
-                          value="{{ old('monitor') ?? $data->monitor }}"
-                          :observacoes='["Máximo de 255 caracteres."]'/>
+                          :required="true"
+                          value="{{ old('secretario') ?? $data->secretario }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
 
-            <x-form.select label="Classe"
-                           name="classe_id"
-                           size="md:max-w-[250px]"
-                           :reference="$data->classe_id"
-                           :options="$classes"
-                           :required="true"
-                           :observacoes='["Selecione uma das opções."]'/>
+            <x-form.checkboxes label="Classes"
+                               name="classes[]"
+                               :items="$classes"
+                               :observacoes='["Selecione as classes que terão aulas no dia."]' />
 
             <x-form.actions backLabel="Voltar"
                             :backRoute="route('calendario')"

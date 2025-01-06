@@ -3,7 +3,7 @@
 namespace App\Models\EBD;
 
 use App\Models\AbstractModel;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Calendario extends AbstractModel
 {
@@ -22,34 +22,25 @@ class Calendario extends AbstractModel
      */
     protected $fillable = [
         'data',
-        'tema',
-        'professor_id',
-        'monitor',
-        'classe_id',
-        'titulo',
-        'local',
-        'link',
-        'permanente',
-    ];
-
-    protected $with = [
-        'classe',
-        'professor'
+        'responsavel',
+        'secretario',
     ];
 
     /**
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function classe()
+    public function escalas()
     {
-        return $this->belongsTo(Classe::class, 'classe_id', 'id');
+        return $this->hasMany(Escala::class);
     }
 
     /**
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function professor()
+    public function escalasOrdenadas()
     {
-        return $this->belongsTo(Professor::class, 'professor_id', 'id');
+        return $this->hasMany(Escala::class)
+            ->withAggregate('classe', 'nome')
+            ->orderBy('classe_nome');
     }
 }

@@ -40,23 +40,15 @@
                     @endforeach
 
 
-                    @php
-                        $dataRef = '';
-                    @endphp
                     @foreach($aulasDinamicas as $aulaDinamica)
-                        @if($aulaDinamica->data != $dataRef)
-                            @if(!$loop->first || $aulasPermanentes->count())
-                                <hr class="bg-white lg:col-span-2 2xl:col-span-3 border-t-gray-300 w-4/5 mx-auto mt-8">
-                            @endif
-                            <div class="text-lg text-gray-700 p-4 lg:col-span-2 2xl:col-span-3
-                                    text-center tracking-tighter md:text-2xl">
-                                {{ \App\Helpers\Strings::dataPorExtenso($aulaDinamica->data) }}
-                            </div>
+                        @if(!$loop->first || $aulasPermanentes->count())
+                            <hr class="bg-white lg:col-span-2 2xl:col-span-3 border-t-gray-300 w-4/5 mx-auto mt-8">
                         @endif
-                        <x-card.escala-publica-ebd :escala="$aulaDinamica"/>
-                        @php
-                            $dataRef = $aulaDinamica->data
-                        @endphp
+                        <div class="text-lg text-gray-700 p-4 lg:col-span-2 2xl:col-span-3
+                                    text-center tracking-tighter md:text-2xl">
+                            {{ \App\Helpers\Strings::dataPorExtenso($aulaDinamica->data) }}
+                        </div>
+                        <x-card.escala-publica-ebd :escalas="$aulaDinamica->escalasOrdenadas"/>
                     @endforeach
                 </div>
             @endif
