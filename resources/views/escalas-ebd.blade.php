@@ -9,8 +9,8 @@
         <div class="container mx-auto max-w-[1080px] 2xl:max-w-[1600px] p-4">
 
             @if($aulasDinamicas->count() + $aulasPermanentes->count())
-                <div class="grid gap-2 md:gap-6 md:mx-auto md:max-w-3xl mb-8
-                        lg:max-w-full lg:grid-cols-2 xl:gap-8 2xl:grid-cols-3">
+                <div class="grid gap-2 lg:gap-6 xl:gap-8 md:mx-auto md:max-w-3xl
+                        lg:max-w-full lg:grid-cols-2 2xl:grid-cols-3">
 
                     @foreach($aulasPermanentes as $aulaPermanente)
                         <x-card.escala-publica-ebd-fixa
@@ -42,11 +42,28 @@
 
                     @foreach($aulasDinamicas as $aulaDinamica)
                         @if(!$loop->first || $aulasPermanentes->count())
-                            <hr class="bg-white lg:col-span-2 2xl:col-span-3 border-t-gray-300 w-4/5 mx-auto mt-8">
+                            <hr class="bg-white lg:col-span-2 2xl:col-span-3 border-t-gray-300
+                                       w-4/5 mx-auto mt-12 mb-4">
                         @endif
-                        <div class="text-lg text-gray-700 p-4 lg:col-span-2 2xl:col-span-3
-                                    text-center tracking-tighter md:text-2xl">
+                        <div class="text-2xl sm:text-3xl md:text-4xl
+                                    text-gray-700 py-4 lg:col-span-2 2xl:col-span-3
+                                    text-center tracking-tighter">
                             {{ \App\Helpers\Strings::dataPorExtenso($aulaDinamica->data) }}
+                            <div class="font-thin text-sm md:text-base flex flex-col gap-1 md:gap-2
+                                        items-center justify-center mt-4">
+                                <div class="flex tracking-tighter">
+                                    <div class="inline-block px-2 bg-gray-200">Responsável:</div>
+                                    <div class="inline-block px-2 bg-white border border-gray-300">
+                                        {{ $aulaDinamica->responsavel ?? 'Não definido' }}
+                                    </div>
+                                </div>
+                                <div class="flex tracking-tighter">
+                                    <div class="inline-block px-2 bg-gray-200">Secretaria:</div>
+                                    <div class="inline-block px-2 bg-white border border-gray-300">
+                                        {{ $aulaDinamica->secretario ?? 'Não definido' }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <x-card.escala-publica-ebd :escalas="$aulaDinamica->escalasOrdenadas"/>
                     @endforeach
