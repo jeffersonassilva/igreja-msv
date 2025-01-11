@@ -1,7 +1,7 @@
 @props(['escalas'])
 
 @foreach($escalas as $escala)
-    <div class="flex flex-col bg-white rounded-sm my-1 px-4 pb-3
+    <div id="div-card-{{ $escala->id }}" class="bg-white rounded-sm my-1 px-4 pb-3
                 sm:my-4 md:my-4 md:px-6 md:pb-4 shadow-md shadow-gray-200">
         <div class="flex relative border-b border-b-gray-200">
             @if($escala->classe && $escala->classe->revista)
@@ -58,6 +58,6 @@
                 </div>
             </div>
         </div>
-        <x-tres-alunos :classe="$escala->classe"></x-tres-alunos>
+        <x-alunos-matriculados :id="$escala->id" :classe="$escala->classe"></x-alunos-matriculados>
     </div>
 @endforeach

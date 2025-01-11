@@ -33,6 +33,11 @@ class Classe extends AbstractModel
      */
     public function alunos()
     {
-        return $this->belongsToMany(Aluno::class, AlunoClasse::class, 'classe_id', 'aluno_id');
+        return $this->belongsToMany(
+            Aluno::class,
+            AlunoClasse::class,
+            'classe_id',
+            'aluno_id'
+        )->orderBy('nome');
     }
 }
