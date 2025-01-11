@@ -172,6 +172,7 @@ html {
     @apply text-gray-400;
 }
 
+/* INPUTS */
 .dark .dark-autofill:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px #282a45 inset;
     -webkit-text-fill-color: #d0d9e6;
@@ -190,6 +191,25 @@ html {
 .dark input[type="file"] {
     color: #d0d9e6;
 }
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+}
+
+.dark input[type="number"]::-webkit-inner-spin-button,
+.dark input[type="number"]::-webkit-outer-spin-button {
+    filter: invert(0.8);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    filter:grayscale(0.7) brightness(0) opacity(0.6);
+}
+
+.dark input[type="search"]::-webkit-search-cancel-button {
+    filter:grayscale(0.7) brightness(10) opacity(0.6);
+}
+
 
 /* Responsive Layout */
 @media (min-width: 640px) {
