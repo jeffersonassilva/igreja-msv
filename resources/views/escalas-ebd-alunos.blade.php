@@ -42,7 +42,14 @@
                 </div>
                 <div class="grid gap-2">
                     @foreach($escala->classe->alunos as $key => $aluno)
-                        <div class="bg-white p-4 rounded-sm md:text-lg">{{ ++$key }} - {{ $aluno->nome }}</div>
+                        <div class="bg-white p-2 xs:p-3 sm:p-4 rounded-sm md:text-lg
+                                    flex gap-2 xs:gap-4 md:gap-6 items-center">
+                            <span class="flex-shrink-0 inline-flex justify-center items-center
+                                         rounded-md h-8 w-8 text-sm bg-gray-100">
+                                {{ ++$key }}
+                            </span>
+                            <span class="line-clamp-1">{{ $aluno->nome }}</span>
+                        </div>
                     @endforeach
                 </div>
             @else
