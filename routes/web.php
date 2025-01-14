@@ -54,7 +54,8 @@ Route::get('/seminario', [OfertaController::class, 'seminario'])->name('seminari
 Route::get('/pix', [OfertaController::class, 'pix'])->name('pix');
 Route::get('/testemunhos', [TestemunhoController::class, 'list'])->name('testemunhos.list');
 Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('testemunhos.store');
-Route::get('/escalas', [EscalaController::class, 'list'])->name('escalas.list');
+Route::get('/escalas', [EscalaController::class, 'geral'])->name('escalas.geral');
+Route::get('/escalas/obreiros', [EscalaController::class, 'list'])->name('escalas.obreiros.list');
 Route::get('/escalas/ebd', [CalendarioController::class, 'list'])->name('escalas.ebd.list');
 Route::get('/escalas/ebd/{id}/alunos/', [CalendarioController::class, 'alunos'])->name('calendario.alunos');
 Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);

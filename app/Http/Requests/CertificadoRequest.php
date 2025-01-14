@@ -20,9 +20,10 @@ class CertificadoRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo' => 'required',
             'titulo' => 'required|string|max:30',
             'nome' => 'required|string|max:40',
-            'mensagem' => 'required|string|max:200',
+            'mensagem' => 'required|string|max:1000',
             'cargo_assinatura' => 'nullable|string|max:30',
             'nome_assinatura' => 'nullable|string|max:30',
         ];
@@ -34,6 +35,7 @@ class CertificadoRequest extends FormRequest
     public function attributes()
     {
         return [
+            'tipo' => 'Tipo do Certificado',
             'titulo' => 'Título',
             'nome' => 'Nome',
             'mensagem' => 'Mensagem',
