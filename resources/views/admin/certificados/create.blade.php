@@ -1,7 +1,3 @@
-@php
-    $texto = 'em testemunho de sua fé em nosso Senhor Jesus Cristo, foi batizado em nome do Pai, do Filho e do Espírito Santo, cumprindo o mandamento do Senhor, conforme Mateus 28:19: <em>"Portanto, ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo."</em><br><br>Brasília-DF, 15 de setembro de 2024.';
-@endphp
-
 <x-app-layout>
     <x-slot name="header">
         Certificados
@@ -22,7 +18,7 @@
                                    :required="true"
                                    :options='[
                                         ["id" => 1, "descricao" => "Certificado de Batismo"],
-                                        ["id" => 2, "descricao" => "Consagração de Obreiros" ]
+                                        ["id" => 2, "descricao" => "Consagração de Obreiros"]
                                     ]'
                                    :observacoes='[
                                         "Ao alterar o tipo, o título também é alterado.
@@ -45,7 +41,7 @@
 
                     <x-form.textarea label="Mensagem"
                                      name="mensagem"
-                                     value="{!! old('mensagem', $texto) !!}"
+                                     value="{!! old('mensagem', '') !!}"
                                      rows="5"
                                      :required="true"
                                      :observacoes='["Máximo de 200 caracteres."]'/>
@@ -112,7 +108,7 @@
                                 {{ old('nome', 'Paulo Guilherme Dias Soares') }}
                             </div>
                             <div id="text-mensagem" class="text-[7px] text-center w-10/12">
-                                {!! old('mensagem', $texto) !!}
+                                {!! old('mensagem', '') !!}
                             </div>
                             <div id="box-assinatura" class="text-center text-[5px] md:text-[10px] mt-2">
                                 <div>___________________________</div>
@@ -131,13 +127,22 @@
     </section>
 
     <script type="text/javascript">
-
         let exemploTextos = {
-            1: 'em testemunho de sua fé em nosso Senhor Jesus Cristo, foi batizado em nome do Pai, do Filho e do Espírito Santo, cumprindo o mandamento do Senhor, conforme Mateus 28:19: <em>"Portanto, ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo."</em><br><br>Brasília-DF, 15 de setembro de 2024.',
-            2: 'foi consagrado a <strong>Diácono</strong> pelo trabalho e compromisso em servir ao Reino de Deus com dedicação e fidelidade, conforme a palavra: <em>"Procure apresentar-se a Deus como obreiro aprovado, que não tem do que se envergonhar e que maneja corretamente a palavra da verdade." (2 Timóteo 2:15)</em>. <br>Que esta consagração fortaleça sua missão no serviço ao Senhor. <br>Brasília-DF, 31 de dezembro de 2024.',
+            1: 'em testemunho de sua fé em nosso Senhor Jesus Cristo, foi batizado em nome do Pai, ' +
+                'do Filho e do Espírito Santo, cumprindo o mandamento do Senhor, ' +
+                'conforme Mateus 28:19: <em>"Portanto, ide, fazei discípulos de todas as nações, batizando-os em ' +
+                'nome do Pai, e do Filho, e do Espírito Santo."</em><br><br>Brasília - DF, 15 de setembro de 2024. ',
+            2: 'foi consagrado a <strong>Diácono</strong> pelo trabalho e compromisso em servir ao Reino de Deus ' +
+                'com dedicação e fidelidade, conforme a palavra: <em>"Procure apresentar-se a Deus como obreiro ' +
+                'aprovado, que não tem do que se envergonhar e que maneja corretamente a palavra da verdade." ' +
+                '(2 Timóteo 2:15)</em><br>Que esta consagração fortaleça sua missão no ' +
+                'serviço ao Senhor. <br><br>Brasília - DF, 31 de dezembro de 2024.',
         };
 
         $(document).ready(function () {
+
+            $('#mensagem').val(exemploTextos[1]);
+
             let tipo = $('#tipo');
             tipo.change(function () {
                 let texto = $("#tipo option:selected").text();
