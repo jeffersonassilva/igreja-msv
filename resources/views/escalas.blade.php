@@ -112,7 +112,6 @@
                         @endphp
 
                         @if($count >= 5)
-                            <section class="md:hidden">&nbsp;</section>
                             @break
                         @endif
                     @empty
@@ -127,6 +126,9 @@
                             </div>
                         </div>
                     @endforelse
+                    @if($count > 0)
+                        <section class="md:hidden">&nbsp;</section>
+                    @endif
                 </div>
             </section>
         </div>
