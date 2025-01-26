@@ -14,11 +14,12 @@
 
                     <x-form.select label="Tipo de Certificado"
                                    name="tipo"
-                                   size="md:max-w-[250px]"
+                                   size="md:max-w-[300px]"
                                    :required="true"
                                    :options='[
                                         ["id" => 1, "descricao" => "Certificado de Batismo"],
-                                        ["id" => 2, "descricao" => "Consagração de Obreiros"]
+                                        ["id" => 2, "descricao" => "Consagração de Obreiros"],
+                                        ["id" => 3, "descricao" => "Reconhecimento de Cargos"]
                                     ]'
                                    :observacoes='[
                                         "Ao alterar o tipo, o título também é alterado.
@@ -31,6 +32,13 @@
                                   :value="old('titulo', 'Certificado de Batismo')"
                                   :required="true"
                                   :observacoes='["Máximo de 30 caracteres."]'/>
+
+                    <x-form.input label="Frase Inicial"
+                                  name="frase_inicial"
+                                  maxlength="60"
+                                  :value="old('frase_inicial', 'Certificamos que')"
+                                  :required="true"
+                                  :observacoes='["Máximo de 60 caracteres."]'/>
 
                     <x-form.input label="Nome"
                                   name="nome"
@@ -101,7 +109,10 @@
                                  font-bold italic uppercase tracking-tight text-center">
                                 {{ old('titulo', 'Certificado de Batismo') }}
                             </div>
-                            <div class="text-[7px] md:text-[8px]">Certificamos que</div>
+                            <div id="text-frase-inicial"
+                                 class="text-[7px] md:text-[8px]">
+                                {{ old('frase_inicial', 'Certificamos que') }}
+                            </div>
                             <div id="text-nome" style="font-family: 'Times New Roman', serif;"
                                  class="m-1 md:m-2 text-[13px] md:text-[20px]
                                  font-bold italic tracking-tight text-center">
@@ -137,38 +148,57 @@
                 'aprovado, que não tem do que se envergonhar e que maneja corretamente a palavra da verdade." ' +
                 '(2 Timóteo 2:15)</em><br>Que esta consagração fortaleça sua missão no ' +
                 'serviço ao Senhor. <br><br>Brasília - DF, 31 de dezembro de 2024.',
+            3: 'como <strong>Diácono</strong> pelo trabalho e compromisso em servir ao Reino de Deus ' +
+                'com dedicação e fidelidade, conforme a palavra: <em>"Procure apresentar-se a Deus como obreiro ' +
+                'aprovado, que não tem do que se envergonhar e que maneja corretamente a palavra da verdade." ' +
+                '(2 Timóteo 2:15)</em><br>Que este reconhecimento fortaleça sua missão no ' +
+                'serviço ao Senhor. <br><br>Brasília - DF, 31 de dezembro de 2024.',
+        };
+
+        let exemploFrasesIniciais = {
+            1: 'Certificamos que',
+            2: 'Certificamos que',
+            3: 'A igreja reconhece'
         };
 
         $(document).ready(function () {
 
             $('#mensagem').val(exemploTextos[1]);
+            $('#text-mensagem').html(exemploTextos[1]);
 
             let tipo = $('#tipo');
-            tipo.change(function () {
+            tipo.on('change', function () {
                 let texto = $("#tipo option:selected").text();
                 $('#text-titulo').text(texto);
                 $('#titulo').val(texto);
+                $('#frase_inicial').val(exemploFrasesIniciais[tipo.val()]);
+                $('#frase_inicial').keyup();
                 $('#mensagem').val(exemploTextos[tipo.val()]);
                 $('#mensagem').keyup();
             });
 
             let titulo = $('#titulo');
-            titulo.keyup(function () {
+            titulo.on('keyup', function () {
                 $('#text-titulo').text(titulo.val());
             });
 
+            let fraseInicial = $('#frase_inicial');
+            fraseInicial.on('keyup', function () {
+                $('#text-frase-inicial').text(fraseInicial.val());
+            });
+
             let nome = $('#nome');
-            nome.keyup(function () {
+            nome.on('keyup', function () {
                 $('#text-nome').text(nome.val());
             });
 
             let mensagem = $('#mensagem');
-            mensagem.keyup(function () {
+            mensagem.on('keyup', function () {
                 $('#text-mensagem').html(mensagem.val());
             });
 
             let nome_assinatura = $('#nome_assinatura');
-            nome_assinatura.keyup(function () {
+            nome_assinatura.on('keyup', function () {
                 $('#text-nome-assinatura').text(nome_assinatura.val());
                 if (nome_assinatura.val().length === 0) {
                     $('#box-assinatura').hide();
@@ -178,7 +208,7 @@
             });
 
             let cargo_assinatura = $('#cargo_assinatura');
-            cargo_assinatura.keyup(function () {
+            cargo_assinatura.on('keyup', function () {
                 $('#text-cargo-assinatura').text(cargo_assinatura.val());
             });
         });
