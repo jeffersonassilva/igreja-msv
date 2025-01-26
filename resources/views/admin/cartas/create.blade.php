@@ -29,7 +29,7 @@
                     <x-form.input label="Forma de Tratamento"
                                   name="cargo"
                                   maxlength="30"
-                                  :value="old('cargo', 'a diaconiza')"
+                                  :value="old('cargo', 'a diaconisa')"
                                   :observacoes='["Máximo de 30 caracteres."]'/>
 
                     <div class="grid xl:grid-cols-2 gap-0 p-0 m-0">
@@ -114,7 +114,7 @@
                             <p class="pb-4 indent-4 text-justify">É com satisfação que a Igreja Evangélica
                                 Ministério Semeando a Verdade vem, através desta carta, recomendar que os irmãos
                                 desta estimada igreja recebam
-                                <span id="text-cargo">{{ old('cargo', 'a diaconiza') }}</span>
+                                <span id="text-cargo">{{ old('cargo', 'a diaconisa') }}</span>
                                 <strong id="text-nome">{{ old('nome', 'Anadalva Pereira de Oliveira Lisboa') }}</strong>,
                                 que se encontra em plena comunhão com nossa congregação e tem demonstrado
                                 um compromisso exemplar na obra do Senhor.
