@@ -45,7 +45,9 @@
                     <div class="text-2xl sm:text-3xl md:text-4xl
                                 text-gray-700 lg:col-span-2 2xl:col-span-3
                                 text-center tracking-tighter my-8 md:my-14">
-                        {{ \App\Helpers\Strings::dataPorExtenso($aulaDinamica->data) }}
+                        {{ \App\Helpers\Strings::dataPorExtenso(
+                            \Carbon\Carbon::parse($aulaDinamica->data)->format('Y-m-d')
+                        ) }}
                         <div class="font-thin text-sm md:text-base flex flex-col gap-1 md:gap-2
                                     items-center justify-center mt-4">
                             <div class="flex tracking-tighter">

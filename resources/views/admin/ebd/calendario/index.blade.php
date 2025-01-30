@@ -22,7 +22,9 @@
                                     {{ \Carbon\Carbon::parse($data->data)->format('d/m/Y') }}
                                 </h3>
                                 <h3 class="hidden sm:block text-gray-700 md:text-2xl font-normal dark:text-white">
-                                    {{ \App\Helpers\Strings::dataPorExtenso($data->data) }}
+                                    {{ \App\Helpers\Strings::dataPorExtenso(
+                                        \Carbon\Carbon::parse($data->data)->format('Y-m-d')
+                                    ) }}
                                 </h3>
                                 <p class="text-base sm:text-lg text-gray-600 dark:text-[#d0d9e6] line-clamp-1">
                                     {{ $data->responsavel }}
