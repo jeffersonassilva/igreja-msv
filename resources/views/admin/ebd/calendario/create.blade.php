@@ -4,7 +4,7 @@
     </x-slot>
 
     <section>
-        <form class="form-horizontal" role="form"
+        <form class="form-horizontal"
               action="{{ route('calendario.store') }}"
               method="post">
             @csrf
@@ -28,7 +28,11 @@
             <x-form.input label="Responsável pela Secretaria"
                           name="secretario"
                           maxlength="255"
-                          :required="true"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
+            <x-form.input label="Responsável pela Recepção"
+                          name="recepcionista"
+                          maxlength="255"
                           :observacoes='["Máximo de 255 caracteres."]' />
 
             <x-form.checkboxes label="Classes"

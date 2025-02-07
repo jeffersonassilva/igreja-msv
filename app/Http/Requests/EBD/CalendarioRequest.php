@@ -22,7 +22,8 @@ class CalendarioRequest extends FormRequest
         return [
             'data' => 'date',
             'responsavel' => 'required|max:255',
-            'secretario' => 'required|max:255',
+            'secretario' => 'nullable|max:255',
+            'recepcionista' => 'nullable|max:255',
             'classes' => 'required|array',
         ];
     }
@@ -36,6 +37,7 @@ class CalendarioRequest extends FormRequest
             'data' => 'Data',
             'responsavel' => 'Responsável pela EBD',
             'secretario' => 'Responsável pela Secretaria',
+            'recepcionista' => 'Responsável pela Recepção',
         ];
     }
 

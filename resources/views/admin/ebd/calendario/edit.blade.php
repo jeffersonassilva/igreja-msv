@@ -4,7 +4,7 @@
     </x-slot>
 
     <section>
-        <form class="form-horizontal" role="form"
+        <form class="form-horizontal"
               action="{{ route('calendario.update', $data) }}"
               method="post">
             @method('PUT')
@@ -30,8 +30,13 @@
             <x-form.input label="Responsável pela Secretaria"
                           name="secretario"
                           maxlength="255"
-                          :required="true"
                           value="{{ old('secretario') ?? $data->secretario }}"
+                          :observacoes='["Máximo de 255 caracteres."]' />
+
+            <x-form.input label="Responsável pela Recepção"
+                          name="recepcionista"
+                          maxlength="255"
+                          value="{{ old('recepcionista') ?? $data->recepcionista }}"
                           :observacoes='["Máximo de 255 caracteres."]' />
 
             <x-form.checkboxes label="Classes"
