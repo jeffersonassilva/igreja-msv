@@ -26,9 +26,10 @@
     @endforeach
 
     <select name="{{ $name }}" id="{{ $name }}" @if($disabled) disabled @endif
-            class="rounded-sm border-gray-400 dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
+            class="rounded-sm border-gray-400 text-gray-700
+                dark:bg-[#1c2039] dark:border-[#343d61] dark:text-[#d0d9e6]
                    dark:focus:border-[#7380b3] dark:focus:ring-[#7380b3]
-                   @if($disabled) text-gray-500 dark:text-gray-500 @endif
+                   disabled:border-gray-300 disabled:opacity-60 disabled:bg-gray-100
                    @error($name) border-[1px] border-red-500 dark:border-[#642828] @enderror
                    @if($size) {{ $size }} @endif">
 
