@@ -4,7 +4,7 @@
     </x-slot>
 
     <section>
-        <div class="h-16 mb-4 bg-white rounded-md flex items-center justify-center dark:bg-[#252c47]" role="group">
+        <div class="h-16 mb-4 bg-white rounded-md flex items-center justify-center dark:bg-[#252c47]">
             <button type="button" id="btn-filtros"
                     class="py-1 px-4 text-sm text-white bg-blue-400
                     dark:text-gray-900 dark:bg-yellow-400 dark:hover:bg-yellow-300 dark:border-[#263141]
@@ -20,7 +20,7 @@
             @endcan
         </div>
 
-        <form class="form-horizontal" role="form" action="{{ route('escalas') }}">
+        <form class="form-horizontal" action="{{ route('escalas') }}">
             <div id="filtros" class="p-4 mb-4 md:p-6 bg-white rounded-lg hidden dark:bg-[#252c47]">
                 <div class="mb-2 sm:grid sm:gap-x-6 xl:grid-cols-3 lg:mb-0">
                     <div class="w-full lg:w-[300px] mb-6 sm:mb-4">

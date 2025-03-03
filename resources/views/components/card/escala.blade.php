@@ -1,10 +1,10 @@
 @props(['escala'])
 
-<div class="flex flex-col bg-white rounded-md relative dark:text-[#d0d9e6] dark:bg-[#252c47]">
+<div class="flex flex-row gap-2 items-center bg-white p-3 rounded-sm dark:bg-[#252c47] relative">
     <div class="absolute top-4 left-[-3px] h-[30px] w-[3px]"
          style="background: {{ $escala->evento->cor ?? '#777' }}">
     </div>
-    <div class="p-4 flex-1">
+    <div class="flex-1">
         <div class="mb-3 text-lg" style="color: {{ $escala->evento->cor ?? '#777' }}">
             {{ $escala->evento->descricao }}
         </div>
@@ -27,47 +27,62 @@
             @if($escala->dirigente)
                 <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
                             dark:border-gray-600 dark:text-gray-200">
-                    Dirigente <ion-icon name="checkmark"></ion-icon>
+                    Dirigente
+                    <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->pregador)
                 <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
                             dark:border-gray-600 dark:text-gray-200">
-                    Pregador <ion-icon name="checkmark"></ion-icon>
+                    Pregador
+                    <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->tema)
                 <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
                             dark:border-gray-600 dark:text-gray-200">
-                    Tema <ion-icon name="checkmark"></ion-icon>
+                    Tema
+                    <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->ministro)
                 <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
                             dark:border-gray-600 dark:text-gray-200">
-                    Louvor <ion-icon name="checkmark"></ion-icon>
+                    Louvor
+                    <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
         </section>
     </div>
+
     @canany(['adm-editar-escala', 'adm-excluir-escala'])
-        <div class="text-sm flex gap-2 border-t border-t-gray-100 dark:border-t-[#263141] px-4 py-3">
+        <x-dropdown.actions dropdownId="dropdownEscalas-{{ $escala }}" buttonId="dropdownButton-{{ $escala }}">
             @can('adm-editar-escala')
-                <x-button.link title="Editar" :route="route('escalas.edit', $escala)"></x-button.link>
+                <div>
+                    <x-button.link title="Editar"
+                                   icon="create-outline"
+                                   :route="route('escalas.edit', $escala)"
+                                   :dropdown="true">
+                    </x-button.link>
+                </div>
+                <div>
+                    <x-button.link title="Informações Gerais"
+                                   icon="information-circle-outline"
+                                   :route="route('escalas.edit.info', $escala)"
+                                   :dropdown="true">
+                    </x-button.link>
+                </div>
             @endcan
-
-            @can('adm-editar-escala')
-                <x-button.link title="Informações Gerais"
-                               :lighter="true"
-                               :route="route('escalas.edit.info', $escala)">
-                </x-button.link>
-            @endcan
-
             @can('adm-excluir-escala')
-                <x-button.delete :route="route('escalas.destroy', $escala)"
-                                 formId="form-excluir-escala-{{ $escala->id }}">
-                </x-button.delete>
+                <div>
+                    <x-button.delete
+                        :route="route('escalas.destroy', $escala)"
+                        formId="form-excluir-escala-{{ $escala->id }}"
+                        :dropdown="true"
+                        icon="trash-outline">
+                    </x-button.delete>
+                </div>
             @endcan
-        </div>
+        </x-dropdown.actions>
     @endcanany
 </div>
