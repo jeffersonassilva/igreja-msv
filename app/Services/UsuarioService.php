@@ -45,4 +45,17 @@ class UsuarioService extends AbstractService
 
         return $data;
     }
+
+    /**
+     * Summary of resetPassword
+     * @param mixed $request
+     * @param mixed $id
+     * @return User|User[]|\LaravelIdea\Helper\App\Models\_IH_User_C|null
+     */
+    public function resetPassword($request, $id) {
+        $data = $this->model->find($id);
+        $data->fill($request->all())->save();
+
+        return $data;
+    }
 }
