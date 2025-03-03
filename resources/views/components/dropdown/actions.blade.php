@@ -24,7 +24,7 @@
     <!-- Dropdown menu -->
     <div id="{{ $dropdownId }}"
          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg border border-gray-200
-             shadow w-40 dark:border-gray-500 dark:text-[#d0d9e6] dark:bg-[#51596b]">
+             shadow dark:border-gray-500 dark:text-[#d0d9e6] dark:bg-[#51596b]">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{ $buttonId }}">
             {{ $slot }}
         </ul>
