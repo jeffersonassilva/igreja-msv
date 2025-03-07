@@ -14,6 +14,7 @@ require('./bootstrap');
 
 import { Fancybox } from "@fancyapps/ui";
 import Alpine from 'alpinejs';
+import 'flowbite';
 
 window.Alpine = Alpine;
 

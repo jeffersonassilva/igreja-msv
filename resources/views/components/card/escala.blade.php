@@ -9,14 +9,14 @@
             {{ $escala->evento->descricao }}
         </div>
         <div class="flex items-center">
-            <div class="text-3xl tracking-tighter">
+            <div class="text-4xl text-gray-700 dark:text-gray-200 tracking-tighter">
                 {{ \Carbon\Carbon::parse($escala->data)->format('d') }}
             </div>
             <div class="flex flex-col pl-4 flex-1">
-                <span class="text-sm text-gray-600 dark:text-[#d0d9e6]">
+                <span class="text-gray-600 dark:text-gray-300">
                     {{ \Carbon\Carbon::parse($escala->data)->dayName }}
                 </span>
-                <span class="text-sm font-thin text-gray-400">
+                <span class="text-sm font-thin text-gray-500 dark:text-gray-400">
                     {{ \Carbon\Carbon::parse($escala->data)->monthName }}
                     de {{ \Carbon\Carbon::parse($escala->data)->format('Y') }}
                     às {{ \Carbon\Carbon::parse($escala->data)->format('H:i') }}h
@@ -25,22 +25,26 @@
         </div>
         <section class="flex gap-1 mt-3 justify-centers">
             @if($escala->dirigente)
-                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
+                            dark:border-gray-600 dark:text-gray-200">
                     Dirigente <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->pregador)
-                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
+                            dark:border-gray-600 dark:text-gray-200">
                     Pregador <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->tema)
-                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
+                            dark:border-gray-600 dark:text-gray-200">
                     Tema <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
             @if($escala->ministro)
-                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1">
+                <div class="border border-blue-200 text-gray-500 px-1 text-xs rounded-md flex items-center gap-1
+                            dark:border-gray-600 dark:text-gray-200">
                     Louvor <ion-icon name="checkmark"></ion-icon>
                 </div>
             @endif
