@@ -31,57 +31,34 @@
         </p>
     </div>
 
-    <div x-data="{ open: false }" class="relative">
-        @canany(['adm-editar-voluntario', 'adm-detalhar-voluntario', 'adm-excluir-voluntario'])
-            <x-dropdown.link title=""
-                             class="text-lg py-3"
-                             icon="ellipsis-vertical-outline"
-                             :lighter="true"
-                             @click="open = !open">
-            </x-dropdown.link>
-        @endcanany
-        <!-- Dropdown -->
-        <div
-            x-show="open"
-            x-transition
-            @click.away="open = false"
-            class="absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg z-10
-                   border border-gray-200 dark:border-gray-500 dark:text-[#d0d9e6] dark:bg-[#51596b]">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-                @can('adm-editar-voluntario')
-                    <li>
-                        <a href="{{ route('voluntarios.edit', $voluntario) }}"
-                           class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <ion-icon name="create-outline"></ion-icon>
-                            Editar
-                        </a>
-                    </li>
-                @endcan
-                @can('adm-detalhar-voluntario')
-                    <li>
-                        <a href="{{ route('voluntarios.show', $voluntario) }}"
-                           class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <ion-icon name="eye-outline"></ion-icon>
-                            Visualizar
-                        </a>
-                    </li>
-                @endcan
-                @can('adm-excluir-voluntario')
-                    <li>
-                        <form method="POST" action="{{ route('voluntarios.destroy', $voluntario) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button"
-                                    class="flex items-center gap-2 w-full text-left px-4 py-2
-                                           hover:bg-gray-100 dark:hover:bg-gray-700 btn-dialog-open">
-                                <ion-icon name="trash-outline"></ion-icon>
-                                Excluir
-                            </button>
-                        </form>
-                    </li>
-                @endcan
-            </ul>
-        </div>
-    </div>
-
+    <x-dropdown.actions dropdownId="dropdownVolunteer-{{ $voluntario }}" buttonId="dropdownButton-{{ $voluntario }}">
+        @can('adm-editar-voluntario')
+            <li>
+                <x-button.link title="Editar"
+                               icon="create-outline"
+                               :route="route('voluntarios.edit', $voluntario)"
+                               :dropdown="true">
+                </x-button.link>
+            </li>
+        @endcan
+        @can('adm-detalhar-voluntario')
+            <li>
+                <x-button.link title="Visualizar"
+                               icon="eye-outline"
+                               :route="route('voluntarios.show', $voluntario)"
+                               :dropdown="true">
+                </x-button.link>
+            </li>
+        @endcan
+        @can('adm-excluir-voluntario')
+            <li>
+                <x-button.delete
+                    :route="route('voluntarios.destroy', $voluntario)"
+                    formId="form-excluir-voluntario-{{ $voluntario->id }}"
+                    :dropdown="true"
+                    icon="trash-outline">
+                </x-button.delete>
+            </li>
+        @endcan
+    </x-dropdown.actions>
 </div>
