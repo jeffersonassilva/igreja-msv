@@ -24,6 +24,7 @@ class Calendario extends AbstractModel
         'data',
         'responsavel',
         'secretario',
+        'recepcionista',
     ];
 
     /**

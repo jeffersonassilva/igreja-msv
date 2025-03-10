@@ -9,7 +9,6 @@
         <div class="container mx-auto max-w-[1080px] 2xl:max-w-[1600px] p-4">
 
             @if($aulasDinamicas->count() + $aulasPermanentes->count())
-
                 <div class="grid gap-4 sm:gap-6 xl:gap-8 lg:grid-cols-2 2xl:grid-cols-3">
                     @foreach($aulasPermanentes as $aulaPermanente)
                         <x-card.escala-publica-ebd-fixa
@@ -45,22 +44,30 @@
                     <div class="text-2xl sm:text-3xl md:text-4xl
                                 text-gray-700 lg:col-span-2 2xl:col-span-3
                                 text-center tracking-tighter my-8 md:my-14">
-                        {{ \App\Helpers\Strings::dataPorExtenso(
-                            \Carbon\Carbon::parse($aulaDinamica->data)->format('Y-m-d')
-                        ) }}
-                        <div class="font-thin text-sm md:text-base flex flex-col gap-1 md:gap-2
-                                    items-center justify-center mt-4">
-                            <div class="flex tracking-tighter">
-                                <div class="inline-block px-2 bg-gray-200">Responsável:</div>
-                                <div class="inline-block px-2 bg-white border border-gray-300">
-                                    {{ $aulaDinamica->responsavel ?? 'Não definido' }}
-                                </div>
-                            </div>
-                            <div class="flex tracking-tighter">
-                                <div class="inline-block px-2 bg-gray-200">Secretaria:</div>
-                                <div class="inline-block px-2 bg-white border border-gray-300">
-                                    {{ $aulaDinamica->secretario ?? 'Não definido' }}
-                                </div>
+                        {{ \App\Helpers\Strings::dataPorExtenso(\Carbon\Carbon::parse($aulaDinamica->data)->format('Y-m-d')) }}
+
+                        <div class="font-thin text-sm md:text-base flex flex-col items-center mt-4 w-full tracking-tighter">
+                            <div class="grid grid-cols-[auto_minmax(10px,_1fr)] w-fit">
+                                @if($aulaDinamica->responsavel)
+                                    <div class="bg-gray-200 px-2 mb-1 text-right">Responsável:</div>
+                                    <div class="bg-white border border-gray-300 px-2 mb-1">
+                                        {{ $aulaDinamica->responsavel }}
+                                    </div>
+                                @endif
+
+                                @if($aulaDinamica->secretario)
+                                    <div class="bg-gray-200 px-2 mb-1 text-right">Secretaria:</div>
+                                    <div class="bg-white border border-gray-300 px-2 mb-1">
+                                        {{ $aulaDinamica->secretario }}
+                                    </div>
+                                @endif
+
+                                @if($aulaDinamica->recepcionista)
+                                    <div class="bg-gray-200 px-2 mb-1 text-right">Recepção:</div>
+                                    <div class="bg-white border border-gray-300 px-2 mb-1">
+                                        {{ $aulaDinamica->recepcionista }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -68,17 +75,15 @@
                         <x-card.escala-publica-ebd :escalas="$aulaDinamica->escalasOrdenadas"/>
                     </div>
                 @endforeach
-
             @endif
         </div>
 
         @if(!$aulasDinamicas->count())
             <div class="container mx-auto max-w-[1080px] pt-4 flex flex-col justify-center items-center">
                 <div>
-                    <img
-                        class="w-[200px] md:w-[300px]"
-                        src="{{ asset('/img/results-not-found.png') }}"
-                        alt="sem registros">
+                    <img class="w-[200px] md:w-[300px]"
+                         src="{{ asset('/img/results-not-found.png') }}"
+                         alt="sem registros">
                 </div>
                 <div class="md:text-xl text-neutral-500 py-4 mb-10 md:mb-20">
                     Nenhum registro encontrado!
