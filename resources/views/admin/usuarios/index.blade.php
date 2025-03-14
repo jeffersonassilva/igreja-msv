@@ -23,8 +23,17 @@
                         </p>
                     </div>
                     @if($usuario->email !== 'jeffersonassilva@gmail.com')
-                        @canany(['adm-editar-usuario', 'adm-excluir-usuario'])
+                        @canany(['adm-resetar-senha-usuario', 'adm-editar-usuario', 'adm-excluir-usuario'])
                             <div class="text-sm flex gap-2 md:gap-2">
+                                @can('adm-resetar-senha-usuario')
+                                    <x-button.reset title=""
+                                                    icon="lock-open-outline"
+                                                    class="text-lg py-3"
+                                                    :route="route('configuracoes.reset', $usuario)"
+                                                    formId="form-resetar-senha-usuario-{{ $usuario->id }}">
+                                    </x-button.reset>
+                                @endcan
+
                                 @can('adm-editar-usuario')
                                     <x-button.link title=""
                                                    class="text-lg py-3"
@@ -52,4 +61,41 @@
 
     <x-dialog.confirm></x-dialog.confirm>
 
+    <x-dialog.generic-confirm
+        id="modal_resetar_senha"
+        message="Deseja realmente resetar a senha do usuário?"
+        confirmButtonTitle="Pode resetar"
+        cancelButtonTitle="Cancelar"
+    ></x-dialog.generic-confirm>
+
+    <form class="form-horizontal"
+        id="submit-form-resetar-senha-usuario"
+        role="form"
+        action="{{ route("configuracoes.reset") }}"
+        method="POST">
+        @csrf
+    </form>
+
+    <script type="text/javascript">
+        function modalConfirmAction(modalId) {
+            $('#' + modalId).hide();
+            $('#submit-form-resetar-senha-usuario').submit();
+        }
+
+        function modalCancelAction(modalId) {
+            $('#' + modalId).hide();
+        }
+
+        function modalCloseAction(modalId) {
+            $('#' + modalId).hide();
+        }
+
+        $(document).ready(function () {
+            $('.btn-dialog-reset-senha-open').on('click', function () {
+                let userId = $(this).attr('data-form-reference').replace('form-resetar-senha-usuario-', '');
+                $('#modal_resetar_senha').show();
+                $('#submit-form-resetar-senha-usuario').append('<input hidden name="userId" value="' + userId + '" />');
+            });
+        });
+    </script>
 </x-app-layout>

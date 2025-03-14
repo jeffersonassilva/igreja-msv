@@ -275,6 +275,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Configurações
     Route::get('/configuracoes', [ConfiguracaoController::class, 'index'])->name('configuracoes');
     Route::put('/configuracoes/{usuario}', [ConfiguracaoController::class, 'update'])->name('configuracoes.update');
+    Route::post('/configuracoes/reset', [ConfiguracaoController::class, 'reset'])->name('configuracoes.reset');
 });
 
 Route::get('/admin/{any}', function () {
