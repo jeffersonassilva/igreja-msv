@@ -31,34 +31,37 @@
         </p>
     </div>
 
-    <x-dropdown.actions dropdownId="dropdownVolunteer-{{ $voluntario }}" buttonId="dropdownButton-{{ $voluntario }}">
-        @can('adm-editar-voluntario')
-            <li>
-                <x-button.link title="Editar"
-                               icon="create-outline"
-                               :route="route('voluntarios.edit', $voluntario)"
-                               :dropdown="true">
-                </x-button.link>
-            </li>
-        @endcan
-        @can('adm-detalhar-voluntario')
-            <li>
-                <x-button.link title="Visualizar"
-                               icon="eye-outline"
-                               :route="route('voluntarios.show', $voluntario)"
-                               :dropdown="true">
-                </x-button.link>
-            </li>
-        @endcan
-        @can('adm-excluir-voluntario')
-            <li>
-                <x-button.delete
-                    :route="route('voluntarios.destroy', $voluntario)"
-                    formId="form-excluir-voluntario-{{ $voluntario->id }}"
-                    :dropdown="true"
-                    icon="trash-outline">
-                </x-button.delete>
-            </li>
-        @endcan
-    </x-dropdown.actions>
+    @canany(['adm-editar-voluntario', 'adm-detalhar-voluntario', 'adm-excluir-voluntario'])
+        <x-dropdown.actions dropdownId="dropdownVolunteer-{{ $voluntario }}"
+                            buttonId="dropdownButton-{{ $voluntario }}">
+            @can('adm-editar-voluntario')
+                <div>
+                    <x-button.link title="Editar"
+                                   icon="create-outline"
+                                   :route="route('voluntarios.edit', $voluntario)"
+                                   :dropdown="true">
+                    </x-button.link>
+                </div>
+            @endcan
+            @can('adm-detalhar-voluntario')
+                <div>
+                    <x-button.link title="Visualizar"
+                                   icon="eye-outline"
+                                   :route="route('voluntarios.show', $voluntario)"
+                                   :dropdown="true">
+                    </x-button.link>
+                </div>
+            @endcan
+            @can('adm-excluir-voluntario')
+                <div>
+                    <x-button.delete
+                        :route="route('voluntarios.destroy', $voluntario)"
+                        formId="form-excluir-voluntario-{{ $voluntario->id }}"
+                        :dropdown="true"
+                        icon="trash-outline">
+                    </x-button.delete>
+                </div>
+            @endcan
+        </x-dropdown.actions>
+    @endcanany
 </div>

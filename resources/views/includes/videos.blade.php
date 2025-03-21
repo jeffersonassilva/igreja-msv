@@ -1,4 +1,4 @@
-<section id="videos" class="p-3 md:p-0 md:py-5">
+<div id="videos" class="p-3 md:p-0 md:py-5">
     <div class="container mx-auto max-w-[1280px]">
         <div class="flex flex-col flex-wrap md:flex-row md:items-center p-3 lg:py-10 lg:px-20">
             <div class="mx-auto text-left sm:text-center lg:text-left lg:flex-[50%] lg:flex-1 order-2 lg:order-1">
@@ -41,4 +41,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

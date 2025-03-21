@@ -1,5 +1,5 @@
 @if($banners->count())
-    <section class="w-full slider mx-auto bg-gray-100">
+    <div class="w-full slider mx-auto bg-gray-100">
         @foreach($banners as $key => $banner)
             <div class="slides {{ $key === 0 ? 'active' : '' }}">
                 @if($banner['link'])
@@ -17,15 +17,15 @@
                 @endif
             </div>
         @endforeach
-    </section>
+    </div>
 @endif
 @if(count($banners) > 1)
-    <section class="flex items-center justify-center mt-2">
+    <div class="flex items-center justify-center mt-2">
         @foreach($banners as $key => $banner)
             <span class="balls text-gray-300 text-xs 2xl:text-base p-1 cursor-pointer {{ $key === 0 ? 'active' : '' }}"
                   data-id="{{ $key }}">
             <ion-icon name="ellipse"></ion-icon>
         </span>
         @endforeach
-    </section>
+    </div>
 @endif
