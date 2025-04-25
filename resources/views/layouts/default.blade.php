@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;300;400;500;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=111">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 {{--        <link rel="stylesheet" href="{{ asset('css/flickity.min.css') }}">--}}
 {{--        <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">--}}
 
@@ -53,14 +53,16 @@
         <!-- Scripts -->
 {{--        <script src="{{ asset('js/flickity.pkgd.min.js') }}" defer></script>--}}
 {{--        <script src="{{ asset('js/flickity-fade.js') }}" defer></script>--}}
-        <script src="{{ asset('js/app.js') }}?v=12" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
 {{--        <script src="{{ asset('js/maskmoney/dist/jquery.maskMoney.min.js') }}"></script>--}}
 
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        {{-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> --}}
 {{--        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>--}}
+        <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
 
         @yield('add-scripts')
     </body>

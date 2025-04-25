@@ -21,8 +21,8 @@ class VisitanteService extends AbstractService
     }
 
     /**
-     * @param $request
-     * @return Visitante|mixed
+     * @param mixed $request
+     * @return Visitante
      */
     public function store($request)
     {
@@ -34,10 +34,10 @@ class VisitanteService extends AbstractService
     }
 
     /**
-     * @param $filter array
-     * @return array|LengthAwarePaginator
+     * @param array $filter
+     * @return LengthAwarePaginator|Visitante[]
      */
-    public function list(array $filter): array|LengthAwarePaginator
+    public function list(array $filter)
     {
         $query = $this->model
             ->whereNull(['sem_sucesso', 'membro_ativo']);
@@ -46,12 +46,16 @@ class VisitanteService extends AbstractService
             $query->where('nome', 'like', '%' . $filter['nome'] . '%');
         }
 
+        if (isset($filter['sexo'])) {
+            $query->where('sexo', '=', $filter['sexo']);
+        }
+
         if (isset($filter['responsavel'])) {
             $query->whereNotNull('responsavel');
         }
 
-        if (isset($filter['dt_visita'])) {
-            $query->whereDate('dt_visita', '=', $filter['dt_visita']);
+        if (isset($filter['dt_visita_inicio']) && isset($filter['dt_visita_fim'])) {
+            $query->whereBetween('dt_visita', [$filter['dt_visita_inicio'], $filter['dt_visita_fim']]);
         }
 
         if (isset($filter['oracao'])) {
