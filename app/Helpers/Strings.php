@@ -119,4 +119,27 @@ class Strings
 
         return $partesData[2] . ' de ' . $meses[$partesData[1]] . ' de ' . $partesData[0];
     }
+
+    /**
+     * Calcula a idade a partir da data de nascimento.
+     * @param mixed $dataNascimento
+     * @param mixed $complemento
+     * @return string|null
+     */
+    public static function calcularIdade($dataNascimento, $complemento = false) {
+        if (empty($dataNascimento)) {
+            return null;
+        }
+
+        $nascimento = \DateTime::createFromFormat('Y-m-d', $dataNascimento);
+        $hoje = new \DateTime('now');
+
+        if (!$nascimento) {
+            return null;
+        }
+
+        $idade = $hoje->diff($nascimento)->y;
+
+        return $idade . ($complemento ? ' anos' : null);
+    }
 }
