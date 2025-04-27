@@ -71,8 +71,7 @@ class VisitanteService extends AbstractService
         }
 
         $query
-            ->orderBy('dt_visita', 'desc')
-            ->orderBy('responsavel', 'asc');
+            ->orderBy('created_at', 'desc');
 
         return $query->paginate();
     }
