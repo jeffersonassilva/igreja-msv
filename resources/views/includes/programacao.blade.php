@@ -56,7 +56,7 @@
                 <div class="flex flex-col gap-1 md:gap-2">
                     <div class="font-medium mb-1 md:text-xl">Quarta-feira</div>
                     <div class="text-sm text-gray-500 lg:text-base">
-                        <span class="font-semibold">16:00</span> - Tarde de Oração
+                        <span class="font-semibold">18:00</span> - Evangelismo
                     </div>
                     <div class="text-sm text-gray-500 lg:text-base">
                         <span class="font-semibold">20:00</span> - Culto da Vitória
