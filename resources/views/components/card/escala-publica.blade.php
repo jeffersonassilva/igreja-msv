@@ -53,11 +53,35 @@
         <div class="text-sm leading-7 font-thin @if($escala->fechada) text-gray-700 @else text-gray-500 @endif">
 
             @if($escala->voluntarios->contains(function ($voluntario) {
-                return !in_array($voluntario->funcao, ['OP', 'OS', 'SPS']);
+                return in_array($voluntario->funcao, ['CS']);
+            }))
+                <div class="mb-8 flex items-center">
+                    <div class="overflow-auto w-[32px] mr-1 p-2 opacity-75">
+                        <img src="{{ asset('img/coracoes.png') }}" alt="">
+                    </div>
+                    <div>
+                        @foreach($escala->voluntarios->filter(function ($voluntario) {
+                                return in_array($voluntario->funcao, ['CS']);
+                            })
+                            ->sortBy('voluntario.nome')->sortBy(function ($voluntario) {
+                                return is_null($voluntario->funcao) ? 1 : 0;
+                            }) as $voluntario)
+                            <x-card.escalas.voluntarios-casal
+                                :loop="$loop"
+                                :voluntario="$voluntario"
+                                :escala="$escala"
+                            />
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if($escala->voluntarios->contains(function ($voluntario) {
+                return !in_array($voluntario->funcao, ['OP', 'OS', 'SPS', 'CS']);
             }))
                 <div class="mb-8">
                     @foreach($escala->voluntarios->filter(function ($voluntario) {
-                            return !in_array($voluntario->funcao, ['OP', 'OS', 'SPS']);
+                            return !in_array($voluntario->funcao, ['OP', 'OS', 'SPS', 'CS']);
                         })
                         ->sortBy('voluntario.nome')->sortBy(function ($voluntario) {
                             return is_null($voluntario->funcao) ? 1 : 0;
