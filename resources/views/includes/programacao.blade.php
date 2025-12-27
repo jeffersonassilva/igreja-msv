@@ -4,7 +4,7 @@
 
         <div class="mb-8 flex flex-col sm:justify-center sm:items-center px-4">
             <p class="text-gray-600 text-sm sm:text-base">
-                Você pode verificar a agenda detalhada da nossa igreja nos links abaixo.
+                Você pode verificar a agenda detalhada da nossa igreja no link abaixo.
             </p>
             <span class="text-gray-500 text-xs sm:text-sm font-thin">
                 * Mudanças podem ocorrer se necessário.
@@ -14,18 +14,18 @@
                     <ion-icon name="document-text-outline"
                               class="py-2 pl-2 sm:pl-3 pr-1 sm:pr-2 text-gray-500">
                     </ion-icon>
-                    <a href="{{ asset('files/agenda_2025_1_semestre.pdf') }}"
+                    <a href="{{ asset('files/agenda_2026_1_semestre.pdf') }}"
                        target="_blank"
                        class="text-xs sm:text-sm md:text-base text-blue-500 pr-2 sm:pr-3">1&ordm; Semestre.pdf</a>
                 </div>
-                <div class="bg-gray-100 overflow-hidden rounded-lg flex items-center">
+                {{-- <div class="bg-gray-100 overflow-hidden rounded-lg flex items-center">
                     <ion-icon name="document-text-outline"
                               class="py-2 pl-2 sm:pl-3 pr-1 sm:pr-2 text-gray-500">
                     </ion-icon>
                     <a href="{{ asset('files/agenda_2025_2_semestre.pdf') }}"
                        target="_blank"
                        class="text-xs sm:text-sm md:text-base text-blue-500 pr-2 sm:pr-3">2&ordm; Semestre.pdf</a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
