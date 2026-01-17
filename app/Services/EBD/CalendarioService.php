@@ -80,7 +80,7 @@ class CalendarioService extends AbstractService
     public function aulasDinamicas()
     {
         $query = $this->model
-            ->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d H:i:s'))
+            ->where('data', '>=', Carbon::now()->startOfMonth())
             ->whereHas('escalas', function ($query) {
                 return $query->where('permanente', '=', false);
             })
