@@ -71,7 +71,7 @@ class EscalaController extends Controller
     public function geral()
     {
         $escalasObreiros = $this->service->list();
-        $escalasEBD = $this->calendarioService->aulasDinamicas();
+        $escalasEBD = $this->calendarioService->proximasEBD();
 
         return view('escalas')->with([
             'escalasObreiros' => $escalasObreiros,

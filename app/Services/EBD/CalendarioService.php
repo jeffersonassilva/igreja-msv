@@ -74,6 +74,18 @@ class CalendarioService extends AbstractService
         return $data;
     }
 
+    public function proximasEBD()
+    {
+        $query = $this->model
+            ->where('data', '>=', Carbon::now()->subHour(3)->format('Y-m-d H:i:s'))
+            ->whereHas('escalas', function ($query) {
+                return $query->where('permanente', '=', false);
+            })
+            ->orderBy('data');
+
+        return $query->get();
+    }
+
     /**
      * @return mixed
      */
