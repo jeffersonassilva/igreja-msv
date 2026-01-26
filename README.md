@@ -10,6 +10,12 @@ At the moment, the project is still under construction, but it is already being 
 $ docker-compose up --build
 ```
 
+## Artisan Server with different IP or Port
+
+```
+$ php artisan serve --host 192.168.25.152 --port 8000
+```
+
 Author
 -------
 
