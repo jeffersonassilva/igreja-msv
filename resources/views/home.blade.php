@@ -8,9 +8,9 @@
 
     @include('includes.ministerios')
 
-    @include('includes.videos')
-
     @include('includes.pastores')
+
+    @include('includes.videos')
 
     @include('includes.programacao')
 

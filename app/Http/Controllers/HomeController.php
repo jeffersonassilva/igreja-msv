@@ -52,14 +52,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $video = $this->getLastVideoYouTube();
+        //$video = $this->getLastVideoYouTube();
         $banners = $this->bannerService->all(['ordem' => 'asc', 'id' => 'asc'], Constants::CACHE_LISTA_BANNERS);
         $propositos = $this->propositoService->all(array(), Constants::CACHE_LISTA_PROPOSITOS);
         $pastor = $this->pastorService->all(array(), Constants::CACHE_LISTA_PASTORES);
 
         return view('home')->with([
             'banners' => $banners,
-            'video' => $video,
+            // 'video' => $video,
             'propositos' => $propositos,
             'pastor' => $pastor->first(),
         ]);

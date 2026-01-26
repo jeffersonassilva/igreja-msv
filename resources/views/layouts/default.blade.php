@@ -34,8 +34,8 @@
         <meta name="msapplication-TileImage" content="{{ asset('img/icons/ms-icon-144x144.png') }}">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body class="flex flex-col min-h-full">
-        <nav id="menu" class="menu bg-black">
+    <body class="flex flex-col min-h-full bg-[#faf9f4]">
+        <nav id="menu" class="menu bg-[#faf9f4e6]">
             @include('includes/header')
         </nav>
 
