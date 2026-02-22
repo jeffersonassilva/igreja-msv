@@ -53,7 +53,7 @@
                 @endforeach
             </div>
             <div class="my-4">
-                {{ $alunos->links() }}
+                {{ $alunos->appends($filters)->links() }}
             </div>
         @endif
     </section>

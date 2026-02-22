@@ -11,6 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
@@ -37,11 +38,12 @@ class AlunoController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Request $request)
     {
         $this->checkPermission('adm-listar-ebd-alunos');
-        $data = $this->service->paginate(['nome' => Constants::CRESCENTE], null, ['classes']);
-        return view('admin/ebd/alunos/index')->with('alunos', $data);
+        $where = $request->get('nome') ? ['nome' => ['like', '%' . $request->get('nome') . '%']] : array();
+        $data = $this->service->where($where, ['nome' => Constants::CRESCENTE])->paginate();
+        return view('admin/ebd/alunos/index')->with(['alunos' => $data, 'filters' => $request->toArray()]);
     }
 
     /**
