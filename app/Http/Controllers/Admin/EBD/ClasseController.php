@@ -90,4 +90,14 @@ class ClasseController extends Controller
         $this->service->destroy($id);
         return $this->redirectWithMessage('classes', __(Constants::SUCCESS_DESTROY));
     }
+
+    /**
+     * @param $id
+     * @return Application|Factory|View
+     */
+    public function alunos($nome)
+    {
+        $classe = $this->service->alunos($nome);
+        return view('escalas-ebd-alunos')->with('classe', $classe);
+    }
 }

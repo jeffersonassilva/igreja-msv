@@ -72,16 +72,6 @@ class CalendarioController extends Controller
     }
 
     /**
-     * @param $id
-     * @return Application|Factory|View
-     */
-    public function alunos($id)
-    {
-        $escala = $this->escalaService->alunos($id);
-        return view('escalas-ebd-alunos')->with('escala', $escala);
-    }
-
-    /**
      * @return Application|Factory|View
      */
     public function index()

@@ -57,7 +57,7 @@ Route::post('/testemunhos', [TestemunhoController::class, 'store'])->name('teste
 Route::get('/escalas', [EscalaController::class, 'geral'])->name('escalas.geral');
 Route::get('/escalas/obreiros', [EscalaController::class, 'list'])->name('escalas.obreiros.list');
 Route::get('/escalas/ebd', [CalendarioController::class, 'list'])->name('escalas.ebd.list');
-Route::get('/escalas/ebd/{id}/alunos/', [CalendarioController::class, 'alunos'])->name('calendario.alunos');
+Route::get('/ebd/alunos/{nome}', [ClasseController::class, 'alunos'])->name('calendario.alunos');
 Route::post('/voluntarios', [EscalaVoluntarioController::class, 'new'])->name('escalaVoluntario.new')->withoutMiddleware([VerifyCsrfToken::class]);
 
 //Notas Fiscais

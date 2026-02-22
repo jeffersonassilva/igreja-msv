@@ -34,16 +34,4 @@ class EscalaService extends AbstractService
 
         return $query->get();
     }
-
-    /**
-     * @param $id
-     * @return Builder|Model|object|null
-     */
-    public function alunos($id)
-    {
-        return $this->model
-            ->with('classe.alunos')
-            ->where('id', '=', $id)
-            ->first();
-    }
 }

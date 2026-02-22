@@ -56,4 +56,16 @@ class ClasseService extends AbstractService
 
         return $data;
     }
+
+    /**
+     * Summary of alunos
+     * @param mixed $nome
+     */
+    public function alunos($nome)
+    {
+        return $this->model
+            ->with('alunos')
+            ->where('nome', '=', $nome)
+            ->first();
+    }
 }
