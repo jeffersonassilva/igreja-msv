@@ -12,14 +12,18 @@
     @endforeach
     @endif --}}
 
-    @if(count($classe->alunos) === 0)
+    @if($classe->nome === 'Juventude')
+    <div class="text-sm font-thin">
+        <span class="text-gray-500">Classe especial com adolescentes e jovens.</span>
+    </div>
+    @elseif(count($classe->alunos) === 0)
     <div class="text-sm font-thin">
         <span class="text-gray-500">Nenhum aluno matriculado.</span>
     </div>
     @else
     <a href="{{ route('calendario.alunos', strtolower($classe->nome)) }}" class="w-full">
         <div class="text-sm font-thin cursor-pointer">
-            <span class="font-normal ml-4-ATUALIZAR">
+            <span class="font-normal">
                 {{
                 count($classe->alunos) > 1 ? count($classe->alunos) . ' alunos' : count($classe->alunos) . ' aluno'
                 }}
