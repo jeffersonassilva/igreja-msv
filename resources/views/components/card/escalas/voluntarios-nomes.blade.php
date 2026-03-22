@@ -10,7 +10,7 @@
         : 'border border-dashed border-gray-400'
 @endphp
 
-<div class="line-clamp-1">
+<div>
     <div class="flex items-center">
         <button class="{{ $classBgAndBorder }} w-8
                                 group transition-all hover:w-fit ease-out
