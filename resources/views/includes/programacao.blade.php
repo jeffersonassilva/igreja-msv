@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="mt-12 text-center" style="opacity: 1; transform: none;">
-            <a href="{{ asset('files/Agenda_MSV_2026_v4-12-02-2026.pdf') }}" target="_blank" rel="noopener noreferrer"
+            <a href="{{ asset('files/Agenda_MSV_2026_v5-09-05-2026.pdf') }}" target="_blank" rel="noopener noreferrer"
                 class="bg-[#4a2f1c] hover:opacity-90 transition-all duration-300 shadow-md text-[#f7f5ed] px-6 py-3 rounded-full inline-flex items-center justify-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -151,7 +151,8 @@
                     <path d="M16 2v4"></path>
                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
                     <path d="M3 10h18"></path>
-                </svg>Ver Agenda Completa</a>
+                </svg>Ver Agenda Completa
+            </a>
         </div>
     </div>
 </section>
