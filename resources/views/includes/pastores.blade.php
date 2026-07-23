@@ -5,20 +5,8 @@
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="relative" style="opacity: 1; transform: none;">
                 <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <picture class="w-full">
-                        <source type="image/webp" media="(min-width:640px)"
-                            srcset="{{ asset('img/pastores-large.webp') }}">
-                        <source type="image/jpeg" media="(min-width:640px)"
-                            srcset="{{ asset('img/pastores-large.jpg') }}">
-                        <source type="image/webp" media="(min-width:480px)"
-                            srcset="{{ asset('img/pastores-medium.webp') }}">
-                        <source type="image/jpeg" media="(min-width:480px)"
-                            srcset="{{ asset('img/pastores-medium.jpg') }}">
-                        <source type="image/webp" media="(max-width:479px)"
-                            srcset="{{ asset('img/pastores-small.webp') }}">
-                        <img loading="lazy" width="720" height="480" src="{{ asset('img/pastores-small.jpg') }}"
-                            alt="Samuel e Hacsa" title="Samuel e Hacsa" class="rounded-md">
-                    </picture>
+                    <img src="{{ asset('img/pastores.jpg') }}" loading="lazy" width="720" height="480"
+                        alt="Samuel e Hacsa" title="Samuel e Hacsa" class="rounded-md w-full">
                 </div>
                 <div class="absolute -z-10 top-6 left-6 w-full h-full rounded-3xl border-2 border-primary/30"></div>
                 <div class="absolute -z-10 top-12 left-12 w-full h-full rounded-3xl bg-accent/10"></div>
