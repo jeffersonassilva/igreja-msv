@@ -17,7 +17,7 @@
                rel="noopener noreferrer">Fotos</a>
         </li>
         <li class="link text-black"><a accesskey="g" href="/#programacao">Programação</a></li>
-        {{-- <li class="link text-black"><a accesskey="o" href="{{ route('ofertas') }}">Ofertas</a></li> --}}
+        <li class="link text-black"><a accesskey="o" href="https://ofertas.igrejamsv.org/">Ofertas</a></li>
         {{-- <li class="link text-black hidden lg:block">
             <a accesskey="d"
                href="https://linktr.ee/igrejamsv"
