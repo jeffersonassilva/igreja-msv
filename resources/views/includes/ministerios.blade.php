@@ -72,7 +72,7 @@
                     <p class="text-sm text-[#756357]">Formando pequenos discípulos</p>
                 </div>
             </div>
-            <div class="md:col-span-2 group relative bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
+            <div class="group relative bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
                 style="opacity: 1; transform: none;">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-orange-400 to-amber-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300">
@@ -82,11 +82,11 @@
                         class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-book-open text-white">
-                            <path d="M12 7v14"></path>
-                            <path
-                                d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-                            </path>
+                            class="lucide text-white">
+                            <path d="M12 20v-7"></path>
+                            <path d="M12 13c0-3 2.5-5 6-5 0 3.5-2 6-6 6"></path>
+                            <path d="M12 13c0-3-2.5-5-6-5 0 3.5 2 6 6 6"></path>
+                            <path d="M8 20h8"></path>
                         </svg>
                     </div>
                     <h3 class="font-serif text-lg md:text-xl font-medium mb-2 text-[#4a2f1c]">Jovens e Adolescentes</h3>
@@ -154,7 +154,7 @@
                     <p class="text-sm text-[#756357]">Adoração que transforma</p>
                 </div>
             </div>
-            <div class="md:col-span-2 group relative bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
+            <div class="group relative bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
                 style="opacity: 1; transform: none;">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-400 opacity-0 group-hover:opacity-5 transition-opacity duration-300">
@@ -175,6 +175,30 @@
                     <p class="text-sm text-[#756357]">Fortalecendo lares</p>
                 </div>
             </div>
+            <a id="link-ebd-escalas" href="https://missoes.igrejamsv.org/"
+                class="group relative block bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
+                style="opacity: 1; transform: none;">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-400 opacity-0 group-hover:opacity-5 transition-opacity duration-300">
+                </div>
+                <div class="relative flex flex-col items-center text-center">
+                    <div
+                        class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide text-white">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M3 12h18"></path>
+                            <path d="M12 3a15 15 0 0 1 0 18"></path>
+                            <path d="M12 3a15 15 0 0 0 0 18"></path>
+                            <path d="M5 7.5a18 18 0 0 0 14 0"></path>
+                            <path d="M5 16.5a18 18 0 0 1 14 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-lg md:text-xl font-medium mb-2 text-[#4a2f1c]">Missões</h3>
+                    <p class="text-sm text-[#756357]">Ide e pregrai o evangelho</p>
+                </div>
+            </a>
             <a id="link-ebd-escalas" href="/escalas/ebd"
                 class="group relative block bg-[#faf9f4] rounded-2xl p-6 md:p-8 border border-[#e4dbcd]/50 hover:border-[#eca413]/40 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden"
                 style="opacity: 1; transform: none;">

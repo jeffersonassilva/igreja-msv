@@ -6,10 +6,9 @@
     </a>
     <div class="toggle lg:hidden"></div>
     <ul class="navigation hidden lg:flex overflow-y-auto">
-        <li class="link text-black"><a accesskey="h" href="{{ route('index') }}">Início</a></li>
-        <li class="link text-black"><a accesskey="p" href="/#propositos">Propósitos</a></li>
-        <li class="link text-black"><a accesskey="m" href="/#ministerios">Ministérios</a></li>
-        <li class="link text-black"><a accesskey="s" href="/#pastores">Pastores</a></li>
+        <li class="link text-black"><a accesskey="i" href="{{ route('index') }}">Início</a></li>
+        <li class="link text-black"><a accesskey="t" href="/#ministerios">Ministérios</a></li>
+        <li class="link text-black"><a accesskey="p" href="/#pastores">Pastores</a></li>
         <li class="link text-black">
             <a accesskey="f"
                href="https://www.flickr.com/photos/igrejamsv/albums"
@@ -17,6 +16,7 @@
                rel="noopener noreferrer">Fotos</a>
         </li>
         <li class="link text-black"><a accesskey="g" href="/#programacao">Programação</a></li>
+        <li class="link text-black"><a accesskey="s" href="https://missoes.igrejamsv.org/">Missões</a></li>
         <li class="link text-black"><a accesskey="o" href="https://ofertas.igrejamsv.org/">Ofertas</a></li>
         {{-- <li class="link text-black hidden lg:block">
             <a accesskey="d"
